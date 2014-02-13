@@ -1,1 +1,7 @@
-Hello world!
+<% for (item in page.posts) { %>
+	
+	<%- partial('_partial/article', { item: item, index: true }) %>
+
+<% } %>
+
+<%- partial('_partial/pagination') %>

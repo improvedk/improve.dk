@@ -1,0 +1,52 @@
+<article>
+	<div class="datebox">
+		<div class="upper">
+			<span class="month"><%- item.date.format("MMM") %></span>
+			<span class="day"><%= item.date.day() %></span>
+		</div>
+		<div class="lower"><%= item.date.year() %></div>
+	</div>
+
+	<div class="title">
+		<h1><a href="<? the_permalink() ?>" title="<? the_title_attribute() ?>" rel="bookmark"><%= item.title %></a></h1>
+		<div class="categories"><% item.categories %></div>
+		<div class="clear"></div>
+	</div>
+
+	<div id="bodywrapper" <% if (!index) { %>class="single"<% } %>>
+		<% if (index) { %>
+			<div class="body"><%= item.excerpt %></div>
+		<% } else { %>
+			<div class="body">
+			
+				<% item.content %>
+
+				<div style="clear: both"></div>
+
+				<% if (!index) { %>
+					<div id="postsharing">
+						<a href="https://twitter.com/home?status=<?= urlencode(get_the_title() . " " . get_permalink() . " via @improvedk") ?>" target="_blank"><img src="/wp-content/themes/improve/images/twitter_64x64.png" /></a>
+						<a href="https://www.facebook.com/sharer.php?u=<?= urlencode(get_permalink()) . "&t=" . urlencode(get_the_title()) ?>" target="_blank"><img src="/wp-content/themes/improve/images/facebook_64x64.png" /></a>
+						<a href="http://reddit.com/submit?url=<?= urlencode(get_permalink()) . "&title=" . urlencode(get_the_title()) ?>" target="_blank"><img src="/wp-content/themes/improve/images/reddit_64x64.png" /></a>
+					</div>
+
+					<div id="bio">
+						<img src="/img/avatar.jpg" class="avatar photo" height="96" width="96">
+						<div class="wrapper">
+							<div class="name">Mark S. Rasmussen</div>
+							<div class="description">
+								I'm the CTO at <a href="http://www.ipaper-cms.com/">iPaper</a> where I cuddle with databases, mold code and maintain the overall technical &amp; team responsibility. I'm an avid speaker at user groups &amp; conferences. I love life, motorcycles, photography and all things technical. Say hi on <a href="http://twitter.com/improvedk">Twitter</a>, write me an <a href="mailto:mark@improve.dk">email</a> or look me up on <a href="http://dk.linkedin.com/in/markrasmussen/">LinkedIn</a>.
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				<% } %>
+
+			</div>
+		<% } %>
+
+		<% if (!index) { %>
+			<%- partial('_partial/comments') %>
+		<% } %>
+	</div>
+</article>

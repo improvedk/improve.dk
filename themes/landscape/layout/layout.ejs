@@ -50,7 +50,7 @@
 			<div id="contentwrapper">
 				<div id="content">
 				
-					<!-- TODO -->
+					<%- body %>
 
 				</div>
 			</div>
@@ -58,20 +58,20 @@
 			<div id="asides">
 				<div class="categories aside">
 					<span class="sectiontitle">CATEGORIES</span>
-					<ul>
+					<%- list_categories({
+						show_count: false
+					}) %>
 
-						<!-- TODO -->
-
-					</ul>
+					<%- site.categories[0] %>
 				</div>
 
 				<div class="archive aside">
 					<span class="sectiontitle">ARCHIVE</span>
-					<ul>
-
-						<!-- TODO -->
-
-					</ul>
+					<%- list_archives({
+						show_count: false,
+						order: 'desc',
+						type: 'yearly'
+					}) %>
 				</div>
 			</div>
 

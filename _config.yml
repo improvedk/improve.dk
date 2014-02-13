@@ -16,7 +16,7 @@ url: http://improve.dk
 root: /
 permalink: :title/
 tag_dir: tags
-archive_dir: / # As we want archives URL like /year/month/post the year folders should be output to the root directly
+archive_dir: archive # As we want archives URL like /year/month/post the year folders should be output to the root directly
 category_dir: category
 code_dir: downloads/code
 
