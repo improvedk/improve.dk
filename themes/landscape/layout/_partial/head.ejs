@@ -1,0 +1,41 @@
+<%
+	var title = page.title;
+
+	if (is_archive())
+		title = 'Archives';
+	
+	if (is_month())
+		title += ': ' + page.year + '/' + page.month;
+	else if (is_year())
+		title += ': ' + page.year;
+	else if (is_category())
+		title = 'Category: ' + page.category;
+%>
+<head>
+	<title><% if(title) { %><%= title %> | <% } %><%= config.title %></title>
+	<script src="/js/jquery-2.1.0.min.js"></script>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta charset="UTF-8" />
+	<link rel="canonical" href="http://improve.dk/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="<%= title %>" />
+	<meta property="og:url" content="http://improve.dk/" />
+	<meta property="og:site_name" content="Mark S. Rasmussen - Blog" />
+	<meta name="google-site-verification" content="alt7-wfK3ZujMQ4D0jYNd0yC5LGetGdqBlBmZsqQlVw" />
+	<!-- TODO: Actual RSS url -->
+	<link rel="alternative" href="..." title="<%= config.title %>" type="application/atom+xml">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<%- css('css/style.css') %>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2479580-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
