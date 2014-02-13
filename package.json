@@ -3,6 +3,7 @@
   "version": "2.4.5",
   "private": true,
   "dependencies": {
-    "hexo-renderer-less": "0.0.3"
+    "hexo-renderer-less": "0.0.3",
+    "hexo-migrator-wordpress": "0.0.6"
   }
 }
