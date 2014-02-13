@@ -11,9 +11,12 @@
 	else if (is_category())
 		title = 'Category: ' + page.category;
 %>
+
 <head>
 	<title><% if(title) { %><%= title %> | <% } %><%= config.title %></title>
 	<script src="/js/jquery-2.1.0.min.js"></script>
+	<script src="/js/modernizr.js"></script>
+	<script src="/js/parsley.min.js"></script>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 	<meta charset="UTF-8" />
 	<link rel="canonical" href="http://improve.dk/" />
