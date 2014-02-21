@@ -1,33 +1,41 @@
+<%
+	var postTitle = titlecase(post.title);
+%>
+
 <article>
 	<div class="datebox">
 		<div class="upper">
-			<span class="month"><%- item.date.format("MMM") %></span>
-			<span class="day"><%= item.date.day() %></span>
+			<span class="month"><%- post.date.format("MMM") %></span>
+			<span class="day"><%- post.date.format("DD") %></span>
 		</div>
-		<div class="lower"><%= item.date.year() %></div>
+		<div class="lower"><%- post.date.year() %></div>
 	</div>
 
 	<div class="title">
-		<h1><a href="<? the_permalink() ?>" title="<? the_title_attribute() ?>" rel="bookmark"><%= item.title %></a></h1>
-		<div class="categories"><% item.categories %></div>
+		<h1><a href="<%- post.path %>" title="<%= postTitle %>" rel="bookmark"><%= postTitle %></a></h1>
+		<div class="categories"><% post.categories %></div>
 		<div class="clear"></div>
 	</div>
 
 	<div id="bodywrapper" <% if (!index) { %>class="single"<% } %>>
-		<% if (index) { %>
-			<div class="body"><%= item.excerpt %></div>
+
+		<% if (index && !fullPost) { %>
+
+			<div class="body"><%- post.excerpt %></div>
+		
 		<% } else { %>
+		
 			<div class="body">
 			
-				<% item.content %>
+				<%- post.content %>
 
 				<div style="clear: both"></div>
 
 				<% if (!index) { %>
 					<div id="postsharing">
-						<a href="https://twitter.com/home?status=<?= urlencode(get_the_title() . " " . get_permalink() . " via @improvedk") ?>" target="_blank"><img src="/wp-content/themes/improve/images/twitter_64x64.png" /></a>
-						<a href="https://www.facebook.com/sharer.php?u=<?= urlencode(get_permalink()) . "&t=" . urlencode(get_the_title()) ?>" target="_blank"><img src="/wp-content/themes/improve/images/facebook_64x64.png" /></a>
-						<a href="http://reddit.com/submit?url=<?= urlencode(get_permalink()) . "&title=" . urlencode(get_the_title()) ?>" target="_blank"><img src="/wp-content/themes/improve/images/reddit_64x64.png" /></a>
+						<a href="https://twitter.com/home?status=<%- encodeURIComponent(postTitle + " " + post.permalink + " via @improvedk") %>" target="_blank"><img src="/img/twitter_64x64.png" /></a>
+						<a href="https://www.facebook.com/sharer.php?u=<%- encodeURIComponent(page.permalink) %>" target="_blank"><img src="/img/facebook_64x64.png" /></a>
+						<a href="http://reddit.com/submit?url=<%- encodeURIComponent(post.permalink) + "&title=" + encodeURIComponent(postTitle) %>" target="_blank"><img src="/img/reddit_64x64.png" /></a>
 					</div>
 
 					<div id="bio">
@@ -43,10 +51,12 @@
 				<% } %>
 
 			</div>
+
 		<% } %>
 
 		<% if (!index) { %>
 			<%- partial('_partial/comments') %>
 		<% } %>
+
 	</div>
 </article>

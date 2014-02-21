@@ -1,7 +1,3 @@
-<% for (item in page.posts) { %>
-	
-	<%- partial('_partial/article', { item: item, index: true }) %>
-
-<% } %>
-
-<%- partial('_partial/pagination') %>
+<% page.posts.each(function(post){ %>
+    <%- partial('_partial/article', { post: post, index: true, fullPost: true }) %>
+ <% }) %>
