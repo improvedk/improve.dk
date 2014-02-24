@@ -15,9 +15,9 @@ language: en-US
 url: http://improve.dk
 root: /
 permalink: :title/
-tag_dir: tags
-archive_dir: archive # As we want archives URL like /year/month/post the year folders should be output to the root directly
-category_dir: category
+tag_dir: category
+archive_dir: archive
+category_dir: cat
 code_dir: downloads/code
 
 # Directory
@@ -49,9 +49,9 @@ tag_map:
 ## 2: Enable pagination
 ## 1: Disable pagination
 ## 0: Fully Disable
-archive: 2
-category: 2
-tag: 2
+archive: 1
+category: 0
+tag: 1
 
 # Server
 ## Hexo uses Connect as a server
@@ -80,7 +80,7 @@ disqus_shortname: improvedk
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
 theme: landscape
-exclude_generator: tag
+exclude_generator: category
 
 # Markdown
 ## https://github.com/chjj/marked

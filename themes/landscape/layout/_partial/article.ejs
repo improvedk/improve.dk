@@ -12,8 +12,18 @@
 	</div>
 
 	<div class="title">
-		<h1><a href="<%- post.path %>" title="<%= postTitle %>" rel="bookmark"><%= postTitle %></a></h1>
-		<div class="categories"><% post.categories %></div>
+		<h1><a href="/<%- post.path %>" title="<%= postTitle %>" rel="bookmark"><%= postTitle %></a></h1>
+		<div class="categories">
+			<% post.tags.forEach(function(tag, i) { %>
+				<a href="<%- tag.permalink %>"><%- tag.name %></a>
+				<%- i < (post.tags.length - 1) ? ", " : "" %>
+			<% }) %>
+		</div>
+		<% if(!index) { %>
+			<div class="comments">
+				<a href="#comments" title="Comment on <%= postTitle %>">Comments</a>
+			</div>
+		<% } %>
 		<div class="clear"></div>
 	</div>
 

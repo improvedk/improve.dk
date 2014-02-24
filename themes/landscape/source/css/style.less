@@ -390,112 +390,6 @@ div#mainwrapper {
 							}
 						}
 					}
-
-					/***** Comments *****/
-					div#comments {
-						margin-top: 30px;
-
-						div.commenttitle {
-							font-size: 30px;
-						}
-
-						ul {
-							li {
-								border-left: 5px solid @lightgray;
-								padding-left: 15px;
-								margin: 15px 0 40px 15px;
-
-								a {
-									color: @blue;
-
-									&:hover {
-										color: @red;
-									}
-								}
-
-								div.author {
-									span.name {
-										font-size: 16px;
-										font-weight: bold;
-									}
-									
-									span.date {
-										margin-left: 10px;
-										color: #AAA;
-										font-size: 14px;
-									}
-
-									div.edit {
-										display: inline-block;
-										margin-left: 10px;
-										padding-left: 5px;
-										font-size: 14px;
-									}
-								}
-
-								div.comment {
-									margin-top: 10px;
-								}
-							}
-
-							li.mark {
-								border-left: 5px solid @orange;
-							}
-						}
-
-						div#respond {
-							border-left: 5px solid @lightblue;
-							padding-left: 15px;
-							margin: 15px 0 0 15px;
-
-							p {
-								label {
-									display: block;
-									color: #777;
-								}
-
-								&.comment-form-author, &.comment-form-email {
-									label { font-weight: bold; }
-								}
-
-								&.comment-form-comment {
-									label { font-weight: bold; }
-									textarea {
-										box-sizing: border-box;
-										width: 100%;
-									}
-								}
-							}
-
-							input, textarea {
-								padding: 10px 20px 10px 20px;
-								background-color: #EEE;
-								border: 1px solid #CCC;
-								outline: none;
-								font-size: 16px;
-
-								&:focus {
-									background-color: #FAFAFA;
-								}
-							}
-
-							input[type="submit"] {
-								cursor: pointer;
-
-								&:hover {
-									background-color: #FAFAFA;
-								}
-							}
-
-							input.parsley-error, textarea.parsley-error {
-								background-color: #F2DEDE !important;
-							}
-
-							ul.parsley-error-list {
-								display: none;
-							}
-						}
-					}
 				}
 
 				/***** Body customizations on single post view *****/
@@ -530,6 +424,11 @@ div#mainwrapper {
 							}
 						}
 					}
+				}
+
+				/***** Comments *****/
+				div#disqus_thread {
+					margin-top: 30px;
 				}
 			}
 			
