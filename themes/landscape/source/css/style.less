@@ -849,118 +849,131 @@ footer {
 	}
 }
 
+/*** Syntax highlighting ***/
+article {
+	pre, .highlight {
+		background: #FFFFDD;
+		padding: 15px 20px;
+		border-style: solid;
+		border-color: #ddd;
+		border-width: 1px 0;
+		overflow: auto;
+		color: #555;
+		line-height: 22.400000000000002px;
+	}
 
+	.highlight .gutter pre, .gist .gist-file .gist-data .line-numbers {
+		color: #666;
+		font-size: 0.85em;
+	}
 
-article pre,
-article .highlight {
-  background: #FFFFDD;
-  padding: 15px 20px;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px 0;
-  overflow: auto;
-  color: #555;
-  line-height: 22.400000000000002px;
-}
-article .highlight .gutter pre,
-article .gist .gist-file .gist-data .line-numbers {
-  color: #666;
-  font-size: 0.85em;
-}
-article pre,
-article code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-}
-article code {
-  background: #eee;
-  text-shadow: 0 1px #fff;
-  padding: 0 0.3em;
-}
-article pre code {
-  background: none;
-  text-shadow: none;
-  padding: 0;
-}
-article .highlight pre {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-article .highlight table {
-  margin: 0;
-  width: auto;
-}
-article .highlight td {
-  border: none;
-  padding: 0;
-}
-article .highlight figcaption {
-  zoom: 1;
-  font-size: 0.85em;
-  color: #999;
-  line-height: 1em;
-  margin-bottom: 1em;
-}
-article .highlight figcaption:before,
-article .highlight figcaption:after {
-  content: "";
-  display: table;
-}
-article .highlight figcaption:after {
-  clear: both;
-}
-article .highlight figcaption a {
-  float: right;
-}
-article .highlight .gutter pre {
-  text-align: right;
-  padding-right: 20px;
-}
-article .gist {
-  margin: 0 -20px;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px 0;
-  background: #2d2d2d;
-  padding: 15px 20px 15px 0;
-}
-article .gist .gist-file {
-  border: none;
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  margin: 0;
-}
-article .gist .gist-file .gist-data {
-  background: none;
-  border: none;
-}
-article .gist .gist-file .gist-data .line-numbers {
-  background: none;
-  border: none;
-  padding: 0 20px 0 0;
-}
-article .gist .gist-file .gist-data .line-data {
-  padding: 0 !important;
-}
-article .gist .gist-file .highlight {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-article .gist .gist-file .gist-meta {
-  background: #2d2d2d;
-  color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-shadow: 0 0;
-  padding: 0;
-  margin-top: 1em;
-  margin-left: 20px;
-}
-article .gist .gist-file .gist-meta a {
-  color: #258fb8;
-  font-weight: normal;
-}
-article .gist .gist-file .gist-meta a:hover {
-  text-decoration: underline;
+	pre, code {
+		font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+	}
+
+	code {
+		background: #eee;
+		text-shadow: 0 1px #fff;
+		padding: 0 0.3em;
+	}
+	
+	pre code {
+		background: none;
+		text-shadow: none;
+		padding: 0;
+	}
+
+	.highlight {
+		pre {
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		table {
+			margin: 0;
+			width: auto;
+		}
+		
+		td {
+			border: none;
+			padding: 0;
+		}
+
+		figcaption {
+			zoom: 1;
+			font-size: 0.85em;
+			color: #999;
+			line-height: 1em;
+			margin-bottom: 1em;
+		}
+
+		figcaption:before, figcaption:after {
+			content: "";
+			display: table;
+		}
+
+		figcaption:after {
+			clear: both;
+		}
+
+		figcaption a {
+			float: right;
+		}
+	}
+
+	.gist {
+		margin: 0 -20px;
+		border-style: solid;
+		border-color: #ddd;
+		border-width: 1px 0;
+		background: #2d2d2d;
+		padding: 15px 20px 15px 0;
+
+		.gist-file {
+			border: none;
+			font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+			margin: 0;
+
+			.gist-data {
+				background: none;
+				border: none;
+
+				.line-numbers {
+					background: none;
+					border: none;
+					padding: 0 20px 0 0;
+				}
+
+				.line-data {
+					padding: 0 !important;
+				}
+			}
+
+			.highlight {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+
+			.gist-meta {
+				background: #2d2d2d;
+				color: #999;
+				font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+				text-shadow: 0 0;
+				padding: 0;
+				margin-top: 1em;
+				margin-left: 20px;
+
+				a {
+					color: #258fb8;
+					font-weight: normal;
+
+					&:hover { text-decoration: underline; }
+				}
+			}
+		}
+	}
 }
 
 pre {
