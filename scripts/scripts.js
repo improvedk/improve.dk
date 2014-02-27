@@ -44,9 +44,38 @@ hexo.on('generateAfter', function() {
 
 // Replaces lines with image names with the actual image markup
 hexo.extend.filter.register('pre', function(data, cb) {
-	data.content = data.content.replace(/^([a-z_0-9\.]+\.(jpg|png))$/gim,
-		'<div class="imgwrapper"><div><a href="/' + data.slug + '/$1" class="fancy"><img src="/' + data.slug + '/$1" style="max-height: 300px"/></a></div></div>'
-	);
+	// Find all matching image tags
+	var regex = new RegExp(/^([a-z_0-9\.]+(?:.jpg|png))(?: ([a-z]+)( \d+)?)?$/gim);
+	
+	data.content = data.content.replace(regex, function(match, file, type, maxHeight) {
+		// Create image link
+		var imgLink;
+		if (data.slug) // Posts need to reference image absolutely
+			imgLink = '/' + data.slug + '/' + file;
+		else
+			imgLink = file;
+
+		// Max height of image
+		var imgMaxHeight = '250px';
+		if (maxHeight)
+			imgMaxHeight = maxHeight + 'px';
+
+		// Set style depending on type
+		var style = '';
+		if (type) {
+			switch (type) {
+				case 'right':
+					style = 'float: right; margin: 20px';
+					break;
+
+				case 'left':
+					style = 'float: left';
+					break;
+			}
+		}
+
+		return '<div class="imgwrapper" style="' + style + '"><div><a href="' + imgLink + '" class="fancy"><img src="' + imgLink + '" style="max-height: ' + imgMaxHeight + '"/></a></div></div>';
+	});
 	
 	// Let hexo continue
 	cb();
