@@ -1,7 +1,3 @@
-<%
-	var postTitle = titlecase(post.title);
-%>
-
 <article>
 	<div class="datebox">
 		<div class="upper">
@@ -12,7 +8,7 @@
 	</div>
 
 	<div class="title">
-		<h1><a href="/<%- post.path %>" title="<%= postTitle %>" rel="bookmark"><%= postTitle %></a></h1>
+		<h1><a href="/<%- post.path %>" title="<%= post.title %>" rel="bookmark"><%= post.title %></a></h1>
 		<div class="categories">
 			<% post.tags.forEach(function(tag, i) { %>
 				<a href="<%- tag.permalink %>"><%- tag.name %></a>
@@ -21,7 +17,7 @@
 		</div>
 		<% if(!index) { %>
 			<div class="comments">
-				<a href="#comments" title="Comment on <%= postTitle %>">Comments</a>
+				<a href="#comments" title="Comment on <%= post.title %>">Comments</a>
 			</div>
 		<% } %>
 		<div class="clear"></div>
@@ -43,9 +39,9 @@
 
 				<% if (!index) { %>
 					<div id="postsharing">
-						<a href="https://twitter.com/home?status=<%- encodeURIComponent(postTitle + " " + post.permalink + " via @improvedk") %>" target="_blank"><img src="/img/twitter_64x64.png" /></a>
+						<a href="https://twitter.com/home?status=<%- encodeURIComponent(post.title + " " + post.permalink + " via @improvedk") %>" target="_blank"><img src="/img/twitter_64x64.png" /></a>
 						<a href="https://www.facebook.com/sharer.php?u=<%- encodeURIComponent(page.permalink) %>" target="_blank"><img src="/img/facebook_64x64.png" /></a>
-						<a href="http://reddit.com/submit?url=<%- encodeURIComponent(post.permalink) + "&title=" + encodeURIComponent(postTitle) %>" target="_blank"><img src="/img/reddit_64x64.png" /></a>
+						<a href="http://reddit.com/submit?url=<%- encodeURIComponent(post.permalink) + "&title=" + encodeURIComponent(post.title) %>" target="_blank"><img src="/img/reddit_64x64.png" /></a>
 					</div>
 
 					<div id="bio">
