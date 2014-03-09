@@ -81,6 +81,8 @@ disqus_shortname: improvedk
 ## Themes: https://github.com/tommy351/hexo/wiki/Themes
 theme: landscape
 exclude_generator: category
+plugins:
+  - hexo-generator-feed
 
 # Markdown
 ## https://github.com/chjj/marked
