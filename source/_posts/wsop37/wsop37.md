@@ -5,9 +5,9 @@ tags: [Poker]
 ---
 wsop1_2.jpg
 
-<!-- more -->
-
 Finally the day arrived, I've just turned 21! At four minutes past midnight I registered for my WSOP Players card at the Rio, while being registered I got a good chat with the girl behind the counter, she laughed a bit when she saw my 'I support single moms' t-shirt - she said she liked it.
+
+<!-- more -->
 
 I also got an application made for my ITIN number, just in case I make a major cash in one of the tournaments, it would be a serious bad beat if I were forced to leave behind 30% of my winnings due to US tax laws.
 

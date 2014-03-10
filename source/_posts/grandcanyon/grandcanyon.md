@@ -13,7 +13,7 @@ We took the large package consisting of a 40 minute flight in a small plane that
 
 gc_1_2.jpg
 
-<p>After we landed we got on a bus that drove us along the edge of the Grand Canyon into a supposedly native indian village. Like all american things, this was as fake as the average breast on a Las Vegas woman. I didn't even wanna go see it, I mean, the indian building was the most modern building we'd seen all day, far surpassing the airport buildings.
+After we landed we got on a bus that drove us along the edge of the Grand Canyon into a supposedly native indian village. Like all american things, this was as fake as the average breast on a Las Vegas woman. I didn't even wanna go see it, I mean, the indian building was the most modern building we'd seen all day, far surpassing the airport buildings.
 
 gc_2_2.jpg
 

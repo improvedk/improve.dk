@@ -52,16 +52,16 @@ Just before ending the day, I got **6h6d** in the MP. I raised it up, an anonym
 This last hand brought me up to ~$95.400 which I think is close enough to my projected goal of $100k to be satisfying. The average is around $76k so I'm well above average. The play will commence on friday at noon, day 3. When I make it through day three also, I'm going to rent a room at the Rio so I'll be able to get my sleep - it will without doubt be necessary.
 
 Again this friday I've drawn a pretty good table for me:
-154 1 Marius Sorensen $35,800  
-154 2 David Pham $112,300  
-154 3 Jim McCrink $88,100  
-154 4 Mark Rasmussen $95,400  
-154 5 George Watson $24,100  
-154 6 David Hony $54,400  
-154 7 Bo Sehlstedt $65,400  
-154 8 Paul Kitsos $50,400  
-154 9 Martin Virgen $197,500  
-154 10 Jon Nakatani $23,000  
-154 Average $74,640
+* 1 Marius Sorensen $35,800  
+* 2 David Pham $112,300  
+* 3 Jim McCrink $88,100  
+* 4 Mark Rasmussen $95,400  
+* 5 George Watson $24,100  
+* 6 David Hony $54,400  
+* 7 Bo Sehlstedt $65,400  
+* 8 Paul Kitsos $50,400  
+* 9 Martin Virgen $197,500  
+* 10 Jon Nakatani $23,000  
+* Average $74,640
 
 I'm sitting together with a fellow dane, Marius Sørensen. To the first four places on my right I've got semi-shortstacks, including one real shortstack of only 24k. All your blinds are belong to me! There are only two players with stacks larger than mine, Martin Virgen which seems to play mostly low limit events - he won his ME entry through a live super satellite. David Pham on the other hands is probably one to watch out for.

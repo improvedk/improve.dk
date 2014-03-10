@@ -21,14 +21,14 @@ At Chicago I almost didn't make it through immigration.
 
 I had my Pokernet t-shirt on with a little Pokernet logo and some cards. Besides my t-shirt, the immigration officer could naturally also see that my destination was Vegas, so by putting 2 and 2 together, he figured i was headed there to gamble (duh). He politely asked me, 'Are you a professional gambler?'. I smiled and answered him honestly, 'No I am not'.
 
-Officer: 'Are you here to play the WSOP?'  
-Me: 'Yes I am'  
-Officer: 'Did you put down the money yourself?'  
-Me: 'Yes i did'  
-Officer: 'So nobody is sponsoring your entry? You have paid everything yourself?'  
-Me: 'I won my entry in an online satellite tournament, so no, i didn't put down the 10 grand myself'  
-Officer: 'What site was that?'  
-Me: 'Party Poker'
+* Officer: 'Are you here to play the WSOP?'  
+* Me: 'Yes I am'  
+* Officer: 'Did you put down the money yourself?'  
+* Me: 'Yes i did'  
+* Officer: 'So nobody is sponsoring your entry? You have paid everything yourself?'  
+* Me: 'I won my entry in an online satellite tournament, so no, i didn't put down the 10 grand myself'  
+* Officer: 'What site was that?'  
+* Me: 'Party Poker'
 
 And then he gave me the whole long speech. "You should now, you're really out on a line here". He warned me that they did not look kindly upon foreign poker players entering the US and playing their tournaments while bringing back home the money they won. He did let me go though. I have no idea where that speech came from. I guess it might be due to the Goodlatte bill that is currently a very hot topic in the House/Senate.
 
