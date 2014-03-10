@@ -6,40 +6,39 @@ var postsDir = path.join(sourceDir, '_posts');
 var htmlTag = hexo.util.html_tag;
 var route = hexo.route;
 
-// Gets an array of files in dir or at some descending location
-function getFilesRecursively(dir) {
-    var results = [];
-    var list = fs.readdirSync(dir);
-
-    list.forEach(function(file) {
-        file = dir + '\\' + file;
-        var stat = fs.statSync(file);
-
-        if (stat && stat.isDirectory())
-        	results = results.concat(getFilesRecursively(file));
-        else
-        	results.push(file);
-    });
-
-    return results;
-}
+// Stores assets that'll need to be copied to the post output folders
+var filesToCopy = [];
 
 // After Hexo's done generating, we'll copy post assets to their public folderse
 hexo.on('generateAfter', function() {
-	var files = getFilesRecursively(postsDir)
-		.filter(function(filePath) { return filePath.match(/\\_posts\\.*\.([^md]+)$/ig); })
-		.map(function(filePath) {
-			return {
-				path: filePath,
-				name: path.basename(filePath),
-				postPermalink: path.basename(path.dirname(filePath))
-			};
-		});
-
-	files.forEach(function(file) {
-		var outputPath = path.join(publicDir, file.postPermalink, file.name);
-		fs.writeFileSync(outputPath, fs.readFileSync(file.path));
+	filesToCopy.forEach(function(obj) {
+		fs.writeFileSync(obj.destination, fs.readFileSync(obj.source));
 	});
+});
+
+// Each time a post is rendered, note that we need to copy its assets
+hexo.extend.filter.register('post', function(data, cb) {
+	if (data.slug) {
+		var postDir = path.join(postsDir, data.slug);
+		var files = fs.readdirSync(postDir);
+
+		files.forEach(function(file) {
+			// Skip the markdown files themselves
+			if (path.extname(file) == '.md')
+				return;
+
+			var outputDir = path.join(publicDir, data.slug);
+			var outputPath = path.join(publicDir, data.slug, file);
+			var inputPath = path.join(postDir, file);
+
+			if (!fs.existsSync(outputDir))
+				fs.mkdirSync(path.join(outputDir));
+			
+			filesToCopy.push({ source: inputPath, destination: outputPath });
+		});
+	}
+
+	cb();
 });
 
 // Replaces lines with image names with the actual image markup
