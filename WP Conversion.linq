@@ -24,6 +24,7 @@ void Main()
 {
 	var outputPath = @"D:\Projects\improve.dk (Hexo, GIT)\source\_posts";
 	var xmlPath = @"D:\Projects\improve.dk (Hexo, GIT)\marksrasmussen-blog.wordpress.2014-03-08.xml";
+	var testPath = @"D:\Projects\improve.dk (Hexo, GIT)\test.html";
 	var xml = File.ReadAllText(xmlPath);
 	var xd = new XmlDocument();
 	xd.LoadXml(xml);
@@ -32,6 +33,9 @@ void Main()
 	nsmgr.AddNamespace("content", "http://purl.org/rss/1.0/modules/content/");
 	nsmgr.AddNamespace("wp", "http://wordpress.org/export/1.2/");
 	
+	var testHtml = new StringBuilder();
+	
+	int count = 1;
 	foreach (XmlNode item in xd.SelectNodes("//item"))
 	{
 		var title = item.SelectSingleNode("title").InnerText;
@@ -55,8 +59,12 @@ void Main()
 		
 		File.WriteAllText(postFilePath, sb.ToString());
 		
+		testHtml.AppendLine((count++).ToString().PadLeft(3, '0') + "&nbsp;&nbsp;&nbsp;<a href='http://127.0.0.1:4000/" + slug + "/'>Hexo</a>&nbsp;&nbsp;&nbsp;<a href='http://improve.dk/" + slug + "/'>WP</a>&nbsp;&nbsp;&nbsp;" + slug + "<br />");
+		
 		Console.WriteLine(date + ": " + slug);
 	}
+	
+	File.WriteAllText(testPath, testHtml.ToString());
 }
 
 string formatContent(string content)
