@@ -11,4 +11,4 @@ Part of being a Microsoft Student Partner is exactly this, travelling the univer
 
 Due to my work as a MSP I've got my 2006 Tech-Ed conference entry ticket paid, so I'm taking a short trip to Barcelona on the 8th of november untill the 11th of november. Hopefully I'll get a lot of hands-on experiences with the new technologies and platforms, I can't wait!
 
-[Read my article on securing .NET code here](http://www.improve.dk/articles/dotnet/securing-dotnet-code/)
+[Read my article on securing .NET code here](http://www.improve.dk/securing-dotnet-code-article/)

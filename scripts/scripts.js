@@ -44,7 +44,7 @@ hexo.extend.filter.register('post', function(data, cb) {
 // Replaces lines with image names with the actual image markup
 hexo.extend.filter.register('pre', function(data, cb) {
 	// Find all matching image tags
-	var regex = new RegExp(/^([a-z_0-9\-\.]+(?:.jpg|png))(?: ([a-z]+)( \d+)?)?$/gim);
+	var regex = new RegExp(/^([a-z_0-9\-\.]+(?:.jpg|png|gif))(?: ([a-z]+)( \d+)?)?$/gim);
 	
 	data.content = data.content.replace(regex, function(match, file, type, maxHeight) {
 		// Create image link

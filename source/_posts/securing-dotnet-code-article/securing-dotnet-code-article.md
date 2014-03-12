@@ -67,7 +67,6 @@ Start out by creating a new Windows Application project, call it "SecureApplicat
 1_2.jpg
 
 ```csharp
-
 private void button1_Click(object sender, EventArgs e)
 {
 	if (textBox1.Text == "password")
@@ -75,7 +74,6 @@ private void button1_Click(object sender, EventArgs e)
 	else
 		MessageBox.Show("Error");
 }
-
 ```
 
 Now insert the following two functions into the form:
@@ -284,7 +282,7 @@ Create a new VC++ Win32 Project to the solution, call it "SecureComponent". When
 
 Now replace the whole SecureComponent.cpp file with the following code:
 
-```csharp
+```c
 #include "stdafx.h"
 #include "SecureComponent.h"
 
@@ -296,7 +294,7 @@ extern "C" SECURECOMPONENT_API char* AnswerToAllLife(void)
 
 And replace the corresponding header file SecureComponent.h with the following code:
 
-```csharp
+```c
 #ifdef SECURECOMPONENT_EXPORTS
 	#define SECURECOMPONENT_API __declspec(dllexport)
 #else
@@ -392,7 +390,7 @@ private void button1_Click(object sender, EventArgs e)
 }
 ```
 
-<p>Now, when the user provides the correct password, we invoke the AlgorithmService web service and show the result. If you decompile the SecureApplication exe file using Reflector, this is the code you'll see for our button's click event:
+Now, when the user provides the correct password, we invoke the AlgorithmService web service and show the result. If you decompile the SecureApplication exe file using Reflector, this is the code you'll see for our button's click event:
 
 ```csharp
 private void button1_Click(object sender, EventArgs e)
@@ -423,10 +421,9 @@ public string AnswerToAllLife()
 }
 ```
 
-<p>Neat eh? Now there is no way that our source code can be compromised. There are however some drawbacks to using web services. First of all, we'll need to require that our clients are connected to the internet, or at least to some kind of network that'll allow access to our web service. Also web services impose a significant overhead on each algorithm call compared to direct managed/native calls. Finally there may also be security issues, for instance, a credit card validation service might not be the best of projects to provide via a web service.
+Neat eh? Now there is no way that our source code can be compromised. There are however some drawbacks to using web services. First of all, we'll need to require that our clients are connected to the internet, or at least to some kind of network that'll allow access to our web service. Also web services impose a significant overhead on each algorithm call compared to direct managed/native calls. Finally there may also be security issues, for instance, a credit card validation service might not be the best of projects to provide via a web service.
 
 ## Recap
-
 
 * Without any protection at all, our code is very unsafe. Any person is able to decompile a .NET application using only free tools within minutes.
 * We may protect our code by writing it in a native language. Though it is not bulletproof, it severely complicates the process of reverse engineering our code. It is however also morecumbersome for us to write our vital code in the native language as oposed to writing it in managed code.
@@ -611,7 +608,7 @@ wiresharkresults_2.gif
 
 Right click on one of the green lines and select "Follow TCP stream", you should see a stream like this:
 
-```csharp
+```
 POST /service.asmx HTTP/1.1
 User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; MS Web Services Client
 														Protocol 2.0.50727.42)

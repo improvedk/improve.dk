@@ -25,12 +25,14 @@ I won't be hooking into any of the existing short link services as I really wan'
 
 For storing the short links I'm using a MS SQL server database, of course you can use any kind of storage you want, whether that be Access, XML or some other format. The table I'll be using can be seen here:
 
-<pre lang="sql">CREATE TABLE [dbo].[tblShortLinks](
+```sql
+CREATE TABLE [dbo].[tblShortLinks](
 	[LinkID] [int] IDENTITY(1,1) NOT NULL,
 	[URL] [varchar](512) NOT NULL,
 	[Created] [datetime] NOT NULL CONSTRAINT [DF_tblShortLinks_Created] DEFAULT (getdate()),
 	[IP] [varchar](50) NOT NULL,
-	[Visits] [int] NOT NULL CONSTRAINT [DF_tblShortLinks_Visits] DEFAULT (0))</pre>
+	[Visits] [int] NOT NULL CONSTRAINT [DF_tblShortLinks_Visits] DEFAULT (0))
+```
 
 We have an identity column, the URL, a column reprensenting the creation time of the link, the IP of the creator (for abuse checking) and finally a simple counter that counts how many times the link has been visited.
 
@@ -178,7 +180,7 @@ CreateShortLink takes the URL as a parameter. It then creates an instance of our
 
 After building the ShortLinkClient project, register it for COM interop using the following command from a command prompt:
 
-```csharp
+```shell
 regasm /codebase ShortLinkClient.dll
 ```
 
@@ -194,7 +196,9 @@ shortlink3_2.jpg
 
 The default value should point to the location where you want your javascript file to be located. For development purposes you can place this anywhere you want (I'm using the desktop). For deployment you might want to consider using the Program Files folder.
 
-<pre lang="javascript"><script type="text/javascript">// <![CDATA[
+```javascript
+<script type="text/javascript">
+	// <![CDATA[
 	function main()
 	{
 		// Get document reference
@@ -229,7 +233,9 @@ The default value should point to the location where you want your javascript fi
 	}
 
 	main();
-// ]]></script></pre>
+	// ]]>
+</script>
+```
 
 The JavaScript file contains absolutely standard JavaScript code inside a normal script element. In the main function we can access the relevant html Document by accessing the external.menuArguments.document property. We can retrieve the selected text by creating a range using the Document.selection.createRange() function.
 

@@ -5,9 +5,9 @@ tags: [Poker]
 ---
 Honeeey, I'm home!
 
-<!-- more -->
-
 It's good to be back. After all, it's been about 4 months since I were here last, that's simply too long time!
+
+<!-- more -->
 
 The flight went pretty well. On the long route, Frankfurt - Denver I sat in front a some american family. It was really obvious that they were american, the whole way they talked, acted and so forth, hard to explain, but they where soo stereotypical. Anyways, shortly after taking off, somebody sneezed nearby... "Bless you" the woman behind me almost screamed. Oh well, whatever. Five minutes later somebody else sneezed - bless you! Now, this started to get a bit awkward when somebody in business class, separated by a curtain from where we were sitting, sneezed. Bless you she screamed again, though it was absolutely certain that this guy could not hear her. Making a long story short, besides the few times she slept, everytime someone sneezed, no matter how far away they were, she simply HAD to bless that person.
 
