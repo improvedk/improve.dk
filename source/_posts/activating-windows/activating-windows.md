@@ -8,7 +8,6 @@ Now we'll see how to activate windows and sending them to the foreground. I will
 <!-- more -->
 
 ```csharp
-
 using System;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;

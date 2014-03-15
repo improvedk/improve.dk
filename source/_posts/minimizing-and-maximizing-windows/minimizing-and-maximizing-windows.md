@@ -8,7 +8,6 @@ This time I will show how to maximize and minimize windows. I will be using the 
 <!-- more -->
 
 ```csharp
-
 using System;
 using System.Collections.Generic;
 using System.Text;

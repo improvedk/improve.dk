@@ -5,9 +5,9 @@ tags: [Conferences & Presenting]
 ---
 A series of pictures I took at the 2007 CES show.
 
-<!-- more -->
-
 Microsoft didn't exactly hide itself at the CES, you could see Vista icons, banners, stickers and posters everywhere!
+
+<!-- more -->
 
 ces1_2.jpg
 
