@@ -39,15 +39,18 @@ javac_8_2.jpg
 
 Now enter the following into the Compile.bat file:
 
-<pre lang="java">del Output /S /Q
+```java
+del Output /S /Q
 mkdir Output
 javac *.java -d Output
 cd Output
-start java MyApplication</pre>
+start java MyApplication
+```
 
 Modify the MyApplication.java file so it ends with a call to System.in.read(), this ensures the application will stay open after we start it.
 
-<pre lang="java">import java.io.*;
+```java
+import java.io.*;
 
 class MyApplication
 {
@@ -56,7 +59,8 @@ class MyApplication
 		System.out.println("Hello World!");
 		System.in.read();
 	}
-}</pre>
+}
+```
 
 Now simply go to Tools -> Javac and watch your Java application compile and run.
 

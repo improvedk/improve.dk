@@ -14,10 +14,8 @@ NLB enables us to easily add new nodes to a cluster and thus letting them share 
 In this demonstration I'll be using two virtual PCs running on my own host computer. All three computers are running on the subnet 192.168.0.X. Here are the virtual machines involved:
 
 ```
-
 192.168.0.34 - VENETIAN
 192.168.0.32 – MIRAGE
-
 ```
 
 When you setup an NLB cluster, you create a new virtual IP address that gets mapped to each individual server, besides their own static IP address. In this demo I'll setup the cluster on the virtual IP address 192.168.0.50. Before we get too far, I should mention that if you are going to setup an NLB cluster in a production environment, you should use machines with dual NICs so one NIC can connect to the public lan while the other NIC connects to a private switched lan where only the cluster nodes are connected. This ensures that the internal cluster communication is not polluting the general network traffic, aswell as making it a lot more efficient since we'll then be able to utilize [unicast communciation](http://en.wikipedia.org/wiki/Unicast) between the nodes instead of relying on [multicast communication](http://en.wikipedia.org/wiki/Multicast).
@@ -51,7 +49,7 @@ As I'm running this test on two VPCs on my local machine, I won't be getting any
 Here's the demo of how to setup & use NLB:
 
 
-http://www.youtube.com/watch?v=32uWPp8PpUA
+{% youtube 32uWPp8PpUA %}
 
 
 ## Other good resources

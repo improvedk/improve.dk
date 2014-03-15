@@ -9,7 +9,7 @@ When performing queries against a SQL Server database, there are a couple of met
 
 The primary timeout value is that of SqlConnection.ConnectionTimeout. This specifies how long time the SQL Server service has to respond to a connection attempt. You cannot set this value directly, you'll have to set it as part of the connection string:
 
-```xml
+```
 Data Source=server;Initial Catalog=databaseUser Id=username;Password=password;Connect Timeout=30
 ```
 

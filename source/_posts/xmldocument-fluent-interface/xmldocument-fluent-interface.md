@@ -9,10 +9,12 @@ I do a lot of backend programming for Flash frontends. That basically means a lo
 
 Now, here's an example of a typical boolean yes/no result from a Flash query:
 
-<pre lang="xml"><?xml version="1.0" encoding="utf-8"?>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
 <root>
 	<result type="boolean">true</result>
-</root></pre>
+</root>
+```
 
 I'd usually create this bit of XML using a simple StringBuilder like so:
 
@@ -72,7 +74,8 @@ for (int i = 1; i <= 10; i++)
 	xo.Node("number").Attribute("value", i.ToString()).InnerText("This is the number: " + i);
 ```
 
-<pre lang="xml"><?xml version="1.0" encoding="utf-8"?>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
 <root>
 	<numbers>
 		<number value="1">This is the number: 1</number>
@@ -86,7 +89,8 @@ for (int i = 1; i <= 10; i++)
 		<number value="9">This is the number: 9</number>
 		<number value="10">This is the number: 10</number>
 	</numbers>
-</root></pre>
+</root>
+```
 
 And complex structures:
 
@@ -108,7 +112,8 @@ XmlOutput xo = new XmlOutput()
 				.Node("hobby").InnerText("Work");
 ```
 
-<pre lang="xml"><?xml version="1.0" encoding="utf-8"?>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
 <root>
 	<user>
 		<username>orca</username>
@@ -124,7 +129,8 @@ XmlOutput xo = new XmlOutput()
 			<hobby>Work</hobby>
 		</hobbies>
 	</user>
-</root></pre>
+</root>
+```
 
 Finally, say hello to XmlOutput:
 

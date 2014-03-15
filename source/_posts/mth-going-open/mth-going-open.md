@@ -37,4 +37,4 @@ If you have any questions regarding the source code, or any other related matter
 
 ## Downloads
 
-<a title="https://github.com/improvedk/Multi-Table-Helper" href="https://github.com/improvedk/Multi-Table-Helper">https://github.com/improvedk/Multi-Table-Helper</a>
+[https://github.com/improvedk/Multi-Table-Helper](https://github.com/improvedk/Multi-Table-Helper)

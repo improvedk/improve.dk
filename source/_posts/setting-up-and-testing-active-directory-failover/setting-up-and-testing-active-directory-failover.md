@@ -187,7 +187,7 @@ We create a channel to the MGM machine (static IP of 192.168.0.35). We'll contin
 The following clip will show what happens when we run the server & client while the DC goes down (by pausing the virtual machine). Note that we're receiving a timeout exception, not a SecurityException. This is because I'm using SecurityMode.Transport which requires us to authenticate before even reaching the service, thus the method is never invoked, and the PrincipPermission.Demand() call is NOT the one failing us, it's the WCF security layer trying to open a TCP transport. As soon as the DC (running on LUXOR) fails, we lose connectivity with our service (running on MGM).
 
 
-http://www.youtube.com/watch?v=P7ufIfZlfjU
+{% youtube P7ufIfZlfjU %}
 
 
 The goal obviously is to prevent this from happening, we cannot have all our services brought to a standstill if the DC fails. The first step in installing a failover AD DC is to get a DNS secondary server up and running (on the soon to be secondary DC machine) so we have redundant DNS functionality.
@@ -195,27 +195,25 @@ The goal obviously is to prevent this from happening, we cannot have all our ser
 A quick recap of the servers:
 
 ```
-
 LUXOR = Primary DC, primary DNS
 EXCALIBUR = To be secondary DC, secondary DNS
 MGM = Client server
-
 ```
 
 
-http://www.youtube.com/watch?v=BE5mB417BNs
+{% youtube BE5mB417BNs %}
 
 
 Now that we've got the secondary DNS set up, we're ready to install Active Directory on the secondary AD server (EXCALIBUR). The following video shows how easy it is to install a failover DC:
 
 
-http://www.youtube.com/watch?v=x5qTxr-pglg
+{% youtube x5qTxr-pglg %}
 
 
 That's it! After the server reboots, it now functions as a failover DC in case the primary one kicks the bucket. I'll end this post post by running my WcfServer application on the MGM server whilst both LUXOR and EXCALIBUR are running. You'll se a fluent stream of "Pong"s returning. After shutting down LUXOR, the WCF client will immediately start reporting connection problems, but after a short while it automatically starts returning Pongs again - it got a hold of the second DC! Now, if I shut down the second DC aswell, we'll get errors in our client again. If I then restart the primary DC, after a short while, the client starts Ponging again - we got a hold of the primary DC. So we haven't eliminated downtime completely, but we've reduced it to a 5-30 sec period before everything automatically switches over to the failover DC.
 
 
-http://www.youtube.com/watch?v=KWkEjiulJu8
+{% youtube KWkEjiulJu8 %}
 
 
 This is my first blog post utilizing videos - does it work? Do you prefer seeing live video like this, or a long series of screenshots? I know what I prefer :)

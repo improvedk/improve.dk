@@ -11,21 +11,17 @@ The first step I made to analyze what was causing this is the Performance Monito
 
 Now, that didn't fix the problem, just the symptom. We hadn't experienced this issue previously, so I thought back at what changes had been made in the latest release version. The primary functionality of the system is to serve images, thus we have an Image.ashx file with a responsibility of serving the images as well as logging various parameters of the request. The previous system version had a funtionality like so:
 
-<ol>
 * Find image path
 * Response.TransmitFile()
 * Logging
-</ol>
 
 The disadvantage of doing it that way is that the client will not have the image served before the statistics have been logged, even though that's purely a serverside functionality. I wanted the client to receive the image as quickly as possible, and then letting the server continue its job afterwards. The obvious solution is to spawn a new thread doing the logging, but with the amount of requests we've got, I really don't want to spawn any more threads than absolutely neccessary, excessive context switching will have a negative impact when the thread count gets high enough. So the new version functioned like this:
 
-<ol>
 * Find image path
 * Response.TransmitFile()
 * Response.Flush()
 * Response.Close()
 * Logging
-</ol>
 
 This had the great advantage that the client receives the image immediatly while the server continues logging afterwards. We use only a single thread, the actual request thread. A friend of mine pointed out I might want to move the logging out of the ASP.NET worker process so as to not block incoming requests. The thing is, this will require new thread spawning, and I really don't mind blocking a worker process as we can easily tune the amount of concurrent worker processes, and the "Server too busy" functionality is actually there for a reason - I don't wanna end up in a situation where the server is running a million logging threads but still accepting new connections willingly - in _that_ case, I'd really like the server to block new requests.
 

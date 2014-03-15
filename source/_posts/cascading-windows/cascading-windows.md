@@ -8,7 +8,6 @@ In Photoshop we often work with multiple windows open. They can be cascaded to m
 <!-- more -->
 
 ```csharp
-
 using System;
 using System.Runtime.InteropServices;
 using System.Drawing;
