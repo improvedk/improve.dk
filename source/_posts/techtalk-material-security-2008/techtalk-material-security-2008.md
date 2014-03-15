@@ -7,5 +7,5 @@ I held my TechTalk on CAS security in the .NET framework today. As promised, her
 
 <!-- more -->
 
-[Net_Security_Introduction_Slides.ppt](http://improve.dk/wp-content/uploads/2008/08/Net_Security_Introduction_Slides.ppt)  
-[Net_Security_Introduction_Demos.zip](http://improve.dk/wp-content/uploads/2008/08/Net_Security_Introduction_Demos.zip)
+[Net_Security_Introduction_Slides.ppt](Net_Security_Introduction_Slides.ppt)  
+[Net_Security_Introduction_Demos.zip](Net_Security_Introduction_Demos.zip)

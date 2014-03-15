@@ -34,7 +34,7 @@ Today I tried making a very simple functionality, I wanted to be able to select 
 </mx:Application>
 ```
 
-[A.swf - Demo](http://improve.dk/wp-content/uploads/2008/06/120.swf)
+[A.swf - Demo](120.swf)
 
 In this case the button is "selected" from the start (alpha = 1). When clicked, the alpha changes to half opaque (0.5), switches back to 1 when reclicked, and so forth. All working good.
 
@@ -63,7 +63,7 @@ But it's a bit hard to differentiate between selected and non selected, so let's
 </mx:Application>
 ```
 
-[B.swf - Demo](http://improve.dk/wp-content/uploads/2008/06/121.swf)
+[B.swf - Demo](121.swf)
 
 But what's this, now we're only able to dim it, not reselect it. Why's that? Nothing's changed other than the alpha value. The problem becomes apparent if we trace out the buttons alpha value like so:
 
@@ -92,7 +92,7 @@ But what's this, now we're only able to dim it, not reselect it. Why's that? Not
 </mx:Application>
 ```
 
-[C.swf - Demo](http://improve.dk/wp-content/uploads/2008/06/122.swf)
+[C.swf - Demo](122.swf)
 
 In case you don't have Flash 9 installed, or are just too lazy to click the button, the resulting Alert box shows the following value: 0.3984375 - obviously not quite the 0.4 we specified.
 
@@ -144,12 +144,10 @@ Now this is where things start getting weird. We can obviously store the value 0
 Why does this happen? It's no problem storing the value 0.4 in a 64 bit double precision number:
 
 ```
-
 Sign: +1
 Exponent: -2
 Mantissa: 1.6
 Result: sign x 2<sup>exponent</sup> x mantissa => +1 x 2<sup>-2</sup> x 1.6 = 0.4
-
 ```
 
 It might be (and probably is) me not understanding something right. Can somebody explain to me how the Flash VM handles Numbers, and thereby, explain why this is happening? Is it perhaps not due to the VM's handling of Numbers, but instead just a simple matter of an odd implementation of the alpha property on DisplayObject?

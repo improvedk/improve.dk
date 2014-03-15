@@ -12,5 +12,4 @@ I recorded a screencast of this article sometime in 2007, but I never really got
 Never the less, if you prefer watching to reading, it might be interesting to look through.
 
 
-http://www.youtube.com/watch?v=Dc9EE4YRGy8
-
+{% youtube Dc9EE4YRGy8 %}

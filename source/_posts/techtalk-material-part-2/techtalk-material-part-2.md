@@ -9,5 +9,5 @@ I continued my TechTalk on security in the .NET framework today, taking off from
 
 Regarding the demos, the baseline folders contain the code as it was at the beginning of the presentation, the others contain the code as it ended up after the presentation.
 
-[Net_Security_Part2_Slides.ppt - Slides](http://improve.dk/wp-content/uploads/2008/08/Net_Security_Part2_Slides.ppt)  
-[Net_Security_Part2_Demos.zip - Demos](http://improve.dk/wp-content/uploads/2008/08/Net_Security_Part2_Demos.zip)
+[Net_Security_Part2_Slides.ppt - Slides](Net_Security_Part2_Slides.ppt)  
+[Net_Security_Part2_Demos.zip - Demos](Net_Security_Part2_Demos.zip)

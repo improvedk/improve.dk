@@ -97,7 +97,7 @@ List<Point2D> result = Dijkstra<Point2D>.ShortestPath(connections, mouse, target
 ```
 
 
-http://www.youtube.com/watch?v=ctEXUmZ5TDY
+{% youtube ctEXUmZ5TDY %}
 
 
 ## Downloads

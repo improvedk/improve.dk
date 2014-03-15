@@ -63,11 +63,11 @@ protected void Page_Load(object sender, EventArgs e)
 
 If you're experiencing this issue, you will see errors in the System event log like this one:
 
-<blockquote>A process serving application pool 'DefaultAppPool' terminated unexpectedly. The process id was '708'. THe process exit code was '0xe0434f4d'.</blockquote>
+> A process serving application pool 'DefaultAppPool' terminated unexpectedly. The process id was '708'. THe process exit code was '0xe0434f4d'.
 
 And like this one in the Application log:
 
-<blockquote>EventType clr20r3, P1 w3wp.exe, P2 6.0.3790.3959, P3 45d6968e, P4 crashw3wp, P5 1.0.0.0, P6 47f94ca4, P7 3, P8 b, P9 system.exception, P10 NIL.</blockquote>
+> EventType clr20r3, P1 w3wp.exe, P2 6.0.3790.3959, P3 45d6968e, P4 crashw3wp, P5 1.0.0.0, P6 47f94ca4, P7 3, P8 b, P9 system.exception, P10 NIL.
 
 [Tess](http://blogs.msdn.com/tess) has a really great post on [how to debug an unknown cause of the crash](http://blogs.msdn.com/tess/archive/2006/04/27/584927.aspx).
 
