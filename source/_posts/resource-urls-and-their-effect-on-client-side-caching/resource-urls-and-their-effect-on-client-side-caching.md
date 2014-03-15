@@ -32,17 +32,13 @@ Imagine a scenario where we published books on the internet, with any number of 
 There are two ways we might store the data in the database. Here's one:
 
 ```
-
 [tblBooks]  
 BookID, Name
-
 ```
 
 ```
-
 [tblPages]  
 BookID, Number, Data
-
 ```
 
 In this example, we use the page's natural key, a composite of the BookID and Number columns. The pages of a book will always be numbered 1..n and there can be no two pages with the same number, so we have a unique index. Using this table layout, our resource URLs would probably look like this: /Books/[BookID]/[Number]. This means page 2 of the book with ID 5 will always have the same URL: /Books/5/2. Since the URL is the same, the resource might change (if the page is replaced), and we can't predict when the change will occur (a publisher can do it at any point), we have to rely on last-modified/etags and have the client perform if-modified since requests.
@@ -50,17 +46,13 @@ In this example, we use the page's natural key, a composite of the BookID and Nu
 A second way to store the data in the database would be this:
 
 ```
-
 [tblBooks]  
 BookID, Name
-
 ```
 
 ```
-
 [tblPages]  
 PageID, BookID, Number, Data
-
 ```
 
 The difference being that we've introduced a surrogate key in the tblPages table: PageID. This allows us to use URLs like this: /Books/[BookID]/[PageID]. While not as user friendly, it allows us to set an indefinite expiry header and thereby allowing the client to avoid server requests completely.
@@ -70,10 +62,8 @@ The difference being that we've introduced a surrogate key in the tblPages table
 Keeping with the book/pages example, let's add a [LastModified] column to the [tblPages] table:
 
 ```
-
 [tblPages]
 BookID, Number, Data, LastModified
-
 ```
 
 We still have a natural key, but now we also store the last modification date of the row - this could either be an application updated value or a database timestamp. The idea is to preserve the natural key in the URLs, but add the LastModified value to the URL for no other reason than to generate a new resource URL when it changes. The first URL might be /Books/5/2/?v=2009-03-08_11:25:00, while the updated version of the page will result in a URL like this: /Books/5/2/?v=2009-03-10_07:32:00. The v parameter is not used for anything serverside, but to the client, it's a completely unrelated URL and will thus ignore the previously cached resource. This way we can keep the natural base URL the same while still forcing clients to request the new resource whenever it's changed.

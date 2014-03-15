@@ -407,4 +407,5 @@ Based on some of the comments I've received, I've posted an [update to the genet
 
 ## Downloads
 
-Sample solution code: [GeneticTesting.zip](http://improve.dk/wp-content/uploads/2009/04/GeneticTesting.zip)<a href="http://improve.dk/images/improve_dk/Windows-Live-Writer/Implementing-a-simple-genetic-algorithm_111FD/GeneticTesting.zip" target="_blank"></a>
+Sample solution code:  
+[GeneticTesting.zip](GeneticTesting.zip)

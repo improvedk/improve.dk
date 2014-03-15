@@ -178,10 +178,10 @@ class Program
 The results:
 
 <blockquote>
-Logging enabled: 1440,2764
-Lambda logging enabled: 1483,0738
-Logging disabled: 763,1717
-Lambda logging disabled: 0,6516
+Logging enabled: 1440,2764  
+Lambda logging enabled: 1483,0738  
+Logging disabled: 763,1717  
+Lambda logging disabled: 0,6516  
 </blockquote>
 
 As we can see from the results, even with logging disabled it still costs us 763ms using the normal logging procedure. By deferring the execution of the log message we only incur an overhead of 0,65ms when logging is disabled. When logging is enabled the execution costs are ~identical.

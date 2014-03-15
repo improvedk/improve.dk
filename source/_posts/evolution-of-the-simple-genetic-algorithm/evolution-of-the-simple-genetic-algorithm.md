@@ -134,4 +134,4 @@ private void mutateChromosome(IChromosome<Rgb> chromosome)
 
 ## Downloads
 
-[GeneticTesting2.zip - Sample code](http://improve.dk/wp-content/uploads/2009/05/GeneticTesting2.zip)
+[GeneticTesting2.zip - Sample code](GeneticTesting2.zip)

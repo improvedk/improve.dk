@@ -19,7 +19,7 @@ I hope I'll be able to join you again next year, providing the economy & work sc
 
 devlink1_2.jpg
 
-*[Gaines Kergosien](http://twitter.com/gainesk) in his chainmain at the Community Leadership Summit the day before devLINK.*
+*[Gaines Kergosien](http://twitter.com/gainesk) in his chainmail at the Community Leadership Summit the day before devLINK.*
 
 devlink2_2.jpg
 

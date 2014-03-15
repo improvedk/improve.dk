@@ -7,7 +7,7 @@ When adding sites to IIS7 either by script or by editing the config files direct
 
 <!-- more -->
 
-<blockquote>Unknown: The object identifier does not represent a valid object. (Exception from HRESULT: 0x800710D8)</blockquote>
+> Unknown: The object identifier does not represent a valid object. (Exception from HRESULT: 0x800710D8)
 
 iisvalidobject_2.jpg
 

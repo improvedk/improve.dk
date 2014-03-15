@@ -9,8 +9,8 @@ I held a TechTalk on optimizing SQL Server 2005 on the 21st of January. I think 
 
 I have put up the slides, code and test database backup for you to download.
 
-[Optimizing_SQL_Server_2005.zip - Slides + code](http://improve.dk/wp-content/uploads/2009/01/Optimizing_SQL_Server_2005.zip)  
-[Test.zip - DB Backup](http://improve.dk/wp-content/uploads/2009/01/Test.zip)
+[Optimizing_SQL_Server_2005.zip - Slides + code](Optimizing_SQL_Server_2005.zip)  
+[Test.zip - DB Backup](Test.zip)
 
 Note that the slides are in **Danish** - sorry non-danes.
 
