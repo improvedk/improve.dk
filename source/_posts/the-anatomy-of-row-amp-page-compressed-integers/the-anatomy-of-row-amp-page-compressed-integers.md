@@ -3,7 +3,7 @@ title: The Anatomy of Row & Page Compressed Integers
 date: 2012-01-30
 tags: [SQL Server - Internals]
 ---
-While working on row compression support for [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank), I ran into some challenges when trying to parse integers. Contrary to normal non-compressed integer storage, these are all variable width – meaning an integer with a value of *50* will only take up one byte, instead of the usual four. That wasn’t new though, seeing as [vardecimals are also stored as variable width](http://improve.dk/archive/2011/12/13/how-are-vardecimals-stored.aspx" target="_blank). What is different however is the way the numbers are stored on disk. Note that while I was only implementing row compression, the integer compression used in page compression is exactly the same, so this goes for both types of compression.
+While working on row compression support for [OrcaMDF](https://github.com/improvedk/OrcaMDF), I ran into some challenges when trying to parse integers. Contrary to normal non-compressed integer storage, these are all variable width – meaning an integer with a value of *50* will only take up one byte, instead of the usual four. That wasn’t new though, seeing as [vardecimals are also stored as variable width](/how-are-vardecimals-stored). What is different however is the way the numbers are stored on disk. Note that while I was only implementing row compression, the integer compression used in page compression is exactly the same, so this goes for both types of compression.
 
 <!-- more -->
 
@@ -13,7 +13,7 @@ Tinyint is pretty much identical to the usual tinyint storage. The only exceptio
 
 ## Smallint
 
-Let’s start out by looking at a normal non-compressed smallint, for the values –2, –1, 1 and 2. As mentioned before, 0 isn’t interesting as nothing is stored. Note that all of these values are represented exactly as they’re stored on disk – in this case they’re stored in [little endian](http://en.wikipedia.org/wiki/Endianness" target="_blank).
+Let’s start out by looking at a normal non-compressed smallint, for the values –2, –1, 1 and 2. As mentioned before, 0 isn’t interesting as nothing is stored. Note that all of these values are represented exactly as they’re stored on disk – in this case they’re stored in [little endian](http://en.wikipedia.org/wiki/Endianness).
 
 ```csharp
 -2	=	0xFEFF
@@ -24,7 +24,7 @@ Let’s start out by looking at a normal non-compressed smallint, for the values
 
 Starting with the values 1 and 2, they’re very straightforward. Simply convert it into decimal and you’ve got the actual number. –1 however, is somewhat different. The value 0xFFFF converted to decimal is 65.535 – the maximum value we can store in an unsigned two-byte integer. The SQL Server range for a smallint is –32.768 to 32.767.
 
-Calculating the actual values relies on what’s called [integer overflows](http://en.wikipedia.org/wiki/Integer_overflow" target="_blank). Take a look at the following C# snippet:
+Calculating the actual values relies on what’s called [integer overflows](http://en.wikipedia.org/wiki/Integer_overflow). Take a look at the following C# snippet:
 
 ```csharp
 unchecked
@@ -50,7 +50,7 @@ The output is as follows:
 
 If we start with the value 0 and add the maximum value for a signed short, 32.767, we obviously end up with just that – 32.767. However, if we add 32.768, which is outside the range of the short, we rollover and end up with the smallest possible short value. Since these are constant numbers, the compiler won’t allow the overflow – unless we encapsulate our code in an unchecked {} section.
 
-You may have heard of the fabled [sign bit](http://en.wikipedia.org/wiki/Sign_bit" target="_blank). Basically it’s the highest order bit that’s being used to designate whether a number is positive or negative. As special sounding as it is, it should be obvious from the above that the sign bit isn’t special in any way – though it can be queried to determine the sign of a given number. Take a look at what happens to the sign bit when we overflow:
+You may have heard of the fabled [sign bit](http://en.wikipedia.org/wiki/Sign_bit). Basically it’s the highest order bit that’s being used to designate whether a number is positive or negative. As special sounding as it is, it should be obvious from the above that the sign bit isn’t special in any way – though it can be queried to determine the sign of a given number. Take a look at what happens to the sign bit when we overflow:
 
 ```csharp
 32.767	=	0b0111111111111111

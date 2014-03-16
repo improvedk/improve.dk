@@ -3,7 +3,7 @@ title: The Anatomy of Vardecimals
 date: 2011-12-13
 tags: [SQL Server - Internals, SQL Server - OrcaMDF]
 ---
-In this post I’ll do a deep dive into how vardecimals are stored on disk. For a general introduction to what they are and how/when to use them, [see this post](http://msdn.microsoft.com/en-us/library/bb326755.aspx" target="_blank).
+In this post I’ll do a deep dive into how vardecimals are stored on disk. For a general introduction to what they are and how/when to use them, [see this post](http://msdn.microsoft.com/en-us/library/bb326755.aspx).
 
 <!-- more -->
 
@@ -17,11 +17,11 @@ Provided SQL Server is running, you can execute the following to determine the v
 SELECT OBJECTPROPERTY(OBJECT_ID('MyTable'), 'TableHasVarDecimalStorageFormat')
 ```
 
-If you don’t have access to, or do not want to use the OBJECTPROPERTY function, you can query the sys.system_internals_partition_columns DMV to obtain the same information – see [Determining If vardecimal Is Enabled For a Table Without Using OBJECTPROPERTY](http://improve.dk/archive/2011/12/12/determining-if-vardecimal-is-enabled-for-a-table-without-using.aspx" target="_blank).
+If you don’t have access to, or do not want to use the OBJECTPROPERTY function, you can query the sys.system_internals_partition_columns DMV to obtain the same information – see [Determining If vardecimal Is Enabled For a Table Without Using OBJECTPROPERTY](/determining-if-vardecimal-is-enabled-for-a-table-without-using).
 
 ## Fixed length goes variable length
 
-Normal decimal columns are stored in the fixed length portion of a [record](http://sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx" target="_blank). This means all that’s actually stored is the data itself. There is no need for length information as the number of required storage bytes can be calculated exclusively by the use of metadata. Once you enable vardecimals, all decimals are no longer stored in the fixed length portion of the record, but as a variable length field instead.
+Normal decimal columns are stored in the fixed length portion of a [record](http://sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx). This means all that’s actually stored is the data itself. There is no need for length information as the number of required storage bytes can be calculated exclusively by the use of metadata. Once you enable vardecimals, all decimals are no longer stored in the fixed length portion of the record, but as a variable length field instead.
 
 Storing the decimal as a variable length field has a couple of implications:
 
@@ -36,7 +36,7 @@ Storing the decimal as a variable length field has a couple of implications:
 
 Once we’ve parsed the record and thereby retrieved the vardecimal value bytes from the variable length portion of the record, we need to parse it. There will *always* be at least *two* bytes for the value, though there can be up to 20 at most.
 
-Where normal decimals are basically stored as one humongous integer (with the scale metadata defining the decimal position), vardecimals are stored using [scientific notation](http://en.wikipedia.org/wiki/Scientific_notation" target="_blank). Using scientific notation, we need to store three different values:
+Where normal decimals are basically stored as one humongous integer (with the scale metadata defining the decimal position), vardecimals are stored using [scientific notation](http://en.wikipedia.org/wiki/Scientific_notation). Using scientific notation, we need to store three different values:
 
 
 * The sign (positive/negative).
@@ -52,7 +52,7 @@ Using these three components, we can calculate the actual number using the follo
 
 ### Example
 
-Assume we have a vardecimal(5,2) column and we store the value 123.45. In scientific notation, that would be expressed as 1.2345 * 10<sup>2</sup>. In this case we have positive sign (1), an mantissa of 1.2345 and an exponent of 2. SQL Server knows that the mantissa always has a fixed decimal point after the first digit, and as such it simply stores the integer value 12345 as the mantissa. While the exponent is 2, SQL Server knows we have a scale of 2 defined, and it subtracts that from the exponent and thus stores 0 as the actual exponent.
+Assume we have a vardecimal(5,2) column and we store the value 123.45. In scientific notation, that would be expressed as 1.2345 \* 10<sup>2</sup>. In this case we have positive sign (1), an mantissa of 1.2345 and an exponent of 2. SQL Server knows that the mantissa always has a fixed decimal point after the first digit, and as such it simply stores the integer value 12345 as the mantissa. While the exponent is 2, SQL Server knows we have a scale of 2 defined, and it subtracts that from the exponent and thus stores 0 as the actual exponent.
 
 Once we read it, we end up with a formula like this for calculating the mantissa (note that at this point we don’t care if the mantissa is positive or negative – we’ll take that into account later):
 
@@ -96,7 +96,7 @@ The very first byte of the value contains the sign and the exponent. In the prev
 
 If we take a look at just the first byte, and convert it to binary, we get the following:
 
-<pre lang="xml" parse="false">
+<pre>
 Hex: C2
 Bin: <span style="background-color: #dfce04;">1</span>1000010
 </pre>
@@ -107,7 +107,7 @@ Bits 0-6 is a 7-bit value containing the exponent. A normal unsigned 7-bit value
 
 In our sample, reading bits 0-6 gives the following value:
 
-<pre parse="false" class="plain">
+<pre>
 <span style="font-family: 'Courier New';"><span style="font-size: medium;">0b1</span><span style="font-family: 'Courier New';"><span style="font-size: medium;"><span style="background-color: #dfce04; color: #444444;">1000010</span></span></span><span style="font-family: 'Courier New';"><span style="font-size: medium;"> = 66</span></span> </span>
 </pre>
 
@@ -117,7 +117,7 @@ Subtracting the offset of 64 leaves us with an exponent value of 2.
 
 The remaining bytes contain the mantissa value. Before we get started, let’s convert them into binary:
 
-<pre parse="false" class="plain">
+<pre>
 <span style="font-family: 'Courier New'; font-size: medium;">Hex: </span><span style="font-family: 'Courier New'; font-size: medium;">1E       DC       20
 
 Bin: 00011110 11011100 00100000</span>
@@ -125,7 +125,7 @@ Bin: 00011110 11011100 00100000</span>
 
 The mantissa is stored in chunks of 10 bits, each chunk representing three digits in the mantissa (and remember, the mantissa is just one large integer – it’s not until later that we begin to think of it as a decimal pointer number). Splitting the bytes into chunks gives us the following grouping:
 
-<pre parse="false" class="plain">
+<pre>
 <span style="font-family: 'Courier New'; font-size: medium;">Hex:   1E       DC       20
 Bin:   <span style="background-color: #f3a447;">00011110 11</span><span style="background-color: #dfce04;">011100 0010</span>0000
 
@@ -146,7 +146,7 @@ Now, waste isn’t everything. For compression, ideally we don’t want to use m
 
 There’s just one more detail before we move on. Imagine we need to store the mantissa value 4.12, effectively resulting in the integer value 412.
 
-<pre parse="false" class="plain"><span style="font-family: 'Courier New'; font-size: medium;">Dec: 412
+<pre><span style="font-family: 'Courier New'; font-size: medium;">Dec: 412
 Bin: 01100111 00
 Hex: 67       0
 </span></pre>
@@ -157,14 +157,14 @@ In this case, we’d waste 8 bits in the second byte, since we only need a singl
 
 Finally – we’re ready to actually parse a stored vardecimal (implemented in C#)! We’ll use the previous example, storing the 123.45 value in a decimal(5,2) column. On disk, we read the following into a byte array called *value*:
 
-<pre parse="false" class="plain"><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       1E       DC       20
+<pre><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       1E       DC       20
 Bin: 11000010 00011110 11011100 00100000</span></pre>
 
 ### Reading the sign bit
 
 Reading the sign bit is relatively simple. We’ll only be working on the first byte:
 
-<pre parse="false" class="plain"><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       1E       DC       20
+<pre><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       1E       DC       20
 Bin: <span style="background-color: #dfce04;">1</span>1000010 <span style="color: #a5a5a5;">00011110 11011100 00100000</span></span></pre>
 
 By shifting the bits 7 spots to the right, all we’re left with is the most significant bit, the least significant position. This means we’ll get a value of 1 is the sign is positive, and 0 if it’s negative.
@@ -177,12 +177,12 @@ decimal sign = (value[0] >> 7) == 1 ? 1 : -1;
 
 The next (technically these bits come before the sign bit) 7 bits contain the exponent value.
 
-<pre parse="false" class="plain"><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       <span style="color: #a5a5a5;">1E       DC       20</span>
+<pre><span style="font-family: 'Courier New'; font-size: medium;">Hex: C2       <span style="color: #a5a5a5;">1E       DC       20</span>
 Bin: 1<span style="background-color: #dfce04;">1000010</span> <span style="color: #a5a5a5;">00011110 11011100 00100000</span></pre>
 
 Converting the value 0b1000010 into decimal yields the decimal result 66. As we know the exponent is always offset by a value of 64, we need to subtract 64 from the stored value to get to the actual exponent value:
 
-<pre parse="false" class="plain"><span style="font-family: 'Courier New'; font-size: medium;">Exponent = 0b1000010 – 0n64 <=> Exponent = 66 – 64 = 2</span></pre>
+<pre><span style="font-family: 'Courier New'; font-size: medium;">Exponent = 0b1000010 – 0n64 <=> Exponent = 66 – 64 = 2</span></pre>
 
 ### Reading the mantissa
 
@@ -209,7 +209,7 @@ decimal mantissa = 0;
 int bitPointer = 8;
 ```
 
-The mantissa variable contains the cumulative mantissa value, accumulating value each time we read a new 10-bit chunk. The *bitPointer *is a pointer to the index of the bit currently being. As we’re not going to read the first byte, we’ll start this one off at bit index 8 (0-based, thus bit index 8 = the first bit of the second byte).
+The mantissa variable contains the cumulative mantissa value, accumulating value each time we read a new 10-bit chunk. The *bitPointer* is a pointer to the index of the bit currently being. As we’re not going to read the first byte, we’ll start this one off at bit index 8 (0-based, thus bit index 8 = the first bit of the second byte).
 
 Looking at the bits as one long stream makes it look simple – we just read from left to right, right? Not quite. As you may remember, (visually) the rightmost bit is the least significant, and is thus the first one we should read. However – we need to read one byte at a time. As such, the *overall* direction is left-to-right, chunkwise. Once we get to any given chunk, we need to read one byte at a time. Bits 1-8 in the first chunk are read from the first byte, while bits 9-10 are read from the second byte, following the orange arrows in the figure (byte read order following the large ones, individual byte bit read order following the smaller ones):
 
@@ -284,7 +284,7 @@ And the second chunk is read in the following mantissaBit order:
 
 Once we’ve read a specific bit, we shift it into position in the chunkValue variable – though only if it’s set and it’s available (that is, it hasn’t been zero-truncated).
 
-Once all bits have been shifted into position, we apply the chunk significance to the value. In our case, storing the value 12345, we’re actually storing the value 123450 (since each chunk stores three digits, it’ll always be a multiple of 3 digits). The first read chunk (*chunk 2*) contains the value 123, which corresponds to the value 123000. The second read chunk (*chunk 1*) contains the value 450. Multiplying by 10<sup>(chunk–1)*3</sup> ensures we get the right order of magnitude (x1000 for *chunk 2* and x1 for *chunk 1*). For each chunk iteration, we add the finalized chunk value to the total mantissa sum.
+Once all bits have been shifted into position, we apply the chunk significance to the value. In our case, storing the value 12345, we’re actually storing the value 123450 (since each chunk stores three digits, it’ll always be a multiple of 3 digits). The first read chunk (*chunk 2*) contains the value 123, which corresponds to the value 123000. The second read chunk (*chunk 1*) contains the value 450. Multiplying by 10<sup>(chunk–1)<*3</sup> ensures we get the right order of magnitude (x1000 for *chunk 2* and x1 for *chunk 1*). For each chunk iteration, we add the finalized chunk value to the total mantissa sum.
 
 Once we have the integer based mantissa value of 123450, we need to insert the decimal point, using the following formula:
 
@@ -322,6 +322,6 @@ In our case it has the following result:
 
 Vardecimal was the only option for built-in compression back in SQL Server 2005 SP2. Since 2008, we’ve had row & page compression available (which both feature a superset of the vardecimal storage format). Ever since the release of row & page compression, Microsoft has made it clear that vardecimal is a deprecated feature, and it will be removed in a future version. Since vardecimal requires enterprise edition, just like row & page compression, there’s really no reason to use it, unless you’re running SQL Server 2005, or unless you have a very specific dataset that would only benefit from compressing the decimals and no other values.
 
-Knowing how the vardecimal storage format works is a great precursor for looking at compression internals – which I’ll be writing about in a later post – and I’ll be presenting on it at the [2012 Spring SQL Server Connections](http://improve.dk/archive/2011/12/09/presenting-at-the-2012-spring-sql-server-connections.aspx" target="_blank).
+Knowing how the vardecimal storage format works is a great precursor for looking at compression internals – which I’ll be writing about in a later post – and I’ll be presenting on it at the [2012 Spring SQL Server Connections](http://improve.dk/archive/2011/12/09/presenting-at-the-2012-spring-sql-server-connections.aspx).
 
-In the meantime you can check out my [SqlDecimal.cs implementation on github](https://github.com/improvedk/OrcaMDF/blob/83b7460b07d175f6edb21e094106ec8a52d44bf9/src/OrcaMDF.Core/Engine/SqlTypes/SqlDecimal.cs" target="_blank). Or you can have a look at the complete [OrcaMDF source code](https://github.com/improvedk/OrcaMDF" target="_blank).
+In the meantime you can check out my [SqlDecimal.cs implementation on github](https://github.com/improvedk/OrcaMDF/blob/83b7460b07d175f6edb21e094106ec8a52d44bf9/src/OrcaMDF.Core/Engine/SqlTypes/SqlDecimal.cs). Or you can have a look at the complete [OrcaMDF source code](https://github.com/improvedk/OrcaMDF).

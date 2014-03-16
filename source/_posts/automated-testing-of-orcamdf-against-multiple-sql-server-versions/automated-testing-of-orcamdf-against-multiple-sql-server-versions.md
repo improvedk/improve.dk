@@ -3,15 +3,15 @@ title: Automated Testing of OrcaMDF Against Multiple SQL Server Versions
 date: 2011-11-28
 tags: [.NET, SQL Server - OrcaMDF]
 ---
-Since I released [OrcaMDF Studio](http://improve.dk/archive/2011/11/25/orcamdf-studio-release-feature-recap.aspx" target="_blank), I’ve gotten aware of some base table differences between SQL Server 2008 and 2005. These differences causes OrcaMDF to fail since it’s coded against 2008 R2 and expect that format.
+Since I released [OrcaMDF Studio](/orcamdf-studio-release-feature-recap), I’ve gotten aware of some base table differences between SQL Server 2008 and 2005. These differences causes OrcaMDF to fail since it’s coded against 2008 R2 and expect that format.
 
 <!-- more -->
 
-While working on support for SQL Server 2005, it dawned on me that I need to expand my [testing](http://improve.dk/archive/2011/06/14/avoiding-regressions-in-orcamdf-by-system-testing.aspx" target="_blank) to cover multiple SQL Server versions, instead of just hitting a single one. Somehow I also need to support the fact that some tests are only applicable for certain versions (e.g. sparse column tests should only be run for SQL Server 2008+, etc.).
+While working on support for SQL Server 2005, it dawned on me that I need to expand my [testing](/avoiding-regressions-in-orcamdf-by-system-testing) to cover multiple SQL Server versions, instead of just hitting a single one. Somehow I also need to support the fact that some tests are only applicable for certain versions (e.g. sparse column tests should only be run for SQL Server 2008+, etc.).
 
 ## NUnit TestCaseSourceAttribute to the rescue!
 
-NUnit supports [inline parameterized tests](http://www.nunit.org/index.php?p=testCase&r=2.5" target="_blank) through the TestCase attribute. Even better, we can also provide the parameter data for test cases dynamically, using the [TestCaseSource](http://www.nunit.org/index.php?p=testCaseSource&r=2.5" target="_blank) attribute.
+NUnit supports [inline parameterized tests](http://www.nunit.org/index.php?p=testCase&r=2.5) through the TestCase attribute. Even better, we can also provide the parameter data for test cases dynamically, using the [TestCaseSource](http://www.nunit.org/index.php?p=testCaseSource&r=2.5) attribute.
 
 First up, I implemented a simple enumeration covering the versions that I’m currently working on supporting:
 
@@ -111,7 +111,7 @@ protected void RunDatabaseTest(DatabaseVersion version, Action<Database> test)
 }
 ```
 
-If a corresponding connection string hasn’t been declared in the configuration file, we abort the test and mark it as inconclusive – we simply weren’t able to run it given the current setup. Next up, ensureDatabaseIsSetup() runs the usual setup code (as detailed in the [earlier blog post](http://improve.dk/archive/2011/06/14/avoiding-regressions-in-orcamdf-by-system-testing.aspx" target="_blank)), though this time once per database versions, per fixture. Finally an OrcaMDF instance is created and passed onto the actual test as a parameter.
+If a corresponding connection string hasn’t been declared in the configuration file, we abort the test and mark it as inconclusive – we simply weren’t able to run it given the current setup. Next up, ensureDatabaseIsSetup() runs the usual setup code (as detailed in the [earlier blog post](http://improve.dk/archive/2011/06/14/avoiding-regressions-in-orcamdf-by-system-testing.aspx)), though this time once per database versions, per fixture. Finally an OrcaMDF instance is created and passed onto the actual test as a parameter.
 
 ## Supporting different SQL Server feature versions
 
@@ -183,7 +183,7 @@ Each test case is automatically multiplied by each DatabaseVersion (the Parse te
 
 Obviously, we don’t want to run the tests for all versions of SQL Server all the time, that’d simply be too time consuming. One way to disable the testing of a specific version would be to remove the connection string. However, that still yields an inconclusive output, and it’s somewhat cumbersome to edit the configuration file all the time.
 
-Unfortunately, the ReSharper test runner doesn’t support category filtering of parameterized tests created using the TestCaseSourceAttribute. I’ve created a [feature request case on YouTRACK](http://youtrack.jetbrains.net/issue/RSRP-283463" target="_blank) as I really hope they’ll consider adding it for 6.1. If you also think it’d be awesome, please consider voting for the request case!
+Unfortunately, the ReSharper test runner doesn’t support category filtering of parameterized tests created using the TestCaseSourceAttribute. I’ve created a [feature request case on YouTRACK](http://youtrack.jetbrains.net/issue/RSRP-283463) as I really hope they’ll consider adding it for 6.1. If you also think it’d be awesome, please consider voting for the request case!
 
 Fortunately, the NUnit test runner *does* support this kind of filtering. Opening the OrcaMDF.Core.Tests assembly in the NUnit test runner gives the following result:
 

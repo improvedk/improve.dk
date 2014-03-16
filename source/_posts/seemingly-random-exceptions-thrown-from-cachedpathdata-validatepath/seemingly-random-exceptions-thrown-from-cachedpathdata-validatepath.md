@@ -7,11 +7,9 @@ Several times a day I’d get an error report email noting that the following ex
 
 <!-- more -->
 
-<blockquote>
-System.Web.HttpException (0x80004005)  
-at System.Web.CachedPathData.ValidatePath(String physicalPath)  
-at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
-</blockquote>
+> System.Web.HttpException (0x80004005)  
+> at System.Web.CachedPathData.ValidatePath(String physicalPath)  
+> at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
 
 The 80004005 code is a red herring – it’s used for lots of different errors and doesn’t really indicate what’s wrong. Besides that, there’s no message on the exception, so I was at a loss for what might’ve caused it.
 

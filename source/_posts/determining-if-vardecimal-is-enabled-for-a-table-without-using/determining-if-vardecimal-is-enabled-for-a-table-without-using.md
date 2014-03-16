@@ -3,7 +3,7 @@ title: Determining If Vardecimal Is Enabled For a Table Without Using OBJECTPROP
 date: 2011-12-12
 tags: [SQL Server - Internals]
 ---
-Determining whether [vardecimal](http://msdn.microsoft.com/en-us/library/bb508963(v=sql.90).aspx" target="_blank) is enabled for a given table is usually done by using the OBJECTPROPERTY function like so:
+Determining whether [vardecimal](http://msdn.microsoft.com/en-us/library/bb508963(v=sql.90).aspx) is enabled for a given table is usually done by using the OBJECTPROPERTY function like so:
 
 <!-- more -->
 

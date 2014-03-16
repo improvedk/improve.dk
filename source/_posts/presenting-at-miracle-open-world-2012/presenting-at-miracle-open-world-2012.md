@@ -7,6 +7,6 @@ Having presented at Miracle Open World back to back in 2010 and 2011, I’m exci
 
 <!-- more -->
 
-I’ve been continually improving my original internals training day that I [presented at SQLBits](http://improve.dk/archive/2011/06/30/presenting-a-precon-at-sqlbits.aspx" target="_blank). At MOW, I’ll be presenting the evolved session, which now also includes compression internals. As the allotted time at MOW is slightly shorter than at SQLBits, and I have slightly more material, expect to bring coffee :)
+I’ve been continually improving my original internals training day that I [presented at SQLBits](/presenting-a-precon-at-sqlbits). At MOW, I’ll be presenting the evolved session, which now also includes compression internals. As the allotted time at MOW is slightly shorter than at SQLBits, and I have slightly more material, expect to bring coffee :)
 
-For more details on the session, please see [the description at the MOW website](http://mow2012.dk/program/sql-server-storage-engine.aspx" target="_blank).
+For more details on the session, please see [the description at the MOW website](http://mow2012.dk/program/sql-server-storage-engine.aspx).

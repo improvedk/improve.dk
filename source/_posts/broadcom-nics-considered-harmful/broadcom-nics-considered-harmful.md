@@ -7,18 +7,18 @@ Every night at around 2AM I get an email from my best friend, confirming that sh
 
 <!-- more -->
 
-<blockquote>JOB RUN:    'Backup.Daily' was run on 04-08-2011 at 02:00:00
-DURATION:    0 hours, 5 minutes, 57 seconds
-STATUS:     Succeeded
-MESSAGES:    The job succeeded.  The Job was invoked by Schedule 9 (Backup.Daily (Mon-Sat)).  The last step to run was step 1 (Daily).</blockquote>
+> JOB RUN:    'Backup.Daily' was run on 04-08-2011 at 02:00:00
+> DURATION:    0 hours, 5 minutes, 57 seconds
+> STATUS:     Succeeded
+> MESSAGES:    The job succeeded.  The Job was invoked by Schedule 9 (Backup.Daily (Mon-Sat)).  The last step to run was step 1 (Daily).</blockquote>
 
 Just the other night, I got one that didn’t look right:
 
-<blockquote>DURATION: 4 hours, 3 minutes, 32 seconds</blockquote>
+> DURATION: 4 hours, 3 minutes, 32 seconds
 
 Looking at the event log revealed a symptom of the problem:
 
-<blockquote>SQL Server has encountered 2 occurrence(s) of I/O requests taking longer than 15 seconds to complete on file [J:XXX.mdf] in database [XXX] (150).  The OS file handle is 0x0000000000003294.  The offset of the latest long I/O is: 0x00000033da0000</blockquote>
+> SQL Server has encountered 2 occurrence(s) of I/O requests taking longer than 15 seconds to complete on file [J:XXX.mdf] in database [XXX] (150).  The OS file handle is 0x0000000000003294.  The offset of the latest long I/O is: 0x00000033da0000
 
 Our databases were the same, the workload was the same. The only teeny, tiny little thing that had changed was that I’d moved all of the data files + backup drive onto a new SAN. Obviously, that’s gotta be the problem.
 
