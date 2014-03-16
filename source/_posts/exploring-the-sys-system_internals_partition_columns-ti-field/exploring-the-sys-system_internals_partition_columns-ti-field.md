@@ -3,7 +3,7 @@ title: Exploring the sys.system_internals_partition_columns.ti Field
 date: 2011-07-13
 tags: [SQL Server - Internals]
 ---
-Running a sp_helptext on the sys.system_internals_partition_columns system view reveals the following internal query:
+Running sp_helptext on the sys.system_internals_partition_columns system view reveals the following internal query:
 
 <!-- more -->
 
@@ -90,7 +90,7 @@ CREATE TABLE TITest
 )
 ```
 
-I’m not going to insert any data as that’s irrelevant for this purpose. For this next part, make sure you’re connected to the SQL Server using the [Dedicated Administrator Connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx" target="_blank). Now let’s query the sysrscols base table to see what values are stored in the ti field for the sample fields we’ve just created:
+I’m not going to insert any data as that’s irrelevant for this purpose. For this next part, make sure you’re connected to the SQL Server using the [Dedicated Administrator Connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx). Now let’s query the sysrscols base table to see what values are stored in the ti field for the sample fields we’ve just created:
 
 ```sql
 -- Get object id of TITest table
@@ -138,7 +138,7 @@ image_103.png
 
 ### binary
 
-Converting the first system_type_id into hex yields 0n173 = 0xAD. Converting the ti value yields 0n12973 = 0x32AD. An empirical test for all columns shows this to be true for them all. Thus we can conclude that the first byte (printed as the rightmost due to [little endianness](http://en.wikipedia.org/wiki/Endianness" target="_blank)) stores the type. Extracting the value requires a simple bitmask operation:
+Converting the first system_type_id into hex yields 0n173 = 0xAD. Converting the ti value yields 0n12973 = 0x32AD. An empirical test for all columns shows this to be true for them all. Thus we can conclude that the first byte (printed as the rightmost due to [little endianness](http://en.wikipedia.org/wiki/Endianness)) stores the type. Extracting the value requires a simple bitmask operation:
 
 ```csharp
 12973 & 0x000000FF == 173
@@ -194,4 +194,4 @@ Varbinary seems to follow the exact same format.
 
 ## Conclusion
 
-The OPENROWSET(TABLE RSCPROP, x) obviously performs some dark magic. The ti field is an integer that’s used to store multiple values & formats, depending on the row type. Thus, to parse this properly, a switch would have to be made. Certain types also take values for a given – the precision fields based on the scale value, float having a fixed precision of 53 etc. It shouldn’t be long before I have a commit ready for [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank) that’ll contain this parsing logic :)
+The OPENROWSET(TABLE RSCPROP, x) obviously performs some dark magic. The ti field is an integer that’s used to store multiple values & formats, depending on the row type. Thus, to parse this properly, a switch would have to be made. Certain types also take values for a given – the precision fields based on the scale value, float having a fixed precision of 53 etc. It shouldn’t be long before I have a commit ready for [OrcaMDF](https://github.com/improvedk/OrcaMDF) that’ll contain this parsing logic :)

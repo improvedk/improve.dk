@@ -3,11 +3,11 @@ title: Identifying Complex Columns in Records
 date: 2011-07-15
 tags: [SQL Server - Internals]
 ---
-*For an introduction to the anatomy of records, I suggest you read *[*this post*](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx" target="_blank)* by *[*Paul Randal*](http://www.sqlskills.com/BLOGS/PAUL/" target="_blank)*.*
+*For an introduction to the anatomy of records, I suggest you read *[*this post*](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx)* by *[*Paul Randal*](http://www.sqlskills.com/BLOGS/PAUL/)*.*
 
 <!-- more -->
 
-Not all variable length columns are the same. Some are more… Complex than others. An example of a complex column could be the 24 byte row-overflow pointer that are used when SLOB types overflow. [Kalen Delaney](http://sqlblog.com/blogs/kalen_delaney/default.aspx" target="_blank) has an excellent post detailing how to [detect overflowing columns](http://sqlblog.com/blogs/kalen_delaney/archive/2007/10/09/geek-city-detecting-overflowing-columns.aspx" target="_blank). There are more than one complex column type though, and the technique outlined in Kalen’s post can be generalized a bit further.
+Not all variable length columns are the same. Some are more… Complex than others. An example of a complex column could be the 24 byte row-overflow pointer that are used when SLOB types overflow. [Kalen Delaney](http://sqlblog.com/blogs/kalen_delaney/default.aspx) has an excellent post detailing how to [detect overflowing columns](http://sqlblog.com/blogs/kalen_delaney/archive/2007/10/09/geek-city-detecting-overflowing-columns.aspx). There are more than one complex column type though, and the technique outlined in Kalen’s post can be generalized a bit further.
 
 ## Complex columns containing row-overflow pointers
 
@@ -35,7 +35,7 @@ The very first byte determines the type of complex column that this is. For row-
 
 ## Complex columns containing forwarded record back pointers
 
-I’ve previously blogged about the [anatomy of a forwarded record back pointer](http://improve.dk/archive/2011/06/09/anatomy-of-a-forwarded-record-ndash-the-back-pointer.aspx" target="_blank). The important thing to note are the first two bytes in the pointer, marked with red:
+I’ve previously blogged about the [anatomy of a forwarded record back pointer](http://improve.dk/archive/2011/06/09/anatomy-of-a-forwarded-record-ndash-the-back-pointer.aspx). The important thing to note are the first two bytes in the pointer, marked with red:
 
 image_163.png
 
@@ -73,4 +73,4 @@ Forwarded record back pointers are stored in complex columns having a complex co
 
 Sparse vectors use a complex column ID of 5.
 
-I do not know of any more complex columns as of yet, but the documentation is rather non existent except for what’s mentioned in the [SQL Server 2008 Internals book](http://www.amazon.com/Microsoft%C2%AE-SQL-Server%C2%AE-2008-Internals/dp/0735626243" target="_blank).
+I do not know of any more complex columns as of yet, but the documentation is rather non existent except for what’s mentioned in the [SQL Server 2008 Internals book](http://www.amazon.com/Microsoft%C2%AE-SQL-Server%C2%AE-2008-Internals/dp/0735626243).

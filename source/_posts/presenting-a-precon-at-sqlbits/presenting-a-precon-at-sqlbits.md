@@ -3,23 +3,23 @@ title: Presenting a Precon at SQLBits
 date: 2011-06-30
 tags: [Conferences & Presenting]
 ---
-I'm honored to announce that I’ll be presenting my *[SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx" target="_blank)* precon at [SQLBits](http://sqlbits.com/" target="_blank) on September 29th. It’s an amazing bunch of [precon sessions and presenters](http://sqlbits.com/information/TrainingDay.aspx" target="_blank), I didn’t think I’d be speaking at SQLBits, much less presenting a precon – given the lineup of speakers.
+I'm honored to announce that I’ll be presenting my *[SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx)* precon at [SQLBits](http://sqlbits.com/) on September 29th. It’s an amazing bunch of [precon sessions and presenters](http://sqlbits.com/information/TrainingDay.aspx), I didn’t think I’d be speaking at SQLBits, much less presenting a precon – given the lineup of speakers.
 
 <!-- more -->
 
-<img style="margin: 15px; display: inline; float: right; box-shadow: none" alt="SQLBits" src="http://sqlbits.com/images/SQLBits/ImGoingToSqlBits200.png" align="right" />
+ImGoingToSqlBits200.png
 
 ## So what will I be presenting?
 
 Let me start out with the official abstract:
 
-<blockquote>Join me for a journey into the depths of the SQL Server storage engine. Through a series of lectures and demonstrations we'll look at the internals of pages, data types, indexes, heaps, extent & page allocation, allocation units, system views, base tables and nightmarish ways of data recovery. We'll look at several storage structures that are either completely undocumented or very scarcely so.  By the end of the day, not only will you know about the most important data structures in SQL Server, you'll also be able to parse every bit of a SQL Server data file yourself, using just a hex editor! There will be lots of hands on demos, a few of them performed in C# to demonstrate the parsing of data files outside of SQL Server.</blockquote>
+> Join me for a journey into the depths of the SQL Server storage engine. Through a series of lectures and demonstrations we'll look at the internals of pages, data types, indexes, heaps, extent & page allocation, allocation units, system views, base tables and nightmarish ways of data recovery. We'll look at several storage structures that are either completely undocumented or very scarcely so.  By the end of the day, not only will you know about the most important data structures in SQL Server, you'll also be able to parse every bit of a SQL Server data file yourself, using just a hex editor! There will be lots of hands on demos, a few of them performed in C# to demonstrate the parsing of data files outside of SQL Server.
 
-It all stems from some experimental coding I did back in March, trying to parse SQL Server data pages using C#. What started out as a learning experiment resulted in me presenting on the *[Anatomy of an MDF File](http://mow2011.dk/speakers/mark-s-rasmussen.aspx" target="_blank)* at the [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx" target="_blank) conference in April. Since then I’ve continued my experiment and officially christened it [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank) while opening up the source.
+It all stems from some experimental coding I did back in March, trying to parse SQL Server data pages using C#. What started out as a learning experiment resulted in me presenting on the *[Anatomy of an MDF File](http://mow2011.dk/speakers/mark-s-rasmussen.aspx)* at the [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx) conference in April. Since then I’ve continued my experiment and officially christened it [OrcaMDF](https://github.com/improvedk/OrcaMDF) while opening up the source.
 
 During my research for OrcaMDF I’ve reverse engineered data structures, matched up various undocumented base tables and generally achieved a really great understanding of the storage engine and MDF file format. It’s my goal that attendees of my session will have a complete (well, almost) understanding of the on disk structures we’ll see in typical databases. Not just by looking at them through DBCC PAGE, but by taking it a couple of steps further by attempting to parse the contents by hand. You’ll get an understanding of the importance of the sys.sysallocunits base table and how that fuels all metadata in SQL Server.
 
-For the full agenda, please check the official [precon description](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx" target="_blank). If you have any questions about the content that you’d like to clear up before signing up for either mine or one of the other precons available, I encourage you to leave a comment here or grab a hold of [me on Twitter](http://twitter.com/#!/improvedk" target="_blank).
+For the full agenda, please check the official [precon description](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx). If you have any questions about the content that you’d like to clear up before signing up for either mine or one of the other precons available, I encourage you to leave a comment here or grab a hold of [me on Twitter](http://twitter.com/#!/improvedk).
 
 ## Prerequisites
 

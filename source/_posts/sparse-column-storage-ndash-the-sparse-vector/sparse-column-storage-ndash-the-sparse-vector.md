@@ -3,11 +3,11 @@ title: Sparse Column Storage & the Sparse Vector
 date: 2011-07-15
 tags: [SQL Server - Internals]
 ---
-In this post I’ll be looking at the internal storage mechanism that supports sparse columns. For an introduction to what sparse columns are and when they ought to be used, [take a look here](http://msdn.microsoft.com/en-us/library/cc280604.aspx" target="_blank).
+In this post I’ll be looking at the internal storage mechanism that supports sparse columns. For an introduction to what sparse columns are and when they ought to be used, [take a look here](http://msdn.microsoft.com/en-us/library/cc280604.aspx).
 
 <!-- more -->
 
-Sparse columns, whether fixed or variable length, or not stored together with the normal columns in a [record](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx" target="_blank). Instead, they’re all stored in a hidden variable length column at the very end of the record (barring the potential 14 byte structure that may be stored when using versioning).
+Sparse columns, whether fixed or variable length, or not stored together with the normal columns in a [record](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx). Instead, they’re all stored in a hidden variable length column at the very end of the record (barring the potential 14 byte structure that may be stored when using versioning).
 
 ## Creating and finding a sparse vector
 
@@ -48,7 +48,7 @@ This gives us two records, the first one looking like this:
 
 image_85.png
 
-In a previous post I detailed how we [identify complex columns like sparse vectors](http://improve.dk/archive/2011/07/15/identifying-complex-columns-in-records.aspx" target="_blank), so I won’t go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
+In a previous post I detailed how we [identify complex columns like sparse vectors](http://improve.dk/archive/2011/07/15/identifying-complex-columns-in-records.aspx), so I won’t go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
 
 ## The sparse vector structure
 
@@ -205,4 +205,4 @@ public class SparseVectorParserTests
 
 image_15.png
 
-You can check out the full code at the [OrcaMDF Github repository](https://github.com/improvedk/OrcaMDF" target="_blank).
+You can check out the full code at the [OrcaMDF Github repository](https://github.com/improvedk/OrcaMDF).

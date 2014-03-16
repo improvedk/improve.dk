@@ -3,13 +3,15 @@ title: SQLBits 9 Voting & Registration Open
 date: 2011-07-12
 tags: [Conferences & Presenting]
 ---
-The [registration for SQLBits 9 is now open](http://sqlbits.com/information/Pricing.aspx" target="_blank).Equally important, the voting for sessions is has also opened. Simply login and take a look at the [list of sessions](http://sqlbits.com/information/PublicSessions.aspx" target="_blank) to vote for your preferred sessions.
+The [registration for SQLBits 9 is now open](http://sqlbits.com/information/Pricing.aspx).Equally important, the voting for sessions is has also opened. Simply login and take a look at the [list of sessions](http://sqlbits.com/information/PublicSessions.aspx) to vote for your preferred sessions.
 
 <!-- more -->
 
 ## My sessions
 
-<img style="margin: 15px; display: inline; float: right;" alt="Training Day" src="http://sqlbits.com/images/SQLBits/SQLBitsTrainingDay.png" align="right" />Besides doing a full day training on the [SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx" target="_blank), I’ve also submitted two related sessions that present a subset of the training day material, in a much more dense format. Both sessions are very technical deep dives on the storage internals. If you think they sound interesting, I’d appreciate a vote :)
+<img style="margin: 15px; display: inline; float: right;" alt="Training Day" src="http://sqlbits.com/images/SQLBits/SQLBitsTrainingDay.png" align="right" />
+
+Besides doing a full day training on the [SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx), I’ve also submitted two related sessions that present a subset of the training day material, in a much more dense format. Both sessions are very technical deep dives on the storage internals. If you think they sound interesting, I’d appreciate a vote :)
 
 ### Knowing The Internals, Who Needs SQL Server Anyway?
 
@@ -31,15 +33,15 @@ Once we’ve got the system table data, I’ll demonstrate how to correlate the 
 
 <img style="margin: 15px; display: inline; float: right;" alt="Sessions Title" src="http://sqlbits.com/images/headings/Sessions.png" width="286" height="98" align="right" />Having only 10 votes, it’s tough to pick out the top 10 sessions from a list of almost ~150 sessions. Though it was a struggle, I ended up with the following votes:
 
-[Performance tuning from the field](http://sqlbits.com/Sessions/Event9/Performance_tuning_from_the_field" target="_blank) by Simon Sabin  
-[Transaction Log Performance and Troubleshooting – Deep Dive](http://sqlbits.com/Sessions/Event9/Transaction_Log_Performance_and_Troubleshooting-Deep_Dive" target="_blank) by Chirag Roy  
-[SQL Server Denali – Always On Deep Dive](http://sqlbits.com/Sessions/Event9/SQL_Server_Denali-Always_On_Deep_Dive" target="_blank) by Bob Duffy  
-[HA/DR – Focus on Options, Comparisons and Interoperability](http://sqlbits.com/Sessions/Event9/HA_DR-Focus_on_Options_Comparisons_and_Interoperability" target="_blank) by Chirag Roy  
-[READPAST & Furious: Transactions, Locking and Isolation](http://sqlbits.com/Sessions/Event9/READPAST__Furious_Transactions_Locking_and_Isolation" target="_blank) by Mark Broadbent  
-[Preparation for Disaster](http://sqlbits.com/Sessions/Event9/Preparation_for_Disaster" target="_blank) by Steve Jones  
-[Busted! A journey into the most common TSQL & Tuning myths](http://sqlbits.com/Sessions/Event9/Busted_A_journey_into_the_most_common_TSQL__Tuning_myths" target="_blank) by David Morrison  
-[Turbocharge Database Recoverability Performance](http://sqlbits.com/Sessions/Event9/Turbocharge_Database_Recoverability_Performance" target="_blank) by Chirag Roy  
-[Implementing Real-Time Data Warehouse](http://sqlbits.com/Sessions/Event9/Implementing_Real-Time_Data_Warehouse" target="_blank) by Sutha Thiru  
-[Replication – Best Practices, Troubleshooting & Performance](http://sqlbits.com/Sessions/Event9/Replication-Best_Practices_Troubleshooting__Performance" target="_blank) by Neil Hambly  
+[Performance tuning from the field](http://sqlbits.com/Sessions/Event9/Performance_tuning_from_the_field) by Simon Sabin  
+[Transaction Log Performance and Troubleshooting – Deep Dive](http://sqlbits.com/Sessions/Event9/Transaction_Log_Performance_and_Troubleshooting-Deep_Dive) by Chirag Roy  
+[SQL Server Denali – Always On Deep Dive](http://sqlbits.com/Sessions/Event9/SQL_Server_Denali-Always_On_Deep_Dive) by Bob Duffy  
+[HA/DR – Focus on Options, Comparisons and Interoperability](http://sqlbits.com/Sessions/Event9/HA_DR-Focus_on_Options_Comparisons_and_Interoperability) by Chirag Roy  
+[READPAST & Furious: Transactions, Locking and Isolation](http://sqlbits.com/Sessions/Event9/READPAST__Furious_Transactions_Locking_and_Isolation) by Mark Broadbent  
+[Preparation for Disaster](http://sqlbits.com/Sessions/Event9/Preparation_for_Disaster) by Steve Jones  
+[Busted! A journey into the most common TSQL & Tuning myths](http://sqlbits.com/Sessions/Event9/Busted_A_journey_into_the_most_common_TSQL__Tuning_myths) by David Morrison  
+[Turbocharge Database Recoverability Performance](http://sqlbits.com/Sessions/Event9/Turbocharge_Database_Recoverability_Performance) by Chirag Roy  
+[Implementing Real-Time Data Warehouse](http://sqlbits.com/Sessions/Event9/Implementing_Real-Time_Data_Warehouse) by Sutha Thiru  
+[Replication – Best Practices, Troubleshooting & Performance](http://sqlbits.com/Sessions/Event9/Replication-Best_Practices_Troubleshooting__Performance) by Neil Hambly  
 
-Not until now did I notice that three of my sessions are by [Chirag Roy](http://sqlking.wordpress.com/" target="_blank), I’ll use this as an opportunity to congratulate him on becoming the latest [Microsoft Certified Master](http://www.microsoft.com/learning/en/us/certification/master-sql.aspx" target="_blank)!
+Not until now did I notice that three of my sessions are by [Chirag Roy](http://sqlking.wordpress.com/), I’ll use this as an opportunity to congratulate him on becoming the latest [Microsoft Certified Master](http://www.microsoft.com/learning/en/us/certification/master-sql.aspx)!

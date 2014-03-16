@@ -3,7 +3,7 @@ title: The Null Bitmap is Not Always Present in Data Records
 date: 2011-07-15
 tags: [SQL Server - Internals]
 ---
-While [implementing sparse column support](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx" target="_blank) for [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank), I ran into a special condition that caught me by surprise – a data record with no null bitmap. Even [Paul Randal](http://www.sqlskills.com/BLOGS/PAUL/" target="_blank) mentioned that the null bitmap would *always* be present in data records in his [A SQL Server DBA myth a day: (6/30) three null bitmap myths](http://www.sqlskills.com/BLOGS/PAUL/post/A-SQL-Server-DBA-myth-a-day-(630)-three-null-bitmap-myths.aspx" target="_blank) post.
+While [implementing sparse column support](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx) for [OrcaMDF](https://github.com/improvedk/OrcaMDF), I ran into a special condition that caught me by surprise – a data record with no null bitmap. Even [Paul Randal](http://www.sqlskills.com/BLOGS/PAUL/) mentioned that the null bitmap would *always* be present in data records in his [A SQL Server DBA myth a day: (6/30) three null bitmap myths](http://www.sqlskills.com/BLOGS/PAUL/post/A-SQL-Server-DBA-myth-a-day-(630)-three-null-bitmap-myths.aspx) post.
 
 <!-- more -->
 
@@ -27,7 +27,7 @@ DBCC PAGE (X, 1, 4359, 3)
 
 image_65.png
 
-The first two bytes contain the record status bits. Next two bytes contain the offset for the end of the fixed-length portion of the record – which is 4 as expected, since we have no non-sparse fixed-length columns. As shown in the *Record Attributes* output, the status bytes indicates that there’s no null bitmap, and sure enough, the next two bytes indicates the number of variable length columns. The remaining bytes contains the variable length offset array as well as the [sparse vector](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx" target="_blank).
+The first two bytes contain the record status bits. Next two bytes contain the offset for the end of the fixed-length portion of the record – which is 4 as expected, since we have no non-sparse fixed-length columns. As shown in the *Record Attributes* output, the status bytes indicates that there’s no null bitmap, and sure enough, the next two bytes indicates the number of variable length columns. The remaining bytes contains the variable length offset array as well as the [sparse vector](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx).
 
 ### Under what conditions does the data record not contain a null bitmap?
 
@@ -102,6 +102,6 @@ image_125.png
 
 ## Conclusion
 
-As I unfortunately do not work on the SQL Server team and I haven’t seen this condition documented, I can only theorize on this. For all normal data records, the null bitmap is always present, even if the table does not contain any null columns. While we can achieve [read optimizations](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx" target="_blank) when columns may be null, for completely non-null tables, we still get the benefit that we can add a new nullable column to an existing schema, without having to modify the already existing records.
+As I unfortunately do not work on the SQL Server team and I haven’t seen this condition documented, I can only theorize on this. For all normal data records, the null bitmap is always present, even if the table does not contain any null columns. While we can achieve [read optimizations](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx) when columns may be null, for completely non-null tables, we still get the benefit that we can add a new nullable column to an existing schema, without having to modify the already existing records.
 
 While I think it’s bit of a special use case, my theory is that this is a specific optimization made for the case where you have a table with lots of sparse columns and no non-sparse columns present. For those cases, we save at least three bytes – two for the number of columns and at least one for the null bitmap. If there are only sparse columns, we have no need for the null bitmap as the null value is defined by the value not being stored in the sparse vector.

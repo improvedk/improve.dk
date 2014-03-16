@@ -3,7 +3,7 @@ title: Determining the Uniquifier Column Ordinal for Clustered and Nonclustered 
 date: 2011-07-06
 tags: [SQL Server - Internals]
 ---
-Lately I’ve been working on nonclustered index parsing. One of my test cases proved to be somewhat more tricky than I’d anticipated, namely the parsing of nonclustered indexes for non-unique clustered tables. Working with non-unique clustered indexes, we’ll have to take care of [uniquifiers](http://www.mssqltips.com/tip.asp?tip=2082" target="_blank) when necessary.
+Lately I’ve been working on nonclustered index parsing. One of my test cases proved to be somewhat more tricky than I’d anticipated, namely the parsing of nonclustered indexes for non-unique clustered tables. Working with non-unique clustered indexes, we’ll have to take care of [uniquifiers](http://www.mssqltips.com/tip.asp?tip=2082) when necessary.
 
 <!-- more -->
 
@@ -258,7 +258,7 @@ At this point we can compare these two result sets from the highest key_ordinal 
 
 ## The hardcore approach – using base tables
 
-All those DMV’s certainly are nifty, but I just can’t help but feel I’m cheating. Let’s try and redo the optimistic (uniquifier being the only variable length integer) approach without using DMVs. Start out by connecting to your database using the [dedicated administrator connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx" target="_blank), this will allow you to query the base tables:
+All those DMV’s certainly are nifty, but I just can’t help but feel I’m cheating. Let’s try and redo the optimistic (uniquifier being the only variable length integer) approach without using DMVs. Start out by connecting to your database using the [dedicated administrator connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx), this will allow you to query the base tables:
 
 image_241.png
 

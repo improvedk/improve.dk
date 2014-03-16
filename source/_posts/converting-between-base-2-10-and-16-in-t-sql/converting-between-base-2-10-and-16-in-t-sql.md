@@ -3,7 +3,7 @@ title: Converting Between Base 2, 10 and 16 in T-SQL
 date: 2011-07-11
 tags: [SQL Server - Tricks]
 ---
-There are many [numeral systems](http://en.wikipedia.org/wiki/List_of_numeral_systems" target="_blank), the most common ones in computer science being [binary](http://en.wikipedia.org/wiki/Binary_numeral_system" target="_blank) (base 2), [decimal](http://en.wikipedia.org/wiki/Decimal" target="_blank) (base 10) and [hexadecimal](http://en.wikipedia.org/wiki/Hexadecimal" target="_blank) (base 16). All numbers can be expressed in either system and you may now and then need to convert between them.
+There are many [numeral systems](http://en.wikipedia.org/wiki/List_of_numeral_systems), the most common ones in computer science being [binary](http://en.wikipedia.org/wiki/Binary_numeral_system) (base 2), [decimal](http://en.wikipedia.org/wiki/Decimal) (base 10) and [hexadecimal](http://en.wikipedia.org/wiki/Hexadecimal) (base 16). All numbers can be expressed in either system and you may now and then need to convert between them.
 
 <!-- more -->
 
@@ -13,8 +13,8 @@ Take the number 493.202.384 as an example, it can be be expressed as either 0n49
 
 If you’ve got an internet connection, the quickest and simplest way is often to just use Google. We can convert the above number using “in X” queries:
 
-[493202384 in hex](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+hex" target="_blank)  
-[493202384 in binary](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+binary" target="_blank)
+[493202384 in hex](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+hex)  
+[493202384 in binary](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+binary)
 
 ## Converting using Windows Calculator
 
@@ -87,7 +87,7 @@ image_182.png
 
 ## Converting decimal to binary using T-SQL
 
-The following function takes a bigint as input and returns a varchar with the binary representation, using the [short division by two with remainder](http://www.wikihow.com/Convert-from-Decimal-to-Binary" target="_blank) algorithm:
+The following function takes a bigint as input and returns a varchar with the binary representation, using the [short division by two with remainder](http://www.wikihow.com/Convert-from-Decimal-to-Binary) algorithm:
 
 ```sql
 CREATE FUNCTION [dbo].[DecimalToBinary]
