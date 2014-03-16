@@ -7,11 +7,9 @@ One of the main culprits when it comes to ASP.NET concurrency is caused by the f
 
 <!-- more -->
 
-
 * Retrieve & exclusively lock session
 * Execute request handler
 * Save & unlock updated session (whether updates have been made or not)
-
 
 What this means is that, for a given session, *only one request can execute concurrently*. Any other requests, from that same session, will block, waiting for the session to be released. For the remainder of this post I'll concentrate on generic HttpHandlers, but this problem & solution is common to for ASPX and ASMX pages as well.
 
@@ -69,11 +67,9 @@ public class MyHandler : IHttpHandler, IReadOnlySessionState
 
 Implementing this interface changes the steps performed by the page slightly:
 
-
 * Retrieve session, without locking
 * Execute request handler
 * <del>Save & unlock updated session (whether updates have been made or not)</del>
-
 
 While session is still read as usual, it's just not persisted back after the request is done. This means you can actually update the session, without causing any exceptions. However, as the session is never persisted, your changes won't be saved after the request is done. For read-only use this also saves the superfluous save operation which can be costly if you're using out-of-process session state like State or SQL Server.
 
@@ -81,14 +77,12 @@ While session is still read as usual, it's just not persisted back after the req
 
 While this is great, we sometimes need something in between. Consider the following scenario:<7p>
 
-
 * You've got a single handler that's heavily requested.
 * On the first request you need to perform some expensive lookup to load some data that will be used in all further requests, but is session specific, and will thus be stored in session state.
 * If you implement IRequiresSessionState, you can easily detect the first request (Session["MyData"] == null), load the data, store it in session and then reuse it in all subsequent requests. However, this ensures only one request may execute at a time, due to the session being exclusively locked while the handler executes.
 * If you instead implement IReadOnlySessionState, you can execute as many handlers concurrently as you please, but you'll have to do that expensive data loading on each request, seeing as you can't store it in session.
 
-
-<p>Imagine if you could dynamically decide whether to implement the full read+write enabled IRequiresSessionState or just the read enabled IReadOnlySession state. That way you could implement IRequiresSessionState for the first request and just implement IReadOnlySessionState for all of the subsequent requests, once a session has been established.
+Imagine if you could dynamically decide whether to implement the full read+write enabled IRequiresSessionState or just the read enabled IReadOnlySession state. That way you could implement IRequiresSessionState for the first request and just implement IReadOnlySessionState for all of the subsequent requests, once a session has been established.
 
 And guess what, from .NET 4.0 onwards, that's possible!
 

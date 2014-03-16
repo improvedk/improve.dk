@@ -42,7 +42,7 @@ DBCC execution completed. If DBCC printed error messages, contact your system ad
 
 ## Enter Corruption
 
-As I don't want to kill my disk drives just to introduce corruption, I'll be using [OrcaMDF's Corruptor class](http://improve.dk/corrupting-databases-purpose-using-orcamdf-corruptor/) instead. First up we need to shut down SQL Server:
+As I don't want to kill my disk drives just to introduce corruption, I'll be using [OrcaMDF's Corruptor class](/corrupting-databases-purpose-using-orcamdf-corruptor/) instead. First up we need to shut down SQL Server:
 
 ```sql
 SHUTDOWN WITH NOWAIT
@@ -81,7 +81,6 @@ See the SQL Server errorlog for more information.
 
 What does the errorlog say?
 
-<ul style="font-family: Consolas, 'Courier New'">
 * Starting up database 'AWLT2008R2'.
 * 1 transactions rolled forward in database 'AWLT2008R2' (13). This is an informational message only. No user action is required.
 * Error: 824, Severity: 24, State: 2.
@@ -90,7 +89,6 @@ What does the errorlog say?
 * **An error occurred during recovery, preventing the database 'AWLT2008R2' (database ID 13) from restarting. Diagnose the recovery errors and fix them, or restore from a known good backup. If errors are not corrected or expected, contact Technical Support.**
 * CHECKDB for database 'AWLT2008R2' finished without errors on 2013-11-05 20:02:07.810 (local time). This is an informational message only; no user action is required.
 * Recovery is complete. This is an informational message only. No user action is required.
-</ul>
 
 This is officially not good. Our database failed to recover and can't be put online at the moment, due to I/O consistency errors. We've also got our first hint:
 
@@ -144,7 +142,7 @@ The OrcaMDF Database class won't be able to open the database, seeing as it does
 SHUTDOWN WITH NOWAIT
 ```
 
-If you then try opening the database using the OrcaMDF Database class, you'll get a result like this:</pre>
+If you then try opening the database using the OrcaMDF Database class, you'll get a result like this:
 
 ```csharp
 var db = new Database(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
@@ -152,7 +150,7 @@ var db = new Database(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 
 Capture.png
 
-<p>Interestingly the Database class didn't puke on the boot page (ID 9) itself, so we know that that one's OK, at least. But as soon as it hit page 16, things started to fall apart - and we already knew page 16 was corrupt.
+Interestingly the Database class didn't puke on the boot page (ID 9) itself, so we know that that one's OK, at least. But as soon as it hit page 16, things started to fall apart - and we already knew page 16 was corrupt.
 
 ### RawDatabase
 
@@ -216,7 +214,7 @@ sp_help 'sys.sysschobjs'
 
 Capture3.png
 
-Once we have the schema of sys.sysschobjs, we can make RawDatabase parse the actual rows for us, after which we can filter it down to just the user tables, seeing as we don't care about procedures, views, indexes and so forth:</pre>
+Once we have the schema of sys.sysschobjs, we can make RawDatabase parse the actual rows for us, after which we can filter it down to just the user tables, seeing as we don't care about procedures, views, indexes and so forth:
 
 ```csharp
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
@@ -245,7 +243,7 @@ rows.Where(x => x["type"].ToString().Trim() == "U")
 
 Capture4.png
 
-<p>We just went from a completely useless suspect database, with no knowledge of the schema, to now having a list of each user table name & object id. Sure, if one of the pages belonging to sys.syschobjs was corrupt, we'd be missing some of the tables without knowing it. Even so, this is a good start, and there are ways of detecting the missing pages (we could look for broken page header references, for example).
+We just went from a completely useless suspect database, with no knowledge of the schema, to now having a list of each user table name & object id. Sure, if one of the pages belonging to sys.syschobjs was corrupt, we'd be missing some of the tables without knowing it. Even so, this is a good start, and there are ways of detecting the missing pages (we could look for broken page header references, for example).
 
 ### Getting Schemas
 

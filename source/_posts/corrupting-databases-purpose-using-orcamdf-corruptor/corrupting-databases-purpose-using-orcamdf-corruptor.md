@@ -7,7 +7,7 @@ Sometimes you must first do evil, to do good. Such is the case when you want to 
 
 <!-- more -->
 
-To give me more material to test the new [RawDatabase](http://improve.dk/orcamdf-rawdatabase-a-swiss-army-knife-for-mdf-files/) functionality, I've now added a [Corruptor class](https://github.com/improvedk/OrcaMDF/blob/master/src/OrcaMDF.Framework/Corruptor.cs) to OrcaMDF. Corruptor does more or less what the name says - it corrupts database files on purpose.
+To give me more material to test the new [RawDatabase](/orcamdf-rawdatabase-a-swiss-army-knife-for-mdf-files/) functionality, I've now added a [Corruptor class](https://github.com/improvedk/OrcaMDF/blob/master/src/OrcaMDF.Framework/Corruptor.cs) to OrcaMDF. Corruptor does more or less what the name says - it corrupts database files on purpose.
 
 The corruption itself is quite simple. Corruptor will choose a number of random pages and simply overwrite the page completely with all zeros. Depending on what pages are hit, this can be quite fatal.
 
@@ -24,10 +24,12 @@ var corruptedPageIDs = Corruptor.CorruptFile(@"C:\AdventureWorks2008R2LT.mdf", 0
 Console.WriteLine(string.Join(", ", corruptedPageIDs));
 ```
 
-<pre lang="xml">606, 516, 603, 521, 613, 621, 118, 47, 173, 579,
+```
+606, 516, 603, 521, 613, 621, 118, 47, 173, 579,
 323, 217, 358, 515, 615, 271, 176, 596, 417, 379,
 269, 409, 558, 103, 8, 636, 200, 361, 60, 486,
-366, 99, 87</pre>
+366, 99, 87
+```
 
 To make the corruption hit even harder, you can also use the second overload of the CorruptFile method, allowing you to specify the exact number of pages to corrupt, within a certain range of page IDs. The following code will corrupt exactly 10 pages within the first 50 pages (zero-based), thus hitting mostly metadata.
 
@@ -36,8 +38,10 @@ var corruptedPageIDs = Corruptor.CorruptFile(@"C:\AdventureWorks2008R2LT.mdf", 1
 Console.WriteLine(string.Join(", ", corruptedPageIDs));
 ```
 
-<pre lang="xml">16, 4, 0, 32, 15, 14, 30, 2, 49, 9</pre>
+```
+16, 4, 0, 32, 15, 14, 30, 2, 49, 9
+```
 
 In the above case I was extraordinarily unlucky seeing as page 0 is the file header page, page 2 is the first GAM page, page 9 is the boot page and finally page 16 is the page that contains the allocation unit metadata. With corruption like this, you can be certain that DBCC CHECKDB will be giving up, leaving you with no other alternative than to restore from a backup.
 
-Or... You could try to recover as much data as possible using [OrcaMDF RawDatabase](http://improve.dk/orcamdf-rawdatabase-a-swiss-army-knife-for-mdf-files/), but I'll get back to that later :)
+Or... You could try to recover as much data as possible using [OrcaMDF RawDatabase](/orcamdf-rawdatabase-a-swiss-army-knife-for-mdf-files/), but I'll get back to that later :)

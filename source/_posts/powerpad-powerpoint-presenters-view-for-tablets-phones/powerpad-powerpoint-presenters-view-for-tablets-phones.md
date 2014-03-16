@@ -8,9 +8,10 @@ I love presenting, especially so when it's possible for me to do so alongside Po
 <!-- more -->
 
 ## Introducing PowerPad
-Seeing [as I've already got my iPad next to me when presenting](http://improve.dk/keeping-track-of-time-while-presenting/) it seems obvious to use that for the presenters view. However, even though I've scoured the app store for solutions, I have yet to find something that doesn't require me to install invasive clients on my computer or suffice with a fixed & lagging UI on the iPad. Even worse, most require me to pay up front, meaning I can't perform a meaningful trial.<p>
 
-<p>And so I decided to [do something about it](https://github.com/improvedk/PowerPad). PowerPad is a simple console application that runs on your computer, detects when you run a presentation and automatically provides a "presenters view" served over HTTP. The overall goal for PowerPad is to provide a Powerpoint presenters view for tablets & phones.
+Seeing [as I've already got my iPad next to me when presenting](/keeping-track-of-time-while-presenting/) it seems obvious to use that for the presenters view. However, even though I've scoured the app store for solutions, I have yet to find something that doesn't require me to install invasive clients on my computer or suffice with a fixed & lagging UI on the iPad. Even worse, most require me to pay up front, meaning I can't perform a meaningful trial.
+
+And so I decided to [do something about it](https://github.com/improvedk/PowerPad). PowerPad is a simple console application that runs on your computer, detects when you run a presentation and automatically provides a "presenters view" served over HTTP. The overall goal for PowerPad is to provide a Powerpoint presenters view for tablets & phones.
 
 presentation_started.png
 

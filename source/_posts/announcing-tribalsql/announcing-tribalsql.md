@@ -9,7 +9,7 @@ I'm slightly late to announce this, but better late than never!
 
 Just a few weeks ago, the book [Tribal SQL](http://www.amazon.com/Tribal-SQL-Tony-Davis/dp/1906434808/) went for sale! I authored a chapter on "Storage Internals 101" and alongside 14 other first-time authors, this is our first book to have published!
 
-<div style="text-align: center"><img src="http://improve.dk/wp-content/uploads/2013/10/tribalSQLcover.png" alt="tribalSQLcover" width="205" height="258" class="aligncenter size-full wp-image-3470" /></div>
+tribalSQLcover.png
 
 <blockquote>Tribal SQL: New voices in SQL Server  
   

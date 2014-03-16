@@ -3,11 +3,11 @@ title: OrcaMDF RawDatabase - A Swiss Army Knife for MDF Files
 date: 2013-11-04
 tags: [.NET, SQL Server - Internals, SQL Server - OrcaMDF, SQL Server, Tools of the Trade]
 ---
-When I initially started working on [OrcaMDF](http://improve.dk/introducing-orcamdf/) I had just one goal, to gain a deeper knowledge of MDF file internals than I could through most books available.
+When I initially started working on [OrcaMDF](/introducing-orcamdf/) I had just one goal, to gain a deeper knowledge of MDF file internals than I could through most books available.
 
 <!-- more -->
 
-As time progressed, so did OrcaMDF. While I had no initial plans of doing so, OrcaMDF has ended up being capable of parsing base tables, metadata and even [dynamically recreating common DMVs](http://improve.dk/orcamdf-now-exposes-metadata-through-system-dmvs/). On top of this, I made a [simple GUI](http://improve.dk/orcamdf-studio-release-feature-recap/), just to make OrcaMDF easier to use.
+As time progressed, so did OrcaMDF. While I had no initial plans of doing so, OrcaMDF has ended up being capable of parsing base tables, metadata and even [dynamically recreating common DMVs](/orcamdf-now-exposes-metadata-through-system-dmvs/). On top of this, I made a [simple GUI](/orcamdf-studio-release-feature-recap/), just to make OrcaMDF easier to use.
 
 While that's great, it comes at the price of extreme complexity. To be able to automatically parse table metadata like schemas, partitions, allocation units and more, not to mention abstracting away details like heaps and indexes, it takes a lot of code and it requires intimate knowledge of the database itself. Seeing as metadata changes between versions, OrcaMDF currently only supports SQL Server 2008 R2. While the data structures themselves are rather stable, there are minor differences in the way metadata is stored, the data exposed by DMVs and so forth. And on top of this, requiring all of the metadata to be perfect, for OrcaMDF to work, results in OrcaMDF being just as vulnerable to corruption as SQL Server is itself. Got a corrupt boot page? Neither SQL Server nor OrcaMDF will be able to parse the database.
 
@@ -95,7 +95,7 @@ values.Dump();
 
 A4.png
 
-RawColumnParser.Parse will, given a schema, automatically convert the raw bytes into a Dictionary<string, object>, the key being the column name from the schema and the value being the actual type of the column, e.g. int, short, Guid, string, etc. By letting you, the user, specify the schema, OrcaMDF can get rid of a slew of dependencies on metadata, thus ignoring any possible corruption in metadata. Given the availability of the Next & PreviousPageID properties of the header, it would be simple to iterate through all linked pages, parsing all records of each page - basically performing a scan on a given allocation unit.
+RawColumnParser.Parse will, given a schema, automatically convert the raw bytes into a Dictionary&lt;string, object&gt;, the key being the column name from the schema and the value being the actual type of the column, e.g. int, short, Guid, string, etc. By letting you, the user, specify the schema, OrcaMDF can get rid of a slew of dependencies on metadata, thus ignoring any possible corruption in metadata. Given the availability of the Next & PreviousPageID properties of the header, it would be simple to iterate through all linked pages, parsing all records of each page - basically performing a scan on a given allocation unit.
 
 ### Filtering Pages
 
