@@ -3,7 +3,9 @@ title: Speaking at NDC
 date: 2012-03-27
 tags: [Conferences & Presenting]
 ---
-[<img class="size-full wp-image-2296 alignleft" alt="download_2" src="http://improve.dk/wp-content/uploads/2012/03/download_2.jpg" width="226" height="117" />](http://improve.dk/wp-content/uploads/2012/03/download_2.jpg)Just before departing for SQLConnections in Vegas and SQLBits in London, I got notified that I’ve been selected for two presentations at the Norwegian Developers Conference in Oslo, June 6-8th!
+Just before departing for SQLConnections in Vegas and SQLBits in London, I got notified that I’ve been selected for two presentations at the Norwegian Developers Conference in Oslo, June 6-8th!
+
+download_2.jpg
 
 <!-- more -->
 

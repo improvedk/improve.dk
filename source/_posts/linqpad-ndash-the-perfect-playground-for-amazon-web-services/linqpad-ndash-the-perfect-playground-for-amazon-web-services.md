@@ -3,17 +3,17 @@ title: LINQPad - The Perfect Playground for Amazon Web Services
 date: 2012-02-17
 tags: [.NET, Amazon Web Services]
 ---
-I’ve previously written on [why I don’t want to rely on third party GUIs](http://improve.dk/archive/2011/10/26/how-to-set-up-and-serve-private-content-using-s3.aspx" target="_blank) for managing my AWS services. Assuming I’ll be interacting with AWS through the SDK later on, I much prefer doing the initial setup using the SDK as well, to ensure I fully understand what I’ve done. [In](http://improve.dk/archive/2011/10/26/how-to-set-up-and-serve-private-content-using-s3.aspx" target="_blank) [previous](http://improve.dk/archive/2011/11/07/pushing-the-limits-of-amazon-s3-upload-performance.aspx" target="_blank) [posts](http://improve.dk/archive/2011/11/17/optimizing-single-instance-amazon-s3-delete-performance.aspx" target="_blank), I’ve shown full console application examples on how to use the SDK for various tasks; however, creating a console application project, compiling and running it can be kind of cumbersome, especially if you’re just doing some quick testing or API exploration.
+I’ve previously written on [why I don’t want to rely on third party GUIs](/how-to-set-up-and-serve-private-content-using-s3) for managing my AWS services. Assuming I’ll be interacting with AWS through the SDK later on, I much prefer doing the initial setup using the SDK as well, to ensure I fully understand what I’ve done. [In](/how-to-set-up-and-serve-private-content-using-s3) [previous](/pushing-the-limits-of-amazon-s3-upload-performance) [posts](/optimizing-single-instance-amazon-s3-delete-performance), I’ve shown full console application examples on how to use the SDK for various tasks; however, creating a console application project, compiling and running it can be kind of cumbersome, especially if you’re just doing some quick testing or API exploration.
 
 <!-- more -->
 
 ## Enter LINQPad
 
-If you haven’t tried [LINQPad](http://www.linqpad.net/" target="_blank) out before, go do it now! It’s an awesome scratchpad style application for writing and running C#/VB.NET/F# code, either as a single expression, a set of statements or a full application. There are also various plugins for easily connecting to databases, Azure services and lots more. Probably just a matter of time before someone writes a [custom provider](http://www.linqpad.net/extensibility.aspx" target="_blank) for AWS as well.
+If you haven’t tried [LINQPad](http://www.linqpad.net/) out before, go do it now! It’s an awesome scratchpad style application for writing and running C#/VB.NET/F# code, either as a single expression, a set of statements or a full application. There are also various plugins for easily connecting to databases, Azure services and lots more. Probably just a matter of time before someone writes a [custom provider](http://www.linqpad.net/extensibility.aspx) for AWS as well.
 
 ### Getting started with the AWS SDK in LINQPad
 
-First up, you need to [download](http://aws.amazon.com/sdkfornet/" target="_blank) and install the AWS SDK. Once installed, open LINQPad and press F4. In the following dialog, click Add...
+First up, you need to [download](http://aws.amazon.com/sdkfornet/) and install the AWS SDK. Once installed, open LINQPad and press F4. In the following dialog, click Add...
 
 image_2.png
 
@@ -27,7 +27,7 @@ image_61.png
 
 ## Discoverability
 
-There are generally two ways to approach a new and unknown API. You [could read the documentation](http://aws.amazon.com/documentation/" target="_blank), or you could just throw yourself at it, relying on intellisense. Unfortunately the free version of LINQPad does not come with intellisense/auto completion, however, at a price of $39 it’s a bargain.
+There are generally two ways to approach a new and unknown API. You [could read the documentation](http://aws.amazon.com/documentation/), or you could just throw yourself at it, relying on intellisense. Unfortunately the free version of LINQPad does not come with intellisense/auto completion, however, at a price of $39 it’s a bargain.
 
 image_121.png
 
@@ -73,4 +73,4 @@ Once again it’s easy to drill down and see all of the properties of the result
 
 Adhering to my original statement of not liking third party GUIs, using tools like LINQPad is an excellent option for easily writing test code, without the added overhead of starting Visual Studio, compiling, running, etc. The output is neatly presented and really helps you to get a feeling for the API.
 
-Just to finish off – LINQPad has plenty of uses besides AWS, this is just one scenario for which I’ve been using it extensively lately. I’m really considering creating a LINQPad provider for [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank) as one of my next projects.
+Just to finish off – LINQPad has plenty of uses besides AWS, this is just one scenario for which I’ve been using it extensively lately. I’m really considering creating a LINQPad provider for [OrcaMDF](https://github.com/improvedk/OrcaMDF) as one of my next projects.

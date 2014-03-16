@@ -7,7 +7,5 @@ I presented my “Optimizing Storage and Performance Using Page and Row Compress
 
 <!-- more -->
 
-As promised, here are the materials from my session:[
-](/Images/Files/SQLConnections_2012_03_29_SQL433.rar" target="_blank)
-
-[SQLConnections_2012_03_29_SQL433.rar - Slides & demos](http://improve.dk/wp-content/uploads/2012/03/SQLConnections_2012_03_29_SQL433.rar)
+As promised, here are the materials from my session:
+[SQLConnections_2012_03_29_SQL433.rar - Slides & demos](SQLConnections_2012_03_29_SQL433.rar)

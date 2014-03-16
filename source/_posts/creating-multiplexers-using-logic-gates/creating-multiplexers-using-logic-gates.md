@@ -3,7 +3,7 @@ title: Creating Multiplexers Using Logic Gates
 date: 2012-02-13
 tags: [Computer Science]
 ---
-So what’s a multiplexer you ask? A multiplexer is an [integrated circuit](http://en.wikipedia.org/wiki/Integrated_circuit" target="_blank) that takes a number of inputs and outputs a smaller number of outputs. In this case we’re aiming at creating a 4-to-1 multiplexer. As the name implies, it takes four inputs and outputs exactly one output, determined by a *select input*. Depending on the number of input lines, one or more select lines may be required. For 2<sup>n</sup> input lines, n select lines are needed. In hardware terms, this is basically the simplest of switches.
+So what’s a multiplexer you ask? A multiplexer is an [integrated circuit](http://en.wikipedia.org/wiki/Integrated_circuit) that takes a number of inputs and outputs a smaller number of outputs. In this case we’re aiming at creating a 4-to-1 multiplexer. As the name implies, it takes four inputs and outputs exactly one output, determined by a *select input*. Depending on the number of input lines, one or more select lines may be required. For 2<sup>n</sup> input lines, n select lines are needed. In hardware terms, this is basically the simplest of switches.
 
 <!-- more -->
 

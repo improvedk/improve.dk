@@ -8,13 +8,11 @@ Most people can do simple decimal addition in their heads, and even advanced add
 <!-- more -->
 
 ```
-
   1
    6
 +  7
 ----
   13
-
 ```
 
 Adding 6+7 gives a result of 3, with a 1 as a carry. In the final step, the 1 carry simply falls down as a 10 on the result, giving 10 + 3 = 13 as the final result.
@@ -28,64 +26,56 @@ Just as we added two decimal numbers, we can do the exact same in binary. In bin
 First we add the first (rightmost) column, resulting in a 0b1 in the sum:
 
 ```
-
    110
 +  111
 ------
      1
-
 ```
 
 Next up we add the second column. In this case the two ones produce the result 0b10 – meaning we’ll get a sum of 0b0 and a carry of 0b1:
 
 ```
-
    110
 +  111
 ------
     01
-
 ```
 
 Then we add the third column. Ignoring the carry, 0b1 + 0b1 gives a sum of 0b10. Adding the 0b1 we had in carry, we get 0b11 – resulting in a sum of 0b1 as well as a carry of 0b1:
 
 ```
-
   11
    110
 +  111
 ------
    101
-
 ```
 
 And finally we add the final column, in this case containing nothing but the carry:
 
 ```
-
   11
    110
 +  111
 ------
   1101
-
 ```
 
 And there we go – 0b1101 = 13 = 6 + 7.
 
 ## Implementing a simple ALU that does addition
 
-Now that we can do binary addition by hand, lets recreate a very simple [arithmetic logic unit](http://en.wikipedia.org/wiki/Arithmetic_logic_unit" target="_blank) that’ll do the same. The ALU is at the very core of the CPU that’s powering your machine right now. It’s the hearth that does all of the arithmetic and logical operations that are required to run the computer.
+Now that we can do binary addition by hand, lets recreate a very simple [arithmetic logic unit](http://en.wikipedia.org/wiki/Arithmetic_logic_unit) that’ll do the same. The ALU is at the very core of the CPU that’s powering your machine right now. It’s the hearth that does all of the arithmetic and logical operations that are required to run the computer.
 
 In the following I will generally talk of single bits as being enabled/positive/true/1 or being disabled/negative/false/0. All four designations mean the same and will be used depending on the context.
 
 ## The half adder
 
-The first step is to implement what’s known as a [half adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder" target="_blank). This is the circuit that takes two bits and adds them together. The result is a sum value as well as a carry. Both can be either 0 or 1.
+The first step is to implement what’s known as a [half adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder). This is the circuit that takes two bits and adds them together. The result is a sum value as well as a carry. Both can be either 0 or 1.
 
-In the following circuit we get two inputs from the left, bits A and B. Both A and B are connected to an [XOR gate](http://en.wikipedia.org/wiki/XOR_gate" target="_blank). The XOR gate (top) gives an output of 1 iff (**if** and only i**f**) only one of the inputs have a value of 1. If A and B have the same value, it gives a result of 0. This is just what we need for the sum – remember, 0b1 + 0b1 gave a result of 0b10 – a sum of 1 and a carry of 0. The XOR gate is thus used to calculate the sum – denoted S in the circuit below.
+In the following circuit we get two inputs from the left, bits A and B. Both A and B are connected to an [XOR gate](http://en.wikipedia.org/wiki/XOR_gate). The XOR gate (top) gives an output of 1 iff (**if** and only i**f**) only one of the inputs have a value of 1. If A and B have the same value, it gives a result of 0. This is just what we need for the sum – remember, 0b1 + 0b1 gave a result of 0b10 – a sum of 1 and a carry of 0. The XOR gate is thus used to calculate the sum – denoted S in the circuit below.
 
-Both A and B are connected to an [AND gate](http://en.wikipedia.org/wiki/AND_gate" target="_blank) as well (bottom). The AND gate gives a result of 1 iff both A and B are 1, in all other cases it gives a result of 0. This is just what we need – if both A and B are 1, it means we get an output of 1 – the carry.
+Both A and B are connected to an [AND gate](http://en.wikipedia.org/wiki/AND_gate) as well (bottom). The AND gate gives a result of 1 iff both A and B are 1, in all other cases it gives a result of 0. This is just what we need – if both A and B are 1, it means we get an output of 1 – the carry.
 
 image_16.png
 
@@ -113,13 +103,13 @@ image_20.png
 
 At this point we have a fully working ALU capable of adding two 1-bit numbers and outputting a 2-bit result. As most computers today are either 32-bit or 64-bit, we obviously need to expand our ALU’s capabilities. Let’s work towards making it accept two 2-bit inputs instead.
 
-To do so we first need to create another component, the [full adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder" target="_blank). While the half adder is great for working with just two inputs, to calculate the next column we need to take three inputs – bits A and B, as well as the potential carry C. The result, as before, should still be a sum as well as a carry.
+To do so we first need to create another component, the [full adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder). While the half adder is great for working with just two inputs, to calculate the next column we need to take three inputs – bits A and B, as well as the potential carry C. The result, as before, should still be a sum as well as a carry.
 
 Technically what we’re creating is called a 1-bit full adder, since it’s able to add two 1-bit numbers while also respecting the carry input.
 
 In the following circuit we use two of the half adder IC’s that we created before. Bits A and B are hooked into the first one, while the carry bit is hooked into the second half adder. The sum from the first half adder is used as the second input to the second half adder.
 
-The end sum is a direct sum from both the half adders. For the sum to be enabled, both half adders must produce an enabled sum. Both carry outputs are connected to an [OR gate](http://en.wikipedia.org/wiki/OR_gate" target="_blank). As the name implies, the OR gate will output a positive result if either of the inputs are enabled.
+The end sum is a direct sum from both the half adders. For the sum to be enabled, both half adders must produce an enabled sum. Both carry outputs are connected to an [OR gate](http://en.wikipedia.org/wiki/OR_gate). As the name implies, the OR gate will output a positive result if either of the inputs are enabled.
 
 image_22.png
 
@@ -167,7 +157,7 @@ By using the decimal inputs we can now type the input numbers 6 and 7 and see ou
 
 image_46.png
 
-And there we go, we’ve now created a 3-bit [ripple carry adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Ripple_carry_adder" target="_blank).
+And there we go, we’ve now created a 3-bit [ripple carry adder](http://en.wikipedia.org/wiki/Adder_(electronics)#Ripple_carry_adder).
 
 ## Conclusion
 
@@ -179,4 +169,4 @@ Naturally there are more layers to peel. For instance, you could create your own
 
 I can’t help but feel in total awe of the amount of technology that’s packed in each and every CPU that’s shipped to a home computer somewhere. Experimenting with electrical circuits is lots of fun, and you learn loads from it.
 
-If you want to try it out for yourself, go grab a copy of Steve Kollmansbergers (free) open source [Logic Gate Simulator](http://www.kolls.net/gatesim/" target="_blank).
+If you want to try it out for yourself, go grab a copy of Steve Kollmansbergers (free) open source [Logic Gate Simulator](http://www.kolls.net/gatesim/).
