@@ -13,8 +13,8 @@ mow2011Black_2.png
 
 *Ever felt like SQL Server slowed you down, and you'd rather just get the data yourself using a HEX editor? In this deep dive session I'll give a run through of the MDF file format, what kind of page types exists? How are records stored on pages? How can we use this knowledge for optimizing performance and (catastrophic) disaster recovery? This session is not for the faint of heart. There will be bytes!*
 
-[Slides](http://improve.dk/wp-content/uploads/2011/04/Anatomy-of-an-MDF-File.pdf)  
-[Code](http://improve.dk/wp-content/uploads/2011/04/DBCC-Page.zip)
+[Slides](Anatomy-of-an-MDF-File.pdf)  
+[Code](DBCC-Page.zip)
 
 ## How GUIDs Will Ruin Your Life
 
@@ -22,5 +22,5 @@ mow2011Black_2.png
 
 *In this session I will give a thorough review of the hidden costs of using GUIDs in your systems. As they may be required, I will look at ways to alleviate the cost of GUIDs while still maintaining the semantic functionality*
 
-[Slides](http://improve.dk/wp-content/uploads/2011/04/How-GUIDs-Will-Ruin-Your-Life.pdf)  
-[Code](http://improve.dk/wp-content/uploads/2011/04/Demo_code.zip)
+[Slides](How-GUIDs-Will-Ruin-Your-Life.pdf)  
+[Code](Demo_code.zip)

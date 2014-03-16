@@ -7,11 +7,11 @@ Last year I went on a marathon conference trip, starting out in LA at [Adobe Max
 
 <!-- more -->
 
-[<img class=" wp-image-2213 alignright" alt="71624_444201957306_724027306_5893683_5375463_n_2" src="http://improve.dk/wp-content/uploads/2011/05/71624_444201957306_724027306_5893683_5375463_n_2.jpg" width="194" height="259" />](http://improve.dk/wp-content/uploads/2011/05/71624_444201957306_724027306_5893683_5375463_n_2.jpg)
+71624_444201957306_724027306_5893683_5375463_n_2.jpg
 
 Of the three, the one I’ll definitely be returning to this year is the PASS Summit. Last year I had the honor of getting a nice neon green “FIRST-TIMER” snippet on my badge, a snippet I wore with honor. This year however, I’m aiming for the Alumni snippet, and perhaps even the speaker snippet by submitting a couple of abstracts.
 
-As I’ve been somewhat busy with [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank) in my spare time recently, both of my abstracts use OrcaMDF as the origin for going into the internals. I really hope I get a chance to present about this as I’m super psyched about it :)
+As I've been somewhat busy with [OrcaMDF](/introducing-orcamdf) in my spare time recently, both of my abstracts use OrcaMDF as the origin for going into the internals. I really hope I get a chance to present about this as I’m super psyched about it :)
 
 ## Knowing the Internals – Who Needs SQL Server Anyway?
 
@@ -23,7 +23,7 @@ Has your database suffered an unrecoverable disk corruption? This session might 
 
 ### Why & What?
 
-I originally gave this presentation at [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx" target="_blank) and got some great feedback. Fueled by positive feedback I continued the development and am now at the point where I have so much content I considered doing a 3½ hour session instead. By attending this session you will not only see diagrams of internal structures on slides, you’ll actually see C# code demonstrated that parses & utilizes them!
+I originally gave this presentation at [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx) and got some great feedback. Fueled by positive feedback I continued the development and am now at the point where I have so much content I considered doing a 3½ hour session instead. By attending this session you will not only see diagrams of internal structures on slides, you’ll actually see C# code demonstrated that parses & utilizes them!
 
 ## Demystifying Database Metadata
 

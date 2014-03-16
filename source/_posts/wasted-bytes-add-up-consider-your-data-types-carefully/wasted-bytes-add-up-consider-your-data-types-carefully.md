@@ -24,34 +24,14 @@ Taking a look at the schema, we can calculate the size of the data in the record
 
 In this case, the overhead consists of:
 
-<table width="400" border="0" cellspacing="0" cellpadding="2">
-	<tbody>
-		<tr>
-			<td valign="top" width="71">**2 bytes**</td>
-			<td valign="top" width="329">*Status bits A & B*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="71">**2 bytes**</td>
-			<td valign="top" width="329">*Length of fixed-length data*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="71">**2 bytes**</td>
-			<td valign="top" width="329">*Number of columns*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="71">**1 byte**</td>
-			<td valign="top" width="329">*NULL bitmap*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="71">**2 bytes**</td>
-			<td valign="top" width="329">*Number of variable length columns*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="71">**2 bytes**</td>
-			<td valign="top" width="329">*Variable length column offset array*</td>
-		</tr>
-	</tbody>
-</table>
+Bytes | Content
+---- | -------
+2 | Status bits A & B
+2 | Length of fixed-length data
+2 | Number of columns
+1 | NULL bitmap
+2 | Number of variable length columns
+2 | Variable length column offset array
 
 Finally, each record has an accompanying two byte pointer in the row offset array, meaning the total overhead per record amounts to 13 bytes. Thus we’ve got 48 bytes in total per record, and with 8096 bytes of available data space per page, that amounts to a max of about 168 rows per page.
 
@@ -84,7 +64,7 @@ WHERE
 	O.name LIKE '#HitsV1%'
 ```
 
-[<img class="alignnone size-full wp-image-2202" alt="image_2" src="http://improve.dk/wp-content/uploads/2011/05/image_25.png" width="727" height="67" />](http://improve.dk/wp-content/uploads/2011/05/image_25.png)
+image_25.png
 
 ## Reconsidering data types by looking at reality and business specs?
 
@@ -98,26 +78,12 @@ As for the Created field, it currently takes up 8 bytes per record and has the a
 
 So to sum it up, we just saved:
 
-<table width="400" border="0" cellspacing="0" cellpadding="2">
-	<tbody>
-		<tr>
-			<td valign="top" width="79">**11 bytes**</td>
-			<td valign="top" width="321">*Converting IP to bigint*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="79">**3 bytes**</td>
-			<td valign="top" width="321">*Converting FlashVersion to tinyint*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="79">**2 bytes**</td>
-			<td valign="top" width="321">*Converting PageNumber to smallint*</td>
-		</tr>
-		<tr>
-			<td valign="top" width="79">**4 bytes**</td>
-			<td valign="top" width="321">*Converting Created to smalldatetime*</td>
-		</tr>
-	</tbody>
-</table>
+Bytes | Cause
+----- | -----
+11 | Converting IP to bigint
+3 | Converting FlashVersion to tinyint
+2 | Converting PageNumber to smallint
+4 | Converting Created to smalldatetime
 
 In total, 20 bytes per record, resulting in a new total record size of 26 – 28 including the slot offset array pointer. This means we can now fit in 289 rows per page instead of the previous 168.
 
@@ -155,16 +121,16 @@ WHERE
 	O.name LIKE '#HitsV2%'
 ```
 
-[<img class="alignnone size-full wp-image-2203" alt="image_4" src="http://improve.dk/wp-content/uploads/2011/05/image_42.png" width="731" height="69" />](http://improve.dk/wp-content/uploads/2011/05/image_42.png)
+image_42.png
 
 ## The more rows, the more waste
 
 Looking back at the 750m table, the original format would (assuming an utopian zero fragmentation) take up just about:
 
-<blockquote>750.000.000 / 168 * 8 / 1024 / 1024 ~= 34 gigabytes.</blockquote>
+> 750.000.000 / 168 * 8 / 1024 / 1024 ~= 34 gigabytes.
 
 Whereas the new format takes up a somewhat lower:
 
-<blockquote>750.000.000 / 289 * 8 / 1024 / 1024 ~= 20 gigabytes.</blockquote>
+> 750.000.000 / 289 * 8 / 1024 / 1024 ~= 20 gigabytes.
 
 And there we have it – spending just a short while longer considering the actual business & data needs when designing your tables can save you some considerable space, resulting in better performance and lower IO subsystem requirements.

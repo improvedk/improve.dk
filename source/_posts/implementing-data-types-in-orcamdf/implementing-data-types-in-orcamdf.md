@@ -3,7 +3,7 @@ title: Implementing Data Types in OrcaMDF
 date: 2011-05-05
 tags: [SQL Server - Internals, SQL Server - OrcaMDF]
 ---
-Implementing parsing support for SQL Server data types in [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank) is a simple matter of implementing the ISqlType interface:
+Implementing parsing support for SQL Server data types in [OrcaMDF](/introducing-orcamdf) is a simple matter of implementing the ISqlType interface:
 
 <!-- more -->
 
@@ -121,4 +121,4 @@ public class SqlNvarcharTests
 
 ## Other implementations
 
-OrcaMDF currently [supports 12 data types](https://github.com/improvedk/OrcaMDF/tree/2b2403c4422cc47b309857d42fb182970bbe11d8/src/OrcaMDF.Core/Engine/SqlTypes" target="_blank) out of the box. I’ll be covering datetime and bit later as those are a tad special compared to the rest of the current types. As the remaining types are implemented, I will be covering those too.
+OrcaMDF currently [supports 12 data types](https://github.com/improvedk/OrcaMDF/tree/2b2403c4422cc47b309857d42fb182970bbe11d8/src/OrcaMDF.Core/Engine/SqlTypes) out of the box. I’ll be covering datetime and bit later as those are a tad special compared to the rest of the current types. As the remaining types are implemented, I will be covering those too.
