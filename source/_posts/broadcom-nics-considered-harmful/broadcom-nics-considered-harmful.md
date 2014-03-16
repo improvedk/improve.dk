@@ -24,9 +24,9 @@ Our databases were the same, the workload was the same. The only teeny, tiny lit
 
 ## Broadcom, how I loathe thee!
 
-Through some help on #sqlhelp and Database Administrators, I managed to find the root cause as well as to fix it. For a full walkthrough of the process, please see [my post on Database Administrators](http://dba.stackexchange.com/questions/10950/i-o-requests-taking-longer-than-15-seconds" target="_blank).
+Through some help on #sqlhelp and Database Administrators, I managed to find the root cause as well as to fix it. For a full walkthrough of the process, please see [my post on Database Administrators](http://dba.stackexchange.com/questions/10950/i-o-requests-taking-longer-than-15-seconds).
 
-Mark Storey-Smith ended up giving the vital clue – a link to a [post by Kyle Brandt](http://blog.serverfault.com/2011/03/04/broadcom-die-mutha/" target="_blank) which I clearly remember reading earlier on, but didn’t suspect was applicable to my situation. I ended up disabling jumbo frames, large send offload (LSO) and TCP connection offload (TOE), and lo and behold, everything was running smoothly. By enabling each of the features individually I pinpointed the issue to the Broadcom TOE feature on the NICs. Once I enabled TOE, my IO requests were stalling. As soon as I disabled TOE, everything ran smoothly.
+Mark Storey-Smith ended up giving the vital clue – a link to a [post by Kyle Brandt](http://blog.serverfault.com/2011/03/04/broadcom-die-mutha/) which I clearly remember reading earlier on, but didn’t suspect was applicable to my situation. I ended up disabling jumbo frames, large send offload (LSO) and TCP connection offload (TOE), and lo and behold, everything was running smoothly. By enabling each of the features individually I pinpointed the issue to the Broadcom TOE feature on the NICs. Once I enabled TOE, my IO requests were stalling. As soon as I disabled TOE, everything ran smoothly.
 
 image_10.png
 

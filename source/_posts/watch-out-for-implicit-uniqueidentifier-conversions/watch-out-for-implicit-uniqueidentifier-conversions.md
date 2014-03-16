@@ -3,7 +3,7 @@ title: Watch Out For Implicit Uniqueidentifier Conversions
 date: 2011-04-26
 tags: [SQL Server - Optimization]
 ---
-I recently gave a presentations on the topic of [GUID usage](http://improve.dk/archive/2011/04/17/miracle-open-world-2011-follow-up.aspx" target="_blank) at [Miracle Open World](http://mow2011.dk/" target="_blank). After finishing off my last slide and opening to questions, one of the attendees told a story of how an implicit GUID conversion had resulted in index scans instead of index seeks.
+I recently gave a presentations on the topic of [GUID usage](http://improve.dk/archive/2011/04/17/miracle-open-world-2011-follow-up.aspx) at [Miracle Open World](http://mow2011.dk/). After finishing off my last slide and opening to questions, one of the attendees told a story of how an implicit GUID conversion had resulted in index scans instead of index seeks.
 
 <!-- more -->
 
@@ -107,6 +107,6 @@ And if you look closely at the execution plan of the first query, this is what�
 
 image_10.png
 
-Since I was unable to reproduce the issue, and I can find no documentation on the {GUID’xyz’} (neither online nor in BOL) syntax, I am unable to explain exactly what’s going on. EDIT: [Mladen Prajdić](http://weblogs.sqlteam.com/mladenp/" target="_blank) found a page describing [GUID Escape Sequences](http://msdn.microsoft.com/en-us/library/ms712494(VS.85).aspx" target="_blank). My guess is that the input query, while simple in structure, became too complex due to the large number of predicates, and thus the optimizer was unable to convert the input string to a GUID at compile time and thus had to resort to an IMPLICIT_CONVERT, causing an index scan. Using parameters, a TVF or another form of temporary table to hold those ~1000 predicate GUIDs in would obviously have been a lot more optimal as well, and would have avoided the implicit convert too. Being as it was a third party system, that was a modification that could not be made. If you have any further information on the {GUID’xyz’} constant syntax, please do get in touch.
+Since I was unable to reproduce the issue, and I can find no documentation on the {GUID’xyz’} (neither online nor in BOL) syntax, I am unable to explain exactly what’s going on. EDIT: [Mladen Prajdić](http://weblogs.sqlteam.com/mladenp/) found a page describing [GUID Escape Sequences](http://msdn.microsoft.com/en-us/library/ms712494(VS.85).aspx). My guess is that the input query, while simple in structure, became too complex due to the large number of predicates, and thus the optimizer was unable to convert the input string to a GUID at compile time and thus had to resort to an IMPLICIT_CONVERT, causing an index scan. Using parameters, a TVF or another form of temporary table to hold those ~1000 predicate GUIDs in would obviously have been a lot more optimal as well, and would have avoided the implicit convert too. Being as it was a third party system, that was a modification that could not be made. If you have any further information on the {GUID’xyz’} constant syntax, please do get in touch.
 
 While I have no final explanation, the conclusion must be – watch out for those implicit conversions, even when you absolutely do not expect them to occur.

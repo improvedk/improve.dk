@@ -17,6 +17,6 @@ We have several 100k’s of visitors each day and I only got 5-10 of these excep
 
 All of the URL’s had an extra %20 at the end – caused by others linking incorrectly to our site.
 
-After a short bit of Googling, I found the new [RelaxedUrlToFileSystemMapping httpRuntime attribute](http://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.relaxedurltofilesystemmapping.aspx" target="_blank) in .NET 4.0. And sure enough, setting it to false (or letting it have it’s default false value), an exception is thrown when I add %20 to the URL. Once set to true, everything works as expected.
+After a short bit of Googling, I found the new [RelaxedUrlToFileSystemMapping httpRuntime attribute](http://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.relaxedurltofilesystemmapping.aspx) in .NET 4.0. And sure enough, setting it to false (or letting it have it’s default false value), an exception is thrown when I add %20 to the URL. Once set to true, everything works as expected.
 
 Though I got the problem solved, I would’ve appreciated a more descriptive exception being thrown.

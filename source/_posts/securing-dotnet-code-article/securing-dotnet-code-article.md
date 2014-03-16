@@ -7,10 +7,10 @@ tags: [.NET]
 
 <!-- more -->
 
-*This article is the result of me touring the danish universities as a [Microsoft Student Partner](http://www.microsoft.com/uk/academia/students/student-partners/default.mspx" target="_blank), giving lectures on the subject of securing code and intellectual properties in the realm of the .NET Framework.*
+*This article is the result of me touring the danish universities as a [Microsoft Student Partner](http://www.microsoft.com/uk/academia/students/student-partners/default.mspx), giving lectures on the subject of securing code and intellectual properties in the realm of the .NET Framework.*
 
 Download source code for the examples:  
-[securing_dotnet.zip](http://improve.dk/wp-content/uploads/2006/10/securing_dotnet.zip)
+[securing_dotnet.zip](/securing_dotnet.zip)
 
 ## The problem
 
@@ -40,7 +40,7 @@ Alright, before we start, let me introduce you to a couple of tools that I will 
 
 ### Reflector
 
-You will have to learn to live with, love, hate and embrace Reflector, it's a godsend! [Click here to open Lutz Roeder's 'Programming .NET' website where you can download Reflector](http://www.aisto.com/roeder/dotnet/" target="_blank). Reflector is used to decompile existing .NET applications, whether that be EXE's or DLL's or any other .NET code. I won't be describing how to use Reflector, I will simply show the results of using Reflector.
+You will have to learn to live with, love, hate and embrace Reflector, it's a godsend! [Click here to open Lutz Roeder's 'Programming .NET' website where you can download Reflector](http://www.aisto.com/roeder/dotnet/). Reflector is used to decompile existing .NET applications, whether that be EXE's or DLL's or any other .NET code. I won't be describing how to use Reflector, I will simply show the results of using Reflector.
 
 ### IL DASM
 
@@ -48,11 +48,11 @@ If you have the .NET Framework SDK installed then you will also have installed t
 
 ### Wireshark
 
-[Wireshark, formerly known as Etheral](http://www.wireshark.org/" target="_blank) is the number one network sniffer for more or less any platform, and it's free!
+[Wireshark, formerly known as Etheral](http://www.wireshark.org/) is the number one network sniffer for more or less any platform, and it's free!
 
 ### Dotfuscator
 
-[Preemptive's Dotfuscator](http://www.preemptive.com/products/dotfuscator/index.html" target="_blank) is a great .NET code obfuscation tool. A lightweight community edition ships with Visual Studio .NET 2003 & 2005. The professional edition has a lot more options for code obfuscation and code compression.
+[Preemptive's Dotfuscator](http://www.preemptive.com/products/dotfuscator/index.html) is a great .NET code obfuscation tool. A lightweight community edition ships with Visual Studio .NET 2003 & 2005. The professional edition has a lot more options for code obfuscation and code compression.
 
 I demoed the evaluation version of Dotfuscator during my MSP lectures. Just before my demo at the last university on the tour, I had an emergency. "Your evaluation copy has expired"... Not what you want to read when you are to show the demo in just under two hours. I got hold of the european office department by phone and within minutes I had a new evaluation license that I could use. Great support!
 
