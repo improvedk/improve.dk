@@ -127,7 +127,8 @@ In this state we're waiting for the remaining bytes to be available. As soon as 
 
 ### CombinedFileReader.as
 
-<pre lang="actionscript" escaped="true">package dk.improve.net
+```actionscript
+package dk.improve.net
 {
     import flash.events.*;
     import flash.net.*;
@@ -191,11 +192,13 @@ In this state we're waiting for the remaining bytes to be available. As soon as 
             }
         }
     }
-}</pre>
+}
+```
 
 ### FileReadEvent.as
 
-<pre lang="actionscript" escaped="true">package dk.improve.net
+```actionscript
+package dk.improve.net
 {
     import flash.events.Event;
     import flash.utils.ByteArray;
@@ -214,7 +217,8 @@ In this state we're waiting for the remaining bytes to be available. As soon as 
             super(type);
         }
     }
-}</pre>
+}
+```
 
 ## On the client side: Thumbnails.mxml
 

@@ -11,7 +11,8 @@ I ended up implementing a simple [stack](http://en.wikipedia.org/wiki/Stack_(dat
 
 ### StackNode.as
 
-<pre lang="actionscript">package dk.improve.collections
+```actionscript
+package dk.improve.collections
 {
     internal final class StackNode
     {
@@ -23,11 +24,13 @@ I ended up implementing a simple [stack](http://en.wikipedia.org/wiki/Stack_(dat
             this.value = value;
         }
     }
-}</pre>
+}
+```
 
 ### Stack.as
 
-<pre lang="actionscript">package dk.improve.collections
+```actionscript
+package dk.improve.collections
 {
     public class Stack
     {
@@ -67,4 +70,5 @@ I ended up implementing a simple [stack](http://en.wikipedia.org/wiki/Stack_(dat
                 return null;
         }
     }
-}</pre>
+}
+```

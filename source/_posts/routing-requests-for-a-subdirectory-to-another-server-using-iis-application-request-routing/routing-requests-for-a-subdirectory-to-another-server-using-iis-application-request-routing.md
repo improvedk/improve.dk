@@ -13,7 +13,7 @@ The first task is to setup a new server farm, called Wiki in my case. Add the se
 
 rrsa1_2.jpg
 
-<pre lang="xml">
+```xml
 <webfarms>
     <webfarm enabled="true" name="Wiki">
         <server enabled="true" address="MyWikiServer">
@@ -25,7 +25,7 @@ rrsa1_2.jpg
         </add></add></hostaffinityproviderlist>
     </applicationrequestrouting>
 </webfarms>
-</pre>
+```
 
 Next, setup a URL Rewrite rule at the global level like the following:
 
@@ -35,4 +35,4 @@ The rule matches all requests for the /wiki/ directory, whether there's a traili
 
 **Correction:** As noted by Rob Hudson, the regular expression should actually be:
 
-<pre lang="xml">^wiki$|^wiki/(.*)</pre>
+> ^wiki$|^wiki/(.\*)

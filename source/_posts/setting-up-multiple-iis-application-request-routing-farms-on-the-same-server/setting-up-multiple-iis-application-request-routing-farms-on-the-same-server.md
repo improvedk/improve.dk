@@ -19,7 +19,8 @@ sumiarrfarms_1_2.jpg
 
 You may also setup the farms directly in applicationHost.config:
 
-<pre lang="xml"><webfarms>
+```xml
+<webfarms>
     <webfarm enabled="true" name="News">
         <server enabled="true" address="cnn.com">
         <server enabled="true" address="foxnews.com">
@@ -36,7 +37,8 @@ You may also setup the farms directly in applicationHost.config:
             <add name="Microsoft.Web.Arr.HostNameMemory">
         </add></add></hostaffinityproviderlist>
     </applicationrequestrouting>
-</webfarms></pre>
+</webfarms>
+```
 
 ## Setting up the rules
 
@@ -54,7 +56,8 @@ sumiarrfarms_4_2.jpg
 
 As the last step, create a second identical rule except it should be named news.local and have an {HTTP_POST} condition matching the news.local hostname. Setting up the rewrite rules can also be done in applicaitonHOst.config directly:
 
-<pre lang="xml"><rewrite>
+```xml
+<rewrite>
     <globalrules>
         <rule name="search.local" stopprocessing="true" patternsyntax="Wildcard">
             <match url="*">
@@ -71,7 +74,8 @@ As the last step, create a second identical rule except it should be named news.
             </add></conditions>
         </action></match></rule>
     </globalrules>
-</rewrite></pre>
+</rewrite>
+```
 
 Once done, your rules should look like this:
 
