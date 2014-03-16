@@ -3,7 +3,7 @@ title: OrcaMDF Now Exposes Metadata Through System DMVs
 date: 2011-11-10
 tags: [SQL Server - OrcaMDF]
 ---
-I’m sitting here on the train in Denmark, on the final leg home from [SQLRally Nordic](http://www.sqlpass.org/sqlrally/2011/" target="_blank). During my presentation based on my OrcaMDF work, I implicitly announced that OrcaMDF now exposes metadata – thougt I might as well share here as well. Other than expanding the core engine support in OrcaMDF, one of the main features I’ve wanted to implement was a way for OrcaMDF to expose metadata about your database. How do you list the tables, indexes, columns, etc. from your database?
+I’m sitting here on the train in Denmark, on the final leg home from [SQLRally Nordic](http://www.sqlpass.org/sqlrally/2011/). During my presentation based on my OrcaMDF work, I implicitly announced that OrcaMDF now exposes metadata – thougt I might as well share here as well. Other than expanding the core engine support in OrcaMDF, one of the main features I’ve wanted to implement was a way for OrcaMDF to expose metadata about your database. How do you list the tables, indexes, columns, etc. from your database?
 
 <!-- more -->
 
@@ -68,7 +68,7 @@ image_22.png
 
 ## What’s available at this point
 
-If you grab the [latest commit of OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank), you’ll have access to the following DMVs, just as they’re exposed through SQL Server:
+If you grab the [latest commit of OrcaMDF](https://github.com/improvedk/OrcaMDF), you’ll have access to the following DMVs, just as they’re exposed through SQL Server:
 
 
 * sys.columns

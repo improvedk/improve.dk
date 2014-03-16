@@ -3,7 +3,7 @@ title: OrcaMDF Now Supports Databases With Multiple Data Files
 date: 2011-10-24
 tags: [SQL Server - OrcaMDF]
 ---
-One of the latest features I’ve added to [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank) is support of databases with multiple data files. This required relatively little parsing changes, actually it was mostly bug fixing code that wasn’t hit previously, due to only working with single file databases. It did however require some major refactoring to move away from MdfFile being the primary entrypoint, to now using the Database class, encapsulating a variable number of DataFiles.
+One of the latest features I’ve added to [OrcaMDF](https://github.com/improvedk/OrcaMDF) is support of databases with multiple data files. This required relatively little parsing changes, actually it was mostly bug fixing code that wasn’t hit previously, due to only working with single file databases. It did however require some major refactoring to move away from MdfFile being the primary entrypoint, to now using the Database class, encapsulating a variable number of DataFiles.
 
 <!-- more -->
 

@@ -19,7 +19,7 @@ DSC01634.jpg
 
 **[8:20]**  Light dimming down, PASS love testimonials blasting off on the 4 giant screens next to the stage.
 
-**[8:23]**  If you’re not here, remember you can tune in to the live streaming feed here: <a title="http://www.sqlpass.org/summit/2011/Live/LiveStreaming.aspx" href="http://www.sqlpass.org/summit/2011/Live/LiveStreaming.aspx">http://www.sqlpass.org/summit/2011/Live/LiveStreaming.aspx</a>
+**[8:23]**  If you’re not here, remember you can tune in to the live streaming feed here: http://www.sqlpass.org/summit/2011/Live/LiveStreaming.aspx
 
 **[8:25]**  Rushabh Mehta on stage. Welcome all – THIS is community!
 

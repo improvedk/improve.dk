@@ -13,7 +13,7 @@ To keep this post simple (relatively speaking), I’ll assume you’ve got a com
 
 ### Why you don’t want to rely on third party GUIs
 
-Admittedly, I used [Bucket Explorer](http://www.bucketexplorer.com/" target="_blank) to begin with, to help me set up access identities and private distributions. However, as soon as I had a need that Bucket Explorer couldn’t help me with, or I had hiccups, I was totally lost. If you rely on third party GUIs to do the setup for you, you have very limited understanding of what’s actually being set up beneath the covers, and as such, you’ll be in a pickle when (no, not if!) something goes awry. Once you’ve done the setup by hand, you may later start using tools, but only if you understand what they’re doing.
+Admittedly, I used [Bucket Explorer](http://www.bucketexplorer.com/) to begin with, to help me set up access identities and private distributions. However, as soon as I had a need that Bucket Explorer couldn’t help me with, or I had hiccups, I was totally lost. If you rely on third party GUIs to do the setup for you, you have very limited understanding of what’s actually being set up beneath the covers, and as such, you’ll be in a pickle when (no, not if!) something goes awry. Once you’ve done the setup by hand, you may later start using tools, but only if you understand what they’re doing.
 
 Note that this is not a bash on Bucket Explorer, just my opinion never to use tooling before you understand what they do, just as I wouldn’t recommend you use TortoiseGit before you know the command line by heart.
 
@@ -21,9 +21,10 @@ Note that this is not a bash on Bucket Explorer, just my opinion never to use to
 
 While the AWS console is great in itself, it’s really only meant for the simplest of tasks. Very quickly you’ll find yourself limited by what you can do. For what we’re about to do, all you’d be able to do through the console GUI is to create a bucket, the rest would have to be done through code. To keep things consistent, I’m sticking to code for all tasks.
 
-Before we start, [download the Amazon AWS .NET SDK](http://aws.amazon.com/sdkfornet/" target="_blank) and create a template console application like this:
+Before we start, [download the Amazon AWS .NET SDK](http://aws.amazon.com/sdkfornet/) and create a template console application like this:
 
-<pre escaped="true" lang="csharp">using System;
+```csharp
+using System;
 using Amazon;
 using Amazon.CloudFront.Model;
 using Amazon.S3;
@@ -41,15 +42,17 @@ namespace AWSTest
 
         } 
     } 
-}</pre>
+}
+```
 
 Make sure to insert your own access key ID and secret access key values. All code samples posted from now on should go into the Main() method body.
 
 ## Creating the private bucket
 
-Run the following code to set up a bucket, which will be private by default. Make sure you define a unique bucket name, I’m using the name *improve.dk* for this sample. Note that if your bucket is not in the EU region, you’ll need to substitute my ServiceURL with the one for your region. You can find all the service URLs here: <a title="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html" href="http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html" target="_blank">http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html</a>
+Run the following code to set up a bucket, which will be private by default. Make sure you define a unique bucket name, I’m using the name *improve.dk* for this sample. Note that if your bucket is not in the EU region, you’ll need to substitute my ServiceURL with the one for your region. You can find all the service URLs here: http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html
 
-<pre escaped="true" lang="csharp">var config = new AmazonS3Config()
+```csharp
+var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
 using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretAccessKey, config))
@@ -59,7 +62,8 @@ using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretA
 		.WithBucketRegion(S3Region.EU);
 
 	var response = s3Client.PutBucket(request);
-}</pre>
+}
+```
 
 If all goes well, you should see your bucket in the AWS console immediately hereafter:
 
@@ -73,7 +77,8 @@ Creating an OAI allows us to tell CloudFront to access the S3 bucket using that 
 
 Run the following code:
 
-<pre escaped="true" lang="csharp">using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
+```csharp
+using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
 {
 	var oaiConfig = new CloudFrontOriginAccessIdentityConfig()
 		.WithComment("OAI used for private distribution access to improve.dk bucket.");
@@ -84,7 +89,8 @@ Run the following code:
 	var response = cfClient.CreateOriginAccessIdentity(request);
 	Console.WriteLine(response.OriginAccessIdentity.Id);
 	Console.WriteLine(response.OriginAccessIdentity.S3CanonicalUserId);
-}</pre>
+}
+```
 
 This creates a new OAI with a comment. Furthermore it prints out two bits of information that we’ll need shortly – the OAI ID and the OAI S3 canonical user ID. These are two different ways of identifying the OAI, and we’ll need both, so make sure to jot them down.
 
@@ -94,7 +100,8 @@ Now that we have our bucket and OAI, we can set up a private CloudFront distribu
 
 Run the following code:
 
-<pre escaped="true" lang="csharp">using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
+```csharp
+using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
 {
 	var oaiIdentity = cfClient.ListOriginAccessIdentities().OriginAccessIdentities[0];
 
@@ -108,7 +115,8 @@ Run the following code:
 	request.DistributionConfig = distributionConfig;
 
 	var response = cfClient.CreateDistribution(request);
-}</pre>
+}
+```
 
 This starts out by fetching the OAI we created just before. It then creates a new distribution configuration, specifying the improve.dk S3 bucket as the source, using the OAI for authentication. The TrustedSigners parameter determines who will be able to sign (and thereby grant access) to the distribution later on. For this demo, we’ll just grant access to our own AWS account. You may grant access to up to 5 other AWS accounts, should you so wish.
 
@@ -120,7 +128,7 @@ image_14.png
 
 When we upload objects to our bucket, we *could* grant access to the OAI on each specific object. That will require an extra request for each upload though, as we can’t assign ACL’s at the same time as we create objects. It would also be a major hassle if we ever were to change our OAI/distribution. To make it easier, we can create a bucket wide policy that grants access to all the objects in the bucket, for one specific OAI.
 
-Open up the [AWS Policy Generator tool](http://awspolicygen.s3.amazonaws.com/policygen.html" target="_blank) in a new window. Make sure to select the S3 Bucket Policy type. In the Principal field, enter the S3 canonical user ID of the OAI we created earlier. For actions, only select the GetObject action – this allows the distribution to retrieve an object and nothing more. For the ARN, use this, though with your own bucket name:
+Open up the [AWS Policy Generator tool](http://awspolicygen.s3.amazonaws.com/policygen.html) in a new window. Make sure to select the S3 Bucket Policy type. In the Principal field, enter the S3 canonical user ID of the OAI we created earlier. For actions, only select the GetObject action – this allows the distribution to retrieve an object and nothing more. For the ARN, use this, though with your own bucket name:
 
 ```
 arn:aws:s3:::improve.dk/*
@@ -128,7 +136,7 @@ arn:aws:s3:::improve.dk/*
 
 That ARN will ensure the policy covers all objects in the bucket, no matter their name. Now click the Add Statement button, followed by the Generate Policy button. What you’ll end up with is a JSON based policy like this:
 
-```
+```json
 {
   "Id": "Policy1319566876317",
   "Statement": [
@@ -151,7 +159,7 @@ That ARN will ensure the policy covers all objects in the bucket, no matter thei
 
 However, this won’t work yet! You need to change the “AWS” principal value into “CanonicalUser”, like so:
 
-```
+```json
 {
   "Id": "Policy1319566876317",
   "Statement": [
@@ -174,7 +182,8 @@ However, this won’t work yet! You need to change the “AWS” principal value
 
 Now that we have the policy ready, we need to add it to our bucket. Run the following code:
 
-<pre escaped="true" lang="csharp">var config = new AmazonS3Config()
+```csharp
+var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
 using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretAccessKey, config))
@@ -186,7 +195,8 @@ using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretA
 		""Principal": { "CanonicalUser": [ "7d76be60a0acc160399f6d6750bdc9d4d78d16a58a30987844d4df010f2ded483a9e73b8b0877089fab75f5d0b591dee" ] } } ] }";
 
 	var response = s3Client.PutBucketPolicy(request);
-}</pre>
+}
+```
 
 Make sure you escape your policy properly. There’s no need to concatenate it over multiple lines, I just did so only to avoid too much website distortion when displayed here.
 
@@ -198,7 +208,8 @@ logo_aws_thumb.gif
 
 Run the following code to upload the object:
 
-<pre escaped="true" lang="csharp">var config = new AmazonS3Config()
+```csharp
+var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
 using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretAccessKey, config))
@@ -208,7 +219,8 @@ using (var s3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyID, secretA
 		.WithBucketName("improve.dk");
 
 	var response = s3Client.PutObject(request);
-}</pre>
+}
+```
 
 Make sure to substitute with your own bucket name as well as the correct path for whatever test file you’re using. Immediately after running this you should see the file in your bucket:
 
@@ -216,7 +228,7 @@ image_12.png
 
 If you enter the properties of the object, you’ll see a link like this:
 
-<a title="https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif" href="https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif" target="_blank">https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif</a>
+https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif
 
 If you try to access the URL directly, you should get an error like this:
 
@@ -224,7 +236,7 @@ image_18.png
 
 This is expected, given that our bucket is private and we’re currently accessing the object directly from the bucket. If you go back to your distribution, you’ll see a domain name like d2ya0f2cfwcopc.cloudfront.net. Try substituting the S3 domain name with the one of your distribution, like so:
 
-<a title="https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif" href="https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif" target="_blank">https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif</a> => [https://d2ya0f2cfwcopc.cloudfront.net/logo_aws.gif](https://d2ya0f2cfwcopc.cloudfront.net/logo_aws.gif" target="_blank)
+https://s3-eu-west-1.amazonaws.com/improve.dk/logo_aws.gif => [https://d2ya0f2cfwcopc.cloudfront.net/logo_aws.gif](https://d2ya0f2cfwcopc.cloudfront.net/logo_aws.gif)
 
 Accessing the distribution URL doesn’t help however:
 
@@ -234,11 +246,12 @@ Once again we’re not allowed access. This time not due to S3 policies, but due
 
 ## Creating a time limited signed URL for a given object
 
-Now that we have the URL of our distribution object, we need to sign it with a policy granting access to it for a given time period. To do the signing, I’ve create a class based on [Gael Fraiteurs post on Stack Overflow](http://stackoverflow.com/questions/2284206/how-to-encrypt-amazon-cloudfront-signature-for-private-content-access-using-cann/2545017#2545017" target="_blank). His class deals with canned policies, whereas this one deals with custom policies as they’re a bit more dynamic, configurable and thereby powerful.
+Now that we have the URL of our distribution object, we need to sign it with a policy granting access to it for a given time period. To do the signing, I’ve create a class based on [Gael Fraiteurs post on Stack Overflow](http://stackoverflow.com/questions/2284206/how-to-encrypt-amazon-cloudfront-signature-for-private-content-access-using-cann/2545017#2545017). His class deals with canned policies, whereas this one deals with custom policies as they’re a bit more dynamic, configurable and thereby powerful.
 
-<p align="left">Add the following class to your project:</p>
+Add the following class to your project:
 
-<pre escaped="true" lang="csharp">using System;
+```csharp
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -293,7 +306,8 @@ namespace AWSTest
 			return privateKey.SignHash(hash, "SHA1");
 		}
 	}
-}</pre>
+}
+```
 
 ### Creating CloudFront key pairs
 
@@ -301,7 +315,7 @@ Before we can use it though, we need a CloudFront key pair. Go to the Access Cre
 
 image_24.png
 
-Make sure to save the .pem file as it cannot be recreated. If you loose it, you’ll have to create a new key pair. Note that these credentials have nothing to do with your access key ID & secret key – those are a completely separate set of keys. Before we can use the .pem secret key, we need to transform it into an XML format that RSACryptoServiceProvider can parse. Go to [http://www.jensign.com/opensslkey/](http://www.jensign.com/opensslkey/" target="_blank) and download the opensslkey.exe application – save it in the same directory as your .pem file. If you don’t like running the .exe, the source code is available for you to compile and run yourself.
+Make sure to save the .pem file as it cannot be recreated. If you loose it, you’ll have to create a new key pair. Note that these credentials have nothing to do with your access key ID & secret key – those are a completely separate set of keys. Before we can use the .pem secret key, we need to transform it into an XML format that RSACryptoServiceProvider can parse. Go to [http://www.jensign.com/opensslkey/](http://www.jensign.com/opensslkey/) and download the opensslkey.exe application – save it in the same directory as your .pem file. If you don’t like running the .exe, the source code is available for you to compile and run yourself.
 
 Run opensslkey.exe and give it the name of your .pem file like so:
 
@@ -311,7 +325,8 @@ image_26.png
 
 One way or the other, copy that <RSAKeyValue> bit of XML. Now run the following code, substituting my CloudFront key pair and object URL with your own:
 
-<pre escaped="true" lang="csharp">[STAThread]
+```csharp
+[STAThread]
 static void Main()
 {
 	string keyPairID = "APKAILAOYMDETYTM7NYQ";
@@ -333,7 +348,8 @@ static void Main()
 	Clipboard.SetText(signedUrl);
 	Console.WriteLine(signedUrl);
 	Console.Read();
-}</pre>
+}
+```
 
 Note how we instantiate the CloudFrontSecurityProvider, passing in the CloudFront key pair ID and secret key. We then give it the complete URL of the file we want, including a time limit for when it should no longer be available – 5 minutes in this case. For the sake of simplicity, I’m automatically copying the URL to the clipboard so I can easily paste it into my browser and test it. In my case, my complete URL looks like this:
 
@@ -349,14 +365,14 @@ image_28.png
 
 So what if you want to grant access to many files at once, do we have to create a policy for each single one? Thankfully, no, we don’t! Say you want to grant access to all files in the folder “Test” (and remember, there is no such thing as folders in S3 – just objects named e.g. /Test/FileName.jpg). What we’d do is to create a policy like this:
 
-<pre escaped="true" lang="csharp">var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/Test/*", DateTime.Now.AddMinutes(5));</pre>
+```csharp
+var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/Test/*", DateTime.Now.AddMinutes(5));
+```
 
 That’s right, we can create custom policies for wildcard URLs too! Once you’ve got this URL, just substitute the asterisk for whatever file you want to request:
 
 ```
-
 https://d2ya0f2cfwcopc.cloudfront.net/Test/A.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7I...  https://d2ya0f2cfwcopc.cloudfront.net/Test/B.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7I...  https://d2ya0f2cfwcopc.cloudfront.net/Test/C.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7I...
-
 ```
 
 All using the same policy, just with a different file paths.
@@ -367,7 +383,8 @@ At this point we’ve created a URL with a custom signed policy that grants acce
 
 Add an overload to the GetCustomUrl function in the CloudFrontSecurityProvider class like so:
 
-<pre escaped="true" lang="csharp">public string GetCustomUrl(string url, DateTime expiration, string allowedCidr)
+```csharp
+public string GetCustomUrl(string url, DateTime expiration, string allowedCidr)
 {
 	string expirationEpoch = GetUnixTime(expiration).ToString();
 
@@ -380,15 +397,18 @@ Add an overload to the GetCustomUrl function in the CloudFrontSecurityProvider c
 	string signature = getUrlSafeString(sign(policy));
 
 	return url + string.Format("?Policy={0}&Signature={1}&Key-Pair-Id={2}", getUrlSafeString(Encoding.ASCII.GetBytes(policy)), signature, privateKeyId);
-}</pre>
+}
+```
 
-To use it, we just pass in an IP address in the [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank) format:
+To use it, we just pass in an IP address in the [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) format:
 
-<pre escaped="true" lang="csharp">var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/D.jpg", DateTime.Now.AddMinutes(5), "212.242.193.110/32");</pre>
+```csharp
+var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/D.jpg", DateTime.Now.AddMinutes(5), "212.242.193.110/32");
+```
 
 The above example would provide access to the D.jpg object for 5 minutes, but only for the 212.242.193.110 IP address specifically. We could grant access to a whole subnet by passing in the IP/CIDR 212.242.193.0/24, etc.
 
-You can only use the date and source IP address for conditions, contrary to other AWS policies that allow a plethora of conditions. For a full description, see page 80+ in this document: [http://awsdocs.s3.amazonaws.com/CF/latest/cf_dg.pdf](http://awsdocs.s3.amazonaws.com/CF/latest/cf_dg.pdf" target="_blank)
+You can only use the date and source IP address for conditions, contrary to other AWS policies that allow a plethora of conditions. For a full description, see page 80+ in this document: http://awsdocs.s3.amazonaws.com/CF/latest/cf_dg.pdf
 
 ## Conclusion
 

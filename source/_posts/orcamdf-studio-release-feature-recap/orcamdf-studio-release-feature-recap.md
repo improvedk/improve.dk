@@ -3,7 +3,7 @@ title: OrcaMDF Studio Release + Feature Recap
 date: 2011-11-25
 tags: [SQL Server - OrcaMDF]
 ---
-Just about two and a half months have passed since I last posted an [OrcaMDF feature recap](http://improve.dk/archive/2011/09/10/orcamdf-feature-recap.aspx" target="_blank). Since then I’ve been busy attending three of the top SQL Server conferences – SQLBits, PASS and SQL Rally. It’s been excellent chatting about [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank) and getting some feedback on where to take it, thanks to all of you!
+Just about two and a half months have passed since I last posted an [OrcaMDF feature recap](/orcamdf-feature-recap). Since then I’ve been busy attending three of the top SQL Server conferences – SQLBits, PASS and SQL Rally. It’s been excellent chatting about [OrcaMDF](/introducing-orcamdf) and getting some feedback on where to take it, thanks to all of you!
 
 <!-- more -->
 
@@ -13,20 +13,16 @@ Though I’ve been busy, I’ve also managed to put some work into OrcaMDF in th
 
 A non-exhaustive list of additions since my last post:
 
-
-* [Support for multi-file databases](http://improve.dk/archive/2011/10/24/orcamdf-now-supports-databases-with-multiple-data-files.aspx" target="_blank).
-* [Exposing metadata through standard SQL Server DMVs](http://improve.dk/archive/2011/11/10/orcamdf-now-exposes-metadata-through-system-dmvs.aspx" target="_blank).
+* [Support for multi-file databases](/orcamdf-now-supports-databases-with-multiple-data-files).
+* [Exposing metadata through standard SQL Server DMVs](/orcamdf-now-exposes-metadata-through-system-dmvs).
 * Optimized performance by more light weight usage of byte arrays, as well as sharing a single instance of the table schema between all rows.
 
-
 I’ve also added support for the following extra data types:
-
 
 * money
 * smallmoney
 * uniqueidentifier
 * User defined types
-
 
 And just one more minor thing...
 
@@ -87,17 +83,17 @@ OrcaMDF Studio will have to take a read lock on the database file(s) for now. As
 
 ### System requirements
 
-OrcaMDF is built on top of the [.NET Framework 4.0](http://www.microsoft.com/download/en/details.aspx?id=17851" target="_blank) – as such, you will need to have it installed for OrcaMDF Studio to run. OrcaMDF Studio will run on both x64 and x86 machines.
+OrcaMDF is built on top of the [.NET Framework 4.0](http://www.microsoft.com/download/en/details.aspx?id=17851) – as such, you will need to have it installed for OrcaMDF Studio to run. OrcaMDF Studio will run on both x64 and x86 machines.
 
 ### Disclaimer
 
 Once again, OrcaMDF + Studio is experimental software. I give no guarantees whatsoever, and you’re using it at your own risk. OrcaMDF will not write anything to disk and will thus not, in any way, modify your database files. However, I strongly suggest that you **do not** use this on a production database, either way.
 
-OrcaMDF neither knows nor cares about security. No matter who owns that schema or object, OrcaMDF will parse it just fine – no need for pesky usernames and passwords. However, OrcaMDF does not support [Transparent Data Encryption](http://msdn.microsoft.com/en-us/library/bb934049.aspx" target="_blank), so databases using TDE will not be supported.
+OrcaMDF neither knows nor cares about security. No matter who owns that schema or object, OrcaMDF will parse it just fine – no need for pesky usernames and passwords. However, OrcaMDF does not support [Transparent Data Encryption](http://msdn.microsoft.com/en-us/library/bb934049.aspx), so databases using TDE will not be supported.
 
 ### Download
 
-You can download the OrcaMDF Studio binary release at the [OrcaMDF Github project page](https://github.com/improvedk/OrcaMDF/downloads" target="_blank). Please don’t ever download OrcaMDF anywhere else, you risk that someone modifies the source and distributes their own version. **Always** get it from the Github project page.
+You can download the OrcaMDF Studio binary release at the [OrcaMDF Github project page](https://github.com/improvedk/OrcaMDF/downloads). Please don’t ever download OrcaMDF anywhere else, you risk that someone modifies the source and distributes their own version. **Always** get it from the Github project page.
 
 Once you download it, simply unpack it and run the OrcaMDF.OMS.exe application:
 

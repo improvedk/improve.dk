@@ -23,7 +23,8 @@ At no point, in any of the test environments, were the CPUs stressed to the poin
 
 Before starting the four repetitions of the test, I fire off a single PutObject request to warm up the stack. The test code is relatively simple, it runs in an infinite loop, checking whether we need to upload more objects, or whether we’re done. If done, it breaks the loop and ends the thread. When launching I start up X amount of threads and immediately after join with them to wait for them all to complete. The runtime includes the amount of time required to instantiate the threads, though it should have no measurable impact on the result. The runtime calculation is done using integer math for output simplicity, but the impact should be minimal in the big picture.
 
-<pre escaped="true" lang="csharp">using System;
+```csharp
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
@@ -119,11 +120,13 @@ namespace S3Optimization
 			return new string(buffer);
 		}
 	}
-}</pre>
+}
+```
 
 For running the tests, I’m using the following test runner application, testing all combinations of thread count and object size between 1 and 256/2048 respectively (in powers of 2):
 
-<pre escaped="true" lang="csharp">var psi = new ProcessStartInfo("S3Optimization.exe")
+```csharp
+var psi = new ProcessStartInfo("S3Optimization.exe")
     {
         UseShellExecute = false,
 		RedirectStandardOutput = true
@@ -145,7 +148,8 @@ foreach(int connectionLimit in connectionLimits)
 		Console.Write(output);
 		File.AppendAllText("Output.txt", output);
 	}
-}</pre>
+}
+```
 
 ## Initial results
 
@@ -206,7 +210,7 @@ image_19.png
 
 ## Server 2008 R2 vs. Server 2003
 
-You’ve probably heard about Server 2008 bringing along a [bunch of updates to the TCP/IP stack](http://technet.microsoft.com/en-us/network/bb545475" target="_blank). I thought it would be interesting to run the same tests on an identical server, just running Windows Server 2008 R2 x64. Luckily, I have just that. A server with identical hardware, on the same subnet at the same ISP, just running Server 2008 R2 x64 instead. Question is, how big of a difference does the OS alone make?
+You’ve probably heard about Server 2008 bringing along a [bunch of updates to the TCP/IP stack](http://technet.microsoft.com/en-us/network/bb545475). I thought it would be interesting to run the same tests on an identical server, just running Windows Server 2008 R2 x64. Luckily, I have just that. A server with identical hardware, on the same subnet at the same ISP, just running Server 2008 R2 x64 instead. Question is, how big of a difference does the OS alone make?
 
 For this graph, I calculated the maximum attainable transfer speed, using HTTPS, for a given object, across any number of threads. I’ve then mapped those values into the graph for both Server 2003 and Server 2008 R2 (note the log(2) scale!).
 
@@ -295,7 +299,7 @@ You can download an Excel sheet of all my raw data, including the various graphs
 
 If you want me to create some graphs of a specific scenario, compare two different result sets, environments, etc. - just let me know in the comments. I've probably overlooked something interesting as there is just so much data to pull out. Optimally I'd want to run each of these tests for 100 repetitions at different times of the day, just to weed out all of the variance completely. Unfortunately, that would cost me way too much, and it would take ages. I may do some high-rep tests for specific scenarios like the HTTP vs. HTTPS tests as I feel there were too many fluctuations there.
 
-Download: [S3Optimization.xlsx](http://improve.dk/wp-content/uploads/2011/11/S3Optimization.xlsx)
+Download: [S3Optimization.xlsx](/S3Optimization.xlsx)
 
 ## Conclusions
 

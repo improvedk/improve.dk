@@ -3,7 +3,7 @@ title: Optimizing Single Instance Amazon S3 Delete Performance
 date: 2011-11-17
 tags: [.NET, Amazon Web Services]
 ---
-Once you’ve [made a mess](http://improve.dk/archive/2011/11/07/pushing-the-limits-of-amazon-s3-upload-performance.aspx" target="_blank) and you’ve now got millions of objects you need to delete, how do you do that as fast as possible?
+Once you’ve [made a mess](http://improve.dk/archive/2011/11/07/pushing-the-limits-of-amazon-s3-upload-performance.aspx) and you’ve now got millions of objects you need to delete, how do you do that as fast as possible?
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ Looking at this particular request, it takes up 322 bytes, with the only really 
 
 ## Does object size & existence matter?
 
-When uploading, the size of the object obviously matters, as shown in [post on upload performance](http://improve.dk/archive/2011/11/07/pushing-the-limits-of-amazon-s3-upload-performance.aspx" target="_blank). For deletes, I’d assume object size wouldn’t matter. Just to be sure though, I made a test. Through four iterations, I created 1024 objects of 1KB, 1MB and 16MB size. I then, single-threaded, deleted each of those objects, one by one and recorded the total runtime. Once all the objects were deleted, I performed all of the delete requests again, even though the objects didn’t exist. I wanted to know whether the existence of an object had an impact on the request latency.
+When uploading, the size of the object obviously matters, as shown in [post on upload performance](/pushing-the-limits-of-amazon-s3-upload-performance). For deletes, I’d assume object size wouldn’t matter. Just to be sure though, I made a test. Through four iterations, I created 1024 objects of 1KB, 1MB and 16MB size. I then, single-threaded, deleted each of those objects, one by one and recorded the total runtime. Once all the objects were deleted, I performed all of the delete requests again, even though the objects didn’t exist. I wanted to know whether the existence of an object had an impact on the request latency.
 
 The tests were performed using an m1.large (100Mbps bandwidth reported by instance, usually more available) instance in the EU region, accessing a bucket also in the EU region. Once run, I discarded the best and worst results and took the average of the remaining two.
 
@@ -122,7 +122,7 @@ Results clearly show similar performance characteristics – both EC2 servers ma
 
 ## Disabling the Nagle algorithm
 
-I considered, and tested, whether disabling the [Nagle algorithm](http://en.wikipedia.org/wiki/Nagle's_algorithm" target="_blank) might have an impact. However – since each of these requests are fired on a single connection that’s closed, and hence flushed, immediately afterwards – disabling the Nagle algorithm has no measureable effect.
+I considered, and tested, whether disabling the [Nagle algorithm](http://en.wikipedia.org/wiki/Nagle's_algorithm) might have an impact. However – since each of these requests are fired on a single connection that’s closed, and hence flushed, immediately afterwards – disabling the Nagle algorithm has no measureable effect.
 
 ## Can we lower the CPU usage?
 
@@ -145,7 +145,7 @@ while (sw.ElapsedMilliseconds <= 30000)
 
 It’s basically just a loop, reusing the same request and letting the AmazonS3Client do its part to send off the object. Internally, AmazonS3Client.DeleteObject() is firing off the asynchronous BeginPutObject and then immediately waiting for EndPutObject afterwards. If we dig further in, there’s a lot of generic AWS SDK framework overhead in constructing the requests, checking for all sorts of conditions that may arise, but are not particularly relevant to our case. How about we ditch the SDK and create our own requests?
 
-Following this guide on [signing and authenticating REST requests](http://docs.amazonwebservices.com/AmazonS3/2006-03-01/dev/index.html?RESTAuthentication.html" target="_blank), I constructed a method like this (minus the measuring and reformatting, this just shows the basic form):
+Following this guide on [signing and authenticating REST requests](http://docs.amazonwebservices.com/AmazonS3/2006-03-01/dev/index.html?RESTAuthentication.html), I constructed a method like this (minus the measuring and reformatting, this just shows the basic form):
 
 ```csharp
 var accessKeyID = "XYZ";
