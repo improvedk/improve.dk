@@ -13,7 +13,7 @@ Imagine you have a domain *improve.dk* that already has a number of public DNS r
 
 Capture.png
 
-</p>In this case all I want to do is to add a record on our internal network, *jira.improve.dk*. As this record should only be made available internally, we can't just add it to the public DNS records for the domain.</p>
+In this case all I want to do is to add a record on our internal network, *jira.improve.dk*. As this record should only be made available internally, we can't just add it to the public DNS records for the domain.
 
 I could make a new DNS zone for the improve.dk domain in our local DNS server, but that would result in all DNS queries for improve.dk being answered by our local DNS server, rather than being forwarded. As long as I recreate all public DNS records in our local DNS server, this would work fine, but it's not a viable solution as I'd now have to keep the two DNS setups in sync manually.
 

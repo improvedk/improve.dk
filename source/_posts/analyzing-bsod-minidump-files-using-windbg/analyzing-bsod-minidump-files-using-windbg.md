@@ -3,16 +3,16 @@ title: Analyzing BSOD Minidump Files Using Windbg
 date: 2013-06-04
 tags: [Windbg]
 ---
-Unfortunately, once in a while, computers fail. If you're running Windows you've probably witnessed the dreaded [Blue Screen of Death](http://en.wikipedia.org/wiki/Blue_Screen_of_Death), commonly referred to as a BSOD. Once the BSOD occurs, some machines will immediately restart, before you've got a chance to actually see what happened. Other times users will just report that the BSOD happened, without noting anything down about what the message actually said. In this post I'll show you how analyzing BSOD minidump files using [Windbg](http://en.wikipedia.org/wiki/WinDbg) will enable you to find the cause of the BSOD after the fact.<p>
+Unfortunately, once in a while, computers fail. If you're running Windows you've probably witnessed the dreaded [Blue Screen of Death](http://en.wikipedia.org/wiki/Blue_Screen_of_Death), commonly referred to as a BSOD. Once the BSOD occurs, some machines will immediately restart, before you've got a chance to actually see what happened. Other times users will just report that the BSOD happened, without noting anything down about what the message actually said. In this post I'll show you how analyzing BSOD minidump files using [Windbg](http://en.wikipedia.org/wiki/WinDbg) will enable you to find the cause of the BSOD after the fact.
 
 <!-- more -->
 
 
 ## Enabling Dump Files
 
-<p>By default, never Windows installs will automatically create minidump files once a BSOD occurs. Once restarted, you should be able to see a .dmp file here:
+By default, never Windows installs will automatically create minidump files once a BSOD occurs. Once restarted, you should be able to see a .dmp file here:
 
-```csharp
+```
 C:\Windows\Minidump
 ```
 
@@ -25,8 +25,7 @@ Capture.png
 
 Once a dump file has been created, you can analyze it using Windbg. Start by opening Windbg and pressing the **Ctrl+D** keys. Now select the .dmp file you want to analyze and click **Open**. This should yield something like this:
 
-```csharp
-
+```
 Microsoft (R) Windows Debugger Version 6.12.0002.633 AMD64
 Copyright (c) Microsoft Corporation. All rights reserved.
 
@@ -67,11 +66,11 @@ Followup: MachineOwner
 
 Already this tells us a couple of things - your OS details, when exactly the problem occurred as well as what module probably caused the issue (FiioE17.sys in this case). Also, it tells you how to proceed:
 
-<blockquote>Use !analyze -v to get detailed debugging information.</blockquote>
+> Use !analyze -v to get detailed debugging information.
 
 As suggested, let's try and run the !analyze -v command:
 
-```csharp
+```
 11: kd> !analyze -v
 *******************************************************************************
 *                                                                             *
@@ -155,12 +154,10 @@ Followup: MachineOwner
 
 This tells us a number of interesting things:
 
-
 * The BSOD error was: **BUGCODE_USB_DRIVER**
 * This is the error caused by the driver: IRP_URB_DOUBLE_SUBMIT **The caller has submitted an irp that is already pending in the USB bus driver**.
 * The process that invoked the error: **audiodg.exe**
 * The stack trace of the active thread on which the error occurred. Note that Windbg can't find the right symbols as this is a proprietary driver with no public symbols. Even so, to the developer of said driver, the above details will help immensely.
 * The driver name: **FiioE17.sys**
-
 
 With the above options, you've got a lot of details that can be sent to the developer, hopefully enabling him/her/them to fix the issue. For now, I'll have to unplug my [Fiio E17 USB DAC](http://www.amazon.com/FiiO-Headphone-Amplifier-Docking-Interface/dp/B0070UFMOW) :(

@@ -44,7 +44,9 @@ Windbg1.png
 
 The first command you'll want to execute is this:
 
-<pre>!loadby sos clr</pre>
+```
+!loadby sos clr
+```
 
 This loads in the [Son of Strike extension](http://msdn.microsoft.com/en-us/library/bb190764.aspx) that contains a lot of useful methods for debugging .NET code.
 
@@ -53,7 +55,9 @@ This loads in the [Son of Strike extension](http://msdn.microsoft.com/en-us/libr
 
 As we seem to have a runaway code issue, let's start out by issuing the following command:
 
-<pre>!runaway</pre>
+```
+!runaway
+```
 
 Windbg2.png
 
@@ -64,15 +68,19 @@ This lists all the threads as well as the time spent executing user mode code. W
 
 Now that we've identified some of the most interesting threads, we can select them one by one like so:<p>
 
-<pre>~Xs</pre>
+```
+~Xs
+```
 
-<p>Switching X out with a thread number (e.g. 234, 232, 238, 259, 328, etc.) allows us to *select* the thread. Notice how the lower left corner indicates the currently selected thread:
+Switching X out with a thread number (e.g. 234, 232, 238, 259, 328, etc.) allows us to *select* the thread. Notice how the lower left corner indicates the currently selected thread:
 
 Windbg3.png
 
 Once selected, we can see what the thread is currently doing by executing the following command:
 
-<pre>!CLRStack</pre>
+```
+!CLRStack
+```
 
 Windbg4.png
 

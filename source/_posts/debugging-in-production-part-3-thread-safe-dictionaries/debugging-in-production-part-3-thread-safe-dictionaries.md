@@ -19,7 +19,7 @@ private static readonly ConcurrentDictionary<short, ConcurrentDictionary<Setting
 
 As described by this [MSDN article on adding and removing items from a ConcurrentDictionary](http://msdn.microsoft.com/en-us/library/dd997369.aspx), it's fully thread-safe:
 
-<blockquote>ConcurrentDictionary<TKey, TValue> is designed for multithreaded scenarios. You do not have to use locks in your code to add or remove items from the collection.</blockquote>
+> ConcurrentDictionary&lt;TKey, TValue&gt; is designed for multithreaded scenarios. You do not have to use locks in your code to add or remove items from the collection.
 
 Performance wise ConcurrentDictionary is about 50% slower (anecdotally) than the regular Dictionary type but even if this code is run very often, that is absolutely negligible compared to making just a single database access call.
 

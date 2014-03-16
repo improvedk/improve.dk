@@ -21,13 +21,13 @@ Windbg11.png
 
 As the first thing, start out by loading the [Son of Strike](http://msdn.microsoft.com/en-us/library/bb190764.aspx) extension, allowing us to debug managed code.
 
-```csharp
+```
 0:039> .loadby sos clr
 ```
 
 Then continue by running the !runaway command to get a list of runaway (basically threads using lots of CPU) threads:
 
-```csharp
+```
 0:039> !runaway
 
  User Mode Time
@@ -51,7 +51,7 @@ Then continue by running the !runaway command to get a list of runaway (basicall
 
 Threads 20 & 21 seem to be the interesting ones. Let's start out by selecting thread #20 as the active thread:
 
-```csharp
+```
 0:039> ~20s
 
 000007fe`913a15d9 3bc5            cmp     eax,ebp
@@ -59,7 +59,7 @@ Threads 20 & 21 seem to be the interesting ones. Let's start out by selecting th
 
 Once selected, we can analyze the stack and its parameters by running the !CLRStack command with the -p parameter:
 
-```csharp
+```
 0:020> !CLRStack -p
 
 OS Thread Id: 0x14930 (20)
@@ -188,7 +188,7 @@ OS Thread Id: 0x14930 (20)
 
 This returns the full stack with a lot of frames that we're not really interested in. What we're looking for is the first instance of an HttpContext. If we start from the bottom and work our way up, this seems to be the first time an HttpContext is present:
 
-```csharp
+```
 000000000dcce820 000007fedb704c8e System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
     PARAMETERS:
         this (0x000000000dcce8c0) = 0x00000000fff3fb20
@@ -198,7 +198,7 @@ This returns the full stack with a lot of frames that we're not really intereste
 
 Knowing that the HttpContext contains a reference to an HttpRequest, and that HttpRequest contains the RawUrl string value, we'll start digging in. Start out by dumping the HttpContext object using the !do command:
 
-```csharp
+```
 0:020> !do 0x00000000fffa6040
 
 Name:        System.Web.HttpContext
@@ -226,13 +226,13 @@ Fields:
 
 This contains a lot of fields (some of which I've snipped out). The interesting part however, is this line:
 
-```csharp
+```
 000007fedb898170  40010a8       20 ...m.Web.HttpRequest  0 instance 00000000fffa61f8 _request
 ```
 
 This contains a pointer to the HttpRequest instance. Let's try dumping that one:
 
-```csharp
+```
 0:020> !do 00000000fffa61f8 
 
 Name:        System.Web.HttpRequest
@@ -260,13 +260,13 @@ Fields:
 
 Once again there are a lot of fields that we don't care about. The interesting one is this one:
 
-```csharp
+```
 000007feef9fc358  400116b       c0        System.String  0 instance 00000000fffa64f0 _rawUrl
 ```
 
 Dumping the RawUrl property reveals the actual URL that made the request which eventually ended up causing a runaway thread:
 
-```csharp
+```
 0:020> !do 00000000fffa64f0 
 
 Name:        System.String
@@ -285,7 +285,7 @@ Fields:
 
 And there we go! The offending URL seems to be:
 
-```csharp
+```
 /Catalogs/SomeClient/Uge45/Image.ashx?PageNumber=1&ImageType=Thumb
 ```
 

@@ -59,4 +59,4 @@ And then just running the solution:
 
 And there you have it, in just a few quick short steps you've now fetched OrcaMDF and read the Products table, from the standard AdventureWorks 2008 R2 database, without even touching SQL Server.
 
-With OrcaMDF now being available on NuGet as well as with [a simple GUI](http://improve.dk/orcamdf-studio-release-feature-recap/), it really doesn't get any simpler to take it for a spin :)
+With OrcaMDF now being available on NuGet as well as with [a simple GUI](/orcamdf-studio-release-feature-recap/), it really doesn't get any simpler to take it for a spin :)

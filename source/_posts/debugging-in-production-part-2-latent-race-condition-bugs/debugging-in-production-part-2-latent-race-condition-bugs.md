@@ -36,23 +36,23 @@ private static readonly Dictionary<short, Dictionary<SettingDescription, Setting
 	new Dictionary<short, Dictionary<SettingDescription, SettingDescriptionContainer>>();
 ```
 
-As this code is being called quite a lot, it's written using an optimistic pattern that assumes the cache is populated. This is faster than checking if the cache is populated beforehand, or performing a TryGet(). I've previously blogged about [why you shouldn't defend against the improbable](http://improve.dk/defending-against-the-improbable/).
+As this code is being called quite a lot, it's written using an optimistic pattern that assumes the cache is populated. This is faster than checking if the cache is populated beforehand, or performing a TryGet(). I've previously blogged about [why you shouldn't defend against the improbable](/defending-against-the-improbable/).
 
 
 ## Dictionaries are Not Thread Safe
 
 Looking up the [MSDN article on thread-safe collections](http://msdn.microsoft.com/en-us/library/dd997305.aspx), you'll notice the following paragraph describes how the standard Dictionary collections are not thread-safe:
 
-<blockquote>The collection classes introduced in the .NET Framework 2.0 are found in the System.Collections.Generic namespace. These include List<T>, Dictionary<TKey, TValue>, and so on. These classes provide improved type safety and performance compared to the .NET Framework 1.0 classes. However, the .NET Framework 2.0 collection classes do not provide any thread synchronization; user code must provide all synchronization when items are added or removed on multiple threads concurrently.</blockquote>
+> The collection classes introduced in the .NET Framework 2.0 are found in the System.Collections.Generic namespace. These include List&lt;T&gt;, Dictionary&lt;TKey, TValue&gt;, and so on. These classes provide improved type safety and performance compared to the .NET Framework 1.0 classes. However, the .NET Framework 2.0 collection classes do not provide any thread synchronization; user code must provide all synchronization when items are added or removed on multiple threads concurrently.
 
 But is this the issue we're running into? As there are two dictionaries in action, either one of them could potentially be the culprit. If the partnerConfig.PartnerID value was the same there would be a somewhat higher chance of this really being the issue - but how can find out what PartnerID values were being passed in to the methods?
 
 
 ## Analyzing Method Parameters Using Windbg
 
-<p>Back in Windbg, for each of the threads we can run the !CLRStack command once again, but with the -p parameter. This doesn't just list the stack trace, but also all of the parameters for each frame.
+Back in Windbg, for each of the threads we can run the !CLRStack command once again, but with the -p parameter. This doesn't just list the stack trace, but also all of the parameters for each frame.
 
-```csharp
+```
 ~232s
 !CLRStack -p
 ```
@@ -61,7 +61,7 @@ Windbg5.png
 
 In the fifth frame, there's a value for the IPartnerConfig parameter:
 
-```csharp
+```
 iPaper.BL.Backend.Modules.Paper.Settings.SettingDescriptionCache.GetAllDescriptions(iPaper.BL.Backend.Infrastructure.PartnerConfiguration.IPartnerConfig)
 	PARAMETERS:
 		partnerConfig (0x00000000543ac650) = 0x0000000260a7bd98
@@ -69,7 +69,7 @@ iPaper.BL.Backend.Modules.Paper.Settings.SettingDescriptionCache.GetAllDescripti
 
 The left side value is the local memory address of the pointer itself whilst the right side is the memory location where the actual PartnerConfig instance is stored. By issuing the do (dump object) command, we can inspect the value itself:
 
-```csharp
+```
 !do 0x0000000260a7bd98
 ```
 
