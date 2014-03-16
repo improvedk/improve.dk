@@ -93,7 +93,7 @@ string totalConnection = "Data Source=Mandalay;Failover Partner=Rio;Connect Time
 
 The first connects directly to MANDALAY, the principal database. The second one goes to RIO, the mirror. And the last one is the mirror enabled connection string that combines the two. The principal should respond and act like any other normal database. The mirror will throw an exception as we cannot interact with a datbase in recovery mode. The combined connection will automatically connect to the current principal database, whether it be MANDALAY or RIO.
 
-To detect a broken connection quickly, I connect to the databases every 250ms and display a green bar if the connection succeeded (and an UPDATE & SELECT went well), and red if any kind of exception arose. To detect a connection timeout in a timely fashion, I'm using my [QuickOpen](http://improve.dk/blog/2008/03/10/controlling-sqlconnection-timeouts) functionality. The SUM(SafetyStockLevel) is the result of a simple SELECT query being done on the database (the UPDATE modifies the same table, hence the changing values), just to make sure we're actually talking to a live database.
+To detect a broken connection quickly, I connect to the databases every 250ms and display a green bar if the connection succeeded (and an UPDATE & SELECT went well), and red if any kind of exception arose. To detect a connection timeout in a timely fashion, I'm using my [QuickOpen](/controlling-sqlconnection-timeouts/) functionality. The SUM(SafetyStockLevel) is the result of a simple SELECT query being done on the database (the UPDATE modifies the same table, hence the changing values), just to make sure we're actually talking to a live database.
 
 In the following test, it gets a bit more complicated to follow. I've got two SQL Server Profiler windows open, the left one is monitoring the MANDALAY server, the right one is monitoring the RIO server. The windows are so small you cannot see what actually gets logged, but that is the point. The only relevant data in this case is the bottom rightmost value, Rows:X that displays an increasing rowcount when the server is active.
 
@@ -155,4 +155,4 @@ While configuration is rather straight forward, mirroring will add complexity to
 
 ## Downloads
 
-[SQL_Mirroring_Tester.zip - Test solution](http://improve.dk/wp-content/uploads/2008/03/SQL_Mirroring_Tester.zip)
+[SQL_Mirroring_Tester.zip - Test solution](SQL_Mirroring_Tester.zip)

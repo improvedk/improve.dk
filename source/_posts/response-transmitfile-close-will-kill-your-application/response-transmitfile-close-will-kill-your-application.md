@@ -373,4 +373,4 @@ class LogService : System.ServiceProcess.ServiceBase
 
 ## Downloads
 
-[ResponseCloseTest.zip - Sample code](http://improve.dk/wp-content/uploads/2008/03/ResponseCloseTest.zip)
+[ResponseCloseTest.zip - Sample code](ResponseCloseTest.zip)

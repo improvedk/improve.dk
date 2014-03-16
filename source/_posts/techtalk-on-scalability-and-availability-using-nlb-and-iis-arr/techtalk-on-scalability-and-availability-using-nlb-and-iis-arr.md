@@ -7,6 +7,6 @@ As promised during my TechTalk today at Microsoft Denmark, here are the links to
 
 <!-- more -->
 
-Download [Speech_NLB_MSDK_TechTalk.zip](http://improve.dk/wp-content/uploads/2009/12/Speech_NLB_MSDK_TechTalk.rar) - Slides & code
+Download [Speech_NLB_MSDK_TechTalk.zip](Speech_NLB_MSDK_TechTalk.rar) - Slides & code
 
 I sincerely hope you enjoyed the presentation as much as I did. Either way, I'd appreciate your comments on [SpeakerRate](http://speakerrate.com/talks/1900-using-network-load-balancing-for-availability-scalability-microsoft-dk-techtalk) - Thanks :)

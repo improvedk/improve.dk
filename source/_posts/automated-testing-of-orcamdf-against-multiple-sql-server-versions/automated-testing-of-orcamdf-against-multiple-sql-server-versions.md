@@ -111,7 +111,7 @@ protected void RunDatabaseTest(DatabaseVersion version, Action<Database> test)
 }
 ```
 
-If a corresponding connection string hasn’t been declared in the configuration file, we abort the test and mark it as inconclusive – we simply weren’t able to run it given the current setup. Next up, ensureDatabaseIsSetup() runs the usual setup code (as detailed in the [earlier blog post](http://improve.dk/archive/2011/06/14/avoiding-regressions-in-orcamdf-by-system-testing.aspx)), though this time once per database versions, per fixture. Finally an OrcaMDF instance is created and passed onto the actual test as a parameter.
+If a corresponding connection string hasn’t been declared in the configuration file, we abort the test and mark it as inconclusive – we simply weren’t able to run it given the current setup. Next up, ensureDatabaseIsSetup() runs the usual setup code (as detailed in the [earlier blog post](/avoiding-regressions-in-orcamdf-by-system-testing)), though this time once per database versions, per fixture. Finally an OrcaMDF instance is created and passed onto the actual test as a parameter.
 
 ## Supporting different SQL Server feature versions
 

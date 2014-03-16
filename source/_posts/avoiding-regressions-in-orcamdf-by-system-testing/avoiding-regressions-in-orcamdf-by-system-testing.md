@@ -3,7 +3,7 @@ title: Avoiding Regressions in OrcaMDF by System Testing
 date: 2011-06-14
 tags: [.NET, SQL Server - OrcaMDF, Testing]
 ---
-As I continue to add new features & support for new data structures in [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression) increase. Especially so as I’m developing in a largely unknown field, given that I can’t plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
+As I continue to add new features & support for new data structures in [OrcaMDF](/introducing-orcamdf), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression) increase. Especially so as I’m developing in a largely unknown field, given that I can’t plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
 
 <!-- more -->
 

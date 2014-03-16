@@ -11,7 +11,7 @@ Returning strongly typed lists of objects instead of DataReaders/DataTables / an
 
 But it comes at a cost. Performance.
 
-I set out to test various different ways we could query our database and generate a strongly typed List with the results in it. I'm using the [standard AdventureWorks 2005 database](http://codeplex.com/SqlServerSamples) for my testing. For the actual profiling, I'll be using [my CodeProfiler class](http://improve.dk/blog/2008/04/16/profiling-code-the-easy-way) from a previous blogpost.
+I set out to test various different ways we could query our database and generate a strongly typed List with the results in it. I'm using the [standard AdventureWorks 2005 database](http://codeplex.com/SqlServerSamples) for my testing. For the actual profiling, I'll be using [my CodeProfiler class](/profiling-code-the-easy-way/) from a previous blogpost.
 
 I'll be using two different entities, Product and CompleteProduct:
 
@@ -326,7 +326,7 @@ Pros: *???*
 
 Cons: *???*
 
-Comments: *This is an enhanced version of the previous method that I've made. Explaining the inner workings is outside the scope of this particular topic so I'll have to explain it in my next post. For now, just imagine something very cool and sexy. UPDATE: [you can read about the method here](http://improve.dk/blog/2008/05/02/mapping-datareader-to-objects-using-reflection-emit).*
+Comments: *This is an enhanced version of the previous method that I've made. Explaining the inner workings is outside the scope of this particular topic so I'll have to explain it in my next post. For now, just imagine something very cool and sexy. UPDATE: [you can read about the method here](/mapping-datareader-to-objects-using-reflection-emit/).*
 
 ## Method #8 - SubSonic SqlQuery
 
@@ -479,6 +479,5 @@ Remember, even though there seems to be somewhat of a speed difference, the fast
 
 ## Downloads
 
-[PerformanceComparison_ReadingStronglyTyped.zip - Sample code](http://improve.dk/wp-content/uploads/2008/04/PerformanceComparison_ReadingStronglyTyped.zip)
-
-[Reading_Data_From_Database_Profiling.xslx - Profiling results](http://improve.dk/wp-content/uploads/2008/04/Reading_Data_From_Database_Profiling.xlsx)
+[PerformanceComparison_ReadingStronglyTyped.zip - Sample code](PerformanceComparison_ReadingStronglyTyped.zip)
+[Reading_Data_From_Database_Profiling.xslx - Profiling results](Reading_Data_From_Database_Profiling.xlsx)

@@ -102,4 +102,4 @@ List<Point2D> result = Dijkstra<Point2D>.ShortestPath(connections, mouse, target
 
 ## Downloads
 
-[Shortest_Path.zip - Sample code](http://improve.dk/wp-content/uploads/2008/05/Shortest_Path.zip)
+[Shortest_Path.zip - Sample code](Shortest_Path.zip)

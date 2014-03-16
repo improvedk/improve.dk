@@ -35,7 +35,7 @@ The very first byte determines the type of complex column that this is. For row-
 
 ## Complex columns containing forwarded record back pointers
 
-I’ve previously blogged about the [anatomy of a forwarded record back pointer](http://improve.dk/archive/2011/06/09/anatomy-of-a-forwarded-record-ndash-the-back-pointer.aspx). The important thing to note are the first two bytes in the pointer, marked with red:
+I’ve previously blogged about the [anatomy of a forwarded record back pointer](/anatomy-of-a-forwarded-record-ndash-the-back-pointer). The important thing to note are the first two bytes in the pointer, marked with red:
 
 image_163.png
 

@@ -3,7 +3,7 @@ title: Securing .NET Code
 date: 2008-04-16
 tags: [.NET, Conferences & Presenting]
 ---
-Time flies fast. Back in 2006, during my time as an [MSP](http://en.wikipedia.org/wiki/Microsoft_Student_Partners), I made a series of presentations on securing intellectual property in .NET code, resulting in my [Securing .NET Code](http://improve.dk/articles/dotnet/securing-dotnet-code/) article. Although it's about two years old, most points are still valid today, unfortunately.
+Time flies fast. Back in 2006, during my time as an [MSP](http://en.wikipedia.org/wiki/Microsoft_Student_Partners), I made a series of presentations on securing intellectual property in .NET code, resulting in my [Securing .NET Code](/securing-dotnet-code-article/) article. Although it's about two years old, most points are still valid today, unfortunately.
 
 <!-- more -->
 

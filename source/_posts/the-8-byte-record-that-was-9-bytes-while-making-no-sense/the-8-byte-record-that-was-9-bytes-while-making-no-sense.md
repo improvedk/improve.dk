@@ -7,7 +7,7 @@ Warning: this is a *select is (most likely) not broken, it’s just not working 
 
 <!-- more -->
 
-I’ve previously blogged about [how sparse-column-only table records didn’t have a null bitmap](http://improve.dk/archive/2011/07/15/the-null-bitmap-is-not-always-present-in-data-records.aspx), nor did they store the usual column count, except for the number of variable length columns. In my effort to test [OrcaMDF](https://github.com/improvedk/OrcaMDF), I added the following SQL code as the setup for a test:
+I’ve previously blogged about [how sparse-column-only table records didn’t have a null bitmap](/the-null-bitmap-is-not-always-present-in-data-records/), nor did they store the usual column count, except for the number of variable length columns. In my effort to test [OrcaMDF](https://github.com/improvedk/OrcaMDF), I added the following SQL code as the setup for a test:
 
 ```sql
 CREATE TABLE ScanAllNullSparse
@@ -24,7 +24,7 @@ image_21.png
 
 And this is where things start to get weird. The status bits (<span style="color: #ff0000;">red</span>) are all off, meaning there’s neither a null bitmap nor variable length columns in this record. The next two (<span style="color: #0000ff;">blue</span>) bytes indicate the end offset of the fixed length portion – right after those two very bytes, since we don’t have any fixed length data.
 
-At this point I’m not too sure what to expect next – after all, in the [previous blog post](http://improve.dk/archive/2011/07/15/the-null-bitmap-is-not-always-present-in-data-records.aspx) I showed how the column count wasn’t stored in all-sparse tables. Also, the status bits indicate that there’s no null bitmap. But what is the <span style="color: #008000;">green</span> 0x0100 (decimal value 1) bytes then? The only value I can see them possible indicating is the number of variable length columns. But why would that be present when the status bits indicate there are no such columns? Oh well, if that’s the case, then the next two (<span style="color: #ff0080;">pink</span>) bytes must be the offset array entry for the variable length column – having a value of 8 indicates that the variable length column has no value.
+At this point I’m not too sure what to expect next – after all, in the [previous blog post](/the-null-bitmap-is-not-always-present-in-data-records/) I showed how the column count wasn’t stored in all-sparse tables. Also, the status bits indicate that there’s no null bitmap. But what is the <span style="color: #008000;">green</span> 0x0100 (decimal value 1) bytes then? The only value I can see them possible indicating is the number of variable length columns. But why would that be present when the status bits indicate there are no such columns? Oh well, if that’s the case, then the next two (<span style="color: #ff0080;">pink</span>) bytes must be the offset array entry for the variable length column – having a value of 8 indicates that the variable length column has no value.
 
 But wait, if the variable length column doesn’t have a value, then what is that last (<span style="color: #d16349;">orange/brownish</span>) 0x00 byte doing at the very end? That’s beyond the offset marked in the (assumedly) variable length offset array… And if the <span style="color: #ff0080;">pink</span> bytes really is the variable length offset array – should it not indicate a complex column for the sparse vector? (though it would make sense for it not to do so, if it weren’t stored in the record).
 

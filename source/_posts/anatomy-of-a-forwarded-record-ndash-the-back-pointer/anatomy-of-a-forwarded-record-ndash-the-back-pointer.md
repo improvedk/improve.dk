@@ -3,7 +3,7 @@ title: Anatomy of a Forwarded Record & the Back Pointer
 date: 2011-06-09
 tags: [SQL Server - Internals]
 ---
-Earlier this week I provided some details on the [forwarding stub that’s left behind](http://improve.dk/archive/2011/06/07/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub.aspx) when a heap record is forwarded. In this post I’ll look at the second part of a forwarded record – the actual record to which the forwarding stub points.
+Earlier this week I provided some details on the [forwarding stub that’s left behind](/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub) when a heap record is forwarded. In this post I’ll look at the second part of a forwarded record – the actual record to which the forwarding stub points.
 
 <!-- more -->
 
@@ -11,7 +11,7 @@ Earlier this week I provided some details on the [forwarding stub that’s left 
 
 A forwarded record is just like a normal record, only with a couple of minor differences.
 
-For one, the record type (read from bits 1-3 of the first record status byte, see [the earlier post](http://improve.dk/archive/2011/06/07/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub.aspx)
+For one, the record type (read from bits 1-3 of the first record status byte, see [the earlier post](/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub)
 for details) is changed to BlobFragment, decimal value 4. This is important to note when scanning data – as all blob fragment records should be ignored. Instead, blob fragments will automatically be read whenever we scan the forwarding stub which points to the blob fragment. Scanning both directly would result in the records being read twice.
 
 The second part being that there’s an extra variable length column stored in the record. This last variable length column is not part of the table schema, it’s actually a special pointer called the back pointer. The back pointer points back to the <font color="#444444">forwarding stub that points to this record. This makes it easy to find the original record location, given the blob fragment location. When a blob fragment shrinks in size, we can easily check whether it might fit on the original page again. It’s also used if the blob fragment size increases and we therefore might need to allocate it on a new page. In that case, we’ll have to go back to the</font>forwarding stub and change it so it points to the new location.
@@ -20,7 +20,7 @@ The naïve implementation would be to just replace the blob fragment with anothe
 
 ## Parsing the forwarded record
 
-To check out the back pointer storage format, I’ve reused the table sample from the [last post](http://improve.dk/archive/2011/06/07/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub.aspx). Thus we’ve got a forwarding stub on page (1:114) pointing to the forwarded record on page (1:118). Let’s try and parse the forwarded record at (1:118:0):  
+To check out the back pointer storage format, I’ve reused the table sample from the [last post](/anatomy-of-a-forwarded-record-ndash-the-forwarding-stub). Thus we’ve got a forwarding stub on page (1:114) pointing to the forwarded record on page (1:118). Let’s try and parse the forwarded record at (1:118:0):  
 
 **<font color="#ff0000">3200</font><font color="#0000ff">0800</font><font color="#9b00d3">02000000</font><font color="#008000">0200</font>**<font color="#a5a5a5">**0002 009913a3 93 <snip 5.000 x 0x62> 00047200 00000100 0100**</font>
 

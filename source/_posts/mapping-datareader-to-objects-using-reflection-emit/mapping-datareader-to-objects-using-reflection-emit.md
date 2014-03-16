@@ -3,11 +3,11 @@ title: Mapping Datareader to Objects Using Reflection.Emit
 date: 2008-05-02
 tags: [.NET]
 ---
-I've previously written of how to automatically [map a DataTable into a strongly typed collection of objects](http://improve.dk/blog/2007/11/19/automatically-mapping-datatable-to-objects). There's a problem though, [it's not fast](http://improve.dk/blog/2008/04/30/performance-comparison-reading-data-from-the-database-strongly-typed)... I wanted to improve on it, and this is what I ended up with.
+I've previously written of how to automatically [map a DataTable into a strongly typed collection of objects](/automatically-mapping-datatable-to-objects/). There's a problem though, [it's not fast](/performance-comparison-reading-data-from-the-database-strongly-typed/)... I wanted to improve on it, and this is what I ended up with.
 
 <!-- more -->
 
-The original method relied heavily on reflection to set the values directly. Reflection's bad in regards of speed, mkay? But reflection is not necessarily evil, you can do great good with it. Now, the problem with the original method is that each field is set using reflection for each row, that's [number of fields] * [number of rows] fields being set using reflection, resulting in pretty poor performance. If we compare it to the [manual way](http://improve.dk/blog/2008/04/30/performance-comparison-reading-data-from-the-database-strongly-typed), there's obviously some kind of a gap. If we could just somehow, in a generic way, create mapper methods like we do manually...
+The original method relied heavily on reflection to set the values directly. Reflection's bad in regards of speed, mkay? But reflection is not necessarily evil, you can do great good with it. Now, the problem with the original method is that each field is set using reflection for each row, that's [number of fields] * [number of rows] fields being set using reflection, resulting in pretty poor performance. If we compare it to the [manual way](/performance-comparison-reading-data-from-the-database-strongly-typed/), there's obviously some kind of a gap. If we could just somehow, in a generic way, create mapper methods like we do manually...
 
 We'll have to create a DynamicMethod that takes in a DbDataReader, converts the current row to a generic type T. We'll call it MapDR, although it doesn't really matter what it's called.
 

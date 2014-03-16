@@ -3,7 +3,7 @@ title: Spawning Threads in ASP.NET Can Be Dangerous
 date: 2008-04-07
 tags: [.NET]
 ---
-In my [earlier blog post](http://improve.dk/blog/2008/03/29/response-transmitfile-close-will-kill-your-application) about the dangers of using Response.TransmitFile, I gave an example of a workaround involving spawning a new thread in the ASP.NET page. While this does solve the issue at hand, it presents us with a new way to kill our application even quicker than last.
+In my [earlier blog post](/response-transmitfile-close-will-kill-your-application/) about the dangers of using Response.TransmitFile, I gave an example of a workaround involving spawning a new thread in the ASP.NET page. While this does solve the issue at hand, it presents us with a new way to kill our application even quicker than last.
 
 <!-- more -->
 
@@ -75,4 +75,4 @@ This issue is relevant to all flavors of Windows and all versions of IIS & .NET.
 
 ## Downloads
 
-[CrashW3WP.zip - Sample code](http://improve.dk/wp-content/uploads/2008/04/CrashW3WP.zip)
+[CrashW3WP.zip - Sample code](CrashW3WP.zip)

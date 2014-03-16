@@ -3,7 +3,7 @@ title: How To Do URL Rewriting on IIS 7 Properly
 date: 2009-10-14
 tags: [.NET, IIS]
 ---
-One of my earlier blog posts, and the all time most popular one, was about [how to make URL rewriting on IIS 7 work like IIS 6](http://improve.dk/blog/2006/12/11/making-url-rewriting-on-iis7-work-like-iis6). While my method did provide a means to the goal, it's humiliatingly far from what I should've done. Since the old post is still the most visited post on my blog I feel obligated to write a followup on how to do proper url rewriting in IIS 7.
+One of my earlier blog posts, and the all time most popular one, was about [how to make URL rewriting on IIS 7 work like IIS 6](/making-url-rewriting-on-iis7-work-like-iis6/). While my method did provide a means to the goal, it's humiliatingly far from what I should've done. Since the old post is still the most visited post on my blog I feel obligated to write a followup on how to do proper url rewriting in IIS 7.
 
 <!-- more -->
 

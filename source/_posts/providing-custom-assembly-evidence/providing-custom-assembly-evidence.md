@@ -3,7 +3,7 @@ title: Providing Custom Assembly Evidence
 date: 2008-06-13
 tags: [.NET]
 ---
-I recently [mentioned](http://improve.dk/blog/2008/06/11/analyzing-assembly-evidence) the possibility of having an assembly provide custom evidence alongside the CLR provided evidence. Let's see how to do it.
+I recently [mentioned](/analyzing-assembly-evidence/) the possibility of having an assembly provide custom evidence alongside the CLR provided evidence. Let's see how to do it.
 
 <!-- more -->
 
@@ -87,7 +87,7 @@ If you load up the resulting assembly in Reflector, you'll see the attached evid
 
 reflector_evidence_2.jpg
 
-Now, if we [analyze the assembly evidence](http://improve.dk/blog/2008/06/11/analyzing-assembly-evidence) by loading the assembly and enumerating the assembly provided evidence like so:
+Now, if we [analyze the assembly evidence](/analyzing-assembly-evidence/) by loading the assembly and enumerating the assembly provided evidence like so:
 
 ```csharp
 al /target:library /evidence:MyEvidence.evidence /out:MyClass.dll MyClass.netmodule
@@ -99,4 +99,4 @@ analyzing_custom_evidence_2.jpg
 
 ## Trustworthiness
 
-[As mentioned earlier](http://improve.dk/blog/2008/06/11/analyzing-assembly-evidence), assembly provided evidence is inherently not trustworthy. There are however ways to secure it. We could use a public/private cryptosystem to sign the actual evidence. That way, anyone reading the evidence could verify the evidence providers signature and thus be sure that the entity linking the evidence into the assembly is trustworthy.
+[As mentioned earlier](/analyzing-assembly-evidence/), assembly provided evidence is inherently not trustworthy. There are however ways to secure it. We could use a public/private cryptosystem to sign the actual evidence. That way, anyone reading the evidence could verify the evidence providers signature and thus be sure that the entity linking the evidence into the assembly is trustworthy.

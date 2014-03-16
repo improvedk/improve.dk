@@ -36,7 +36,7 @@ XmlOutput will throw an InvalidOperationException in case an XmlDeclaration has 
 
 ## IDisposable
 
-Just as I [used IDisposable to easily write indented text](http://improve.dk/blog/2008/06/01/using-idispoable-to-write-indented-text), I've done the same to XmlOutput. For smaller bits of xml, it might cause more bloat than good - but it's optional when to use it. Using IDisposable will simply call EndWithin() in the Dispose method, making indented xml generation more readable.
+Just as I [used IDisposable to easily write indented text](/using-idispoable-to-write-indented-text/), I've done the same to XmlOutput. For smaller bits of xml, it might cause more bloat than good - but it's optional when to use it. Using IDisposable will simply call EndWithin() in the Dispose method, making indented xml generation more readable.
 
 ```csharp
 using (xo.Node("user").Within())
@@ -68,7 +68,7 @@ I started implementing it, but I kept running into walls after having thought it
 
 statemachine_2.jpg
 
-[XmlOutput_State_Machine.zip - Visio diagram](http://improve.dk/wp-content/uploads/2008/08/XmlOutput_State_Machine.zip)
+[XmlOutput_State_Machine.zip - Visio diagram](XmlOutput_State_Machine.zip)
 
 So basically, calling a Create method will return an IXmlOutputStartDocument which only supports creating a Node and creating an XmlDeclaration. If you create an XmlDeclaration, you'll get an IXmlOutputCanWriteFirstNode which only allows you to create a node as that's the only valid option (ignoring read-only operations). Continuing on, creating a Node at that point will return you an IXmlOutputInsideRootNode which again supports creating either sibling nodes, attributes or innertext. If you call InnerText at this point, we get to a blind alley at the IXmlOutputInsideRootNodeWithText which only allows creating attributes.
 

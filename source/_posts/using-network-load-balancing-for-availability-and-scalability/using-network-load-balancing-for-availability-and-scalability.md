@@ -60,4 +60,4 @@ Peter A. Bromberg on [Network Load Balancing, Session State and IP Affinity](htt
 
 ## Downloads
 
-[SimpleLoadTester.zip - Sample code](http://improve.dk/wp-content/uploads/2008/03/SimpleLoadTester.zip)
+[SimpleLoadTester.zip - Sample code](SimpleLoadTester.zip)

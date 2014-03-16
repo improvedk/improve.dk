@@ -3,7 +3,7 @@ title: Optimizing Single Instance Amazon S3 Delete Performance
 date: 2011-11-17
 tags: [.NET, Amazon Web Services]
 ---
-Once you’ve [made a mess](http://improve.dk/archive/2011/11/07/pushing-the-limits-of-amazon-s3-upload-performance.aspx) and you’ve now got millions of objects you need to delete, how do you do that as fast as possible?
+Once you’ve [made a mess](/pushing-the-limits-of-amazon-s3-upload-performance) and you’ve now got millions of objects you need to delete, how do you do that as fast as possible?
 
 <!-- more -->
 

@@ -251,7 +251,7 @@ shortlink4_2.jpg
 
 ## Downloads
 
-[short_link_code.zip - Sample solution](http://improve.dk/wp-content/uploads/2006/12/short_link_code.zip)
+[short_link_code.zip - Sample solution](short_link_code.zip)
 
 ## Improvements
 

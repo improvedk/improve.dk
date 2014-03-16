@@ -3,7 +3,7 @@ title: Watch Out For Implicit Uniqueidentifier Conversions
 date: 2011-04-26
 tags: [SQL Server - Optimization]
 ---
-I recently gave a presentations on the topic of [GUID usage](http://improve.dk/archive/2011/04/17/miracle-open-world-2011-follow-up.aspx) at [Miracle Open World](http://mow2011.dk/). After finishing off my last slide and opening to questions, one of the attendees told a story of how an implicit GUID conversion had resulted in index scans instead of index seeks.
+I recently gave a presentations on the topic of [GUID usage](/miracle-open-world-2011-follow-up/) at [Miracle Open World](http://mow2011.dk/). After finishing off my last slide and opening to questions, one of the attendees told a story of how an implicit GUID conversion had resulted in index scans instead of index seeks.
 
 <!-- more -->
 

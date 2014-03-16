@@ -71,4 +71,4 @@ maplistperf_2.jpg
 
 Obviously there's a performance hit - rather consistently, a factor of 10 -, but depending on the situation it is to be used in, mapping the objects by reflection may easily be a viable solution.
 
-[ConsoleApplication1.rar - Sample solution](http://improve.dk/wp-content/uploads/2007/11/ConsoleApplication1.rar)
+[ConsoleApplication1.rar - Sample solution](ConsoleApplication1.rar)

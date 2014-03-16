@@ -48,7 +48,7 @@ This gives us two records, the first one looking like this:
 
 image_85.png
 
-In a previous post I detailed how we [identify complex columns like sparse vectors](http://improve.dk/archive/2011/07/15/identifying-complex-columns-in-records.aspx), so I won’t go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
+In a previous post I detailed how we [identify complex columns like sparse vectors](/identifying-complex-columns-in-records/), so I won’t go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
 
 ## The sparse vector structure
 

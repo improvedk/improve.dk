@@ -3,7 +3,7 @@ title: The Null Bitmap is Not Always Present in Data Records
 date: 2011-07-15
 tags: [SQL Server - Internals]
 ---
-While [implementing sparse column support](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx) for [OrcaMDF](https://github.com/improvedk/OrcaMDF), I ran into a special condition that caught me by surprise – a data record with no null bitmap. Even [Paul Randal](http://www.sqlskills.com/BLOGS/PAUL/) mentioned that the null bitmap would *always* be present in data records in his [A SQL Server DBA myth a day: (6/30) three null bitmap myths](http://www.sqlskills.com/BLOGS/PAUL/post/A-SQL-Server-DBA-myth-a-day-(630)-three-null-bitmap-myths.aspx) post.
+While [implementing sparse column support](/sparse-column-storage-ndash-the-sparse-vector/) for [OrcaMDF](https://github.com/improvedk/OrcaMDF), I ran into a special condition that caught me by surprise – a data record with no null bitmap. Even [Paul Randal](http://www.sqlskills.com/BLOGS/PAUL/) mentioned that the null bitmap would *always* be present in data records in his [A SQL Server DBA myth a day: (6/30) three null bitmap myths](http://www.sqlskills.com/BLOGS/PAUL/post/A-SQL-Server-DBA-myth-a-day-(630)-three-null-bitmap-myths.aspx) post.
 
 <!-- more -->
 
@@ -27,7 +27,7 @@ DBCC PAGE (X, 1, 4359, 3)
 
 image_65.png
 
-The first two bytes contain the record status bits. Next two bytes contain the offset for the end of the fixed-length portion of the record – which is 4 as expected, since we have no non-sparse fixed-length columns. As shown in the *Record Attributes* output, the status bytes indicates that there’s no null bitmap, and sure enough, the next two bytes indicates the number of variable length columns. The remaining bytes contains the variable length offset array as well as the [sparse vector](http://improve.dk/archive/2011/07/15/sparse-column-storage-ndash-the-sparse-vector.aspx).
+The first two bytes contain the record status bits. Next two bytes contain the offset for the end of the fixed-length portion of the record – which is 4 as expected, since we have no non-sparse fixed-length columns. As shown in the *Record Attributes* output, the status bytes indicates that there’s no null bitmap, and sure enough, the next two bytes indicates the number of variable length columns. The remaining bytes contains the variable length offset array as well as the [sparse vector](/sparse-column-storage-ndash-the-sparse-vector/).
 
 ### Under what conditions does the data record not contain a null bitmap?
 

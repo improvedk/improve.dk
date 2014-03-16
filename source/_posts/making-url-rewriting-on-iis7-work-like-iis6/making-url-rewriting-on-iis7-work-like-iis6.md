@@ -7,7 +7,7 @@ Upgrading to IIS 7 should be rather transparent, unfortunately that is not the c
 
 <!-- more -->
 
-**UPDATE: Please see my [updated post](http://improve.dk/archive/2009/10/14/how-to-do-url-rewriting-on-iis-7-properly.aspx) on how to do proper URL rewriting using IIS 7.**
+**UPDATE: Please see my [updated post](/how-to-do-url-rewriting-on-iis-7-properly) on how to do proper URL rewriting using IIS 7.**
 
 I didn't really expect this to be a problem when I first requested http://localhost for the first time after setting up my site on IIS 7 (all default settings).
 

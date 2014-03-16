@@ -3,7 +3,7 @@ title: Bridging the Gap Between Smallint and Int
 date: 2011-05-19
 tags: [SQL Server - Optimization]
 ---
-Being a proponent of [carefully choosing your data types](http://improve.dk/archive/2011/05/17/wasted-bytes-add-up-consider-your-data-types-carefully.aspx), I’ve often longed for the [mediumint data type](http://dev.mysql.com/doc/refman/5.0/en/numeric-types.html) that MySQL has. Both smallint and int are signed data types, meaning their ranges are –32,768 to 32,767 for smallint and –2,147,483,648 to 2,147,483,647 for int. For most relational db schemas, positive identity values are used, meaning we’re looking at a possible 32,767 vs 2,147,483,647 values for smallint vs int. That’s a humongous difference, and it comes at a storage cost as well – 2 vs 4 bytes per column. If only there was something in between...
+Being a proponent of [carefully choosing your data types](/wasted-bytes-add-up-consider-your-data-types-carefully), I’ve often longed for the [mediumint data type](http://dev.mysql.com/doc/refman/5.0/en/numeric-types.html) that MySQL has. Both smallint and int are signed data types, meaning their ranges are –32,768 to 32,767 for smallint and –2,147,483,648 to 2,147,483,647 for int. For most relational db schemas, positive identity values are used, meaning we’re looking at a possible 32,767 vs 2,147,483,647 values for smallint vs int. That’s a humongous difference, and it comes at a storage cost as well – 2 vs 4 bytes per column. If only there was something in between...
 
 <!-- more -->
 

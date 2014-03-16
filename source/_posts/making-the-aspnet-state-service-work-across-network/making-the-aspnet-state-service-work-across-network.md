@@ -25,7 +25,7 @@ By default, the State Service will only allow local-to-machine connections. To a
 
 
 * All session objects must be serializable.
-* All IIS websites that are to share session state must have a common IIS application path (the [ID column in the sites list](http://improve.dk/viewimage/iisvalidobject)). I strongly recommend you look into the IIS7 [Shared Configuration](http://learn.iis.net/page.aspx/264/shared-configuration/) feature as it'll help you keep all the web servers IIS7 configuration in synch, including the application path.
+* All IIS websites that are to share session state must have a common IIS application path (the ID column in the sites list). I strongly recommend you look into the IIS7 [Shared Configuration](http://learn.iis.net/page.aspx/264/shared-configuration/) feature as it'll help you keep all the web servers IIS7 configuration in synch, including the application path.
 * All websites that are to share session state must have the same [<machineKey />](http://msdn.microsoft.com/en-us/library/ms998288.aspx) values so they're able to read one anothers sessions. You can [generate the keys online](http://aspnetresources.com/tools/keycreator.aspx).
 
 
