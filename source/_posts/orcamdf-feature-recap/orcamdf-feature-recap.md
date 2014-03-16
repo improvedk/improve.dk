@@ -3,7 +3,7 @@ title: OrcaMDF Feature Recap
 date: 2011-09-10
 tags: [SQL Server - OrcaMDF]
 ---
-Time flies – it’s been about four months since I originally [introduced my pet project, OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank). Since then, quite a lot has happened and OrcaMDF is somewhat more capable than when it started out. As a result I thought I’d provide a recap of what OrcaMDF is currently capable of, as well as what my plans are for the future.
+Time flies – it’s been about four months since I originally [introduced my pet project, OrcaMDF](/introducing-orcamdf). Since then, quite a lot has happened and OrcaMDF is somewhat more capable than when it started out. As a result I thought I’d provide a recap of what OrcaMDF is currently capable of, as well as what my plans are for the future.
 
 <!-- more -->
 
@@ -16,7 +16,6 @@ Remaining are Sort, FileHeader, DiffMap and MLMap pages. As MLMap and DiffMap us
 ## Data types
 
 I’ve been adding more and more data types to OrcaMDF, lately I’ve added support for parsing all of the LOB types except for XML. Currently supported data are:
-
 
 * bigint
 * binary
@@ -39,8 +38,7 @@ I’ve been adding more and more data types to OrcaMDF, lately I’ve added supp
 * varchar(x)
 * varchar(MAX)
 
-
-Adding support for further data types is relatively easy, it’s just a matter of analyzing the storage format and [implementing the ISqlType interface](http://improve.dk/archive/2011/05/05/implementing-data-types-in-orcamdf.aspx#related-results" target="_blank).
+Adding support for further data types is relatively easy, it’s just a matter of analyzing the storage format and [implementing the ISqlType interface](/implementing-data-types-in-orcamdf).
 
 ## Table & index structures
 

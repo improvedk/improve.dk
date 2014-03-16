@@ -17,9 +17,9 @@ Once again – thanks for attending! It was an extremely fast paced session but 
 
 You can download a rar file containing the slide deck, the SNSC tool and the demos here:
 
-[sqlbits_2011_09_30_knowing_the_internals.rar](http://improve.dk/wp-content/uploads/2011/10/sqlbits_2011_09_30_knowing_the_internals.rar)
+[sqlbits_2011_09_30_knowing_the_internals.rar](sqlbits_2011_09_30_knowing_the_internals.rar)
 
 If you saw my session, you might be interested in the following links (besides the internals related posts on this blog):
 
-[OrcaMDF on Github](https://github.com/improvedk/OrcaMDF" target="_blank)  
-[SNSC on Github](https://github.com/improvedk/SNSC" target="_blank)
+[OrcaMDF on Github](https://github.com/improvedk/OrcaMDF)  
+[SNSC on Github](https://github.com/improvedk/SNSC)

@@ -7,7 +7,7 @@ LOB types like varchar(MAX), nvarchar(MAX), varbinary(MAX) and xml suffer from s
 
 <!-- more -->
 
-Based on [this post](http://www.sqlservercentral.com/Forums/Topic1143500-391-1.aspx" target="_blank), and the fact that I’m working on LOB type support for [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank) at the moment, I decided to look into the LOB pointer storage structures.
+Based on [this post](http://www.sqlservercentral.com/Forums/Topic1143500-391-1.aspx), and the fact that I’m working on LOB type support for [OrcaMDF](/introducing-orcamdf) at the moment, I decided to look into the LOB pointer storage structures.
 
 ## Setup
 
@@ -74,7 +74,7 @@ I haven’t been able to make SQL Server store inline blob roots any larger than
 
 ## The [Textpointer] for LOB data
 
-SQL Server will *never* store a LOB pointer for the (MAX) LOB types, *unless* the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx" target="_blank) setting has been turned on. Let’s clear the table, set the setting, and then insert a new row like before:
+SQL Server will *never* store a LOB pointer for the (MAX) LOB types, *unless* the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx) setting has been turned on. Let’s clear the table, set the setting, and then insert a new row like before:
 
 ```sql
 TRUNCATE TABLE LOB
@@ -92,7 +92,7 @@ image_24.png
 
 ## Mixed pointer types
 
-As long as the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx" target="_blank) setting is off (which it is by default), the (MAX) LOB types will act exactly like a SLOB column, except for the fact that the data can be larger than 8000 bytes. Once we turn the setting on, the (MAX) LOB types start acting like classic LOB types. So does this mean that the tables will always either use inline blob roots or textpointers? No, if only it were that simple. Take a look at this sample:
+As long as the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx) setting is off (which it is by default), the (MAX) LOB types will act exactly like a SLOB column, except for the fact that the data can be larger than 8000 bytes. Once we turn the setting on, the (MAX) LOB types start acting like classic LOB types. So does this mean that the tables will always either use inline blob roots or textpointers? No, if only it were that simple. Take a look at this sample:
 
 ```sql
 CREATE TABLE TrickyLob
@@ -109,7 +109,7 @@ Running DBCC PAGE on the single allocated data page reveals that we now have thr
 
 image_28.png
 
-Lesson: When sp_tableoption is run to set the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx" target="_blank) setting, it only takes effect for newly added records. A table rebuild won’t affect existing inline blob roots either, only updates to existing records will rebuild the record and convert the inline blob root to a textpointers.
+Lesson: When sp_tableoption is run to set the [large value types out of row](http://msdn.microsoft.com/en-us/library/ms173530.aspx) setting, it only takes effect for newly added records. A table rebuild won’t affect existing inline blob roots either, only updates to existing records will rebuild the record and convert the inline blob root to a textpointers.
 
 ## Conclusion
 

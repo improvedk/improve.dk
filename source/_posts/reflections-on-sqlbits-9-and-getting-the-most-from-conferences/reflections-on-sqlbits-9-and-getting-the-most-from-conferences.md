@@ -13,7 +13,7 @@ What can I say, it’s an excellent conference. The price is very low compared t
 
 One of the really great things about SQLBits was the layout. There was no separate exhibition hall, instead, it was smack in the middle of the lunch and walkthrough area. This meant people constantly went by the exhibitor booths and generally had a ball in the common area.
 
-I presented a precon and a general session and I’m generally satisfied with the outcome. I look forward to receiving the feedback from SQLBits so I know how to create even better sessions next time! A special thanks goes out to [Simon Sabin](http://sqlblogcasts.com/blogs/simons/" target="_blank) who not only cheered me on to continue OrcaMDF back in April, but also pushed me to turn my internals session into a fully fledged precon.
+I presented a precon and a general session and I’m generally satisfied with the outcome. I look forward to receiving the feedback from SQLBits so I know how to create even better sessions next time! A special thanks goes out to [Simon Sabin](http://sqlblogcasts.com/blogs/simons/) who not only cheered me on to continue OrcaMDF back in April, but also pushed me to turn my internals session into a fully fledged precon.
 
 Now for a couple of observations and tips to get the most from the conferences you attend.
 
@@ -33,7 +33,7 @@ Not only will participation increase the chances of you going home satisfied, it
 
 148157_458200187635_524362635_5715992_6612638_n_2.jpg
 
-Wes Brown wrote an excellent piece on [plucking wallflowers](http://sqlserverio.com/2011/09/02/plucking_wallflowers/" target="_blank). I’ve attended quite a number of conferences so far, but never have I gotten as much out of them as I have this time at SQLBits. Why? I met people!
+Wes Brown wrote an excellent piece on [plucking wallflowers](http://sqlserverio.com/2011/09/02/plucking_wallflowers/). I’ve attended quite a number of conferences so far, but never have I gotten as much out of them as I have this time at SQLBits. Why? I met people!
 
 I went to the PASS Summit last year, not knowing anybody. I had a great time, but I didn’t meet very many people – all to the credit of myself. As most of us are, I’m an introvert – talking to strangers doesn’t come naturally to me. However, I know I should, so I try to do my best. At PASS I signed up for the excellent Inappropriate Sessions Meetup, a small community event where everyone seems to know each other. Not knowing anyone, it was a fun way for me to push some boundaries.
 
