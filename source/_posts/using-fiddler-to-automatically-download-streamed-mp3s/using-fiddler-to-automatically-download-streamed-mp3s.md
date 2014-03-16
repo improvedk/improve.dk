@@ -3,15 +3,15 @@ title: Using Fiddler to Automatically Download Streamed MP3s
 date: 2011-06-01
 tags: [.NET]
 ---
-Eric Lawrence’s [Fiddler](http://www.fiddler2.com/fiddler2/version.asp" target="_blank) has many uses. I use it every day for debugging our client/server interaction, caching behavior, etc. What many don’t realize is that Fiddler is also an excellent platform for scripting, enabling you to modify requests and responses as they go out and come back. I made a quick script to automatically download streamed MP3 files as they were played, naming them automatically from the ID3 information contained in them.
+Eric Lawrence’s [Fiddler](http://www.fiddler2.com/fiddler2/version.asp) has many uses. I use it every day for debugging our client/server interaction, caching behavior, etc. What many don’t realize is that Fiddler is also an excellent platform for scripting, enabling you to modify requests and responses as they go out and come back. I made a quick script to automatically download streamed MP3 files as they were played, naming them automatically from the ID3 information contained in them.
 
 <!-- more -->
 
-Before we get started, head on over and download the [FiddlerScript Editor](http://www.fiddler2.com/fiddler/fse.asp" target="_blank).
+Before we get started, head on over and download the [FiddlerScript Editor](http://www.fiddler2.com/fiddler/fse.asp).
 
 ## Parsing ID3 tags
 
-As I’m lazy, and most likely you are too, we’ll use the excellent TagLib Sharp library for parsing the ID3 information in the downloaded MP3 files. You can get the latest version (2.0.4.0 as of this writing) [from here](http://download.banshee.fm/taglib-sharp/" target="_blank).
+As I’m lazy, and most likely you are too, we’ll use the excellent TagLib Sharp library for parsing the ID3 information in the downloaded MP3 files. You can get the latest version (2.0.4.0 as of this writing) [from here](http://download.banshee.fm/taglib-sharp/).
 
 To gain access to the TagLib Sharp library from Fiddler, add a reference to it in the Fiddler Options dialog:
 

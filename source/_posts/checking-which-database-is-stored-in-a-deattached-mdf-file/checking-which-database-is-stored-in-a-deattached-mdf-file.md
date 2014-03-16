@@ -3,7 +3,7 @@ title: Checking Which Database is Stored in a Detached MDF File
 date: 2011-05-19
 tags: [.NET, SQL Server - OrcaMDF]
 ---
-Inspired by [this](http://stackoverflow.com/questions/6061510/any-way-to-quickly-tell-which-database-if-any-is-attached-to-a-mdf-file" target="_blank) question on StackOverflow, I’ve made a quick script to demonstrate how this might be done using [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank).
+Inspired by [this](http://stackoverflow.com/questions/6061510/any-way-to-quickly-tell-which-database-if-any-is-attached-to-a-mdf-file) question on StackOverflow, I’ve made a quick script to demonstrate how this might be done using [OrcaMDF](https://github.com/improvedk/OrcaMDF).
 
 <!-- more -->
 

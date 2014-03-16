@@ -3,7 +3,7 @@ title: Reverse Engineering SQL Server Page Headers
 date: 2011-05-19
 tags: [.NET, SQL Server - Internals]
 ---
-One of the first challenges I faced when starting out the development of [OrcaMDF](https://github.com/improvedk/OrcaMDF" target="_blank) was parsing page headers. We all know that [pages are basically split in two parts](http://improve.dk/archive/2009/03/26/deciphering-a-sql-server-data-page.aspx" target="_blank), the 96 byte header and the 8096 byte body of remaining bytes. Much has been written about headers and Paul Randal ([b](http://www.sqlskills.com/BLOGS/PAUL/" target="_blank)|[t](http://twitter.com/#!/paulrandal" target="_blank)) has a great post describing the [contents of the header](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-page.aspx" target="_blank) as well. However, though the contents have been described, I’ve been completely unable to find any kind of details on the storage format. What data types are the individual fields, and what’s the order? Oh well, we’ve always got DBCC PAGE.
+One of the first challenges I faced when starting out the development of [OrcaMDF](https://github.com/improvedk/OrcaMDF) was parsing page headers. We all know that [pages are basically split in two parts](http://improve.dk/archive/2009/03/26/deciphering-a-sql-server-data-page.aspx), the 96 byte header and the 8096 byte body of remaining bytes. Much has been written about headers and Paul Randal ([b](http://www.sqlskills.com/BLOGS/PAUL/)|[t](http://twitter.com/#!/paulrandal)) has a great post describing the [contents of the header](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-page.aspx) as well. However, though the contents have been described, I’ve been completely unable to find any kind of details on the storage format. What data types are the individual fields, and what’s the order? Oh well, we’ve always got DBCC PAGE.
 
 <!-- more -->
 
@@ -160,8 +160,8 @@ XdesID = "(" + BitConverter.ToInt16(header, 56) + ":" + BitConverter.ToInt32(hea
 GhostRecCnt = BitConverter.ToInt16(header, 58);
 ```
 
-You can also see the [full source of the header parsing at GitHub](https://github.com/improvedk/OrcaMDF/blob/master/src/OrcaMDF.Core/Engine/Pages/PageHeader.cs" target="_blank).
+You can also see the [full source of the header parsing at GitHub](https://github.com/improvedk/OrcaMDF/blob/master/src/OrcaMDF.Core/Engine/Pages/PageHeader.cs).
 
 ## Wan’t more?
 
-If this isn’t enough for you, you should go and [vote for one or more of my OrcaMDF related sessions](http://www.sqlpass.org/summit/2011/Speakers/SessionPreferencing.aspx?spid=245&p=1&preferred=False" target="_blank) at the PASS Summit.
+If this isn’t enough for you, you should go and [vote for one or more of my OrcaMDF related sessions](http://www.sqlpass.org/summit/2011/Speakers/SessionPreferencing.aspx?spid=245&p=1&preferred=False) at the PASS Summit.

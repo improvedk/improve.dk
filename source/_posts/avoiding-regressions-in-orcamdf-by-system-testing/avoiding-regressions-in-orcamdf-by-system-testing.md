@@ -3,13 +3,13 @@ title: Avoiding Regressions in OrcaMDF by System Testing
 date: 2011-06-14
 tags: [.NET, SQL Server - OrcaMDF, Testing]
 ---
-As I continue to add new features & support for new data structures in [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx" target="_blank), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression" target="_blank) increase. Especially so as I’m developing in a largely unknown field, given that I can’t plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
+As I continue to add new features & support for new data structures in [OrcaMDF](http://improve.dk/archive/2011/05/03/introducing-orcamdf.aspx), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression) increase. Especially so as I’m developing in a largely unknown field, given that I can’t plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
 
 <!-- more -->
 
 ## Unit testing
 
-[Unit testing](http://en.wikipedia.org/wiki/Unit_testing" target="_blank) is the process of testing the smallest parts of the code, which would be functions in object oriented programming. A sample test for the [SqlBigInt](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/SqlTypes/SqlBigInt.cs" target="_blank) data type parsing class could look like this:
+[Unit testing](http://en.wikipedia.org/wiki/Unit_testing) is the process of testing the smallest parts of the code, which would be functions in object oriented programming. A sample test for the [SqlBigInt](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/SqlTypes/SqlBigInt.cs) data type parsing class could look like this:
 
 ```csharp
 using System;
@@ -53,18 +53,16 @@ This tests the main entrypoints for the SqlBigInt class, testing for over/underf
 
 ## System testing
 
-On the other end of the spectrum, we have [system testing](http://en.wikipedia.org/wiki/System_testing" target="_blank). System testing seeks to test the system as a whole, largely ignoring the inner workings of either system, which merits a categorization as [black-box testing](http://en.wikipedia.org/wiki/Black_box_testing" target="_blank). In the case of OrcaMDF I’ve estimated that I can catch 90% of all regressions using just 10% of the time, compared to unit testing which would have the reverse properties. As such, it’s a great way to test during development, while allowing for the introduction of key unit & integration tests as necessary.
+On the other end of the spectrum, we have [system testing](http://en.wikipedia.org/wiki/System_testing). System testing seeks to test the system as a whole, largely ignoring the inner workings of either system, which merits a categorization as [black-box testing](http://en.wikipedia.org/wiki/Black_box_testing). In the case of OrcaMDF I’ve estimated that I can catch 90% of all regressions using just 10% of the time, compared to unit testing which would have the reverse properties. As such, it’s a great way to test during development, while allowing for the introduction of key unit & integration tests as necessary.
 
-Say I wanted to test the parsing of user table names in the [DatabaseMetaData](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/MetaData/DatabaseMetaData.cs" target="_blank) class, I could mock the values of the SysObjects list, while also mocking [MdfFile](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/MdfFile.cs" target="_blank) as that’s a require parameter for the constructor. To do that, I’d have to extract MdfFile into an interface and use a mocking framework on top of that.
+Say I wanted to test the parsing of user table names in the [DatabaseMetaData](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/MetaData/DatabaseMetaData.cs) class, I could mock the values of the SysObjects list, while also mocking [MdfFile](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/MdfFile.cs) as that’s a require parameter for the constructor. To do that, I’d have to extract MdfFile into an interface and use a mocking framework on top of that.
 
 Taking the system testing approach, I’m instead performing the following workflow:
 
-
-* <span style="font-family: 'Lucida Sans Unicode';">Connect to a running SQL Server.</span>
-* <span style="font-family: 'Lucida Sans Unicode';">Create test schema in the fixture setup.</span>
-* <span style="font-family: 'Lucida Sans Unicode';">Detach the database.</span>
-* <span style="font-family: 'Lucida Sans Unicode';">Run OrcaMDF on the detached .mdf file and validate the results.</span>
-
+* Connect to a running SQL Server.
+* Create test schema in the fixture setup.
+* Detach the database.
+* Run OrcaMDF on the detached .mdf file and validate the results.
 
 A sample test, creating two user tables and validating the output from the DatabaseMetaData, looks like this:
 

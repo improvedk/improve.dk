@@ -3,7 +3,7 @@ title: Saving Space by Storing Decimal Values in Integer Data Types
 date: 2011-05-31
 tags: [SQL Server - Internals]
 ---
-I recently stumbled upon a [question on Stack Overflow](http://stackoverflow.com/questions/6015605/design-question-on-storing-meteorological-data-on-sql-server-2008/6016237#6016237" target="_blank) on how best to reduce their data size as it’s growing out of hand. As the original author hasn’t replied back yet (as of writing this post, I’m making some assumptions on the scenario – so take it as an abstract scenario). The basic scenario is that they have a number of measuring stations, each one of those containing a lot of equipment reporting back to a SQL Server in a schema like the following abstract:
+I recently stumbled upon a [question on Stack Overflow](http://stackoverflow.com/questions/6015605/design-question-on-storing-meteorological-data-on-sql-server-2008/6016237#6016237) on how best to reduce their data size as it’s growing out of hand. As the original author hasn’t replied back yet (as of writing this post, I’m making some assumptions on the scenario – so take it as an abstract scenario). The basic scenario is that they have a number of measuring stations, each one of those containing a lot of equipment reporting back to a SQL Server in a schema like the following abstract:
 
 <!-- more -->
 

@@ -3,7 +3,7 @@ title: Bridging the Gap Between Smallint and Int
 date: 2011-05-19
 tags: [SQL Server - Optimization]
 ---
-Being a proponent of [carefully choosing your data types](http://improve.dk/archive/2011/05/17/wasted-bytes-add-up-consider-your-data-types-carefully.aspx" target="_blank), I’ve often longed for the [mediumint data type](http://dev.mysql.com/doc/refman/5.0/en/numeric-types.html" target="_blank) that MySQL has. Both smallint and int are signed data types, meaning their ranges are –32,768 to 32,767 for smallint and –2,147,483,648 to 2,147,483,647 for int. For most relational db schemas, positive identity values are used, meaning we’re looking at a possible 32,767 vs 2,147,483,647 values for smallint vs int. That’s a humongous difference, and it comes at a storage cost as well – 2 vs 4 bytes per column. If only there was something in between...
+Being a proponent of [carefully choosing your data types](http://improve.dk/archive/2011/05/17/wasted-bytes-add-up-consider-your-data-types-carefully.aspx), I’ve often longed for the [mediumint data type](http://dev.mysql.com/doc/refman/5.0/en/numeric-types.html) that MySQL has. Both smallint and int are signed data types, meaning their ranges are –32,768 to 32,767 for smallint and –2,147,483,648 to 2,147,483,647 for int. For most relational db schemas, positive identity values are used, meaning we’re looking at a possible 32,767 vs 2,147,483,647 values for smallint vs int. That’s a humongous difference, and it comes at a storage cost as well – 2 vs 4 bytes per column. If only there was something in between...
 
 <!-- more -->
 
@@ -39,7 +39,7 @@ And querying works like normal as well:
 SELECT * FROM ThreeByteInt
 ```
 
-[<img class="alignnone size-full wp-image-2195" alt="image_2" src="http://improve.dk/wp-content/uploads/2011/05/image_23.png" width="170" height="165" />](http://improve.dk/wp-content/uploads/2011/05/image_23.png)
+image_23.png
 
 ## Scans ahoy!
 
@@ -50,11 +50,11 @@ SELECT * FROM ThreeByteInt WHERE MediumInt = 1500
 SELECT * FROM ThreeByteInt WHERE MediumInt = 0x0005DC
 ```
 
-[<img class="alignnone size-full wp-image-2196" alt="image_4" src="http://improve.dk/wp-content/uploads/2011/05/image_41.png" width="428" height="299" />](http://improve.dk/wp-content/uploads/2011/05/image_41.png)
+image_41.png
 
 They both contain a predicate looking for a value of 1500, one written as an integer constant, the other as a hex constant. One is causing a scan, the other is using a seek. Taking a closer look at the scan reveals an IMPLICIT_CONVERT which renders are index useless and thus causing the scan:
 
-[<img class="alignnone size-full wp-image-2197" alt="image_6" src="http://improve.dk/wp-content/uploads/2011/05/image_61.png" width="340" height="485" />](http://improve.dk/wp-content/uploads/2011/05/image_61.png)
+image_61.png
 
 The easiest way of avoiding this is just to replace the implicit conversion with an explicit cast in the query:
 
@@ -62,13 +62,13 @@ The easiest way of avoiding this is just to replace the implicit conversion with
 SELECT * FROM ThreeByteInt WHERE MediumInt = CAST(1500 as binary(3))
 ```
 
-[<img class="alignnone size-full wp-image-2198" alt="image_8" src="http://improve.dk/wp-content/uploads/2011/05/image_81.png" width="610" height="152" />](http://improve.dk/wp-content/uploads/2011/05/image_81.png)
+image_81.png
 
 ## Unsigned integers & overflow
 
 Whereas smallint, int and bigint are all signed integer types (the ability to have negative values), tinyint is not. Tinyint is able to store values in the 0-255 range. Had it been a signed type, it would be able to handle values in the –128 to 127 range. Just like tinyint, binary(3)/mediumint is an unsigned type, giving us a range of 0 to 16,777,215.
 
-Most developers & DBAs have experienced [integer overflow](http://en.wikipedia.org/wiki/Integer_overflow" target="_blank) at some point, usually causing havoc in the application. In short, an overflow occurs when you assign a value larger or smaller than what the data type can handle. In our case, that might be –1 or 16,777,216. We can easily demonstrate what’s happening by casting an integer to binary(3) and back to int again like so:
+Most developers & DBAs have experienced [integer overflow](http://en.wikipedia.org/wiki/Integer_overflow) at some point, usually causing havoc in the application. In short, an overflow occurs when you assign a value larger or smaller than what the data type can handle. In our case, that might be –1 or 16,777,216. We can easily demonstrate what’s happening by casting an integer to binary(3) and back to int again like so:
 
 ```sql
 SELECT
@@ -91,7 +91,7 @@ SELECT
 	CAST(CAST(33554432 AS binary(3)) AS int)
 ```
 
-[<img class="alignnone size-full wp-image-2200" alt="image_10" src="http://improve.dk/wp-content/uploads/2011/05/image_101.png" width="362" height="111" />](http://improve.dk/wp-content/uploads/2011/05/image_101.png)
+image_101.png
 
 ## Working with binary(3) on the client side
 
