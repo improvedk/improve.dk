@@ -29,8 +29,8 @@ SELECT
 Result:
 
 ```sql
-Seed	Increment	CurrentIdentity
-2		5			17
+Seed    Increment    CurrentIdentity
+2       5            17
 ```
 
 An alternative way is to query the [sys.identity_columns](http://technet.microsoft.com/en-us/library/ms187334.aspx) system view for the same values. Note that the sys.columns view (of which sys.identity_columns inherit) has an object_id column specifying the object ID of the table to which the column belongs. Thus we'll have to apply a predicate filtering away any columns not belonging to the desired table, tblCars in this example.
@@ -49,8 +49,8 @@ WHERE
 Result:
 
 ```sql
-Seed	Increment	CurrentIdentity
-2		5			17
+Seed    Increment   CurrentIdentity
+2       5           17
 ```
 
 A third way of finding the current identity value is to use the [DBCC CHECKIDENT](http://technet.microsoft.com/en-us/library/ms176057.aspx) function:
@@ -109,8 +109,8 @@ FROM
 Result:
 
 ```sql
-MaximumIdentity	MinimumIdentity
-27				22
+MaximumIdentity MinimumIdentity
+27              22
 ```
 
 ## Changing the identity increment value

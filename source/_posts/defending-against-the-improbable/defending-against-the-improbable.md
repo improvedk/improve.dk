@@ -77,12 +77,10 @@ Console.WriteLine("Unsafe: " + unsafeLocalTime.TotalSeconds);
 
 And the results?
 
-<blockquote>
-Safe: 4,211061  
-Unsafe: 4,9368481  
+> Safe: 4,211061  
+> Unsafe: 4,9368481  
   
-Conclusion: Unsafe is 17% slower than safe.
-</blockquote>
+> Conclusion: Unsafe is 17% slower than safe.
 
 Interestingly the defensive method actual performs the best! It's easy to conclude that throwing the exception is somewhat more expensive than hitting the IO layer to check for the files existance.
 
@@ -122,12 +120,10 @@ Console.WriteLine("Unsafe: " + unsafeShareTime.TotalSeconds);
 
 The results?
 
-<blockquote>
-Safe: 4,1287161  
-Unsafe: 3,1327967  
+> Safe: 4,1287161  
+> Unsafe: 3,1327967  
   
-Conclusion: Unsafe is 25% faster than safe.
-</blockquote>
+> Conclusion: Unsafe is 25% faster than safe.
 
 ## As usual - it depends!
 

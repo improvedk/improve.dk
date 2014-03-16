@@ -29,12 +29,10 @@ I ended up with the following command for mirroring the directories using roboco
 robocopy \\SourceServer\Share \\DestinationServer\Share /MIR /FFT /Z /XA:H /W:5
 ```
 
-
   * /MIR specifies that robocopy should mirror the source directory and the destination directory. Beware that this may delete files at the destination.
   * /FFT uses fat file timing instead of NTFS. This means the granularity is a bit less precise. For across-network share operations this seems to be much more reliable - just don't rely on the file timings to be completely precise to the second.
   * /Z ensures robocopy can resume the transfer of a large file in mid-file instead of restarting.
   * /XA:H makes robocopy ignore hidden files, usually these will be system files that we're not interested in.
   * /W:5 reduces the wait time between failures to 5 seconds instead of the 30 second default.
-
 
 The robocopy script can be setup as a simply Scheduled Task that runs daily, hourly, weekly etc. Note that robocopy also contains a switch that'll make robocopy monitor the source for changes and invoke the synchronization script each time a configurable number of changes has been made. This may work in your scenario, but be aware that robocopy will not just copy the changes, it will scan the complete directory structure just like a normal mirroring procedure. If there's a lot of files & directories, this may hamper performance.

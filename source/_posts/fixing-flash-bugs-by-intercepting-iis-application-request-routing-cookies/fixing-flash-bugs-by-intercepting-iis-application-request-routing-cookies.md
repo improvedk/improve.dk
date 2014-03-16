@@ -152,7 +152,7 @@ namespace iPaper.Web.ArrCookieRestorer
 
 Once you've compiled the HttpModule we need to install it on the IIS ARR machine. On a default installation of IIS ARR you'll have your rewrite rules as global rules at the IIS-level. However, if you install the HttpModule at the IIS level you'll get the following exception on all requests:
 
-<blockquote>The virtual path 'null' maps to another application, which is not allowed root</blockquote>
+> The virtual path 'null' maps to another application, which is not allowed root
 
 Apparently [it's a bug](http://forums.iis.net/t/1162754.aspx) in IIS 7.0 on Windows Server 2008 which has been fixed in IIS 7.5 on Windows Server 2008 R2. As I'm still running a vanilla 2008 and IIS 7.0, I had to get around it by moving the rewrite rules into the default website - which code runs for all requests.
 

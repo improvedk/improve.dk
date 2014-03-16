@@ -47,5 +47,5 @@ static void Main(string[] args)
 
 Result:
 
-<blockquote>Width: 500  
-Height: 375</blockquote>
+> Width: 500  
+> Height: 375

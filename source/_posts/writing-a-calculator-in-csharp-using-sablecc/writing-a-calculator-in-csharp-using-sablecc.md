@@ -11,13 +11,13 @@ Writing a calculator is a simple task - just add nine buttons labeled 1-9 and ad
 25-37+2*(1.22+cos(5))*sin(5)*2+5%2*3*sqrt(5+2)
 ```
 
-[According to Google](http://www.google.dk/search?rlz=1C1CHMG_daDK293DK303&sourceid=chrome&ie=UTF-8&q=25-37%2B2*(1.22%2Bcos(5))*sin(5)*2%2B5%252*3*sqrt(5%2B2)) the result is -9.83033875. Some of the tricky subjects we'll have to handle is [operator precedence](http://en.wikipedia.org/wiki/Order_of_operations) (multiplication before addition etc), nested expressions (2*1.22+cos(5) != 2*(1.22+cos(5))) and [associativity](http://en.wikipedia.org/wiki/Associativity) (5+7 == 7+5 & 7-5 != 5-7 etc).
+[According to Google](http://www.google.dk/search?rlz=1C1CHMG_daDK293DK303&sourceid=chrome&ie=UTF-8&q=25-37%2B2*%281.22%2Bcos%285%29%29*sin%285%29*2%2B5%252*3*sqrt%285%2B2%29) the result is -9.83033875. Some of the tricky subjects we'll have to handle is [operator precedence](http://en.wikipedia.org/wiki/Order_of_operations) (multiplication before addition etc), nested expressions (2\*1.22+cos(5) != 2\*(1.22+cos(5))) and [associativity](http://en.wikipedia.org/wiki/Associativity) (5+7 == 7+5 & 7-5 != 5-7 etc).
 
 ## Parsing the input using SableCC
 
 Before doing any calculations, we need to parse the input expression so we have an in-memory representation of the input. We need to have the input represented in the form of an [abstract syntax tree](http://en.wikipedia.org/wiki/Abstract_syntax_tree) that defines the order of operations and allows us to traverse the different parts of the expression individually. To perform this task, we'll be using [SableCC](http://sablecc.org/).
 
-<blockquote>SableCC is a parser generator which generates fully featured object-oriented frameworks for building compilers, interpreters and other text parsers. In particular, generated frameworks include intuitive strictly-typed abstract syntax trees and tree walkers. SableCC also keeps a clean separation between machine-generated code and user-written code which leads to a shorter development cycle.</blockquote>
+> SableCC is a parser generator which generates fully featured object-oriented frameworks for building compilers, interpreters and other text parsers. In particular, generated frameworks include intuitive strictly-typed abstract syntax trees and tree walkers. SableCC also keeps a clean separation between machine-generated code and user-written code which leads to a shorter development cycle.
 
 In short, SableCC can be used to automatically generate the parser code that's used in any compiler, as well as in a lot of other cases where input needs to be parsed - like in this case. SableCC itself is written in Java by [Etienne M. Gagnon](http://www.labunix.uqam.ca/~gagnon_et/en/) and the [source code](http://sablecc.org/browser/src) is freely available.
 
@@ -185,7 +185,7 @@ unary {-> exp}
 	;
 ```
 
-The simplest of all expressions is the unary **number** expression that defines a numeric constant. The number expression is mapped into a new AST node of the type exp.number, having the actual number as a parameter. The **sqrt**, **cos** and **sin** functions all define the input as the function name and the parameter expression enclosed in parentheses. Finally we define the **{paren}** unary function which is an arbitrary expression enclosed in parentheses. This gets mapped into the exp.paren AST type, taking the arbitrary expression as a parameter. The {paren} function allows us to differentiate between expressions like "5*2-7" and "5*(2-7)".
+The simplest of all expressions is the unary **number** expression that defines a numeric constant. The number expression is mapped into a new AST node of the type exp.number, having the actual number as a parameter. The **sqrt**, **cos** and **sin** functions all define the input as the function name and the parameter expression enclosed in parentheses. Finally we define the **{paren}** unary function which is an arbitrary expression enclosed in parentheses. This gets mapped into the exp.paren AST type, taking the arbitrary expression as a parameter. The {paren} function allows us to differentiate between expressions like "5\*2-7" and "5\*(2-7)".
 
 ```
 exp_list {-> exp*}
@@ -194,7 +194,7 @@ exp_list {-> exp*}
 	;
 ```
 
-The final production is what allows us to chain expressions. Without the **exp_list** production only single operations would be allowed (5+2, 3*7 etc), not chains of expressions (5+2+3, 5*2+3 etc). **exp_list {-> exp*}** defines that the exp_list production maps into a list of exp's in the AST.
+The final production is what allows us to chain expressions. Without the **exp_list** production only single operations would be allowed (5+2, 3\*7 etc), not chains of expressions (5+2+3, 5\*2+3 etc). **exp_list {-> exp\*}** defines that the exp_list production maps into a list of exp's in the AST.
 
 Anyone having done functional programming will recognize the [tail recursion](http://en.wikipedia.org/wiki/Tail_recursion) going on here. If there's only a single expression, we map it into a list of expressions containing just that one expression. If there's a single expression and a list of expressions following it (which may be one or more expressions), we map it into a list of expressions containing the first expression as well as the rest of the expressions represented by the tail parameter.
 
@@ -203,10 +203,10 @@ Anyone having done functional programming will recognize the [tail recursion](ht
 Once we've defined the grammar, we're ready to run the **simplecalc_sable** bat file, hopefully resulting in the following output:
 
 ```
-D:Webmentor ProjekterEclipse ProjectsSableCC>simplecalc_sable -d generated -t c
+D:\Webmentor Projekter\Eclipse Projects\SableCC\>simplecalc_sable -d generated -t c
 sharp simplecalc.sablecc
 
-D:Webmentor ProjekterEclipse ProjectsSableCC>java -jar "C:Program FilesSabl
+D:\Webmentor Projekter\Eclipse Projects\SableCC\>java -jar "C:Program FilesSabl
 eCCsablecc-3-beta.3.altgen.20041114libsablecc.jar" -d generated -t csharp sim
 plecalc.sablecc
 
@@ -372,7 +372,7 @@ simplecalc_properties_2.jpg
 
 The program tries to open the file and then instantiates the SableCC auto generated [lexer](http://en.wikipedia.org/wiki/Lexical_analysis) and [parser](http://en.wikipedia.org/wiki/Parsing).
 
-Now let's make a new file called **test.ss** and paste the following expression into it: **25-37+2*(1.22+cos(5))*sin(5)*2+5%2*3*sqrt(5+2)**. If you run the application at this point, you should see an output like the following:
+Now let's make a new file called **test.ss** and paste the following expression into it: **25-37+2\*(1.22+cos(5))\*sin(5)\*2+5%2\*3\*sqrt(5+2)**. If you run the application at this point, you should see an output like the following:
 
 simplecalc_ast_2.jpg
 
@@ -542,7 +542,7 @@ public override void OutASubExp(ASubExp node)
 }
 ```
 
-The non associative opreators need to first pop one number and store it in a temporary variable. The reason we need to do this is that we're working with a [FIFO](http://en.wikipedia.org/wiki/FIFO_(computing))stack, meaning the second number will not be the topmost on the stack and thus we can't perform the calculation in a single expression.
+The non associative opreators need to first pop one number and store it in a temporary variable. The reason we need to do this is that we're working with a [FIFO](http://en.wikipedia.org/wiki/FIFO_%28computing%29) stack, meaning the second number will not be the topmost on the stack and thus we can't perform the calculation in a single expression.
 
 Now that we've made the AstCalculator class we just need to modify the main method so it runs the calculator.
 
