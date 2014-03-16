@@ -8,4 +8,4 @@ It's been a long day, and I'm finally on my way home from Copenhagen to Aarhus. 
 <!-- more -->
 
 Both slides, demos and source samples are available on Github:  
-[https://github.com/improvedk/Presentation-TopXSQLServerDeveloperMIstakes](https://github.com/improvedk/Presentation-TopXSQLServerDeveloperMIstakes" target="_blank)
+https://github.com/improvedk/Presentation-TopXSQLServerDeveloperMIstakes

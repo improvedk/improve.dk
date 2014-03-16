@@ -3,7 +3,7 @@ title: Where Does SQL Server Store the Source for Stored Procedures?
 date: 2012-08-27
 tags: [SQL Server - Internals, SQL Server - OrcaMDF]
 ---
-At the moment I’m working on extending [OrcaMDF Studio](https://github.com/improvedk/OrcaMDF" target="_blank) to not only list base tables, DMVs and tables, but also stored procedures. That’s easy enough, we just need to query sys.procedures – or that is, the sys.sysschobjs base table, since the sys.procedures DMV isn’t available when SQL Server isn’t running.
+At the moment I’m working on extending [OrcaMDF Studio](https://github.com/improvedk/OrcaMDF) to not only list base tables, DMVs and tables, but also stored procedures. That’s easy enough, we just need to query sys.procedures – or that is, the sys.sysschobjs base table, since the sys.procedures DMV isn’t available when SQL Server isn’t running.
 
 <!-- more -->
 
@@ -173,7 +173,7 @@ WHERE
 	o.type IN ('P','V','X','FN','IF','TF')
 ```
 
-Bummer. It doesn’t use object_definition, but instead another internal function in the form of OpenRowset(TABLE SQLSRC, o.id, 0). I’m not one to give up easily though – I’ve previously [reverse engineered the OpenRowset(TABLE RSCPROP)](http://improve.dk/archive/2011/07/13/exploring-the-sys-system_internals_partition_columns-ti-field.aspx" target="_blank) function.
+Bummer. It doesn’t use object_definition, but instead another internal function in the form of OpenRowset(TABLE SQLSRC, o.id, 0). I’m not one to give up easily though – I’ve previously [reverse engineered the OpenRowset(TABLE RSCPROP)](/exploring-the-sys-system_internals_partition_columns-ti-field) function.
 
 Let’s take a different approach to the problem. Everything in SQL Server is stored on 8KB pages in a fixed format. As the procedures aren’t encrypted, they must be stored in clear text somewhere in the database – we just don’t know where. Let’s detach the database and crack open a hex editor (I highly recommend HxD):
 
@@ -210,7 +210,7 @@ select * from sys.sysobjects where id = 60
 
 image_24.png
 
-And all of a sudden, the hunt is on! Let’s have a look at the contents of sys.sysobjvalues. Note that before you can select from this table, you’ll have to connect using a [dedicated administrator connection](http://msdn.microsoft.com/en-us/library/ms189595.aspx" target="_blank), seeing as it’s an internal base table:
+And all of a sudden, the hunt is on! Let’s have a look at the contents of sys.sysobjvalues. Note that before you can select from this table, you’ll have to connect using a [dedicated administrator connection](http://msdn.microsoft.com/en-us/library/ms189595.aspx), seeing as it’s an internal base table:
 
 ```sql
 select * from sys.sysobjvalues
@@ -248,4 +248,4 @@ inner join
 
 image_34.png
 
-Want to see more stuff like this? Don't miss my [full-day precon at SQL Saturday #162 in Cambridge, UK](http://improve.dk/archive/2012/07/18/presenting-at-sqlsaturday-162-in-cambridge.aspx" target="_blank) (Friday, September 7th), or my [Revealing the Magic session at Bleeding Edge 2012](http://improve.dk/archive/2012/08/26/presenting-at-bleeding-edge-in-slovenia.aspx" target="_blank) in Laško, Slovenia (October 23-24th)!
+Want to see more stuff like this? Don't miss my [full-day precon at SQL Saturday #162 in Cambridge, UK](/presenting-at-sqlsaturday-162-in-cambridge) (Friday, September 7th), or my [Revealing the Magic session at Bleeding Edge 2012](/presenting-at-bleeding-edge-in-slovenia) in Laško, Slovenia (October 23-24th)!
