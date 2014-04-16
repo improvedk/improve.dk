@@ -46,11 +46,11 @@ Whereas date only stores the date, datetime also stores a time factor. Datetime 
 
 All time values are actually stored in the same integer time value, so to access the individual values, we'll need to perform some division & modulus.
 
-Part | Calculation
----- | -----------
-Hours | X / 300 / 60 / 60
-Minutes | X / 300 / 60 % 60
-Seconds | X / 300 % 60
+Part         | Calculations
+------------ | -----------
+Hours        | X / 300 / 60 / 60
+Minutes      | X / 300 / 60 % 60
+Seconds      | X / 300 % 60
 Milliseconds | X % 300 * 10d / 3d
 
 ```csharp
@@ -88,7 +88,7 @@ You can see the [relevant tests here](https://github.com/improvedk/OrcaMDF/blob/
 Smalldatetime is brilliant when you need to store a date with limited range (~1900 - ~2079) and a precision down to one second. For most purposes, a time precision of one second is plenty, and we save a lot of space by limiting the precision and date range. A smalldatetime value takes up just 4 bytes, the first two being the number of minutes since midnight, and the last two being the number of days since the default values of 1900-1-1. The math processing done is the same as with datetime, though at a smaller scale.
 
 Part    | Calculation
-----    | -----------
+------- | -----------
 Hours   | X / 60
 Minutes | X % 60
 
