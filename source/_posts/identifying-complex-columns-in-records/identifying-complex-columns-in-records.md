@@ -27,7 +27,7 @@ image_124.png
 
 The four colored bytes make up the variable length offset array – two bytes for each offset. The first offset has a value of 0x1395 == 5013, which fits perfectly with there being 5000 characters in the first column, plus 13 for the record overhead. The second offset has a value of 0x93AD == 37.805. Converted to binary that's a value of 0b1001001110101101. Note how the high order bit is set to 1 – indicating a complex column. Getting the actual offset requires us to mask out the high order bit like so: 0n37805 & 0b011111111111111 == 5.037. Now we can easily calculate the complex column length as being 5.037 – 5.013 == 24 bytes.
 
-At this point we know that the column contains a complex column and we know that it's 24 bytes long. Row-overflow pointers only use a single byte to identify the type of complex column – this is what distinguishes it from “normal” complex columns, hence why I'm reluctant to call it a complex column.
+At this point we know that the column contains a complex column and we know that it's 24 bytes long. Row-overflow pointers only use a single byte to identify the type of complex column – this is what distinguishes it from "normal" complex columns, hence why I'm reluctant to call it a complex column.
 
 image_142.png
 

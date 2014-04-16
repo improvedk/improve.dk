@@ -7,7 +7,7 @@ image_4.png
 
 <!-- more -->
 
-The official announcement was made a couple of days ago and I'm embarassingly late to follow up myself. “Unfortunately” this is what I'm doing right now, and I must say that achieving a proper 3G connection in the middle of the [Dolomites](http://en.wikipedia.org/wiki/Dolomites) has proven rather difficult...
+The official announcement was made a couple of days ago and I'm embarassingly late to follow up myself. "Unfortunately" this is what I'm doing right now, and I must say that achieving a proper 3G connection in the middle of the [Dolomites](http://en.wikipedia.org/wiki/Dolomites) has proven rather difficult...
 
 Anyways, I'm happy and honored to say that I'll be presenting my *A Deep-Dive into the depths of the SQL Server storage engine and MDF file format  *precon at SQLSaturday #162 in Cambridge. I'll be presenting my precon alongside SQL Server authorities like Jen Stirrup and Buck Woody, not to mention all of the regular session speakers, which have yet to be announced.
 

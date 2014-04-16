@@ -44,7 +44,7 @@ CREATE TABLE BitTest
 )
 ```
 
-The bit columns E-G's ordinal position is after D, but they'll continue to use the first “bit byte” until it's full. The following diagram shows that the H smallint column is stored directly after the int column, and not until we add the 9th bit is a new bit byte added:
+The bit columns E-G's ordinal position is after D, but they'll continue to use the first "bit byte" until it's full. The following diagram shows that the H smallint column is stored directly after the int column, and not until we add the 9th bit is a new bit byte added:
 
 image_43.png
 

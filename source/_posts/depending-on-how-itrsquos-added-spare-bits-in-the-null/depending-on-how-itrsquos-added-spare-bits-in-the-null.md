@@ -41,7 +41,7 @@ image_61.png
 
 image_81.png
 
-Notice how all three records are *exactly* the same, except for the null bitmap. It's even identical to the “The normal bitmap” record that I fixed showed, *except* for the null bitmap value. Let's try and convert those three null bitmaps to binary:
+Notice how all three records are *exactly* the same, except for the null bitmap. It's even identical to the "The normal bitmap" record that I fixed showed, *except* for the null bitmap value. Let's try and convert those three null bitmaps to binary:
 
 ```
 

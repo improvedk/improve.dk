@@ -11,7 +11,7 @@ Take the number 493.202.384 as an example, it can be be expressed as either 0n49
 
 ## Converting using Google
 
-If you've got an internet connection, the quickest and simplest way is often to just use Google. We can convert the above number using “in X” queries:
+If you've got an internet connection, the quickest and simplest way is often to just use Google. We can convert the above number using "in X" queries:
 
 [493202384 in hex](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+hex)  
 [493202384 in binary](http://www.google.dk/search?sourceid=chrome&ie=UTF-8&q=493202384+in+binary)

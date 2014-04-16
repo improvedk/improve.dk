@@ -58,7 +58,7 @@ You may have heard of the fabled [sign bit](http://en.wikipedia.org/wiki/Sign_bi
 -32.767	=	0b1000000000000001
 ```
 
-For the number to become large enough for it to cause an overflow, the high order “sign bit” needs to be set. It isn't magical in any way, it's simply used to cause the overflow.
+For the number to become large enough for it to cause an overflow, the high order "sign bit" needs to be set. It isn't magical in any way, it's simply used to cause the overflow.
 
 OK, so that's some background information on how normal non-compressed integers are stored. Now let's have a look at how those same smallint values are stored in a row compressed table:
 

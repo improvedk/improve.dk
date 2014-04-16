@@ -11,7 +11,7 @@ To fix it, I was told to do a check-in at one of the self-service counters at th
 
 delta-air-france-klm_2.jpg
 
-After asking one of the attendants I was told, “Oh, that's because your flight has already departed, it'll try to find the nearest match”. Áha, so if there's no 1:1 match, it'll just try to find the best match of an existing booking to a non-departed flight – and apparently the best it could find was a two-person ticket for a flight 4 hours later. Now, it was for the same destination, and I did share my surname with one of the passengers, but it surely wasn't my ticket. Still, I was able to check-in as them and confirm “my” ticket.
+After asking one of the attendants I was told, "Oh, that's because your flight has already departed, it'll try to find the nearest match". Áha, so if there's no 1:1 match, it'll just try to find the best match of an existing booking to a non-departed flight – and apparently the best it could find was a two-person ticket for a flight 4 hours later. Now, it was for the same destination, and I did share my surname with one of the passengers, but it surely wasn't my ticket. Still, I was able to check-in as them and confirm "my" ticket.
 
 So this leaves me the question, what in the world do they (Delta/KLM/AF) use as the primary key for their ticketing system? Once my passport is scanned, and they've got my passport number, how can there be *any* doubt as to who I am? How in the world can I get to check-in two completely, to me, unrelated passengers on a flight I'm not going on myself?
 

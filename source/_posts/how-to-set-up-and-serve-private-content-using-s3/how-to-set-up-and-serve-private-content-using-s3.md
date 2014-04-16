@@ -3,7 +3,7 @@ title: How to Set Up and Serve Private Content Using S3 and Amazon CloudFront
 date: 2011-10-26
 tags: [.NET, Amazon Web Services]
 ---
-Imagine the scenario – you've got customers all over the world all requesting binary files from you. To speed up your delivery, you want to utilize a CDN. Furthermore, all of the files needs to be protected on a specific user session level. Basically, you need to grant access to the specific file when a given user logs in – it's not enough just to have a “hidden” URL or a URL with an infinitely sharable policy in the query string.
+Imagine the scenario – you've got customers all over the world all requesting binary files from you. To speed up your delivery, you want to utilize a CDN. Furthermore, all of the files needs to be protected on a specific user session level. Basically, you need to grant access to the specific file when a given user logs in – it's not enough just to have a "hidden" URL or a URL with an infinitely sharable policy in the query string.
 
 <!-- more -->
 
@@ -157,7 +157,7 @@ That ARN will ensure the policy covers all objects in the bucket, no matter thei
 }
 ```
 
-However, this won't work yet! You need to change the “AWS” principal value into “CanonicalUser”, like so:
+However, this won't work yet! You need to change the "AWS" principal value into "CanonicalUser", like so:
 
 ```json
 {
@@ -311,7 +311,7 @@ namespace AWSTest
 
 ### Creating CloudFront key pairs
 
-Before we can use it though, we need a CloudFront key pair. Go to the Access Credentials section of the Security Credentials section of the AWS console, click on the Key Pairs pane, and then click “Create a New Key Pair”. If successful, a key pair should have been created, and the private part of the key should have been downloaded as a .pem file automatically:
+Before we can use it though, we need a CloudFront key pair. Go to the Access Credentials section of the Security Credentials section of the AWS console, click on the Key Pairs pane, and then click "Create a New Key Pair". If successful, a key pair should have been created, and the private part of the key should have been downloaded as a .pem file automatically:
 
 image_24.png
 
@@ -363,7 +363,7 @@ image_28.png
 
 ### Using wildcards when signing URLs
 
-So what if you want to grant access to many files at once, do we have to create a policy for each single one? Thankfully, no, we don't! Say you want to grant access to all files in the folder “Test” (and remember, there is no such thing as folders in S3 – just objects named e.g. /Test/FileName.jpg). What we'd do is to create a policy like this:
+So what if you want to grant access to many files at once, do we have to create a policy for each single one? Thankfully, no, we don't! Say you want to grant access to all files in the folder "Test" (and remember, there is no such thing as folders in S3 – just objects named e.g. /Test/FileName.jpg). What we'd do is to create a policy like this:
 
 ```csharp
 var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/Test/*", DateTime.Now.AddMinutes(5));

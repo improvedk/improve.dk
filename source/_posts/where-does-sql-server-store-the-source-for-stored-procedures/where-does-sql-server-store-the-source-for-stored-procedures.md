@@ -179,7 +179,7 @@ Let's take a different approach to the problem. Everything in SQL Server is stor
 
 image_10.png
 
-Now let's see if we can find the procedure. On purpose I made it return “SELECT ‘AABBCC' AS Output” as that would be easy to search for:
+Now let's see if we can find the procedure. On purpose I made it return "SELECT ‘AABBCC' AS Output" as that would be easy to search for:
 
 image_12.png
 
@@ -226,7 +226,7 @@ select * from sys.sysobjvalues where objid = 2105058535
 
 image_30.png
 
-I wonder what that imageval column contains, if I remember correctly 0x2D2D would be “--“ in ASCII, which reminds me quite a lot of the beginning of the XYZ procedure. Let's try and convert that column into human:
+I wonder what that imageval column contains, if I remember correctly 0x2D2D would be "--" in ASCII, which reminds me quite a lot of the beginning of the XYZ procedure. Let's try and convert that column into human:
 
 ```sql
 select convert(varchar(max), imageval) from sys.sysobjvalues where objid = 2105058535

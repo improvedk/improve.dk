@@ -19,7 +19,7 @@ image_210.png
 
 ## Setting up the script
 
-Now go to to Rules menu and click “Customize Rules…” to open the CustomRules.js file in the FiddlerScript Editor that we installed before.
+Now go to to Rules menu and click "Customize Rules…" to open the CustomRules.js file in the FiddlerScript Editor that we installed before.
 
 image_44.png
 
@@ -47,7 +47,7 @@ if(oSession.url.Contains("SomeStream.aspx")) {
 
 The first line identifies the requests that are for MP3 files. Depending on where you're streaming from, you'll obviously need to change this line to match your specific requirements.
 
-Once an MP3 response has been detected, we save the file using a GUID as the name. If TagLib Sharp detects a song title, the file is renamed in the “AlbumArtists – Title.mp3” form. If no title is present, we just let the file stay with the GUID name for manual renaming later on.
+Once an MP3 response has been detected, we save the file using a GUID as the name. If TagLib Sharp detects a song title, the file is renamed in the "AlbumArtists – Title.mp3" form. If no title is present, we just let the file stay with the GUID name for manual renaming later on.
 
 Save the CustomRules.js file and Fiddler will automatically pick up on the changes and start saving those precious MP3s!
 

@@ -35,7 +35,7 @@ DSC01634.jpg
 
 **[8:41]**  Rushabh welcoming Ted Kummert on stage.
 
-**[8:44]**  ”Some database vendors just decided to get into the cloud last week. You know who I'm talking about right?”
+**[8:44]**  "Some database vendors just decided to get into the cloud last week. You know who I'm talking about right?"
 
 **[8:46]**  Over 4,000 registered attendees at the PASS Summit. Largest Summit conference ever!
 
@@ -51,27 +51,27 @@ DSC01634.jpg
 
 **[8:54]**  Denali / SQL Server 2012 being released in first half of 2012.
 
-**[8:55]**  ”Believe in the platform as more than just relational data.”
+**[8:55]**  "Believe in the platform as more than just relational data."
 
-**[8:57]**  ”No one size fits all.” Ted Kummert talking on Big Data.
+**[8:57]**  "No one size fits all." Ted Kummert talking on Big Data.
 
-**[8:59]**  Microsoft supporting the Apache Hadoop project. Make sure it'll run great on Windows. Is this the belief in “more than just relational data”?
+**[8:59]**  Microsoft supporting the Apache Hadoop project. Make sure it'll run great on Windows. Is this the belief in "more than just relational data"?
 
-**[9:00]**  Connect Hadoop and Microsoft and offer them together. Microsoft submitting to the Hadoop project to ensure it runs great. “We're going to connect the dots in our environment.”
+**[9:00]**  Connect Hadoop and Microsoft and offer them together. Microsoft submitting to the Hadoop project to ensure it runs great. "We're going to connect the dots in our environment."
 
 **[9:01]**  Ted Kummert welcoming Eric Baldeschwieler (Hortonworks CEO) on stage.
 
 **[9:02]**  Eric looks like he's about to fall asleep. Should've had a Red Bull before going on stage before 4,000 people.
 
-**[9:04]**  ”Hadoop could be storing half of the worlds data in five years.”
+**[9:04]**  "Hadoop could be storing half of the worlds data in five years."
 
 **[9:06]**  Ted Kummert welcoming Denny Lee on stage (Principal Program Manager, Microsoft). Demo time!
 
-**[9:07]**  ”Hadoop for Windows Cluster”.
+**[9:07]**  "Hadoop for Windows Cluster".
 
 **[9:09]**  Denny Lee demoing HiveQL querying against Hadoop. Hadoop console 100% compatible with classic Hadoop.
 
-**[9:10]**  Denny Lee showing Excel. Why oh why, I'm here for SQL Server, not Excel. Accessing Hadoop cluster through “Hive/Hadoop ODBC driver” from Excel.
+**[9:10]**  Denny Lee showing Excel. Why oh why, I'm here for SQL Server, not Excel. Accessing Hadoop cluster through "Hive/Hadoop ODBC driver" from Excel.
 
 **[9:13]**  CTP of Hadoop on Azure by the end of the year.
 
@@ -79,7 +79,7 @@ DSC01634.jpg
 
 **[9:16]**  Demo of Data Explorer coming up in just a sec.
 
-**[9:17]**  ”Who's excited to be at PASS today?”. Talking about self service BI – one (yes, ONE) person in the room clapped. That's a 1:4000 ratio.
+**[9:17]**  "Who's excited to be at PASS today?". Talking about self service BI – one (yes, ONE) person in the room clapped. That's a 1:4000 ratio.
 
 **[9:19]**  Ignoring content, it's obvious that the Metro UI team had a say in the slide & UI design of slide decks and products being demoed. Beautiful.
 

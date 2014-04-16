@@ -163,7 +163,7 @@ And there we go, we've now created a 3-bit [ripple carry adder](http://en.wikipe
 
 I'm sure (read: hope) I'm not the only one having the nightmare of an apocalyptic event occurring here on Earth. Imagine the scenario, you've got all of the materials in the world as well as all the manpower you need. Unfortunately, you're the only computer scientist that's survived. Given time, manpower and materials, would you be able to rebuild the computer as we know it today?
 
-Each layer you peel off of the computer arms you with more knowledge and capability, not just at that layer, but at all of the layers that lie above. Knowing about gate logic enables you to understand so much more of how the CPU works as well as what's actually being performed once you write “int x = 6+7;” in your application (assuming you also know about all of the layers between the logic gates and your C#/other high level code).
+Each layer you peel off of the computer arms you with more knowledge and capability, not just at that layer, but at all of the layers that lie above. Knowing about gate logic enables you to understand so much more of how the CPU works as well as what's actually being performed once you write "int x = 6+7;" in your application (assuming you also know about all of the layers between the logic gates and your C#/other high level code).
 
 Naturally there are more layers to peel. For instance, you could create your own XOR/AND/OR gates using the base NAND gate. And you could create your own NAND gates using nothing but interconnected transistors. And you could create your own transistors using... You get the point.
 

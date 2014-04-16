@@ -46,7 +46,7 @@ OUTER APPLY
 
 Nothing too out of the ordinary if you've looked at other internal queries. There's a lot of bitmasking / shifting going on to extract multiple values from the same internal base table fields. One thing that is somewhat convoluted is the OPENROWSET(TABLE RSCPROP, c.ti) p OUTER APPLY being made.
 
-A Google query for “sql server +rscprop” yields absolutely zilch results:
+A Google query for "sql server +rscprop" yields absolutely zilch results:
 
 image_27.png
 

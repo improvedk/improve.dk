@@ -53,7 +53,7 @@ On a side note – I'm surprised at how comfortable wearing a kilt is.
 
 **[9:10]  **Going through hardware on stage, introducing the Dell & HP appliances.for PDW, DW in general. Plug'n'play appliances. Appliances sound great, but aren't they just overpriced versions of what you can do yourself? Add virtualization and you've got a complete appliance in just a VMDK. From boot to data loading / production usage – 20 minutes. If you have the money, this is a great & quick way to get started.
 
-**[9:14]  **HP appliance can be ordered a month from now. Can start small and scale up – “Don't know how big you can built it, haven't reached limit yet”.
+**[9:14]  **HP appliance can be ordered a month from now. Can start small and scale up – "Don't know how big you can built it, haven't reached limit yet".
 
 **[9:19]  **Next topic – Extent Any Data, Anywhere – ODBC drivers for Linux – unreadable white on light orange background slide text.
 
@@ -61,15 +61,15 @@ On a side note – I'm surprised at how comfortable wearing a kilt is.
 
 **[9:25]  **Semantic search being demoed on stage by Michael Rys. Semantic search is basically an addition on top of FTS adding more language specific semantic improvements.
 
-**[9:28]  **Next topic – Optimized Productivity – Juneau / SQL Server Data Tools reference. Shipped with SQL Server 2012. Unified across DB & BI, meaning no more SSMS/BI, just one “studio”. Deployment & targeting freedom – just like .NET dev, we can target a certain platform and be limited to just hte options available. Talking contained databases.
+**[9:28]  **Next topic – Optimized Productivity – Juneau / SQL Server Data Tools reference. Shipped with SQL Server 2012. Unified across DB & BI, meaning no more SSMS/BI, just one "studio". Deployment & targeting freedom – just like .NET dev, we can target a certain platform and be limited to just hte options available. Talking contained databases.
 
 **[9:29]  **Last topic – Scale on Demand. AlwaysON, deployment across public & private – hybrid cloud/private reference? Elastic scale = cloud reference, spin up many instances. It's not vertical scaling, this is sharding through SQL Azure.
 
-**[9:31]  **Nicholas Dritsas on stage demoing deployment through SSMS 2012 / SQL Server Data Tools. “And I know how to get a big applause – Zoomit” – keynote speakers seem to be catching up on the zoomit hype. Thank god!
+**[9:31]  **Nicholas Dritsas on stage demoing deployment through SSMS 2012 / SQL Server Data Tools. "And I know how to get a big applause – Zoomit" – keynote speakers seem to be catching up on the zoomit hype. Thank god!
 
 **[9:33]  **Speakers referencing zoomit means they're checking the tweets realtime – excellent.
 
-**[9:34]  **This is cool – SSMS being used to manage both local and Azure databases. You can now manage Azure without defaulting to the online web based management portal. This will make it much easier to achieve the “hybrid” approach of having both on-premise and cloud based databases.
+**[9:34]  **This is cool – SSMS being used to manage both local and Azure databases. You can now manage Azure without defaulting to the online web based management portal. This will make it much easier to achieve the "hybrid" approach of having both on-premise and cloud based databases.
 
 **[9:35]  **Now demoing how to do SQL Azure backups to Windows Azure. Lovely, and about time. Why wasn't this here from the start?
 
@@ -77,6 +77,6 @@ On a side note – I'm surprised at how comfortable wearing a kilt is.
 
 **[9:43]  **New Azure management portal uses Metro UI, Looks slick, but does it scale?
 
-**[9:45]  **SQL Azure will now scale up to 150GB. But if only way to do “elastic scaling” is federation, whether it's 50GB or 150GB doesn't really change much other than your shard size. Since we're still limited by unknown hardware, we may not be able to even utilize a 150GB database before having to federate.
+**[9:45]  **SQL Azure will now scale up to 150GB. But if only way to do "elastic scaling" is federation, whether it's 50GB or 150GB doesn't really change much other than your shard size. Since we're still limited by unknown hardware, we may not be able to even utilize a 150GB database before having to federate.
 
 **[9:47]  **Execution plans in the Azure web interface based on Metro, looks slick.

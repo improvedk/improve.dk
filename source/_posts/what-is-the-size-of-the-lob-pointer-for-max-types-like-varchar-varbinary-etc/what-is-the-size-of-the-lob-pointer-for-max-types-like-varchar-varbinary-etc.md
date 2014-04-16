@@ -23,7 +23,7 @@ CREATE TABLE Lob
 
 ## The [BLOB Inline Data] for in-row data
 
-If data is small enough (“small enough” being hard to define as it depends on the free space in the page, the mood of SQL Server and probably a bunch of other undocumented factors), it will be stored in the record itself. Let's insert a single small row:
+If data is small enough ("small enough" being hard to define as it depends on the free space in the page, the mood of SQL Server and probably a bunch of other undocumented factors), it will be stored in the record itself. Let's insert a single small row:
 
 ```sql
 INSERT INTO Lob (B) VALUES ('Test')

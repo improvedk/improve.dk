@@ -9,7 +9,7 @@ Last year I went on a marathon conference trip, starting out in LA at [Adobe Max
 
 71624_444201957306_724027306_5893683_5375463_n_2.jpg
 
-Of the three, the one I'll definitely be returning to this year is the PASS Summit. Last year I had the honor of getting a nice neon green “FIRST-TIMER” snippet on my badge, a snippet I wore with honor. This year however, I'm aiming for the Alumni snippet, and perhaps even the speaker snippet by submitting a couple of abstracts.
+Of the three, the one I'll definitely be returning to this year is the PASS Summit. Last year I had the honor of getting a nice neon green "FIRST-TIMER" snippet on my badge, a snippet I wore with honor. This year however, I'm aiming for the Alumni snippet, and perhaps even the speaker snippet by submitting a couple of abstracts.
 
 As I've been somewhat busy with [OrcaMDF](/introducing-orcamdf) in my spare time recently, both of my abstracts use OrcaMDF as the origin for going into the internals. I really hope I get a chance to present about this as I'm super psyched about it :)
 

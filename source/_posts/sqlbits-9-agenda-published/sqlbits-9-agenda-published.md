@@ -9,7 +9,7 @@ The [agenda for SQLBits 9](http://sqlbits.com/information/Agenda.aspx) has been 
 
 ## My presentation
 
-I'll be presenting my [Knowing the Internals, Who Needs SQL Server Anyway?](http://sqlbits.com/Sessions/Event9/Knowing_the_Internals_Who_Needs_SQL_Server_Anyway_) session. This is by far my favorite session! I originally gave it back in April at Miracle Open World, though under the name “Anatomy of an MDF File”. Since then, I've added a good three months of development onto [OrcaMDF](https://github.com/improvedk/OrcaMDF), the project on which the backend of the session is based. As such, this session will be even more awesome than last! Here's the abstract:
+I'll be presenting my [Knowing the Internals, Who Needs SQL Server Anyway?](http://sqlbits.com/Sessions/Event9/Knowing_the_Internals_Who_Needs_SQL_Server_Anyway_) session. This is by far my favorite session! I originally gave it back in April at Miracle Open World, though under the name "Anatomy of an MDF File". Since then, I've added a good three months of development onto [OrcaMDF](https://github.com/improvedk/OrcaMDF), the project on which the backend of the session is based. As such, this session will be even more awesome than last! Here's the abstract:
 
 > You're stuck on a remote island with just a laptop and your main database .MDF file. The boss calls and asks you to retrieve some data, but alas, you forgot to install SQL Server on your laptop. Luckily you have a HEX editor by your side! 
 

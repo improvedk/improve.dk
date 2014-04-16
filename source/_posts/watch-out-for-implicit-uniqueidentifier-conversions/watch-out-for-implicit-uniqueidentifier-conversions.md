@@ -7,7 +7,7 @@ I recently gave a presentations on the topic of [GUID usage](/miracle-open-world
 
 <!-- more -->
 
-It's commonly known that to use indexes effectively, we need to seek. Furthermore, to ensure we don't scan, we should avoid using functions, casts, etc. as predicates as that will cause the optimizer to not utilize the indexes properly. However, in this case the situation was presented as query having a simple “where SomeCol = ‘74e03ed0-6d51-413a-bffb-76b5e409afc1'”. As far as I knew, that should just convert automatically into a uniqueidentifier and still use an index seek. A simple test shows that to be the case as well:
+It's commonly known that to use indexes effectively, we need to seek. Furthermore, to ensure we don't scan, we should avoid using functions, casts, etc. as predicates as that will cause the optimizer to not utilize the indexes properly. However, in this case the situation was presented as query having a simple "where SomeCol = ‘74e03ed0-6d51-413a-bffb-76b5e409afc1'". As far as I knew, that should just convert automatically into a uniqueidentifier and still use an index seek. A simple test shows that to be the case as well:
 
 ```sql
 create table #Test
