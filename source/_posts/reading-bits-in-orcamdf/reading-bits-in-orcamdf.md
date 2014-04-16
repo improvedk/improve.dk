@@ -25,7 +25,7 @@ The fixed length data part of our record would be 5 bytes, 4 for the integer col
 
 image_27.png
 
-Let’s add some more columns:
+Let's add some more columns:
 
 ```sql
 CREATE TABLE BitTest
@@ -44,13 +44,13 @@ CREATE TABLE BitTest
 )
 ```
 
-The bit columns E-G’s ordinal position is after D, but they’ll continue to use the first “bit byte” until it’s full. The following diagram shows that the H smallint column is stored directly after the int column, and not until we add the 9th bit is a new bit byte added:
+The bit columns E-G's ordinal position is after D, but they'll continue to use the first “bit byte” until it's full. The following diagram shows that the H smallint column is stored directly after the int column, and not until we add the 9th bit is a new bit byte added:
 
 image_43.png
 
 ## The need for state while reading bits from records
 
-Obviously we can’t just read one field at a time, incrementing the fixed length data offset pointer for each read, as we usually do for normal fixed length data types. We need some kind of state that will tell us which byte we’re currently reading bits from, and when to read a new bit byte. Allow me to introduce RecordReadState:
+Obviously we can't just read one field at a time, incrementing the fixed length data offset pointer for each read, as we usually do for normal fixed length data types. We need some kind of state that will tell us which byte we're currently reading bits from, and when to read a new bit byte. Allow me to introduce RecordReadState:
 
 ```csharp
 public class RecordReadState
@@ -77,7 +77,7 @@ public class RecordReadState
 }
 ```
 
-RecordReadState is currently only used for handling bits, but I’ve decided on not creating a BitReadState as we may need to save further read state further along. RecordReadState holds a single byte as well as a pointer that points to the next available bit in that byte. If the byte is exhausted (currentBixIndex = 8 (0-7 being the available bits)), AllBitsConsumed will return true, indicating we need to read in a new bit byte. GetNextBit simply reads the current bit from the bit byte, after which it increases the current bit index. [See the tests](https://github.com/improvedk/OrcaMDF/blob/58250bef24265900b6d94ec90be41b0647508b35/src/OrcaMDF.Core.Tests/Engine/Records/RecordReadStateTests.cs) for demonstration.
+RecordReadState is currently only used for handling bits, but I've decided on not creating a BitReadState as we may need to save further read state further along. RecordReadState holds a single byte as well as a pointer that points to the next available bit in that byte. If the byte is exhausted (currentBixIndex = 8 (0-7 being the available bits)), AllBitsConsumed will return true, indicating we need to read in a new bit byte. GetNextBit simply reads the current bit from the bit byte, after which it increases the current bit index. [See the tests](https://github.com/improvedk/OrcaMDF/blob/58250bef24265900b6d94ec90be41b0647508b35/src/OrcaMDF.Core.Tests/Engine/Records/RecordReadStateTests.cs) for demonstration.
 
 ## Implementing SqlBit
 
@@ -122,4 +122,4 @@ public class SqlBit : ISqlType
 }
 ```
 
-SqlBit requires a read state in the constructor, which is scoped for the current record read operation. It’s important to note that the FixedLength depends on the current AllBitsConsumed value of the read state. Once all bits have been consumed, the current bit field will technically have a length of one – causing a byte to be read. If it’s zero, no bytes will be read, but GetValue will still be invoked. GetValue asserts that there are bits available in case a byte wasn’t read (value.Length == 0). If a value was read, we ask the read state to load a new bit byte, after which we can call GetNextBit to return the current bit from the read state. [See tests of SqlBit](https://github.com/improvedk/OrcaMDF/blob/58250bef24265900b6d94ec90be41b0647508b35/src/OrcaMDF.Core.Tests/Engine/SqlTypes/SqlBitTests.cs).
+SqlBit requires a read state in the constructor, which is scoped for the current record read operation. It's important to note that the FixedLength depends on the current AllBitsConsumed value of the read state. Once all bits have been consumed, the current bit field will technically have a length of one – causing a byte to be read. If it's zero, no bytes will be read, but GetValue will still be invoked. GetValue asserts that there are bits available in case a byte wasn't read (value.Length == 0). If a value was read, we ask the read state to load a new bit byte, after which we can call GetNextBit to return the current bit from the read state. [See tests of SqlBit](https://github.com/improvedk/OrcaMDF/blob/58250bef24265900b6d94ec90be41b0647508b35/src/OrcaMDF.Core.Tests/Engine/SqlTypes/SqlBitTests.cs).

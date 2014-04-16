@@ -3,7 +3,7 @@ title: Avoiding Regressions in OrcaMDF by System Testing
 date: 2011-06-14
 tags: [.NET, SQL Server - OrcaMDF, Testing]
 ---
-As I continue to add new features & support for new data structures in [OrcaMDF](/introducing-orcamdf), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression) increase. Especially so as I’m developing in a largely unknown field, given that I can’t plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
+As I continue to add new features & support for new data structures in [OrcaMDF](/introducing-orcamdf), the risk of [regressions](http://en.wikipedia.org/wiki/Software_regression) increase. Especially so as I'm developing in a largely unknown field, given that I can't plan for structures and relations that I do not yet know about. To reduce the risk of regressions, testing is an obvious need.
 
 <!-- more -->
 
@@ -53,11 +53,11 @@ This tests the main entrypoints for the SqlBigInt class, testing for over/underf
 
 ## System testing
 
-On the other end of the spectrum, we have [system testing](http://en.wikipedia.org/wiki/System_testing). System testing seeks to test the system as a whole, largely ignoring the inner workings of either system, which merits a categorization as [black-box testing](http://en.wikipedia.org/wiki/Black_box_testing). In the case of OrcaMDF I’ve estimated that I can catch 90% of all regressions using just 10% of the time, compared to unit testing which would have the reverse properties. As such, it’s a great way to test during development, while allowing for the introduction of key unit & integration tests as necessary.
+On the other end of the spectrum, we have [system testing](http://en.wikipedia.org/wiki/System_testing). System testing seeks to test the system as a whole, largely ignoring the inner workings of either system, which merits a categorization as [black-box testing](http://en.wikipedia.org/wiki/Black_box_testing). In the case of OrcaMDF I've estimated that I can catch 90% of all regressions using just 10% of the time, compared to unit testing which would have the reverse properties. As such, it's a great way to test during development, while allowing for the introduction of key unit & integration tests as necessary.
 
-Say I wanted to test the parsing of user table names in the [DatabaseMetaData](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/MetaData/DatabaseMetaData.cs) class, I could mock the values of the SysObjects list, while also mocking [MdfFile](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/MdfFile.cs) as that’s a require parameter for the constructor. To do that, I’d have to extract MdfFile into an interface and use a mocking framework on top of that.
+Say I wanted to test the parsing of user table names in the [DatabaseMetaData](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/MetaData/DatabaseMetaData.cs) class, I could mock the values of the SysObjects list, while also mocking [MdfFile](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/MdfFile.cs) as that's a require parameter for the constructor. To do that, I'd have to extract MdfFile into an interface and use a mocking framework on top of that.
 
-Taking the system testing approach, I’m instead performing the following workflow:
+Taking the system testing approach, I'm instead performing the following workflow:
 
 * Connect to a running SQL Server.
 * Create test schema in the fixture setup.
@@ -103,4 +103,4 @@ This allows for extremely quick testing of actual real life scenarios. Want to t
 
 ## The downside to system testing
 
-Unfortunately system testing is no panacea; it has its downsides. The most obvious one is performance. A unit test is usually required to run extremely fast, allowing you to basically run them in the background on each file save. Each of these system tests takes about half a second to run, being CPU bound. Fortunately, they can be run in parallel without problems. On a quad core machine that’ll allow me to run 480 tests per minute. This’ll allow a manageable test time for a complete test set, while still keeping a subset test very quick. Usually a code change won’t impact more than handful of tests.
+Unfortunately system testing is no panacea; it has its downsides. The most obvious one is performance. A unit test is usually required to run extremely fast, allowing you to basically run them in the background on each file save. Each of these system tests takes about half a second to run, being CPU bound. Fortunately, they can be run in parallel without problems. On a quad core machine that'll allow me to run 480 tests per minute. This'll allow a manageable test time for a complete test set, while still keeping a subset test very quick. Usually a code change won't impact more than handful of tests.

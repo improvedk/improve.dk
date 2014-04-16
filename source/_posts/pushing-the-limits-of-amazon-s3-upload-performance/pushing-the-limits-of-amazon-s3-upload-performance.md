@@ -3,7 +3,7 @@ title: Pushing the Limits of Amazon S3 Upload Performance
 date: 2011-11-07
 tags: [.NET, Amazon Web Services]
 ---
-Recently I’ve been working on a project where I’ve got millions of relatively small objects, sized between 5kb and 500kb, and they all have to be uploaded to S3. Naturally, doing a synchronous upload of each object, one by one, just doesn’t cut it. We need to upload the objects in parallel to achieve acceptable performance. But what are the optimal parameters when it comes to the number of simultaneous upload threads? Does it depend on the object size? How much of a difference does HTTPS over HTTP make? Let me share what I discovered during my testing.
+Recently I've been working on a project where I've got millions of relatively small objects, sized between 5kb and 500kb, and they all have to be uploaded to S3. Naturally, doing a synchronous upload of each object, one by one, just doesn't cut it. We need to upload the objects in parallel to achieve acceptable performance. But what are the optimal parameters when it comes to the number of simultaneous upload threads? Does it depend on the object size? How much of a difference does HTTPS over HTTP make? Let me share what I discovered during my testing.
 
 <!-- more -->
 
@@ -11,7 +11,7 @@ Note that some of these graphs are much larger than what I can show in-page. All
 
 ## Test code
 
-To reduce variance in the outcome, I’ve run all test cases four times and reported the average runtime. Each test case tries to upload 512 objects of a given size. In total, 2048 objects are uploaded across the four repetitions, before the average runtime is reported back. Even though I ran four repetitions, I still saw some fluctuations in the results that I’ll have to attest to variance.
+To reduce variance in the outcome, I've run all test cases four times and reported the average runtime. Each test case tries to upload 512 objects of a given size. In total, 2048 objects are uploaded across the four repetitions, before the average runtime is reported back. Even though I ran four repetitions, I still saw some fluctuations in the results that I'll have to attest to variance.
 
 I started out by using the thread pool and the asynchronous Begin/EndPutObject methods. However, even when setting the thread pool max/min thread/IO settings explicitly, I found the thread pool usage caused too much variance. Instead I went with manual thread control.
 
@@ -19,9 +19,9 @@ One major player is the ServicePointManager.DefaultConnectionLimit – this limi
 
 I tried running the tests both with and without MD5 checksum generation & verification, but I saw no measurable difference in the outcome.
 
-At no point, in any of the test environments, were the CPUs stressed to the point where they were close to becoming bottlenecks. As the test object is all in-memory and no disk is involved, I’ve ruled out disks as a bottleneck factor as well. Thus, the number one of piece of hardware affecting the results is the network interface card (NIC).
+At no point, in any of the test environments, were the CPUs stressed to the point where they were close to becoming bottlenecks. As the test object is all in-memory and no disk is involved, I've ruled out disks as a bottleneck factor as well. Thus, the number one of piece of hardware affecting the results is the network interface card (NIC).
 
-Before starting the four repetitions of the test, I fire off a single PutObject request to warm up the stack. The test code is relatively simple, it runs in an infinite loop, checking whether we need to upload more objects, or whether we’re done. If done, it breaks the loop and ends the thread. When launching I start up X amount of threads and immediately after join with them to wait for them all to complete. The runtime includes the amount of time required to instantiate the threads, though it should have no measurable impact on the result. The runtime calculation is done using integer math for output simplicity, but the impact should be minimal in the big picture.
+Before starting the four repetitions of the test, I fire off a single PutObject request to warm up the stack. The test code is relatively simple, it runs in an infinite loop, checking whether we need to upload more objects, or whether we're done. If done, it breaks the loop and ends the thread. When launching I start up X amount of threads and immediately after join with them to wait for them all to complete. The runtime includes the amount of time required to instantiate the threads, though it should have no measurable impact on the result. The runtime calculation is done using integer math for output simplicity, but the impact should be minimal in the big picture.
 
 ```csharp
 using System;
@@ -123,7 +123,7 @@ namespace S3Optimization
 }
 ```
 
-For running the tests, I’m using the following test runner application, testing all combinations of thread count and object size between 1 and 256/2048 respectively (in powers of 2):
+For running the tests, I'm using the following test runner application, testing all combinations of thread count and object size between 1 and 256/2048 respectively (in powers of 2):
 
 ```csharp
 var psi = new ProcessStartInfo("S3Optimization.exe")
@@ -153,7 +153,7 @@ foreach(int connectionLimit in connectionLimits)
 
 ## Initial results
 
-The first test is done using a colocation (colo) Dell PowerEdge 1950 placed at a Danish ISP in Aarhus, Denmark. The server is running Windows Server 2003 x64 and has a single gigabit NIC with gigabit support throughout the network stack. Note that I won’t be mentioning neither CPU, memory nor disk for any of the machines. Neither of those were ever close to being the bottleneck and are thus irrelevant. Suffice to say – they all had plenty of CPU, memory and disk capabilities. A tracert from the server to the S3 EU endpoint in Dublin looks like this:
+The first test is done using a colocation (colo) Dell PowerEdge 1950 placed at a Danish ISP in Aarhus, Denmark. The server is running Windows Server 2003 x64 and has a single gigabit NIC with gigabit support throughout the network stack. Note that I won't be mentioning neither CPU, memory nor disk for any of the machines. Neither of those were ever close to being the bottleneck and are thus irrelevant. Suffice to say – they all had plenty of CPU, memory and disk capabilities. A tracert from the server to the S3 EU endpoint in Dublin looks like this:
 
 ```
 Tracing route to s3-eu-west-1.amazonaws.com [178.236.6.31]
@@ -170,7 +170,7 @@ over a maximum of 30 hops:
 9	*	*	*	Request timed out.
 ```
 
-The following graph has the number of threads (that is, simultaneous uploads) on the X-axis and the MiB/s on the Y-axis. The MiB/s was calculated using the formula (UploadCount x ObjectSizeInKB / 1024 / AvgTimePerRepetitionInSeconds). Each color bar represents a given object size in KB as noted on the legend on the right. Note also that these results were made using the standard HTTPS protocol. You might ask yourself why I’m measuring MiB/s and not requests/s. Thing is – they’re exactly the same. MiB/s and requests/s are just calculations based on the time it took to run a fixed number of requests. The absolute values are less interesting than they are in relation to each other. If you want to take a look at the requests/sec, you can download my raw data at the end of the post.
+The following graph has the number of threads (that is, simultaneous uploads) on the X-axis and the MiB/s on the Y-axis. The MiB/s was calculated using the formula (UploadCount x ObjectSizeInKB / 1024 / AvgTimePerRepetitionInSeconds). Each color bar represents a given object size in KB as noted on the legend on the right. Note also that these results were made using the standard HTTPS protocol. You might ask yourself why I'm measuring MiB/s and not requests/s. Thing is – they're exactly the same. MiB/s and requests/s are just calculations based on the time it took to run a fixed number of requests. The absolute values are less interesting than they are in relation to each other. If you want to take a look at the requests/sec, you can download my raw data at the end of the post.
 
 image_2.png
 
@@ -200,19 +200,19 @@ image_17.png
 
 For these objects, we clearly see that going up to **128 connections actually provide a boost in throughput**, leading me to conclude that for objects of size 256KB+, you can use somewhat more threads successfully.
 
-For all object sizes, using  HTTP over HTTPS seems to increase the maximum throughput thread limit – this increasing it from 64 to 128 for smaller objects and from 128 to 256 threads for larger objects. If you’re uploading objects of varying sizes, this means you’ll have to do some testing with your specific workload to find out the optimal amount of threads.
+For all object sizes, using  HTTP over HTTPS seems to increase the maximum throughput thread limit – this increasing it from 64 to 128 for smaller objects and from 128 to 256 threads for larger objects. If you're uploading objects of varying sizes, this means you'll have to do some testing with your specific workload to find out the optimal amount of threads.
 
 ### Object size vs. HTTPS performance impact
 
-In the following graph I’ve calculated the average gain HTTP had over HTTPS for each object size, across all thread counts. As there is quite some variance, the trend line is the most interesting part of the graph. It clearly shows that as object size grows, the HTTP over HTTPS advantage decreases.
+In the following graph I've calculated the average gain HTTP had over HTTPS for each object size, across all thread counts. As there is quite some variance, the trend line is the most interesting part of the graph. It clearly shows that as object size grows, the HTTP over HTTPS advantage decreases.
 
 image_19.png
 
 ## Server 2008 R2 vs. Server 2003
 
-You’ve probably heard about Server 2008 bringing along a [bunch of updates to the TCP/IP stack](http://technet.microsoft.com/en-us/network/bb545475). I thought it would be interesting to run the same tests on an identical server, just running Windows Server 2008 R2 x64. Luckily, I have just that. A server with identical hardware, on the same subnet at the same ISP, just running Server 2008 R2 x64 instead. Question is, how big of a difference does the OS alone make?
+You've probably heard about Server 2008 bringing along a [bunch of updates to the TCP/IP stack](http://technet.microsoft.com/en-us/network/bb545475). I thought it would be interesting to run the same tests on an identical server, just running Windows Server 2008 R2 x64. Luckily, I have just that. A server with identical hardware, on the same subnet at the same ISP, just running Server 2008 R2 x64 instead. Question is, how big of a difference does the OS alone make?
 
-For this graph, I calculated the maximum attainable transfer speed, using HTTPS, for a given object, across any number of threads. I’ve then mapped those values into the graph for both Server 2003 and Server 2008 R2 (note the log(2) scale!).
+For this graph, I calculated the maximum attainable transfer speed, using HTTPS, for a given object, across any number of threads. I've then mapped those values into the graph for both Server 2003 and Server 2008 R2 (note the log(2) scale!).
 
 image_21.png
 
@@ -226,7 +226,7 @@ On average, I found Server 2008 R2 to be **16.8% faster** than Server 2003 when 
 
 ## The impact of locality – EC2 meets S3
 
-At this point I’ve demonstrated that you get rather crappy performance if you perform your uploads single threaded. By just scaling out the number of threads, we can actually end up saturating a gigabit NIC, provided the object size is large enough. However, we do spend a large amount of time waiting for network latency. What difference would it make if we were to run this in the cloud… Say in EC2 for example?
+At this point I've demonstrated that you get rather crappy performance if you perform your uploads single threaded. By just scaling out the number of threads, we can actually end up saturating a gigabit NIC, provided the object size is large enough. However, we do spend a large amount of time waiting for network latency. What difference would it make if we were to run this in the cloud… Say in EC2 for example?
 
 I spawned an m1.xlarge instance in the EU EC2 region, providing me with a stable instance with plenty of CPU and memory. A tracert confirms that we are indeed **very close to the S3 servers**:
 
@@ -247,13 +247,13 @@ over a maximum of 30 hops:
 
 ### HTTP still wins out over HTTPS
 
-Just to make sure, I compared the average performance of HTTP over HTTPS again. For now, I’m hiding the actual units, and instead I’m just showing the percentage difference. Note that the blue HTTPS line is a baseline performance of 100%.
+Just to make sure, I compared the average performance of HTTP over HTTPS again. For now, I'm hiding the actual units, and instead I'm just showing the percentage difference. Note that the blue HTTPS line is a baseline performance of 100%.
 
 image_48.png
 
-Ignoring variation, we see an **average performance improvement of almost 150% compared to HTTPS**. From this we can conclude that locality doesn’t change the performance characteristics of HTTP vs. HTTPS – HTTP still wins any day. As a result of this, numbers from now on will be based on HTTP tests, unless explicitly stated otherwise.
+Ignoring variation, we see an **average performance improvement of almost 150% compared to HTTPS**. From this we can conclude that locality doesn't change the performance characteristics of HTTP vs. HTTPS – HTTP still wins any day. As a result of this, numbers from now on will be based on HTTP tests, unless explicitly stated otherwise.
 
-### Now we’re talking throughput!
+### Now we're talking throughput!
 
 Let's look at a quick graph detailing the maximum attainable transfer speeds for any given object, comparing my colo Server 2008 R2 server with the m1.xlarge instance run in the AWS EC2 cloud (note the log(10) scale):
 

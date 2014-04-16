@@ -3,15 +3,15 @@ title: Sparse Column Storage & the Sparse Vector
 date: 2011-07-15
 tags: [SQL Server - Internals]
 ---
-In this post I’ll be looking at the internal storage mechanism that supports sparse columns. For an introduction to what sparse columns are and when they ought to be used, [take a look here](http://msdn.microsoft.com/en-us/library/cc280604.aspx).
+In this post I'll be looking at the internal storage mechanism that supports sparse columns. For an introduction to what sparse columns are and when they ought to be used, [take a look here](http://msdn.microsoft.com/en-us/library/cc280604.aspx).
 
 <!-- more -->
 
-Sparse columns, whether fixed or variable length, or not stored together with the normal columns in a [record](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx). Instead, they’re all stored in a hidden variable length column at the very end of the record (barring the potential 14 byte structure that may be stored when using versioning).
+Sparse columns, whether fixed or variable length, or not stored together with the normal columns in a [record](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx). Instead, they're all stored in a hidden variable length column at the very end of the record (barring the potential 14 byte structure that may be stored when using versioning).
 
 ## Creating and finding a sparse vector
 
-Let’s create a sample table and insert a couple of test rows:
+Let's create a sample table and insert a couple of test rows:
 
 ```sql
 CREATE TABLE Sparse
@@ -28,11 +28,11 @@ INSERT INTO Sparse (ID, B, E) VALUES (1, 3, 1234)
 INSERT INTO Sparse (ID, A, B) VALUES (45, 243, 328)
 ```
 
-As you’d expect, a SELECT * yields the following result:
+As you'd expect, a SELECT * yields the following result:
 
 image_210.png
 
-Now let’s use DBCC IND to find the lone data pages ID, and then check out the stored record using DBCC PAGE:
+Now let's use DBCC IND to find the lone data pages ID, and then check out the stored record using DBCC PAGE:
 
 ```sql
 DBCC IND (X, 'Sparse', -1)
@@ -48,7 +48,7 @@ This gives us two records, the first one looking like this:
 
 image_85.png
 
-In a previous post I detailed how we [identify complex columns like sparse vectors](/identifying-complex-columns-in-records/), so I won’t go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
+In a previous post I detailed how we [identify complex columns like sparse vectors](/identifying-complex-columns-in-records/), so I won't go into too much detail there. The two red bytes is the single entry in the variable length offset array, with a value of 0x8023 = 32.803. Once we flip the high order bit (identifying this column as a complex column) we get an offset value of 35. Thus we know that the remaining 20 bytes in the record is our sparse vector.
 
 ## The sparse vector structure
 
@@ -64,7 +64,7 @@ So what do those 20 bytes contain? The sparse vector structure looks like this:
 		<tr>
 			<td valign="top" width="175">Complex column header</td>
 			<td valign="top" width="281">2</td>
-			<td valign="top" width="344">The header identifies the type of complex column that we’re dealing with. A value of 5 denotes a sparse vector.</td>
+			<td valign="top" width="344">The header identifies the type of complex column that we're dealing with. A value of 5 denotes a sparse vector.</td>
 		</tr>
 		<tr>
 			<td valign="top" width="175">Sparse column count</td>
@@ -89,15 +89,15 @@ So what do those 20 bytes contain? The sparse vector structure looks like this:
 	</tbody>
 </table>
 
-It’s interesting to note that unlike the normal record structure, fixed length and variable length sparse columns are stored in exactly the same way – both have an entry in the offset table, even though the fixed length values don’t differ in length.
+It's interesting to note that unlike the normal record structure, fixed length and variable length sparse columns are stored in exactly the same way – both have an entry in the offset table, even though the fixed length values don't differ in length.
 
 ### Looking at a record
 
-Going back to our record structure, I’ve colored it according to separate the different parts of the vector:
+Going back to our record structure, I've colored it according to separate the different parts of the vector:
 
 **<span style="color: #ff0000;"><span style="color: #000000;">0x</span>0500</span><span style="color: #0000ff;">0200</span><span style="color: #9b00d3;">03000600</span><span style="color: #008000;">10001400</span>03000000d2040000**
 
-*Note that I’ve byte swapped the following byte references.*
+*Note that I've byte swapped the following byte references.*
 
 The first two bytes **<span style="color: #ff0000;">0x0005</span>** == 5 contains the complex column ID.
 
@@ -107,11 +107,11 @@ The purple part stores two bytes per column, namely the column IDs of the stored
 
 Next up we have the green part – again storing two bytes per column, this time the offsets in the sparse vector. **<span style="color: #008000;">0x0010</span>** == 16, **<span style="color: #008000;">0x0014</span>** == 20.
 
-Finally we have the values themselves. We know that the first column has an ID of 3 and it’s data ends et offset 16. Since the first 12 bytes are made up of the header, the actual values are stored in bytes 13-16: **0x00000003** == 3. The second value ends at offset 20, meaning it’s stored in bytes 17-20: **0x000004d2** == 1.234.
+Finally we have the values themselves. We know that the first column has an ID of 3 and it's data ends et offset 16. Since the first 12 bytes are made up of the header, the actual values are stored in bytes 13-16: **0x00000003** == 3. The second value ends at offset 20, meaning it's stored in bytes 17-20: **0x000004d2** == 1.234.
 
 ### Correlating sparse vector values with sys.columns
 
-Now that we have the values, we just need to correlate them with the columns whose value they store. Let’s select the columns in our Sparse table:
+Now that we have the values, we just need to correlate them with the columns whose value they store. Let's select the columns in our Sparse table:
 
 ```sql
 SELECT
@@ -128,7 +128,7 @@ And there we have it – the value 3 was stored in column_id = 3 => B. The value
 
 image_13.png
 
-The same procedure can be repeated for the second record, but I’m going to leave that as an exercise for the reader :)
+The same procedure can be repeated for the second record, but I'm going to leave that as an exercise for the reader :)
 
 ## Writing a sparse vector parser in C#
 
@@ -184,7 +184,7 @@ namespace OrcaMDF.Core.Engine
 }
 ```
 
-I won’t go into the code as it’s documented and follows the procedure we just went through. A quick test verifies that it achieves the same results as we just did by hand:
+I won't go into the code as it's documented and follows the procedure we just went through. A quick test verifies that it achieves the same results as we just did by hand:
 
 ```csharp
 [TestFixture]

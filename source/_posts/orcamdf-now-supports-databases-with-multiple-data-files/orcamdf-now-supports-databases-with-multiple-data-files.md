@@ -3,7 +3,7 @@ title: OrcaMDF Now Supports Databases With Multiple Data Files
 date: 2011-10-24
 tags: [SQL Server - OrcaMDF]
 ---
-One of the latest features I’ve added to [OrcaMDF](https://github.com/improvedk/OrcaMDF) is support of databases with multiple data files. This required relatively little parsing changes, actually it was mostly bug fixing code that wasn’t hit previously, due to only working with single file databases. It did however require some major refactoring to move away from MdfFile being the primary entrypoint, to now using the Database class, encapsulating a variable number of DataFiles.
+One of the latest features I've added to [OrcaMDF](https://github.com/improvedk/OrcaMDF) is support of databases with multiple data files. This required relatively little parsing changes, actually it was mostly bug fixing code that wasn't hit previously, due to only working with single file databases. It did however require some major refactoring to move away from MdfFile being the primary entrypoint, to now using the Database class, encapsulating a variable number of DataFiles.
 
 <!-- more -->
 
@@ -57,7 +57,7 @@ INSERT INTO MyTable DEFAULT VALUES
 GO 100
 ```
 
-This would cause MyTable to be proportionally allocated between the three data files (the C column being used for the fill to require 100 pages of storage – to ensure we hit all three data files). And to parse it, all you’d do is the following:
+This would cause MyTable to be proportionally allocated between the three data files (the C column being used for the fill to require 100 pages of storage – to ensure we hit all three data files). And to parse it, all you'd do is the following:
 
 ```csharp
 var files = new[]
@@ -76,11 +76,11 @@ using (var db = new Database(files))
 }
 ```
 
-And when run, you’ll see this:
+And when run, you'll see this:
 
 image_6.png
 
-All the way down to 100. Notice how the A column identity value is jumping – this is due to the fact that we’re allocating one extent per data file in round robin fashion. ID’s 1-8 in the first data file, 9-16 in the second data file and finally 17-24 in the third data file. At this point pages 25-32 are allocated in the first data file again, and so on. Since it’s a heap, we’re scanning these in allocation order – by file. That causes us to get results 1-8, 25-32, 49-56, 73-80 and finally 97-100 all from the first file first, and then 9-16, 33-40, etc. from the second and finally the remaining pages from the third data file. Think that looks weird? Well, it’s exactly the same for SQL Server:
+All the way down to 100. Notice how the A column identity value is jumping – this is due to the fact that we're allocating one extent per data file in round robin fashion. ID's 1-8 in the first data file, 9-16 in the second data file and finally 17-24 in the third data file. At this point pages 25-32 are allocated in the first data file again, and so on. Since it's a heap, we're scanning these in allocation order – by file. That causes us to get results 1-8, 25-32, 49-56, 73-80 and finally 97-100 all from the first file first, and then 9-16, 33-40, etc. from the second and finally the remaining pages from the third data file. Think that looks weird? Well, it's exactly the same for SQL Server:
 
 image_8.png
 
@@ -148,7 +148,7 @@ INSERT INTO MyTable DEFAULT VALUES
 GO 100
 ```
 
-This would cause MyTable to be proportionally allocated in the second and third datafile (the D column being used for fill to require 100 pages of storage – to ensure we hit both data files in the filegroup), while the primary data file is left untouched. To parse it, you’d do the exact same as in the previous example, and the result would be:
+This would cause MyTable to be proportionally allocated in the second and third datafile (the D column being used for fill to require 100 pages of storage – to ensure we hit both data files in the filegroup), while the primary data file is left untouched. To parse it, you'd do the exact same as in the previous example, and the result would be:
 
 image_4.png
 

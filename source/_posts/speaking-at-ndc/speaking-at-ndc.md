@@ -3,15 +3,15 @@ title: Speaking at NDC
 date: 2012-03-27
 tags: [Conferences & Presenting]
 ---
-Just before departing for SQLConnections in Vegas and SQLBits in London, I got notified that I’ve been selected for two presentations at the Norwegian Developers Conference in Oslo, June 6-8th!
+Just before departing for SQLConnections in Vegas and SQLBits in London, I got notified that I've been selected for two presentations at the Norwegian Developers Conference in Oslo, June 6-8th!
 
 download_2.jpg
 
 <!-- more -->
 
-I’ve never been to NDC before but I’ve heard lots of good stuff, as well as seen various clips from the recorded videos. I’m especially excited to participate in a developer oriented conference, given that I’ve been focusing most of my time on SQL Server dedicated events over the last year. Lots of interesting new people and sessions to see!
+I've never been to NDC before but I've heard lots of good stuff, as well as seen various clips from the recorded videos. I'm especially excited to participate in a developer oriented conference, given that I've been focusing most of my time on SQL Server dedicated events over the last year. Lots of interesting new people and sessions to see!
 
-As mentioned, I’ll be presenting two sessions:
+As mentioned, I'll be presenting two sessions:
 
 ## Revealing the SQL Server Magic
 
@@ -21,7 +21,7 @@ As mentioned, I’ll be presenting two sessions:
 
 *I will cover how SQL Server stores its own internal metadata about objects, how it knows where to find your data on disk, and once it finds it, how to read it. Using the knowledge from this session, you'll get a solid understanding of the basics behind SQL Server storage.*
 
-This is the same session that I’ll be presenting at SQLBits next Saturday. However, given the audience I will be modifying the session to focus more on the development side of things.
+This is the same session that I'll be presenting at SQLBits next Saturday. However, given the audience I will be modifying the session to focus more on the development side of things.
 
 ## Running SQL Server on Amazon EC2
 

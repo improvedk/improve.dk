@@ -11,7 +11,7 @@ The [registration for SQLBits 9 is now open](http://sqlbits.com/information/Pric
 
 <img style="margin: 15px; display: inline; float: right;" alt="Training Day" src="http://sqlbits.com/images/SQLBits/SQLBitsTrainingDay.png" align="right" />
 
-Besides doing a full day training on the [SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx), I’ve also submitted two related sessions that present a subset of the training day material, in a much more dense format. Both sessions are very technical deep dives on the storage internals. If you think they sound interesting, I’d appreciate a vote :)
+Besides doing a full day training on the [SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx), I've also submitted two related sessions that present a subset of the training day material, in a much more dense format. Both sessions are very technical deep dives on the storage internals. If you think they sound interesting, I'd appreciate a vote :)
 
 ### Knowing The Internals, Who Needs SQL Server Anyway?
 
@@ -27,11 +27,11 @@ You know how to query sys.tables, sys.columns and perhaps even sys.system_intern
 
 Based on my work with OrcaMDF, an open source C# parser for MDF files, I will demonstrate how to parse the internal system tables. Using just the boot page as origin, we'll discover how to traverse the chain of references that ultimately end up in references to the actual system table data, from where we can parse the data records.
 
-Once we’ve got the system table data, I’ll demonstrate how to correlate the different tables to end up with the data we see in common system views.
+Once we've got the system table data, I'll demonstrate how to correlate the different tables to end up with the data we see in common system views.
 
 ## My picks
 
-<img style="margin: 15px; display: inline; float: right;" alt="Sessions Title" src="http://sqlbits.com/images/headings/Sessions.png" width="286" height="98" align="right" />Having only 10 votes, it’s tough to pick out the top 10 sessions from a list of almost ~150 sessions. Though it was a struggle, I ended up with the following votes:
+<img style="margin: 15px; display: inline; float: right;" alt="Sessions Title" src="http://sqlbits.com/images/headings/Sessions.png" width="286" height="98" align="right" />Having only 10 votes, it's tough to pick out the top 10 sessions from a list of almost ~150 sessions. Though it was a struggle, I ended up with the following votes:
 
 [Performance tuning from the field](http://sqlbits.com/Sessions/Event9/Performance_tuning_from_the_field) by Simon Sabin  
 [Transaction Log Performance and Troubleshooting – Deep Dive](http://sqlbits.com/Sessions/Event9/Transaction_Log_Performance_and_Troubleshooting-Deep_Dive) by Chirag Roy  
@@ -44,4 +44,4 @@ Once we’ve got the system table data, I’ll demonstrate how to correlate the 
 [Implementing Real-Time Data Warehouse](http://sqlbits.com/Sessions/Event9/Implementing_Real-Time_Data_Warehouse) by Sutha Thiru  
 [Replication – Best Practices, Troubleshooting & Performance](http://sqlbits.com/Sessions/Event9/Replication-Best_Practices_Troubleshooting__Performance) by Neil Hambly  
 
-Not until now did I notice that three of my sessions are by [Chirag Roy](http://sqlking.wordpress.com/), I’ll use this as an opportunity to congratulate him on becoming the latest [Microsoft Certified Master](http://www.microsoft.com/learning/en/us/certification/master-sql.aspx)!
+Not until now did I notice that three of my sessions are by [Chirag Roy](http://sqlking.wordpress.com/), I'll use this as an opportunity to congratulate him on becoming the latest [Microsoft Certified Master](http://www.microsoft.com/learning/en/us/certification/master-sql.aspx)!

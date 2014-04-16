@@ -3,11 +3,11 @@ title: Creating a Type Aware Parser for the sys.system_internals_partition_colum
 date: 2011-07-13
 tags: [SQL Server - Internals]
 ---
-Based on my findings [exploring the sys.system_internals_partition_columns.ti field](/exploring-the-sys-system_internals_partition_columns-ti-field), I needed parser that could extract the scale, precision, max_length as well as the max_inrow_length fields from it. The tricky part is that those values are stored differently for each individual type, added onto the fact that some types have hardcoded defaults that are not stored in the ti field, even though there’s space for it.
+Based on my findings [exploring the sys.system_internals_partition_columns.ti field](/exploring-the-sys-system_internals_partition_columns-ti-field), I needed parser that could extract the scale, precision, max_length as well as the max_inrow_length fields from it. The tricky part is that those values are stored differently for each individual type, added onto the fact that some types have hardcoded defaults that are not stored in the ti field, even though there's space for it.
 
 <!-- more -->
 
-As a result of some reverse engineering and empirical testing, I’ve made a SysrscolTIParser class that takes in the ti value (I have no idea what the acronym stands for – type information perhaps?), determines the type and parses it corresponding to the type. I won’t go into details as that’s all described in my [previous post](/exploring-the-sys-system_internals_partition_columns-ti-field).
+As a result of some reverse engineering and empirical testing, I've made a SysrscolTIParser class that takes in the ti value (I have no idea what the acronym stands for – type information perhaps?), determines the type and parses it corresponding to the type. I won't go into details as that's all described in my [previous post](/exploring-the-sys-system_internals_partition_columns-ti-field).
 
 ```csharp
 using System;
@@ -186,7 +186,7 @@ namespace OrcaMDF.Core.MetaData
 }
 ```
 
-It uses a SystemType enumeration for switching between the types (sorry, formatting isn’t being nice to me here):
+It uses a SystemType enumeration for switching between the types (sorry, formatting isn't being nice to me here):
 
 ```csharp
 namespace OrcaMDF.Core.MetaData.Enumerations
@@ -631,4 +631,4 @@ namespace OrcaMDF.Core.Tests.MetaData
 }
 ```
 
-All of this is just one big giant bit of infrastructure I needed to implement to get my scanning of nonclustered indexes working. As soon as I’ve got that up and running, all of this, plus a lot more, will be committed & pushed to the [OrcaMDF repo](https://github.com/improvedk/OrcaMDF).
+All of this is just one big giant bit of infrastructure I needed to implement to get my scanning of nonclustered indexes working. As soon as I've got that up and running, all of this, plus a lot more, will be committed & pushed to the [OrcaMDF repo](https://github.com/improvedk/OrcaMDF).

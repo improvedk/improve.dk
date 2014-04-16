@@ -18,7 +18,7 @@ from
 
 image_2.png
 
-Once you get used to reading these pointers, it becomes rather trivial – byte swap the last two pointers to get the file ID (0 or 1 in all of the above rows), and byte swap the first four bytes to get the page ID. To make it a bit more easier for myself and for those who do not read HEX natively, I’ve made a simple function to convert the pointers into a more easily read format.
+Once you get used to reading these pointers, it becomes rather trivial – byte swap the last two pointers to get the file ID (0 or 1 in all of the above rows), and byte swap the first four bytes to get the page ID. To make it a bit more easier for myself and for those who do not read HEX natively, I've made a simple function to convert the pointers into a more easily read format.
 
 ```sql
 create function getPageLocationFromPointer

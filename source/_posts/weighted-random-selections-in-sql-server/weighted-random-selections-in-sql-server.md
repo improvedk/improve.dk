@@ -5,7 +5,7 @@ tags: [SQL Server]
 ---
 ## UPDATE
 
-After testing my code through based on JP’s comments, I’ve realized my implementation was way too naïve and cannot be used for most datasets. For a correct weighted random implementation, see [Dems’ answer on StackOverflow](http://stackoverflow.com/questions/58457/random-weighted-choice-in-t-sql/454454#454454).
+After testing my code through based on JP's comments, I've realized my implementation was way too naïve and cannot be used for most datasets. For a correct weighted random implementation, see [Dems' answer on StackOverflow](http://stackoverflow.com/questions/58457/random-weighted-choice-in-t-sql/454454#454454).
 
 <!-- more -->
 

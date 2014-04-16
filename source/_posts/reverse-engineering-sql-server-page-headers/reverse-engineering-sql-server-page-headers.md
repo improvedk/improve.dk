@@ -3,7 +3,7 @@ title: Reverse Engineering SQL Server Page Headers
 date: 2011-05-19
 tags: [.NET, SQL Server - Internals]
 ---
-One of the first challenges I faced when starting out the development of [OrcaMDF](https://github.com/improvedk/OrcaMDF) was parsing page headers. We all know that [pages are basically split in two parts](/deciphering-a-sql-server-data-page/), the 96 byte header and the 8096 byte body of remaining bytes. Much has been written about headers and Paul Randal ([b](http://www.sqlskills.com/BLOGS/PAUL/)|[t](http://twitter.com/#!/paulrandal)) has a great post describing the [contents of the header](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-page.aspx) as well. However, though the contents have been described, I’ve been completely unable to find any kind of details on the storage format. What data types are the individual fields, and what’s the order? Oh well, we’ve always got DBCC PAGE.
+One of the first challenges I faced when starting out the development of [OrcaMDF](https://github.com/improvedk/OrcaMDF) was parsing page headers. We all know that [pages are basically split in two parts](/deciphering-a-sql-server-data-page/), the 96 byte header and the 8096 byte body of remaining bytes. Much has been written about headers and Paul Randal ([b](http://www.sqlskills.com/BLOGS/PAUL/)|[t](http://twitter.com/#!/paulrandal)) has a great post describing the [contents of the header](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-page.aspx) as well. However, though the contents have been described, I've been completely unable to find any kind of details on the storage format. What data types are the individual fields, and what's the order? Oh well, we've always got DBCC PAGE.
 
 <!-- more -->
 
@@ -14,11 +14,11 @@ DBCC TRACEON (3604)
 DBCC PAGE (TextTest, 1, 101, 2)
 ```
 
-The result comes in two parts, first we’ve got the header contents as DBCC PAGE kindly parses for us, while the second part is a dump of the 96 bytes that make up the header data:
+The result comes in two parts, first we've got the header contents as DBCC PAGE kindly parses for us, while the second part is a dump of the 96 bytes that make up the header data:
 
 image_2.png
 
-Armed with this, the hunt begins! What we’re looking for is a match between the parsed values and the bytes in the header. To make it easy, we need to spot some unique values so we don’t get a lot of ambiguity in where the value might be stored. Starting out with m_freeCnt, we see it has a value of 4066. The body size is 8060 bytes so it’s clear that the number can’t be a tinyint. It wouldn’t make sense to make it an int as that supporst way larger values than we need. An educated guess would be that m_freeCnt is probably stored as a smallint, leaving plenty of space for the 0-8060 range we need.
+Armed with this, the hunt begins! What we're looking for is a match between the parsed values and the bytes in the header. To make it easy, we need to spot some unique values so we don't get a lot of ambiguity in where the value might be stored. Starting out with m_freeCnt, we see it has a value of 4066. The body size is 8060 bytes so it's clear that the number can't be a tinyint. It wouldn't make sense to make it an int as that supporst way larger values than we need. An educated guess would be that m_freeCnt is probably stored as a smallint, leaving plenty of space for the 0-8060 range we need.
 
 Now, 4066 represented in hex is 0x0FE2. Byte swapped, that becomes 0xE20F, and what do you know, we have a match!
 
@@ -36,29 +36,29 @@ And thus we have identified the first field of our header:
 */
 ```
 
-Continuing the search we see that m_freeData = 3895. In hex that’s 0x0F37 and 0x370F when swapped. And voilá, that’s stored right next to m_freeCnt:
+Continuing the search we see that m_freeData = 3895. In hex that's 0x0F37 and 0x370F when swapped. And voilá, that's stored right next to m_freeCnt:
 
 image_6.png
 
-Continuing on with this technique, we can map all the distinct header values where there’s no ambiguity as to where they’re stored. But what about a field like m_level? It has the same value as m_xactReserved, m_reservedCnt, m_ghostRecCnt, etc. How do we know which one of those zero values is really m_level? And how do we find out what the data type is? It could be anything from a tinyint to bigint!
+Continuing on with this technique, we can map all the distinct header values where there's no ambiguity as to where they're stored. But what about a field like m_level? It has the same value as m_xactReserved, m_reservedCnt, m_ghostRecCnt, etc. How do we know which one of those zero values is really m_level? And how do we find out what the data type is? It could be anything from a tinyint to bigint!
 
-Time to bring out the big guns! We’ll start out by shutting down MSSQL / SQL Server:
+Time to bring out the big guns! We'll start out by shutting down MSSQL / SQL Server:
 
 image_8.png
 
-Then we’ll open up the .mdf file in Visual Studio:
+Then we'll open up the .mdf file in Visual Studio:
 
 image_10.png
 
-This’ll open up the file in hex editor mode, allowing direct access to all the yummy data! As we know the page id was 101, we need to jump to byte offset 101 * 8192 = 827,392 to get to the first byte of page 101:
+This'll open up the file in hex editor mode, allowing direct access to all the yummy data! As we know the page id was 101, we need to jump to byte offset 101 * 8192 = 827,392 to get to the first byte of page 101:
 
 image_12.png
 
-Looking at these bytes we see that they’re identical to our header contents, thus confirming we’ve jumped to the correct offset:
+Looking at these bytes we see that they're identical to our header contents, thus confirming we've jumped to the correct offset:
 
 image_16.png
 
-Now I’m going to ask you to do something that will make sheep loving people cry – write some gibberish in there and save the file! Please **do not** do this to a database with any kind of important data in it. Before:
+Now I'm going to ask you to do something that will make sheep loving people cry – write some gibberish in there and save the file! Please **do not** do this to a database with any kind of important data in it. Before:
 
 image_18.png
 
@@ -77,7 +77,7 @@ And notice the header we get as a result:
 
 image_24.png
 
-Several values have changed! m_xactReserved had an ambiguous value of 0 before, now it’s at 30,806. Converting that to byte swapped hex we get a value of 0x5678. Looking at the header, we’ve now pinpointed yet another field and datatype (smallint):
+Several values have changed! m_xactReserved had an ambiguous value of 0 before, now it's at 30,806. Converting that to byte swapped hex we get a value of 0x5678. Looking at the header, we've now pinpointed yet another field and datatype (smallint):
 
 image_26.png
 
@@ -95,13 +95,13 @@ And thus we can update our header reference table:
 */
 ```
 
-Continuing down this path, messing up the header, correlating messed up values with values parsed by DBCC PAGE, it’s possible to locate all the fields and their corresponding data types. If you see the following message, you know you’ve messed it up properly:
+Continuing down this path, messing up the header, correlating messed up values with values parsed by DBCC PAGE, it's possible to locate all the fields and their corresponding data types. If you see the following message, you know you've messed it up properly:
 
 image_28.png
 
-You should be proud of yourself. No go clean up the mess you’ve made!
+You should be proud of yourself. No go clean up the mess you've made!
 
-Jumping forward, I’ve compiled a reference to the page header structure:
+Jumping forward, I've compiled a reference to the page header structure:
 
 ```csharp
 /*
@@ -136,7 +136,7 @@ Jumping forward, I’ve compiled a reference to the page header structure:
 */
 ```
 
-I’m not sure what lies in the remaining bytes of the header as DBCC PAGE doesn’t seem to parse stuff there, and it seems to be zeroed out for all pages I’ve tested. I’m assuming it’s reserved bytes for future usage. Once we’ve got the format, parsing becomes a simple task of reading each field, field by field:
+I'm not sure what lies in the remaining bytes of the header as DBCC PAGE doesn't seem to parse stuff there, and it seems to be zeroed out for all pages I've tested. I'm assuming it's reserved bytes for future usage. Once we've got the format, parsing becomes a simple task of reading each field, field by field:
 
 ```csharp
 HeaderVersion = header[0];
@@ -162,6 +162,6 @@ GhostRecCnt = BitConverter.ToInt16(header, 58);
 
 You can also see the [full source of the header parsing at GitHub](https://github.com/improvedk/OrcaMDF/blob/master/src/OrcaMDF.Core/Engine/Pages/PageHeader.cs).
 
-## Wan’t more?
+## Wan't more?
 
-If this isn’t enough for you, you should go and [vote for one or more of my OrcaMDF related sessions](http://www.sqlpass.org/summit/2011/Speakers/SessionPreferencing.aspx?spid=245&p=1&preferred=False) at the PASS Summit.
+If this isn't enough for you, you should go and [vote for one or more of my OrcaMDF related sessions](http://www.sqlpass.org/summit/2011/Speakers/SessionPreferencing.aspx?spid=245&p=1&preferred=False) at the PASS Summit.

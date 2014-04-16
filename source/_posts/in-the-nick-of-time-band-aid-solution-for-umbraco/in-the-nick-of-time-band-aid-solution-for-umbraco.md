@@ -3,7 +3,7 @@ title: In the Nick of Time: Band Aid Solution for Umbraco 5.1 Performance
 date: 2012-05-14
 tags: [Umbraco]
 ---
-As I write this I’m finishing the last details on a new website project I’m working on for a client. A couple of months ago I made the easy decision of going with [Umbraco](http://umbraco.org/) as the underlying CMS. I’ve had excellent experiences with Umbraco previously and the [community](http://our.umbraco.org/) is amazing.
+As I write this I'm finishing the last details on a new website project I'm working on for a client. A couple of months ago I made the easy decision of going with [Umbraco](http://umbraco.org/) as the underlying CMS. I've had excellent experiences with Umbraco previously and the [community](http://our.umbraco.org/) is amazing.
 
 <!-- more -->
 
@@ -11,7 +11,7 @@ Umbraco was at a split road however, version 4.7 being a widely deployed and tes
 
 ## Performance, oh my
 
-Fast forward a month or so, development well underway. It was clear that there were performance issues. The forums were full of [posts](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/28565-Umbraco-5-Performance-issues) asking how to get performance equivalent to what people were used to in 4.7. Unfortunately, there wasn’t really a solution yet. Thankfully 5.1 was released, promising better performance. After spending a couple of days fighting a [5.0 –> 5.1 upgrade bug](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/31197-Failing-to-upgrade-from-501-to-51RC), I finally got 5.1 running. Much to my dismay, performance was still dismal.
+Fast forward a month or so, development well underway. It was clear that there were performance issues. The forums were full of [posts](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/28565-Umbraco-5-Performance-issues) asking how to get performance equivalent to what people were used to in 4.7. Unfortunately, there wasn't really a solution yet. Thankfully 5.1 was released, promising better performance. After spending a couple of days fighting a [5.0 –> 5.1 upgrade bug](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/31197-Failing-to-upgrade-from-501-to-51RC), I finally got 5.1 running. Much to my dismay, performance was still dismal.
 
 This is me requesting the front page of the website:
 
@@ -64,21 +64,21 @@ node14_2_ on node14_.Id=node14_2_.NodeId WHERE this_.Id in (@p0, @p1, @p2, @p3, 
 @p950, @p951, @p952, @p953, @p954, @p955, @p956) and this_.Id in (SELECT this_0_.Id as y0_ FROM dbo.NodeVersion this_0_ WHERE this_0_.NodeId = @p957)
 ```
 
-It’s clearly obvious we’re dealing with a serious N+1 problem, made worse by a lack of set based operations as evidenced by the above query. At the same time this query is a ticking time bomb – as soon as it hits the 2100 parameter limit, problems will arise unless they’re handled. The culprit seems to be the fact that the database is queried through a LINQ provider on top of Umbracos own Hive layer, on top of NHibernate. The core team themselves have voiced that NHibernate might be exacerbating the problem as they haven’t tamed the beast completely. I [voiced my own concerns and suggestions](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/28565-Umbraco-5-Performance-issues?p=14) on the architecture in the main performance thread. Currently the core team seems to be working on a band aid solution; adding a Lucene based cache to the site to improve performance. In my opinion the only way to really solve the issue is to fix the underlying problem – the N+1 one.
+It's clearly obvious we're dealing with a serious N+1 problem, made worse by a lack of set based operations as evidenced by the above query. At the same time this query is a ticking time bomb – as soon as it hits the 2100 parameter limit, problems will arise unless they're handled. The culprit seems to be the fact that the database is queried through a LINQ provider on top of Umbracos own Hive layer, on top of NHibernate. The core team themselves have voiced that NHibernate might be exacerbating the problem as they haven't tamed the beast completely. I [voiced my own concerns and suggestions](http://our.umbraco.org/forum/core/umbraco-5-general-discussion/28565-Umbraco-5-Performance-issues?p=14) on the architecture in the main performance thread. Currently the core team seems to be working on a band aid solution; adding a Lucene based cache to the site to improve performance. In my opinion the only way to really solve the issue is to fix the underlying problem – the N+1 one.
 
-Back in January the Umbraco team posted the following: [Umbraco 5: On performance and the perils of premature optimization](http://umbraco.com/follow-us/blog-archive/2012/1/4/umbraco-5-on-performance-and-the-perils-of-premature-optimisation.aspx). While I completely agree with the sentiment, avoiding N+1 issues is not premature optimization, that’s a requirement before releasing an RTM product.
+Back in January the Umbraco team posted the following: [Umbraco 5: On performance and the perils of premature optimization](http://umbraco.com/follow-us/blog-archive/2012/1/4/umbraco-5-on-performance-and-the-perils-of-premature-optimisation.aspx). While I completely agree with the sentiment, avoiding N+1 issues is not premature optimization, that's a requirement before releasing an RTM product.
 
-The Umbraco team does deserve big kudos on owning up to the problem. They’re painfully aware of the issues people are dealing with, being unable to deploy due to crippling performance. I’m sure they’ll be improving on performance, I just hope it happens sooner than later. I did talk to Niels Hartvig and offered my help (regarding the database layer), should they want it. I’ve also had Alex Norcliffe look at my logs over email – a big thanks goes to the team, helping out even though they’re in a pinch themselves.
+The Umbraco team does deserve big kudos on owning up to the problem. They're painfully aware of the issues people are dealing with, being unable to deploy due to crippling performance. I'm sure they'll be improving on performance, I just hope it happens sooner than later. I did talk to Niels Hartvig and offered my help (regarding the database layer), should they want it. I've also had Alex Norcliffe look at my logs over email – a big thanks goes to the team, helping out even though they're in a pinch themselves.
 
 ## Band aid solutions while waiting for 5.2
 
-As I had to get the website up and running for a trade show, I had no choice but to spin up a High-CPU Extra Large Instance on Amazon EC2. While this costs a minor fortune (compared to what hosting the site should’ve required), it gave me a temporary solution for the trade show. Startup times were still terrible but at least requesting pages went reasonably fast, even though some pages did hang for 5+ seconds, depending on the content shown.
+As I had to get the website up and running for a trade show, I had no choice but to spin up a High-CPU Extra Large Instance on Amazon EC2. While this costs a minor fortune (compared to what hosting the site should've required), it gave me a temporary solution for the trade show. Startup times were still terrible but at least requesting pages went reasonably fast, even though some pages did hang for 5+ seconds, depending on the content shown.
 
-Once the trade show was over, I downgraded the EC2 instance to an m1.large instance. It’s still expensive, but it’s a tad cheaper for development. However, there’s a bigger problem looming on the horizon – the site has to go live in a week or two.
+Once the trade show was over, I downgraded the EC2 instance to an m1.large instance. It's still expensive, but it's a tad cheaper for development. However, there's a bigger problem looming on the horizon – the site has to go live in a week or two.
 
-The Umbraco team have said they expect a 5.2 performance release sometime during June, and 5.x being on par with 4.7 by the end of 2012. Unfortunately I don’t have the luxury of waiting for that.
+The Umbraco team have said they expect a 5.2 performance release sometime during June, and 5.x being on par with 4.7 by the end of 2012. Unfortunately I don't have the luxury of waiting for that.
 
-What I’ve now done, to prepare for the launch, was to increase the output cache timeout to 24 hours by modifying web.config like so:
+What I've now done, to prepare for the launch, was to increase the output cache timeout to 24 hours by modifying web.config like so:
 
 ```xml
 <caching>
@@ -90,7 +90,7 @@ What I’ve now done, to prepare for the launch, was to increase the output cach
 </caching>
 ```
 
-This essentially turns the website into a statically cached copy. Doing this results in each page being cached for 24 hours after it’s been visited last. While this is great, it still means those first visitors (for each page on the website) will be suffering from long waits. To fix that, I turn to [Xenu’s Link Sleuth](http://home.snafu.de/tilman/xenulink.html). Given the hostname, Xenu will crawl each page on the website, checking for broken links. As a side effect, every page on the site will be visited and thereby cached. By default, Xenu will use 30 concurrent threads to crawl the site. On my EC2 instance, that resulted in loads of timeouts as the instance simply couldn’t handle it:
+This essentially turns the website into a statically cached copy. Doing this results in each page being cached for 24 hours after it's been visited last. While this is great, it still means those first visitors (for each page on the website) will be suffering from long waits. To fix that, I turn to [Xenu's Link Sleuth](http://home.snafu.de/tilman/xenulink.html). Given the hostname, Xenu will crawl each page on the website, checking for broken links. As a side effect, every page on the site will be visited and thereby cached. By default, Xenu will use 30 concurrent threads to crawl the site. On my EC2 instance, that resulted in loads of timeouts as the instance simply couldn't handle it:
 
 image_10.png
 
@@ -98,7 +98,7 @@ Pressing Ctrl+R forces Xenu to retry all the failed links, eventually resulting 
 
 image_8.png
 
-(Sorry for distorting the images – the site isn’t supposed to go completely public yet). For Xenu to find all the links on the site, you’ll have to make sure you’re using &lt;a href /&gt; tags. I had to replace a couple of:
+(Sorry for distorting the images – the site isn't supposed to go completely public yet). For Xenu to find all the links on the site, you'll have to make sure you're using &lt;a href /&gt; tags. I had to replace a couple of:
 
 ```html
 <div onclick="window.open('http://xyz.com')">
@@ -106,6 +106,6 @@ image_8.png
 
 With corresponding &lt;a href /&gt; implementations, otherwise Xenu blissfully ignored them.
 
-Obviously fixing the performance issue like this comes with a severe cost – memory usage on the server as well as being unable to update the site from the back office. For now I can live with that as the main priority is getting the site live. When I update I’ll have to manually cycle the app pool as well as rerunning Xenu. Currently the site takes up about 500 megs of memory fully cached, so I’ve got some room to spare.
+Obviously fixing the performance issue like this comes with a severe cost – memory usage on the server as well as being unable to update the site from the back office. For now I can live with that as the main priority is getting the site live. When I update I'll have to manually cycle the app pool as well as rerunning Xenu. Currently the site takes up about 500 megs of memory fully cached, so I've got some room to spare.
 
 Thankfully there are no protected parts of the site so user-specific caching is not an issue – [YMMV](http://en.wiktionary.org/wiki/YMMV).

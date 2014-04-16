@@ -20,7 +20,7 @@ CREATE TABLE #HitsV1
 )
 ```
 
-Taking a look at the schema, we can calculate the size of the data in the record (synonymous to a row, indicating the structure on disk) to be 4 + 4 + 8 + 4 + 15 = 35 bytes. However, there’s overhead to a record as well, and the narrower the row, the more overhead, relatively.
+Taking a look at the schema, we can calculate the size of the data in the record (synonymous to a row, indicating the structure on disk) to be 4 + 4 + 8 + 4 + 15 = 35 bytes. However, there's overhead to a record as well, and the narrower the row, the more overhead, relatively.
 
 In this case, the overhead consists of:
 
@@ -33,9 +33,9 @@ Bytes | Content
 2 | Number of variable length columns
 2 | Variable length column offset array
 
-Finally, each record has an accompanying two byte pointer in the row offset array, meaning the total overhead per record amounts to 13 bytes. Thus we’ve got 48 bytes in total per record, and with 8096 bytes of available data space per page, that amounts to a max of about 168 rows per page.
+Finally, each record has an accompanying two byte pointer in the row offset array, meaning the total overhead per record amounts to 13 bytes. Thus we've got 48 bytes in total per record, and with 8096 bytes of available data space per page, that amounts to a max of about 168 rows per page.
 
-To test things out, we’ll insert 100k rows into the table:
+To test things out, we'll insert 100k rows into the table:
 
 ```sql
 BEGIN TRAN
@@ -49,7 +49,7 @@ END
 COMMIT
 ```
 
-Note that the actual values doesn’t matter as we’re only looking at the storage effects. Given 168 rows per page, 100.000 rows should fit in about 100.000 / 168 ~= 596 pages. Taking a look at the currently used page count, it’s a pretty close estimate:
+Note that the actual values doesn't matter as we're only looking at the storage effects. Given 168 rows per page, 100.000 rows should fit in about 100.000 / 168 ~= 596 pages. Taking a look at the currently used page count, it's a pretty close estimate:
 
 ```sql
 SELECT
@@ -68,13 +68,13 @@ image_25.png
 
 ## Reconsidering data types by looking at reality and business specs?
 
-If we start out by looking at the overhead, we’ve got a total of four bytes spent on managing the single variable-length IP field. We could change it into a char(15), but then we’d waste space for IP’s like 127.0.0.1 and there’s the whole spaces-at-the-end issue. If we instead convert the IP into an 8-byte bigint on the application side, we save 7 bytes on the column itself, plus 4 for the overhead!
+If we start out by looking at the overhead, we've got a total of four bytes spent on managing the single variable-length IP field. We could change it into a char(15), but then we'd waste space for IP's like 127.0.0.1 and there's the whole spaces-at-the-end issue. If we instead convert the IP into an 8-byte bigint on the application side, we save 7 bytes on the column itself, plus 4 for the overhead!
 
 Looking at the FlashVersion field, why do we need a 4-byte integer capable of storing values between –2.147.483.468 and 2.147.483.647 when the actual Flash version range between 1 and 11? Changing that field into a tinyint just saved us 3 bytes more per record!
 
-Reading through our product specs I realize we’ll never need to support more than 1000 pages per entity, and we don’t need to store statistics more precisely than to-the-hour. Converting PageNumber to a smallint just saved 2 extra bytes per record!
+Reading through our product specs I realize we'll never need to support more than 1000 pages per entity, and we don't need to store statistics more precisely than to-the-hour. Converting PageNumber to a smallint just saved 2 extra bytes per record!
 
-As for the Created field, it currently takes up 8 bytes per record and has the ability to store the time with a precision down to one thee-hundredth of a second – obviously way more precise than what we need. Smalldatetime would be much more fitting, storing the precision down to the minute and taking up only 4 bytes – saving a final 4 bytes per record. I we wanted to push it to the extreme we could split Created into two fields – a 3 byte date field and a 1 byte tinyint field for the hour. Though it’d take up the same space, we just gained the ability to store dates all the way up to year 9999 instead of *only *2079. As the rapture is coming up shortly, we’ll skip that for now.
+As for the Created field, it currently takes up 8 bytes per record and has the ability to store the time with a precision down to one thee-hundredth of a second – obviously way more precise than what we need. Smalldatetime would be much more fitting, storing the precision down to the minute and taking up only 4 bytes – saving a final 4 bytes per record. I we wanted to push it to the extreme we could split Created into two fields – a 3 byte date field and a 1 byte tinyint field for the hour. Though it'd take up the same space, we just gained the ability to store dates all the way up to year 9999 instead of *only *2079. As the rapture is coming up shortly, we'll skip that for now.
 
 So to sum it up, we just saved:
 
@@ -87,7 +87,7 @@ Bytes | Cause
 
 In total, 20 bytes per record, resulting in a new total record size of 26 – 28 including the slot offset array pointer. This means we can now fit in 289 rows per page instead of the previous 168.
 
-Testing the new format reveals we’re down to just 364 pages now:
+Testing the new format reveals we're down to just 364 pages now:
 
 ```sql
 CREATE TABLE #HitsV2

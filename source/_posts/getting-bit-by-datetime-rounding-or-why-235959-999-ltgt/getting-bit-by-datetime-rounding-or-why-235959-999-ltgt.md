@@ -22,7 +22,7 @@ image_2.png
 
 Why in the world are results from June included when I had an explicit predicate limiting the results to May? The answer can be found in one of my [earlier posts on parsing dates](/parsing-dates-in-orcamdf). As SQL Server stores the millisecond part of a datetime with a precision of 1/300th of a second, with .997 being the highest possible stored value. .998 will be rounded down to .997 while .999 will be rounded up – causing a rollover of the day part.
 
-Let’s setup a simple sample data set:
+Let's setup a simple sample data set:
 
 ```sql
 CREATE TABLE DateTest

@@ -31,8 +31,8 @@ These quotes really show the core issue that we were debating, and at the same t
 [Brent Ozar](http://www.brentozar.com/) recently posted a great blog topic on [How to Pick Blog & Presentation Topics](http://www.brentozar.com/archive/2009/04/how-to-pick-blog-presentation-topics). The two most important quotes, in my opinion, of Brent Ozars post are the following:
 
 <blockquote>
-	As a presenter, your job isn’t to learn things.  
-	Your job is to pass on things you’ve already learned.
+	As a presenter, your job isn't to learn things.  
+	Your job is to pass on things you've already learned.
 </blockquote>
 
 I absolutely agree with Brent Ozar. As a presenter, your job isn't to learn things - it's to pass on the things you've already learned. However, this begs the question, am I a presenter? Do I want to be a presenter?

@@ -3,17 +3,17 @@ title: OrcaMDF Now Exposes Metadata Through System DMVs
 date: 2011-11-10
 tags: [SQL Server - OrcaMDF]
 ---
-I’m sitting here on the train in Denmark, on the final leg home from [SQLRally Nordic](http://www.sqlpass.org/sqlrally/2011/). During my presentation based on my OrcaMDF work, I implicitly announced that OrcaMDF now exposes metadata – thougt I might as well share here as well. Other than expanding the core engine support in OrcaMDF, one of the main features I’ve wanted to implement was a way for OrcaMDF to expose metadata about your database. How do you list the tables, indexes, columns, etc. from your database?
+I'm sitting here on the train in Denmark, on the final leg home from [SQLRally Nordic](http://www.sqlpass.org/sqlrally/2011/). During my presentation based on my OrcaMDF work, I implicitly announced that OrcaMDF now exposes metadata – thougt I might as well share here as well. Other than expanding the core engine support in OrcaMDF, one of the main features I've wanted to implement was a way for OrcaMDF to expose metadata about your database. How do you list the tables, indexes, columns, etc. from your database?
 
 <!-- more -->
 
 ## Avoiding false abstractions
 
-My initial thought was to create my own abstraction layer on top of the objects. You could get the list of user tables by accessing the database.GetMetadata().UserTables enumeration, you’d get a list of tables, including columns, etc. This has a very clean interface from the development side, everything being normal .NET objects. However, it would also require me to come up with said abstraction – and where do I draw the line on what to expose and what to keep internal? What if my abstraction didn’t feel natural to DBAs, being used to the sys.* DMVs from SQL Server?
+My initial thought was to create my own abstraction layer on top of the objects. You could get the list of user tables by accessing the database.GetMetadata().UserTables enumeration, you'd get a list of tables, including columns, etc. This has a very clean interface from the development side, everything being normal .NET objects. However, it would also require me to come up with said abstraction – and where do I draw the line on what to expose and what to keep internal? What if my abstraction didn't feel natural to DBAs, being used to the sys.* DMVs from SQL Server?
 
 ## Exposing the built-in DMVs from SQL Server
 
-I spent some time considering who might end up using OrcaMDF – and concluded there might be just about four persons in the world, and those four would be split evenly between DBA and SQL Server dev. Common for those is that they’re already used to navigating the metadata of SQL Server databses through system DMVs like sys.tables, sys.columns, sys.indexes etc. What then struck me was that I’m already able to parse all of the base tables in SQL Server, and using OBJECT_DEFINITION, I can get the source code of the built-in system DMVs. As such, it was a simple matter of creating my own replicas of the built-in DMVs.
+I spent some time considering who might end up using OrcaMDF – and concluded there might be just about four persons in the world, and those four would be split evenly between DBA and SQL Server dev. Common for those is that they're already used to navigating the metadata of SQL Server databses through system DMVs like sys.tables, sys.columns, sys.indexes etc. What then struck me was that I'm already able to parse all of the base tables in SQL Server, and using OBJECT_DEFINITION, I can get the source code of the built-in system DMVs. As such, it was a simple matter of creating my own replicas of the built-in DMVs.
 
 ## How to use the DMVs in OrcaMDF
 
@@ -66,9 +66,9 @@ No matter how you choose to do it, this is the result:
 
 image_22.png
 
-## What’s available at this point
+## What's available at this point
 
-If you grab the [latest commit of OrcaMDF](https://github.com/improvedk/OrcaMDF), you’ll have access to the following DMVs, just as they’re exposed through SQL Server:
+If you grab the [latest commit of OrcaMDF](https://github.com/improvedk/OrcaMDF), you'll have access to the following DMVs, just as they're exposed through SQL Server:
 
 
 * sys.columns

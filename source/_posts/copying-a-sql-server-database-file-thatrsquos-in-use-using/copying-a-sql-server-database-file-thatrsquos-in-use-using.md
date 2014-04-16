@@ -3,15 +3,15 @@ title: Copying a SQL Server Database File That's in Use Using Volume Shadow Copy
 date: 2011-06-21
 tags: [.NET]
 ---
-When working on [OrcaMDF](https://github.com/improvedk/OrcaMDF) I usually setup a test database, force a checkpoint and then perform my tests on the MDF file. Problem is, you can’t open the MDF file for reading, nor copy it, as long as the database is online in SQL Server. I could shut down SQL Server temporarily while copying the file, but that quickly becomes quite a hassle.
+When working on [OrcaMDF](https://github.com/improvedk/OrcaMDF) I usually setup a test database, force a checkpoint and then perform my tests on the MDF file. Problem is, you can't open the MDF file for reading, nor copy it, as long as the database is online in SQL Server. I could shut down SQL Server temporarily while copying the file, but that quickly becomes quite a hassle.
 
 <!-- more -->
 
 ## Leveraging Volume Shadow Copy (VSS) through AlphaVSS
 
-[AlphaVSS](http://www.alphaleonis.com/2008/08/alphavss-bringing-windows-shadow-copy-service-vss-to-net/) is an excellent library for invoking VSS through .NET. While it can do much more, I’m using it to create a snapshot of a single active file, copy it and then dispose of the snapshot afterwards.
+[AlphaVSS](http://www.alphaleonis.com/2008/08/alphavss-bringing-windows-shadow-copy-service-vss-to-net/) is an excellent library for invoking VSS through .NET. While it can do much more, I'm using it to create a snapshot of a single active file, copy it and then dispose of the snapshot afterwards.
 
-The following class presents a single static method that’ll copy any file (locked or not) and copy it to the desired destination. It would be easy to adapt upon this sample to copy multiple files, directories, etc. Note that while a copy file progress clalback is supported, I don’t really care about the progress and am there sending a null reference when calling [CopyFileEx](http://msdn.microsoft.com/en-us/library/aa363852(v=vs.85).aspx).
+The following class presents a single static method that'll copy any file (locked or not) and copy it to the desired destination. It would be easy to adapt upon this sample to copy multiple files, directories, etc. Note that while a copy file progress clalback is supported, I don't really care about the progress and am there sending a null reference when calling [CopyFileEx](http://msdn.microsoft.com/en-us/library/aa363852(v=vs.85).aspx).
 
 ```csharp
 class VssHelper

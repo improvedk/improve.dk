@@ -20,7 +20,7 @@ public interface ISqlType
 
 ## SqlInt implementation
 
-int is very simple as it’s fixed length and is very straight forward to convert using BitConverter:
+int is very simple as it's fixed length and is very straight forward to convert using BitConverter:
 
 ```csharp
 public class SqlInt : ISqlType
@@ -121,4 +121,4 @@ public class SqlNvarcharTests
 
 ## Other implementations
 
-OrcaMDF currently [supports 12 data types](https://github.com/improvedk/OrcaMDF/tree/2b2403c4422cc47b309857d42fb182970bbe11d8/src/OrcaMDF.Core/Engine/SqlTypes) out of the box. I’ll be covering datetime and bit later as those are a tad special compared to the rest of the current types. As the remaining types are implemented, I will be covering those too.
+OrcaMDF currently [supports 12 data types](https://github.com/improvedk/OrcaMDF/tree/2b2403c4422cc47b309857d42fb182970bbe11d8/src/OrcaMDF.Core/Engine/SqlTypes) out of the box. I'll be covering datetime and bit later as those are a tad special compared to the rest of the current types. As the remaining types are implemented, I will be covering those too.

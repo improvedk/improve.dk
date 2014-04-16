@@ -9,9 +9,9 @@ Last year I went on a marathon conference trip, starting out in LA at [Adobe Max
 
 71624_444201957306_724027306_5893683_5375463_n_2.jpg
 
-Of the three, the one I’ll definitely be returning to this year is the PASS Summit. Last year I had the honor of getting a nice neon green “FIRST-TIMER” snippet on my badge, a snippet I wore with honor. This year however, I’m aiming for the Alumni snippet, and perhaps even the speaker snippet by submitting a couple of abstracts.
+Of the three, the one I'll definitely be returning to this year is the PASS Summit. Last year I had the honor of getting a nice neon green “FIRST-TIMER” snippet on my badge, a snippet I wore with honor. This year however, I'm aiming for the Alumni snippet, and perhaps even the speaker snippet by submitting a couple of abstracts.
 
-As I've been somewhat busy with [OrcaMDF](/introducing-orcamdf) in my spare time recently, both of my abstracts use OrcaMDF as the origin for going into the internals. I really hope I get a chance to present about this as I’m super psyched about it :)
+As I've been somewhat busy with [OrcaMDF](/introducing-orcamdf) in my spare time recently, both of my abstracts use OrcaMDF as the origin for going into the internals. I really hope I get a chance to present about this as I'm super psyched about it :)
 
 ## Knowing the Internals – Who Needs SQL Server Anyway?
 
@@ -23,7 +23,7 @@ Has your database suffered an unrecoverable disk corruption? This session might 
 
 ### Why & What?
 
-I originally gave this presentation at [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx) and got some great feedback. Fueled by positive feedback I continued the development and am now at the point where I have so much content I considered doing a 3½ hour session instead. By attending this session you will not only see diagrams of internal structures on slides, you’ll actually see C# code demonstrated that parses & utilizes them!
+I originally gave this presentation at [Miracle Open World 2011](http://mow2011.dk/mow2011.aspx) and got some great feedback. Fueled by positive feedback I continued the development and am now at the point where I have so much content I considered doing a 3½ hour session instead. By attending this session you will not only see diagrams of internal structures on slides, you'll actually see C# code demonstrated that parses & utilizes them!
 
 ## Demystifying Database Metadata
 
@@ -31,8 +31,8 @@ You know how to query sys.tables, sys.columns and perhaps even sys.system_intern
 
 Based on my work with OrcaMDF, an open source C# parser for MDF files, I will demonstrate how to parse the internal system tables. Using just the boot page as origin, we'll discover how to traverse the chain of references that ultimately end up in references to the actual system table data, from where we can parse the data records.
 
-Once we’ve got the system table data, I’ll demonstrate how to correlate the different tables to end up with the data we see in common system views.
+Once we've got the system table data, I'll demonstrate how to correlate the different tables to end up with the data we see in common system views.
 
 ### Why & What?
 
-As I continued the development of OrcaMDF I used the various system views extensively – sys.objects, tables, columns, indexes, internals_allocation_units etc. However, as development moved forward and I needed to parse that metadata myself, I had to look into the underlying tables – sysallocunits, sysschobjs, sysrowsets, sysrowsetcolumns. Join this session and let’s enter the realm of the hidden metadata and let’s explore it together!
+As I continued the development of OrcaMDF I used the various system views extensively – sys.objects, tables, columns, indexes, internals_allocation_units etc. However, as development moved forward and I needed to parse that metadata myself, I had to look into the underlying tables – sysallocunits, sysschobjs, sysrowsets, sysrowsetcolumns. Join this session and let's enter the realm of the hidden metadata and let's explore it together!

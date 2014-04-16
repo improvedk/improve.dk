@@ -44,7 +44,7 @@ OUTER APPLY
 	OPENROWSET(TABLE RSCPROP, c.ti) p
 ```
 
-Nothing too out of the ordinary if you’ve looked at other internal queries. There’s a lot of bitmasking / shifting going on to extract multiple values from the same internal base table fields. One thing that is somewhat convoluted is the OPENROWSET(TABLE RSCPROP, c.ti) p OUTER APPLY being made.
+Nothing too out of the ordinary if you've looked at other internal queries. There's a lot of bitmasking / shifting going on to extract multiple values from the same internal base table fields. One thing that is somewhat convoluted is the OPENROWSET(TABLE RSCPROP, c.ti) p OUTER APPLY being made.
 
 A Google query for “sql server +rscprop” yields absolutely zilch results:
 
@@ -68,7 +68,7 @@ OUTER APPLY
 	OPENROWSET(TABLE RSCPROP, c.ti) p
 ```
 
-To help me identifying the ti field structure, I’ve made a test table using a number of different column types:
+To help me identifying the ti field structure, I've made a test table using a number of different column types:
 
 ```sql
 CREATE TABLE TITest
@@ -90,7 +90,7 @@ CREATE TABLE TITest
 )
 ```
 
-I’m not going to insert any data as that’s irrelevant for this purpose. For this next part, make sure you’re connected to the SQL Server using the [Dedicated Administrator Connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx). Now let’s query the sysrscols base table to see what values are stored in the ti field for the sample fields we’ve just created:
+I'm not going to insert any data as that's irrelevant for this purpose. For this next part, make sure you're connected to the SQL Server using the [Dedicated Administrator Connection](http://msdn.microsoft.com/en-us/library/ms178068.aspx). Now let's query the sysrscols base table to see what values are stored in the ti field for the sample fields we've just created:
 
 ```sql
 -- Get object id of TITest table
@@ -103,7 +103,7 @@ SELECT * FROM sys.sysrowsets WHERE idmajor = 213575799
 SELECT * FROM sys.sysrscols WHERE rsid = 72057594040614912
 ```
 
-Besides the fact I’ve cut away some irrelevant columns, this is the result:
+Besides the fact I've cut away some irrelevant columns, this is the result:
 
 image_64.png
 
@@ -144,7 +144,7 @@ Converting the first system_type_id into hex yields 0n173 = 0xAD. Converting the
 12973 & 0x000000FF == 173
 ```
 
-As for the length, the second byte stores the value 0x32 = 0n50. As the length is a smallint (we know it can be up to 8000, thus requiring at least a smallint), we can assume the next two bytes cover that. To extract that value, we’ll need a bitmask, as well as a shift operation to shift the two middlemost bytes one step to the right:
+As for the length, the second byte stores the value 0x32 = 0n50. As the length is a smallint (we know it can be up to 8000, thus requiring at least a smallint), we can assume the next two bytes cover that. To extract that value, we'll need a bitmask, as well as a shift operation to shift the two middlemost bytes one step to the right:
 
 ```csharp
 (12973 & 0x00FFFF00) >> 8 == 50
@@ -152,7 +152,7 @@ As for the length, the second byte stores the value 0x32 = 0n50. As the length i
 
 ### datetime2
 
-This is the same for the char field. The datetime2 field is different as it stores the scale and precision values. 0n1322 in hex yields a value of 0x52A. 0x2A being the type (42). All that remains is the 0x5/0n5 which can only be the scale. A quick with a datetime(7) field yields the same result, though the precision is then 27. Thus I’ll conclude that for the datetime2 type, precision = 20 + scale. Extracting the scale from the second byte requires almost the same operation as before, just with a different bitmask:
+This is the same for the char field. The datetime2 field is different as it stores the scale and precision values. 0n1322 in hex yields a value of 0x52A. 0x2A being the type (42). All that remains is the 0x5/0n5 which can only be the scale. A quick with a datetime(7) field yields the same result, though the precision is then 27. Thus I'll conclude that for the datetime2 type, precision = 20 + scale. Extracting the scale from the second byte requires almost the same operation as before, just with a different bitmask:
 
 ```csharp
 (1322 & 0x0000FF00) >> 8 == 5
@@ -180,7 +180,7 @@ Extracting the third byte as the scale requires a similar bitmask & shift operat
 
 These are a bit special too. Looking at the first nvarchar(100) field we can convert 0n25832 to 0x64E7. 0xE7 being the type ID of 231. 0x64 being the length of 100, stored as a two byte smallint. This shows that the parsing of non-max (n)varchar fields is pretty much in line with the rest so far.
 
-The nvarchar(max) differs in that it only stores the type ID, there’s no length. Given the lack of a length (technically the invalid length of 0 is stored), we read it as being –1, telling us that it’s a LOB/MAX field being stored with a max_length of –1 and a maximum in_row length of 8000, provided it’s not stored off-row.
+The nvarchar(max) differs in that it only stores the type ID, there's no length. Given the lack of a length (technically the invalid length of 0 is stored), we read it as being –1, telling us that it's a LOB/MAX field being stored with a max_length of –1 and a maximum in_row length of 8000, provided it's not stored off-row.
 
 Varbinary seems to follow the exact same format.
 
@@ -190,8 +190,8 @@ Varbinary seems to follow the exact same format.
 
 ### text
 
-0n4131 = 0x1023. 0x23 = the type ID of 35. 0x10 being the max_length of 16. The reason the text type has a max_length of 16 is that text is a LOB type that will always be stored off row, leaving just a 16 byte pointer in the record where it’s logically stored.
+0n4131 = 0x1023. 0x23 = the type ID of 35. 0x10 being the max_length of 16. The reason the text type has a max_length of 16 is that text is a LOB type that will always be stored off row, leaving just a 16 byte pointer in the record where it's logically stored.
 
 ## Conclusion
 
-The OPENROWSET(TABLE RSCPROP, x) obviously performs some dark magic. The ti field is an integer that’s used to store multiple values & formats, depending on the row type. Thus, to parse this properly, a switch would have to be made. Certain types also take values for a given – the precision fields based on the scale value, float having a fixed precision of 53 etc. It shouldn’t be long before I have a commit ready for [OrcaMDF](https://github.com/improvedk/OrcaMDF) that’ll contain this parsing logic :)
+The OPENROWSET(TABLE RSCPROP, x) obviously performs some dark magic. The ti field is an integer that's used to store multiple values & formats, depending on the row type. Thus, to parse this properly, a switch would have to be made. Certain types also take values for a given – the precision fields based on the scale value, float having a fixed precision of 53 etc. It shouldn't be long before I have a commit ready for [OrcaMDF](https://github.com/improvedk/OrcaMDF) that'll contain this parsing logic :)

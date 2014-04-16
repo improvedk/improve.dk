@@ -9,7 +9,7 @@ There are several different date related data types in SQL Server. Currently [Or
 
 ## Implementing SqlDate
 
-The simplest of the three is date – it’s a 3 byte fixed length type that stores the number of days passed since the default value of 1900-01-01. The only tricky part is that .NET does not have any standard representation of three byte integer values, only shorts & ints which are either too large or too small. Thus, to read the number of days correctly, we’ll have to perform some shift magic to get the correct number into a .NET four byte integer. Once we’ve got the date, we can just create a new default DateTime and add the number of days.
+The simplest of the three is date – it's a 3 byte fixed length type that stores the number of days passed since the default value of 1900-01-01. The only tricky part is that .NET does not have any standard representation of three byte integer values, only shorts & ints which are either too large or too small. Thus, to read the number of days correctly, we'll have to perform some shift magic to get the correct number into a .NET four byte integer. Once we've got the date, we can just create a new default DateTime and add the number of days.
 
 ```csharp
 public class SqlDate : ISqlType
@@ -42,9 +42,9 @@ You can see the [relevant tests here](https://github.com/improvedk/OrcaMDF/blob/
 
 ## Adding time – implementing SqlDateTime
 
-Whereas date only stores the date, datetime also stores a time factor. Datetime is stored as a fixed length 8 byte value, the first being the time part while the second is the date part. Calculating the date is done more or less the same way as in the date example, except this time it’s stored as a normal four byte integer, so it’s much easier to handle. The time part is stored as the number of clock ticks since midnight, with one tick being 1/300th of a second. To represent the tick value, we first define a constant with the value 10d/3d.
+Whereas date only stores the date, datetime also stores a time factor. Datetime is stored as a fixed length 8 byte value, the first being the time part while the second is the date part. Calculating the date is done more or less the same way as in the date example, except this time it's stored as a normal four byte integer, so it's much easier to handle. The time part is stored as the number of clock ticks since midnight, with one tick being 1/300th of a second. To represent the tick value, we first define a constant with the value 10d/3d.
 
-All time values are actually stored in the same integer time value, so to access the individual values, we’ll need to perform some division & modulus.
+All time values are actually stored in the same integer time value, so to access the individual values, we'll need to perform some division & modulus.
 
 Part | Calculation
 ---- | -----------

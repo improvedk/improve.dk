@@ -7,7 +7,7 @@ I recently gave a presentations on the topic of [GUID usage](/miracle-open-world
 
 <!-- more -->
 
-It’s commonly known that to use indexes effectively, we need to seek. Furthermore, to ensure we don’t scan, we should avoid using functions, casts, etc. as predicates as that will cause the optimizer to not utilize the indexes properly. However, in this case the situation was presented as query having a simple “where SomeCol = ‘74e03ed0-6d51-413a-bffb-76b5e409afc1’”. As far as I knew, that should just convert automatically into a uniqueidentifier and still use an index seek. A simple test shows that to be the case as well:
+It's commonly known that to use indexes effectively, we need to seek. Furthermore, to ensure we don't scan, we should avoid using functions, casts, etc. as predicates as that will cause the optimizer to not utilize the indexes properly. However, in this case the situation was presented as query having a simple “where SomeCol = ‘74e03ed0-6d51-413a-bffb-76b5e409afc1'”. As far as I knew, that should just convert automatically into a uniqueidentifier and still use an index seek. A simple test shows that to be the case as well:
 
 ```sql
 create table #Test
@@ -33,7 +33,7 @@ An index seek with a bookmark lookup, perfect. I had no answer to his question s
 
 image_8.png
 
-As the system is internal, I promised to keep it anonymous, thus most of it is blurred out. I also do not have access to the actual schema, I was however able to deduce the relevant parts from the execution plans and column/table names used. Here’s an abstract version of the query being run:
+As the system is internal, I promised to keep it anonymous, thus most of it is blurred out. I also do not have access to the actual schema, I was however able to deduce the relevant parts from the execution plans and column/table names used. Here's an abstract version of the query being run:
 
 ```sql
 -- Schema
@@ -91,7 +91,7 @@ group by
 	GuidA, GuidB, GuidC, GuidD
 ```
 
-Obviously this is not the optimal way of doing this, passing in a large amount of variables in ad-hoc fashion. This was not an in-house system however, so they had to live with the code. Using my code as a test, filled with a large number of dummy test data, I’m not able to reproduce the issue. However, the most interesting part is how they managed to solve the problem. Instead of doing a usual uniqueidentifier predicate like:
+Obviously this is not the optimal way of doing this, passing in a large amount of variables in ad-hoc fashion. This was not an in-house system however, so they had to live with the code. Using my code as a test, filled with a large number of dummy test data, I'm not able to reproduce the issue. However, the most interesting part is how they managed to solve the problem. Instead of doing a usual uniqueidentifier predicate like:
 
 ```sql
 select * from #Test where Guid = '74e03ed0-6d51-413a-bffb-76b5e409afc1'
@@ -103,10 +103,10 @@ They were able to modify the predicates to look like this:
 select * from #Test where Guid = {GUID'74e03ed0-6d51-413a-bffb-76b5e409afc1'}
 ```
 
-And if you look closely at the execution plan of the first query, this is what’s happening internally as well:
+And if you look closely at the execution plan of the first query, this is what's happening internally as well:
 
 image_10.png
 
-Since I was unable to reproduce the issue, and I can find no documentation on the {GUID’xyz’} (neither online nor in BOL) syntax, I am unable to explain exactly what’s going on. EDIT: [Mladen Prajdić](http://weblogs.sqlteam.com/mladenp/) found a page describing [GUID Escape Sequences](http://msdn.microsoft.com/en-us/library/ms712494(VS.85).aspx). My guess is that the input query, while simple in structure, became too complex due to the large number of predicates, and thus the optimizer was unable to convert the input string to a GUID at compile time and thus had to resort to an IMPLICIT_CONVERT, causing an index scan. Using parameters, a TVF or another form of temporary table to hold those ~1000 predicate GUIDs in would obviously have been a lot more optimal as well, and would have avoided the implicit convert too. Being as it was a third party system, that was a modification that could not be made. If you have any further information on the {GUID’xyz’} constant syntax, please do get in touch.
+Since I was unable to reproduce the issue, and I can find no documentation on the {GUID'xyz'} (neither online nor in BOL) syntax, I am unable to explain exactly what's going on. EDIT: [Mladen Prajdić](http://weblogs.sqlteam.com/mladenp/) found a page describing [GUID Escape Sequences](http://msdn.microsoft.com/en-us/library/ms712494(VS.85).aspx). My guess is that the input query, while simple in structure, became too complex due to the large number of predicates, and thus the optimizer was unable to convert the input string to a GUID at compile time and thus had to resort to an IMPLICIT_CONVERT, causing an index scan. Using parameters, a TVF or another form of temporary table to hold those ~1000 predicate GUIDs in would obviously have been a lot more optimal as well, and would have avoided the implicit convert too. Being as it was a third party system, that was a modification that could not be made. If you have any further information on the {GUID'xyz'} constant syntax, please do get in touch.
 
 While I have no final explanation, the conclusion must be – watch out for those implicit conversions, even when you absolutely do not expect them to occur.
