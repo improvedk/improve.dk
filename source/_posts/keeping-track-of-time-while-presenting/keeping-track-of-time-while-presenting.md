@@ -1,7 +1,7 @@
 permalink: keeping-track-of-time-while-presenting
 title: Keeping Track of Time While Presenting
 date: 2011-10-07
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 One of the most important aspects of presenting is to stay within the allotted time slot. You should aim at finishing exactly on time, neither exceeding nor finishing too early.
 

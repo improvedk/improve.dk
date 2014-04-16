@@ -1,7 +1,7 @@
 permalink: sqlbits-presentation-materials
 title: SQLBits Presentation Materials
 date: 2011-10-03
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I've got a blog post coming up tomorrow on general SQLBits reflections (‘twas awesome), for now I'll just post my session materials as promised :)
 

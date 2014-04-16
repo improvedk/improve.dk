@@ -1,7 +1,7 @@
 permalink: presenting-a-free-preview-of-my-sql-server-storage-engine-and-mdf-file-internals-training-day
 title: Presenting a Free Preview of my SQL Server Storage Engine and MDF File Internals Training Day
 date: 2011-08-04
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 In collaboration with [Trifork](http://www.trifork.com), I'll be giving a free preview of my [SQL Server Storage Engine and MDF File Internals training day at SQLBits](http://www.sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx).
 

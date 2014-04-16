@@ -1,7 +1,7 @@
 permalink: powerpad-powerpoint-presenters-view-for-tablets-phones
 title: PowerPad - Powerpoint Presenters View for Tablets & Phones
 date: 2013-10-28
-tags: [.NET, Conferences & Presenting, Tools of the Trade]
+tags: [.NET, Conferences and Presenting, Tools of the Trade]
 ---
 I love presenting, especially so when it's possible for me to do so alongside Powerpoints presenters view. Unfortunately I'm an even bigger fan of [ZoomIt](http://technet.microsoft.com/en-us/sysinternals/bb897434.aspx) and I use it extensively when presenting. Why is that an issue? To use ZoomIt effectively, not just in demos but when showing slides as well, I need to duplicate my screen rather than extending it. Duplicating the screen means presenters view is not an option :(
 

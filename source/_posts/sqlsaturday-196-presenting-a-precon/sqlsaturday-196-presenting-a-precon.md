@@ -1,7 +1,7 @@
 permalink: sqlsaturday-196-presenting-a-precon
 title: SQLSaturday &#35;196 - Presenting a Precon
 date: 2013-02-21
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Seeing SQLSaturday events sprawling up all over the world makes me all warm and fuzzy inside. Long have I been considering whether one might happen in Denmark, but to be honest, I didn't think the audience would be big enough. I'm biased though as I've mainly attended events outside of Denmark, and thus most of my acquaintances have been non-Danish. But lo and behold, Régis Baccaro just announced that [SQLSaturday #196](http://www.sqlsaturday.com/196/eventhome.aspx) now has [101 registered attendees](https://twitter.com/regbac/status/304320528095793154)! And best of all, it's held in Copenhagen on the 20th of April.
 

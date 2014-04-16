@@ -1,7 +1,7 @@
 permalink: sqlbits-9-voting-amp-registration-open
 title: SQLBits 9 Voting & Registration Open
 date: 2011-07-12
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 The [registration for SQLBits 9 is now open](http://sqlbits.com/information/Pricing.aspx).Equally important, the voting for sessions is has also opened. Simply login and take a look at the [list of sessions](http://sqlbits.com/information/PublicSessions.aspx) to vote for your preferred sessions.
 

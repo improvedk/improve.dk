@@ -1,7 +1,7 @@
 permalink: ces-2007-pictures
 title: CES 2007 Pictures
 date: 2007-01-28
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 A series of pictures I took at the 2007 CES show.
 

@@ -1,7 +1,7 @@
 permalink: securingdotnet
 title: Securing .NET Code Presentation
 date: 2006-10-29
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 During the last couple of weeks, I have been giving lectures on the subject of .NET code protection at some of the danish universities.
 

@@ -1,7 +1,7 @@
 permalink: presenting-at-sqlbits-x
 title: Presenting at SQLBits X
 date: 2012-01-26
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 [SQLBits X](http://www.sqlbits.com/) is coming up soon, and by the looks of it, it'll feature a full house of excited attendees:
 

@@ -1,7 +1,7 @@
 permalink: speaking-at-sql-pass-summit-2013
 title: Speaking at SQL PASS Summit 2013
 date: 2013-05-28
-tags: [SQL Server - Community, Conferences & Presenting]
+tags: [SQL Server - Community, Conferences and Presenting]
 ---
 I'm delighted to announce that [I'll be speaking](http://www.sqlpass.org/summit/2013/Sessions/SpeakerDetails.aspx?spid=245) at this years [SQL PASS Summit in Charlotte, North Carolina](http://www.sqlpass.org/summit/2013/). Having submitted several times before, unsuccessfully, I'm really happy to have made the cut this year. Looking at the [lineup of speakers](http://www.sqlpass.org/summit/2013/Sessions.aspx), I take great pride in being given the opportunity.
 

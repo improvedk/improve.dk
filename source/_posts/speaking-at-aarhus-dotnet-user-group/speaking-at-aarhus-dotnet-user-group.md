@@ -1,7 +1,7 @@
 permalink: speaking-at-aarhus-dotnet-user-group
 title: Speaking at Aarhus .NET User Group
 date: 2010-04-23
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 On April 28th I'll be giving a presentation at [Aarhus .NET User Group](http://www.anug.dk/) on SharedCache. The presentation will be part of a combined event where Morten Jokumsen will be presenting Velocity and Jakob Tikjøb Andersen will be presenting Cassandra.
 

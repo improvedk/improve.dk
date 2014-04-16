@@ -1,7 +1,7 @@
 permalink: presenting-at-bleeding-edge-in-slovenia
 title: Presenting at Bleeding Edge in Slovenia
 date: 2012-08-26
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I've been to Slovenia many times, though only recently in a professional context, as I presented at [NT Konferenca earlier this year](/2012-nt-konferenca-slides-demos). Several times, and from multiple people, I've heard about a local conference named Bleeding Edge, and how it was put together with nothing but level 400+ content with top quality speakers.
 

@@ -1,7 +1,7 @@
 permalink: materials-for-my-miracle-open-world-2012-presentation
 title: Materials For My Miracle Open World 2012 Presentation
 date: 2012-04-23
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Last Thursday I did a full-day presentation at Miracle Open World 2012 on the SQL Server storage engine and MDF file internals.
 

@@ -1,7 +1,7 @@
 permalink: live-blogging-from-the-2011-pass-summit-day-2-keynote
 title: Live Blogging From the 2011 PASS Summit Day 2 Keynote
 date: 2011-10-13
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 It's 8:15 AM and I'm back at the bloggers table, ready for the day 2 keynote. The format will be the same as [yesterday](/live-blogging-from-the-2011-pass-summit-day-1-keynote).
 

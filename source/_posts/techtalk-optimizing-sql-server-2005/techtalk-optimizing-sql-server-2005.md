@@ -1,7 +1,7 @@
 permalink: techtalk-optimizing-sql-server-2005
 title: TechTalk: Optimizing SQL Server 2005
 date: 2009-01-22
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I held a TechTalk on optimizing SQL Server 2005 on the 21st of January. I think it went well so I'm looking forward to the evaluations - please fill them out :)
 

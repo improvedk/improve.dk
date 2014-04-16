@@ -1,7 +1,7 @@
 permalink: reflections-on-sqlbits-9-and-getting-the-most-from-conferences
 title: Reflections on SQLBits 9 and Getting the Most From Conferences
 date: 2011-10-05
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 After getting back to Denmark from an excellent SQLBits 9, I've had a chance to reflect a bit on my experiences. Not just on SQLBits itself, but the very concept of attending conferences and how to get the most of it.
 

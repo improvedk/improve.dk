@@ -1,7 +1,7 @@
 permalink: speaking-at-devlink-2009
 title: Speaking at devLink 2009
 date: 2009-04-02
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 The [session list](http://devlink.net/Sessions/tabid/124/Default.aspx) for [devLink 2009](http://devlink.net/) has been announced. I'm delighted to announce that [one of my abstracts](http://devlink.net/Speakers/MarkRasmussen/tabid/169/Default.aspx) was chosen - I will be speaking at devLink 2009 in Nashville, TN.
 

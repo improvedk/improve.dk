@@ -1,7 +1,7 @@
 permalink: sqlbits-9-session-evaluation
 title: SQLBits 9 Session Evaluation
 date: 2011-12-05
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I'd heard many rumors about the excellent SQLBits session evaluation results that speakers are sent. Knowing the SSRS geeks on the SQLBits team, I'd expect nothing short of data & graph filled reports – and I'm glad to say they didn't disappoint!
 

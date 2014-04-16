@@ -1,7 +1,7 @@
 permalink: presenting-sql-saturday-275
 title: Presenting at SQL Saturday #275
 date: 2014-02-04
-tags: [SQL Server - Community, Conferences & Presenting, SQL Server - OrcaMDF]
+tags: [SQL Server - Community, Conferences and Presenting, SQL Server - OrcaMDF]
 ---
 I'm happy to announce that I'll be presenting at [SQLSaturday #275](http://sqlsaturday.com/275/) in Copenhagen on March 29th!
 

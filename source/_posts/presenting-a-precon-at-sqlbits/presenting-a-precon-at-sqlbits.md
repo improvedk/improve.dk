@@ -1,7 +1,7 @@
 permalink: presenting-a-precon-at-sqlbits
 title: Presenting a Precon at SQLBits
 date: 2011-06-30
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I'm honored to announce that I'll be presenting my *[SQL Server Storage Engine and MDF File Internals](http://sqlbits.com/information/Event9/SQL_Server_Storage_Engine_and_MDF_File_Internals/TrainingDetails.aspx)* precon at [SQLBits](http://sqlbits.com/) on September 29th. It's an amazing bunch of [precon sessions and presenters](http://sqlbits.com/information/TrainingDay.aspx), I didn't think I'd be speaking at SQLBits, much less presenting a precon – given the lineup of speakers.
 

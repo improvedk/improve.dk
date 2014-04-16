@@ -1,7 +1,7 @@
 permalink: devlink-2009-followup
 title: devLink 2009 Followup
 date: 2009-08-17
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I'm finally sitting in the train on my way home from the Airport and an excellent week spent in Nashville, also known as Nash Vegas.
 

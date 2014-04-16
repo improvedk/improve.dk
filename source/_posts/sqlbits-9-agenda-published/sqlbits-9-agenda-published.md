@@ -1,7 +1,7 @@
 permalink: sqlbits-9-agenda-published
 title: SQLBits 9 Agenda Published
 date: 2011-08-03
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 The [agenda for SQLBits 9](http://sqlbits.com/information/Agenda.aspx) has been published (though it's still provisional). It's looking really, really good. Especially so when you consider the price of the event – you've got until the 26th of August to get the [early bird price](http://sqlbits.com/information/Pricing.aspx) of £375 for two complete days of conference – PLUS a whole day of [full day training sessions](http://sqlbits.com/information/TrainingDay.aspx).
 

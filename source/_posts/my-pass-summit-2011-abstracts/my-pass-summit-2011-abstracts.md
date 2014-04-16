@@ -1,7 +1,7 @@
 permalink: my-pass-summit-2011-abstracts
 title: My PASS Summit 2011 Abstracts
 date: 2011-05-03
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Last year I went on a marathon conference trip, starting out in LA at [Adobe Max](http://2010.max.adobe.com/), continuing on to [QCon](http://qconsf.com/sf2010/) in San Francisco before finally ending up in lovely Seattle for the [PASS Summit](http://www.sqlpass.org/summit/na2010/).
 

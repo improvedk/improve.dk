@@ -1,7 +1,7 @@
 permalink: techtalk-material-part-2
 title: TechTalk Material Part 2
 date: 2008-08-20
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I continued my TechTalk on security in the .NET framework today, taking off from where we left last time. As promised, here are the demos and slides (in Danish).
 

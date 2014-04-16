@@ -1,7 +1,7 @@
 permalink: 2011-fall-presentation-schedule
 title: 2011 Fall Presentation Schedule
 date: 2011-08-23
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 My fall schedule is starting to fall into place, and boy, is it a busy one. I am absolutely thrilled that I'll be going to the three major SQL Server conferences this fall: [SQLBits](http://sqlbits.com/), [PASS Summit](http://www.sqlpass.org/summit/2011/) and [PASS SQLRally Nordic](http://www.sqlpass.org/sqlrally/2011/nordic/). While I'm thrilled that I'll be attending, I'm even more thrilled, humbled and excited over the fact that I'll be presenting at all three.
 

@@ -1,7 +1,7 @@
 permalink: speaking-at-onug
 title: Speaking at Odense .NET User Group
 date: 2010-02-19
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 On March 10th I'll be giving a presentation at [Odense .NET User Group](http://www.onug.dk/) on Scalability & Availability on the Microsoft platform.
 

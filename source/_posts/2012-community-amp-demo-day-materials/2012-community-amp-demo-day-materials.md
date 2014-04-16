@@ -1,7 +1,7 @@
 permalink: 2012-community-amp-demo-day-materials
 title: 2012 Community & Demo Day Materials
 date: 2012-05-11
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Yesterday I presented at [Community Day](http://communityday2012.c1preprod01.composite.net/Community-Day). As promised, you can download my slide deck here:
 

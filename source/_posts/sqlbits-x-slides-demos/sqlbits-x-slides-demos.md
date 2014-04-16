@@ -1,7 +1,7 @@
 permalink: sqlbits-x-slides-demos
 title: SQLBits X Slides + Demos
 date: 2012-04-02
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 As usual, I had a wonderful time at SQLBits X in London. Unfortunately I didn't arrive until late Friday afternoon since I was flying in at the last minute from SQLConnections. I did however make it to the fabulous party and managed to get in bed early enough so I could be ready for my presentation on Saturday.
 

@@ -1,7 +1,7 @@
 permalink: live-blogging-from-the-2011-pass-summit-day-1-keynote
 title: Live Blogging From the 2011 PASS Summit Day 1 Keynote
 date: 2011-10-12
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I've found my seat at the Bloggers Table, ready for the beginning of the keynote in just 12 minutes. I'll be doing my best keeping up with all of the exciting news about to be spilled out.
 

@@ -1,7 +1,7 @@
 permalink: anug-talk-optimizing-sql-server-2005
 title: ANUG Talk: Optimizing SQL Server 2005
 date: 2009-03-12
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Tonight I held my SQL Server Optimization talk at [ANUG](http://www.anug.dk/). There was an impressive turnout of almost 50 people, and based on the feedback I've received so far, I think it went alright :)
 

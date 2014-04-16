@@ -1,7 +1,7 @@
 permalink: unix-to-the-rescue
 title: Unix to the Rescue
 date: 2006-11-13
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 A picture says more than a 10^3 words (it hang at my hotel in Barcelona during TechEd):
 

@@ -1,7 +1,7 @@
 permalink: speaking-at-ndc
 title: Speaking at NDC
 date: 2012-03-27
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Just before departing for SQLConnections in Vegas and SQLBits in London, I got notified that I've been selected for two presentations at the Norwegian Developers Conference in Oslo, June 6-8th!
 

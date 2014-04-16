@@ -1,7 +1,7 @@
 permalink: presenting-at-the-2012-spring-sql-server-connections
 title: Presenting at the 2012 Spring SQL Server Connections
 date: 2011-12-09
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Las Vegas feels like home to me, ever since going there the first time at age 7 and looking at all those ever so banned-for-me slot machines. I've since gone there more times than I can count, including my 21st birthday – and what a difference that age does, in a city like Las Vegas. I've been to the CES conference, DevConnections (2007) and I've played a hand of poker or two, eventually ending up in me staying there for a month to participate in the World Series of Poker (finished #822 out of 8.773).
 

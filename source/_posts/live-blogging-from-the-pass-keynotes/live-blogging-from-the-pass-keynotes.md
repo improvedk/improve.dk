@@ -1,7 +1,7 @@
 permalink: live-blogging-from-the-pass-keynotes
 title: Live Blogging From the PASS Keynotes
 date: 2011-10-09
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 I'm glad to announce that I'm one of the lucky few who've been appointed a seat at the coveted bloggers table during the PASS Summit keynotes. This means I'll have an excellent view of the leynotes, and I'll be live blogging and tweeting from both.
 

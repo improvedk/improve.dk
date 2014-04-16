@@ -1,7 +1,7 @@
 permalink: miracle-open-world-2011-follow-up
 title: Miracle Open World 2011 Followup
 date: 2011-04-17
-tags: [Conferences & Presenting]
+tags: [Conferences and Presenting]
 ---
 Last week I attended the [Miracle Open World 2011 conference](http://mow2011.dk/). As in the previous years the 80% content, 80% social moniker held true to its reputation. My legs and arms are still sore from carrying four-man rubber rings to the top of the four-story waterslide – not the typical aftermath of a conference. I met a lot of new awesome people and managed to pull of a couple of presentations with decent success as well, judging from the responses I've had so far. I've included the slides & demo code for the presentations below.
 
