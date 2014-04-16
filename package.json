@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "hexo-renderer-less": "0.0.3",
-    "hexo-migrator-wordpress": "0.0.6",
     "hexo-generator-feed": "~0.1.0"
   }
 }
