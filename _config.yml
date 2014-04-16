@@ -50,7 +50,7 @@ tag_map:
 ## 1: Disable pagination
 ## 0: Fully Disable
 archive: 1
-category: 0
+category: 1
 tag: 1
 
 # Server
