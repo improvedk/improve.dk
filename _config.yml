@@ -98,4 +98,5 @@ markdown:
 # Deployment
 ## Docs: http://zespia.tw/hexo/docs/deployment.html
 deploy:
-  type:
+  type: github
+  repo: https://github.com/improvedk/improvedk.github.io.git

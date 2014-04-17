@@ -1,6 +1,5 @@
 .DS_Store
-test.html
-
+/.deploy/
 /db.json
 /debug.log
 /public
