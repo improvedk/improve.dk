@@ -921,44 +921,46 @@ article {
 	}
 }
 
-pre {
-	.comment { color: #090; }
-	.title { /* Standard color */ }
+figure.csharp, figure.sql, figure.js, figure.xml, figure.html {
+	pre {
+		.comment { color: #090; }
+		.title { /* Standard color */ }
 
-	.variable, .attribute, .tag, .regexp,
-	.ruby .constant, .xml .tag .title,
-	.xml .pi, .xml .doctype,
-	.html .doctype, .css .id,
-	.css .class, .css .pseudo {
-		color: #f2777a;
-	}
+		.variable, .attribute, .tag, .regexp,
+		.ruby .constant, .xml .tag .title,
+		.xml .pi, .xml .doctype,
+		.html .doctype, .css .id,
+		.css .class, .css .pseudo {
+			color: #f2777a;
+		}
 
-	.preprocessor, .built_in, {
-		// No coloring for these guys
-	}
+		.preprocessor, .built_in, {
+			// No coloring for these guys
+		}
 
-	.number, .literal, .params, .constant, .string,
-	.value, .inheritance, .header, .ruby .symbol,
-	.xml .cdata {
-		color: #FF0000;
-	}
+		.number, .literal, .params, .constant, .string,
+		.value, .inheritance, .header, .ruby .symbol,
+		.xml .cdata {
+			color: #FF0000;
+		}
 
-	.class, .ruby .class .title, .css .rules .attribute {
-		color: #9c9;
-	}
+		.class, .ruby .class .title, .css .rules .attribute {
+			color: #9c9;
+		}
 
-	.css .hexcolor {
-  		color: #6cc;
-	}
+		.css .hexcolor {
+	  		color: #6cc;
+		}
 
-	.function, .python .decorator, .python .title,
-	.ruby .function .title, .ruby .title .keyword,
-	.perl .sub, .javascript .title,
-	.coffeescript .title {
-		color: #69c;
-	}
+		.function, .python .decorator, .python .title,
+		.ruby .function .title, .ruby .title .keyword,
+		.perl .sub, .javascript .title,
+		.coffeescript .title {
+			color: #69c;
+		}
 
-	.keyword, .javascript .function {
-		color: #00F;
+		.keyword, .javascript .function {
+			color: #00F;
+		}
 	}
 }
