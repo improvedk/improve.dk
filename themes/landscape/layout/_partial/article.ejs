@@ -11,7 +11,7 @@
 		<h1><a href="/<%- post.path %>" title="<%= post.title %>" rel="bookmark"><%= post.title %></a></h1>
 		<div class="categories">
 			<% post.tags.forEach(function(tag, i) { %>
-				<a href="<%- tag.permalink %>"><%- tag.name %></a>
+				<a href="/<%- tag.path %>"><%- tag.name %></a>
 				<%- i < (post.tags.length - 1) ? ", " : "" %>
 			<% }) %>
 		</div>
