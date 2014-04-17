@@ -10,7 +10,7 @@ Having [analyzed the process dump in part 1](/debugging-in-production-part-1-ana
 
 ## Looking at the User Code
 
-There were three methods in action, all of them in the `SettingDescriptionCache` class: `GetAllDescriptions`, `init` and `GetAllDescriptionsAsDictionary`. GetAllDescriptions and GetAllDescriptionsAsDictionary are for all intents and purposes identical and both implement a pattern like this:
+There were three methods in action, all of them in the SettingDescriptionCache class: GetAllDescriptions, init and GetAllDescriptionsAsDictionary. GetAllDescriptions and GetAllDescriptionsAsDictionary are for all intents and purposes identical and both implement a pattern like this:
 
 ```csharp
 public static IEnumerable<SettingDescriptionContainer> GetAllDescriptions(IPartnerConfig partnerConfig)
