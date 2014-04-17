@@ -1,15 +1,12 @@
 <%
-	var title = page.title;
-
-	if (is_archive())
-		title = 'Archives';
-	
-	if (is_month())
-		title += ': ' + page.year + '/' + page.month;
-	else if (is_year())
-		title += ': ' + page.year;
-	else if (is_category())
-		title = 'Category: ' + page.category;
+	// Figure out the page title depending on what's being shown
+	var title;
+	if (is_year())
+		title = page.year;
+	else if(is_tag())
+		title = page.tag;
+	else
+		title = page.title;
 %>
 
 <head>
