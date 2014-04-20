@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to OrcaMDF Is Now Available on NuGet</title>
+  		<link rel="canonical" href="http://improve.dk/orcamdf-is-now-available-on-nuget/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/orcamdf-is-now-available-on-nuget/" />
+	</head>
+	<body>
+		Redirecting to OrcaMDF Is Now Available on NuGet...
+	</body>
+</html>

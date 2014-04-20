@@ -53,31 +53,21 @@ void Main()
 		var date = Convert.ToDateTime(item.SelectSingleNode("pubDate").InnerText);
 		var content = item.SelectSingleNode("content:encoded", nsmgr).InnerText;
 		var slug = item.SelectSingleNode("wp:post_name", nsmgr).InnerText;
-		var guid = item.SelectSingleNode("guid").InnerText;
-		guid = guid.Replace("http://improve.dk/", "");
 		
-		// These ones never had the old URL structure
-		if (!guid.Contains("archive"))
-			continue;
-		
-		// First create the .aspx/archive entry
-		var outputFolder = Path.Combine(outputPath, guid);
-		Directory.CreateDirectory(outputFolder);
-		
-		var indexPath = Path.Combine(outputFolder, "index.md");
 		var indexHtml = template
 			.Replace("[Permalink]", "http://improve.dk/" + slug + "/")
 			.Replace("[Title]", "Redirecting to " + HttpUtility.HtmlEncode(title));
-			
+		
+		// First create the /archive/ entry
+		var outputFolder = Path.Combine(outputPath, "archive", date.Year.ToString(), date.Month.ToString().PadLeft(2, '0'), date.Day.ToString().PadLeft(2, '0'), slug + ".aspx");
+		var indexPath = Path.Combine(outputFolder, "index.md");
+		Directory.CreateDirectory(outputFolder);
 		File.WriteAllText(indexPath, indexHtml);
 		
 		// Then the /blog/ entry
-		guid = guid.Replace("archive", "blog");
-		guid = guid.Replace(".aspx", "");
-		outputFolder = Path.Combine(outputPath, guid);
-		Directory.CreateDirectory(outputFolder);
-		
+		outputFolder = Path.Combine(outputPath, "blog", date.Year.ToString(), date.Month.ToString().PadLeft(2, '0'), date.Day.ToString().PadLeft(2, '0'), slug);
 		indexPath = Path.Combine(outputFolder, "index.md");
+		Directory.CreateDirectory(outputFolder);
 		File.WriteAllText(indexPath, indexHtml);
 	}
 }

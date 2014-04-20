@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to PowerPad - Powerpoint Presenters View for Tablets &amp; Phones</title>
+  		<link rel="canonical" href="http://improve.dk/powerpad-powerpoint-presenters-view-for-tablets-phones/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/powerpad-powerpoint-presenters-view-for-tablets-phones/" />
+	</head>
+	<body>
+		Redirecting to PowerPad - Powerpoint Presenters View for Tablets &amp; Phones...
+	</body>
+</html>

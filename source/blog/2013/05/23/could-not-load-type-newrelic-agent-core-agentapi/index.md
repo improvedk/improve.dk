@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Could Not Load Type &#39;NewRelic.Agent.Core.AgentApi&#39;</title>
+  		<link rel="canonical" href="http://improve.dk/could-not-load-type-newrelic-agent-core-agentapi/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/could-not-load-type-newrelic-agent-core-agentapi/" />
+	</head>
+	<body>
+		Redirecting to Could Not Load Type &#39;NewRelic.Agent.Core.AgentApi&#39;...
+	</body>
+</html>
