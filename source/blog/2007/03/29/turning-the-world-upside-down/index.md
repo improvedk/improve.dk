@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Turning the World Upside Down</title>
+  		<link rel="canonical" href="http://improve.dk/turning-the-world-upside-down/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/turning-the-world-upside-down/" />
+	</head>
+	<body>
+		Redirecting to Turning the World Upside Down...
+	</body>
+</html>

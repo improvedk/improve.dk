@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to What Do Airlines Use for Primary Keys?</title>
+  		<link rel="canonical" href="http://improve.dk/what-do-airlines-use-for-primary-keys/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/what-do-airlines-use-for-primary-keys/" />
+	</head>
+	<body>
+		Redirecting to What Do Airlines Use for Primary Keys?...
+	</body>
+</html>

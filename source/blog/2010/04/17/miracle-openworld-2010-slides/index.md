@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Miracle OpenWorld 2010 Slides</title>
+  		<link rel="canonical" href="http://improve.dk/miracle-openworld-2010-slides/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/miracle-openworld-2010-slides/" />
+	</head>
+	<body>
+		Redirecting to Miracle OpenWorld 2010 Slides...
+	</body>
+</html>

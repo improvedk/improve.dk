@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Royal Flush Baby!</title>
+  		<link rel="canonical" href="http://improve.dk/royal-flush-baby/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/royal-flush-baby/" />
+	</head>
+	<body>
+		Redirecting to Royal Flush Baby!...
+	</body>
+</html>

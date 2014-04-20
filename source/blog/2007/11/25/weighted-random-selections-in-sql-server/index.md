@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Weighted Random Selections in SQL Server</title>
+  		<link rel="canonical" href="http://improve.dk/weighted-random-selections-in-sql-server/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/weighted-random-selections-in-sql-server/" />
+	</head>
+	<body>
+		Redirecting to Weighted Random Selections in SQL Server...
+	</body>
+</html>

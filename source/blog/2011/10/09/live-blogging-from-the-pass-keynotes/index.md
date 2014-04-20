@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Live Blogging From the PASS Keynotes</title>
+  		<link rel="canonical" href="http://improve.dk/live-blogging-from-the-pass-keynotes/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/live-blogging-from-the-pass-keynotes/" />
+	</head>
+	<body>
+		Redirecting to Live Blogging From the PASS Keynotes...
+	</body>
+</html>

@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to In the Nick of Time: Band Aid Solution for Umbraco 5.1 Performance</title>
+  		<link rel="canonical" href="http://improve.dk/in-the-nick-of-time-band-aid-solution-for-umbraco/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/in-the-nick-of-time-band-aid-solution-for-umbraco/" />
+	</head>
+	<body>
+		Redirecting to In the Nick of Time: Band Aid Solution for Umbraco 5.1 Performance...
+	</body>
+</html>

@@ -60,6 +60,7 @@ void Main()
 		if (!guid.Contains("archive"))
 			continue;
 		
+		// First create the .aspx/archive entry
 		var outputFolder = Path.Combine(outputPath, guid);
 		Directory.CreateDirectory(outputFolder);
 		
@@ -67,10 +68,16 @@ void Main()
 		var indexHtml = template
 			.Replace("[Permalink]", "http://improve.dk/" + slug + "/")
 			.Replace("[Title]", "Redirecting to " + HttpUtility.HtmlEncode(title));
-		
+			
 		File.WriteAllText(indexPath, indexHtml);
 		
-		Console.WriteLine(date + ": " + slug + " - " + guid);
-		Console.WriteLine(outputFolder);
+		// Then the /blog/ entry
+		guid = guid.Replace("archive", "blog");
+		guid = guid.Replace(".aspx", "");
+		outputFolder = Path.Combine(outputPath, guid);
+		Directory.CreateDirectory(outputFolder);
+		
+		indexPath = Path.Combine(outputFolder, "index.md");
+		File.WriteAllText(indexPath, indexHtml);
 	}
 }

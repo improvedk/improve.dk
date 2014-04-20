@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Wasted Bytes Add Up, Consider Your Data Types Carefully</title>
+  		<link rel="canonical" href="http://improve.dk/wasted-bytes-add-up-consider-your-data-types-carefully/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/wasted-bytes-add-up-consider-your-data-types-carefully/" />
+	</head>
+	<body>
+		Redirecting to Wasted Bytes Add Up, Consider Your Data Types Carefully...
+	</body>
+</html>

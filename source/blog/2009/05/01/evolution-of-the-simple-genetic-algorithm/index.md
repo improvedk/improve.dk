@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Evolution of The Simple Genetic Algorithm</title>
+  		<link rel="canonical" href="http://improve.dk/evolution-of-the-simple-genetic-algorithm/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/evolution-of-the-simple-genetic-algorithm/" />
+	</head>
+	<body>
+		Redirecting to Evolution of The Simple Genetic Algorithm...
+	</body>
+</html>

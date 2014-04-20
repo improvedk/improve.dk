@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Getting Bit by Datetime Rounding or Why 23:59:59.999 &lt; &#39;23:59:59.999&#39;</title>
+  		<link rel="canonical" href="http://improve.dk/getting-bit-by-datetime-rounding-or-why-235959-999-ltgt/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/getting-bit-by-datetime-rounding-or-why-235959-999-ltgt/" />
+	</head>
+	<body>
+		Redirecting to Getting Bit by Datetime Rounding or Why 23:59:59.999 &lt; &#39;23:59:59.999&#39;...
+	</body>
+</html>
