@@ -60,13 +60,13 @@ void Main()
 		
 		// First create the /archive/ entry
 		var outputFolder = Path.Combine(outputPath, "archive", date.Year.ToString(), date.Month.ToString().PadLeft(2, '0'), date.Day.ToString().PadLeft(2, '0'), slug + ".aspx");
-		var indexPath = Path.Combine(outputFolder, "index.md");
+		var indexPath = Path.Combine(outputFolder, "index.html");
 		Directory.CreateDirectory(outputFolder);
 		File.WriteAllText(indexPath, indexHtml);
 		
 		// Then the /blog/ entry
 		outputFolder = Path.Combine(outputPath, "blog", date.Year.ToString(), date.Month.ToString().PadLeft(2, '0'), date.Day.ToString().PadLeft(2, '0'), slug);
-		indexPath = Path.Combine(outputFolder, "index.md");
+		indexPath = Path.Combine(outputFolder, "index.html");
 		Directory.CreateDirectory(outputFolder);
 		File.WriteAllText(indexPath, indexHtml);
 	}
