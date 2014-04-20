@@ -25,13 +25,13 @@ string template = @"layout: false
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>[Title]</title>
+		<title>Redirecting to [Title]</title>
   		<link rel=""canonical"" href=""[Permalink]""/>
 		<meta http-equiv=""content-type"" content=""text/html; charset=utf-8"" />
 		<meta http-equiv=""refresh"" content=""0;url=[Permalink]"" />
 	</head>
 	<body>
-		[Title]...
+		Redirecting to <a href=""[Permalink]"">[Title]</a>...
 	</body>
 </html>";
 
@@ -56,7 +56,7 @@ void Main()
 		
 		var indexHtml = template
 			.Replace("[Permalink]", "http://improve.dk/" + slug + "/")
-			.Replace("[Title]", "Redirecting to " + HttpUtility.HtmlEncode(title));
+			.Replace("[Title]", HttpUtility.HtmlEncode(title));
 		
 		// First create the /archive/ entry
 		var outputFolder = Path.Combine(outputPath, "archive", date.Year.ToString(), date.Month.ToString().PadLeft(2, '0'), date.Day.ToString().PadLeft(2, '0'), slug + ".aspx");
