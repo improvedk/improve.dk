@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Running IE6 and IE7 at the Same Time</title>
+  		<link rel="canonical" href="http://improve.dk/running-ie6-and-ie7-at-the-same-time/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/running-ie6-and-ie7-at-the-same-time/" />
+	</head>
+	<body>
+		Redirecting to Running IE6 and IE7 at the Same Time...
+	</body>
+</html>

@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Tricky SQL Server Decimal Math</title>
+  		<link rel="canonical" href="http://improve.dk/tricky-sql-server-decimal-math/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/tricky-sql-server-decimal-math/" />
+	</head>
+	<body>
+		Redirecting to Tricky SQL Server Decimal Math...
+	</body>
+</html>

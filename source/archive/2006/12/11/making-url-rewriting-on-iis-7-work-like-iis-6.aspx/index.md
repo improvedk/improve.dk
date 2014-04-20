@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Making URL Rewriting on IIS 7 Work Like IIS 6</title>
+  		<link rel="canonical" href="http://improve.dk/making-url-rewriting-on-iis7-work-like-iis6/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/making-url-rewriting-on-iis7-work-like-iis6/" />
+	</head>
+	<body>
+		Redirecting to Making URL Rewriting on IIS 7 Work Like IIS 6...
+	</body>
+</html>

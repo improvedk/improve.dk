@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to The Garbage Null Bitmap and Why You Can&#39;t Rely on It Solely</title>
+  		<link rel="canonical" href="http://improve.dk/depending-on-how-itrsquos-added-spare-bits-in-the-null/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/depending-on-how-itrsquos-added-spare-bits-in-the-null/" />
+	</head>
+	<body>
+		Redirecting to The Garbage Null Bitmap and Why You Can&#39;t Rely on It Solely...
+	</body>
+</html>

@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Broadcom NICs Considered Harmful?</title>
+  		<link rel="canonical" href="http://improve.dk/broadcom-nics-considered-harmful/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/broadcom-nics-considered-harmful/" />
+	</head>
+	<body>
+		Redirecting to Broadcom NICs Considered Harmful?...
+	</body>
+</html>

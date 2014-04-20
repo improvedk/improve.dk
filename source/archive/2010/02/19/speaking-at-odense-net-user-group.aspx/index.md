@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Speaking at Odense .NET User Group</title>
+  		<link rel="canonical" href="http://improve.dk/speaking-at-onug/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/speaking-at-onug/" />
+	</head>
+	<body>
+		Redirecting to Speaking at Odense .NET User Group...
+	</body>
+</html>

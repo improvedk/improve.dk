@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Presenting at the 2012 Spring SQL Server Connections</title>
+  		<link rel="canonical" href="http://improve.dk/presenting-at-the-2012-spring-sql-server-connections/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/presenting-at-the-2012-spring-sql-server-connections/" />
+	</head>
+	<body>
+		Redirecting to Presenting at the 2012 Spring SQL Server Connections...
+	</body>
+</html>

@@ -1,0 +1,14 @@
+layout: false
+---
+!DOCTYPE html>
+<html>
+	<head>
+		<title>Redirecting to Reverse Engineering SQL Server Page Headers</title>
+  		<link rel="canonical" href="http://improve.dk/reverse-engineering-sql-server-page-headers/"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="refresh" content="0;url=http://improve.dk/reverse-engineering-sql-server-page-headers/" />
+	</head>
+	<body>
+		Redirecting to Reverse Engineering SQL Server Page Headers...
+	</body>
+</html>
