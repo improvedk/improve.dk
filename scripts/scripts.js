@@ -31,6 +31,9 @@ hexo.extend.filter.register('post', function(data, cb) {
 			var outputPath = path.join(publicDir, data.slug, file);
 			var inputPath = path.join(postDir, file);
 
+			if (!fs.existsSync(publicDir))
+				fs.mkdirSync(publicDir);
+
 			if (!fs.existsSync(outputDir))
 				fs.mkdirSync(path.join(outputDir));
 			
