@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Solving Access Denied Errors Using Process Monitor</title>

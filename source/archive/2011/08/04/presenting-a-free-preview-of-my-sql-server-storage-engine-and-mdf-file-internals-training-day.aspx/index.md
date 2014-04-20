@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Presenting a Free Preview of my SQL Server Storage Engine and MDF File Internals Training Day</title>

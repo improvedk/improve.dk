@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Creating a &quot;Shorten Link&quot; Internet Explorer Addin</title>

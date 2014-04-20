@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to 2012 NT Konferenca Slides + Demos</title>

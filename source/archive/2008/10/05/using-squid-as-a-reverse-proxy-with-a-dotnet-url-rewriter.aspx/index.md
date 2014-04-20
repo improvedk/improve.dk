@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Using Squid as a Reverse Proxy With a .NET Url Rewriter</title>

@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to What is the Size of the LOB Pointer for (MAX) Types Like Varchar, Varbinary, Etc?</title>

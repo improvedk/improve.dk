@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Could Not Load Type &#39;NewRelic.Agent.Core.AgentApi&#39;</title>

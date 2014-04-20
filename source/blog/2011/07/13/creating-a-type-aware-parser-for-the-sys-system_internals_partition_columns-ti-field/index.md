@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Creating a Type Aware Parser for the sys.system_internals_partition_columns.ti Field</title>

@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to The Garbage Null Bitmap and Why You Can&#39;t Rely on It Solely</title>

@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Debugging in Production Part 1 - Analyzing 100% CPU Usage Using Windbg</title>

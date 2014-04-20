@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Determining If Vardecimal Is Enabled For a Table Without Using OBJECTPROPERTY</title>

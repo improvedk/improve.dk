@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to PowerPad - Powerpoint Presenters View for Tablets &amp; Phones</title>

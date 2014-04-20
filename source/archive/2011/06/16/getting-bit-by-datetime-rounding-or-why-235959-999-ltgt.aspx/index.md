@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Getting Bit by Datetime Rounding or Why 23:59:59.999 &lt; &#39;23:59:59.999&#39;</title>

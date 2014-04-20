@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Copying a SQL Server Database File That&#39;s in Use Using Volume Shadow Copy</title>

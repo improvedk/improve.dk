@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to OrcaMDF RawDatabase - A Swiss Army Knife for MDF Files</title>

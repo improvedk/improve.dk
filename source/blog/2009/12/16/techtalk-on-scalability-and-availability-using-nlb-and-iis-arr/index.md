@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to TechTalk on Scalability &amp; Availability Using NLB and IIS ARR</title>

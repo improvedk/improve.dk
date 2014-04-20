@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Routing Requests for a Subdirectory to Another Server Using IIS Application Request Routing</title>

@@ -22,7 +22,7 @@
 
 string template = @"layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>[Title]</title>

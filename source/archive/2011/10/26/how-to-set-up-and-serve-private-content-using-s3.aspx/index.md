@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to How to Set Up and Serve Private Content Using S3 and Amazon CloudFront</title>

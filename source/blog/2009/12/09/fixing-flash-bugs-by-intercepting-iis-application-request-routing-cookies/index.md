@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to Fixing Flash Bugs and Intercepting IIS Application Request Routing Cookies</title>

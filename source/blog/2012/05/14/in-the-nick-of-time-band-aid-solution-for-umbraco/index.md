@@ -1,6 +1,6 @@
 layout: false
 ---
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Redirecting to In the Nick of Time: Band Aid Solution for Umbraco 5.1 Performance</title>
