@@ -1,4 +1,5 @@
 ---
+permalink: redirecting-old-permalinks-on-statically-generated-blogs
 title: Redirecting Old Permalinks on Statically Generated Blogs
 date: 2014-04-21 01:56:12
 tags: [Miscellaneous]
