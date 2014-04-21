@@ -1,3 +1,4 @@
+---
 permalink: simple-as3-stack-implementation
 title: Simple AS3 Stack Implementation
 date: 2010-04-21

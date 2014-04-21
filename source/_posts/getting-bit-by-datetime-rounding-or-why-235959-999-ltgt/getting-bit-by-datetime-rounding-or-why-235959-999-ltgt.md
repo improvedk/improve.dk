@@ -1,3 +1,4 @@
+---
 permalink: getting-bit-by-datetime-rounding-or-why-235959-999-ltgt
 title: Getting Bit by Datetime Rounding or Why 23:59:59.999 < '23:59:59.999'
 date: 2011-06-16

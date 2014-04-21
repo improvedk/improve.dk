@@ -1,3 +1,4 @@
+---
 permalink: deciphering-a-sql-server-data-page
 title: Deciphering a SQL Server Data Page
 date: 2009-03-26

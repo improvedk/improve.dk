@@ -1,3 +1,4 @@
+---
 permalink: getting-key-state
 title: Getting Key State Using PInvoke
 date: 2007-04-11

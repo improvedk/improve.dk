@@ -1,3 +1,4 @@
+---
 permalink: the-null-bitmap-is-not-always-present-in-data-records
 title: The Null Bitmap is Not Always Present in Data Records
 date: 2011-07-15

@@ -1,3 +1,4 @@
+---
 permalink: 2012-community-amp-demo-day-materials
 title: 2012 Community & Demo Day Materials
 date: 2012-05-11

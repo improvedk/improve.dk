@@ -1,3 +1,4 @@
+---
 permalink: what-is-the-size-of-the-lob-pointer-for-max-types-like-varchar-varbinary-etc
 title: What is the Size of the LOB Pointer for (MAX) Types Like Varchar, Varbinary, Etc?
 date: 2011-07-18

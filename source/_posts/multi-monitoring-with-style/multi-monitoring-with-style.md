@@ -1,3 +1,4 @@
+---
 permalink: multi-monitoring-with-style
 title: Multi Monitoring With Style
 date: 2006-11-29

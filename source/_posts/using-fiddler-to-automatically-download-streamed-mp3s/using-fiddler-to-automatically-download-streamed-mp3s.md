@@ -1,3 +1,4 @@
+---
 permalink: using-fiddler-to-automatically-download-streamed-mp3s
 title: Using Fiddler to Automatically Download Streamed MP3s
 date: 2011-06-01

@@ -1,3 +1,4 @@
+---
 permalink: combining-paths-with-multiple-parts
 title: Combining Paths With Multiple Parts
 date: 2009-09-16

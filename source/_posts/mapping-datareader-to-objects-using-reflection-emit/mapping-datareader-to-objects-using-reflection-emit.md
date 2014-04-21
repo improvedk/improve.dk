@@ -1,3 +1,4 @@
+---
 permalink: mapping-datareader-to-objects-using-reflection-emit
 title: Mapping Datareader to Objects Using Reflection.Emit
 date: 2008-05-02

@@ -1,3 +1,4 @@
+---
 permalink: performance-comparison-reading-data-from-the-database-strongly-typed
 title: Performance Comparison - Reading Data From the Database Strongly Typed
 date: 2008-04-30

@@ -1,3 +1,4 @@
+---
 permalink: reading-bits-in-orcamdf
 title: Reading Bits in OrcaMDF
 date: 2011-05-12

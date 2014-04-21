@@ -1,3 +1,4 @@
+---
 permalink: sqlconnections-slides-demos
 title: SQLConnections Slides + Demos
 date: 2012-03-29

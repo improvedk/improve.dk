@@ -1,3 +1,4 @@
+---
 permalink: freshnlhe
 title: Fresh $1500 NLHE
 date: 2006-08-08

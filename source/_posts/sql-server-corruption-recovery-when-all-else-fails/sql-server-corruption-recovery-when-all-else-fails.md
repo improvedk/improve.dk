@@ -1,3 +1,4 @@
+---
 permalink: sql-server-corruption-recovery-when-all-else-fails
 title: SQL Server Corruption Recovery - When All Else Fails
 date: 2013-11-06

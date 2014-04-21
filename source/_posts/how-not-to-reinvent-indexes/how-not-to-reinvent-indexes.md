@@ -1,3 +1,4 @@
+---
 permalink: how-not-to-reinvent-indexes
 title: How Not to Reinvent Indexes
 date: 2011-08-01

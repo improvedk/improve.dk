@@ -1,3 +1,4 @@
+---
 permalink: linqpad-ndash-the-perfect-playground-for-amazon-web-services
 title: LINQPad - The Perfect Playground for Amazon Web Services
 date: 2012-02-17

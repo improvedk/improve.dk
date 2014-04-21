@@ -1,3 +1,4 @@
+---
 permalink: watch-out-for-implicit-uniqueidentifier-conversions
 title: Watch Out For Implicit Uniqueidentifier Conversions
 date: 2011-04-26

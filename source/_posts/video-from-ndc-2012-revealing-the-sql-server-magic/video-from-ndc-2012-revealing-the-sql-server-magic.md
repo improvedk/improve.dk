@@ -1,3 +1,4 @@
+---
 permalink: video-from-ndc-2012-revealing-the-sql-server-magic
 title: Video From NDC 2012: Revealing the SQL Server Magic
 date: 2012-06-19

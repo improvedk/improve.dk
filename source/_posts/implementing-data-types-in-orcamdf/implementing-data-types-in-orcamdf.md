@@ -1,3 +1,4 @@
+---
 permalink: implementing-data-types-in-orcamdf
 title: Implementing Data Types in OrcaMDF
 date: 2011-05-05

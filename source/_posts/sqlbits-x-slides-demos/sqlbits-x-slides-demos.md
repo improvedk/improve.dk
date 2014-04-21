@@ -1,3 +1,4 @@
+---
 permalink: sqlbits-x-slides-demos
 title: SQLBits X Slides + Demos
 date: 2012-04-02

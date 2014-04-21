@@ -1,3 +1,4 @@
+---
 permalink: fixing-flash-bugs-by-intercepting-iis-application-request-routing-cookies
 title: Fixing Flash Bugs and Intercepting IIS Application Request Routing Cookies
 date: 2009-12-09

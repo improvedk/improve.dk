@@ -1,3 +1,4 @@
+---
 permalink: routing-requests-for-a-subdirectory-to-another-server-using-iis-application-request-routing
 title: Routing Requests for a Subdirectory to Another Server Using IIS Application Request Routing
 date: 2010-06-21

@@ -1,3 +1,4 @@
+---
 permalink: xmloutput-vs-xmlserializer-performance
 title: XmlOutput vs XmlSerializer Performance
 date: 2008-03-29

@@ -1,3 +1,4 @@
+---
 permalink: mainevent2006
 title: Main Event!
 date: 2006-07-30

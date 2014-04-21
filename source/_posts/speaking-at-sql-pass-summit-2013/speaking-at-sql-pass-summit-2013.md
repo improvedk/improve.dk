@@ -1,3 +1,4 @@
+---
 permalink: speaking-at-sql-pass-summit-2013
 title: Speaking at SQL PASS Summit 2013
 date: 2013-05-28

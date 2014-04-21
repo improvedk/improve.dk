@@ -1,3 +1,4 @@
+---
 permalink: determining-if-vardecimal-is-enabled-for-a-table-without-using
 title: Determining If Vardecimal Is Enabled For a Table Without Using OBJECTPROPERTY
 date: 2011-12-12

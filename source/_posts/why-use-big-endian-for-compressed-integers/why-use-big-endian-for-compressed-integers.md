@@ -1,3 +1,4 @@
+---
 permalink: why-use-big-endian-for-compressed-integers
 title: Why Use Big Endian For Compressed Integers?
 date: 2012-02-29

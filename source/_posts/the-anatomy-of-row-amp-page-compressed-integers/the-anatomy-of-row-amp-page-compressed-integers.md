@@ -1,3 +1,4 @@
+---
 permalink: the-anatomy-of-row-amp-page-compressed-integers
 title: The Anatomy of Row & Page Compressed Integers
 date: 2012-01-30

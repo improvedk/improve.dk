@@ -1,3 +1,4 @@
+---
 permalink: implementing-a-simple-genetic-algorithm
 title: Implementing a Simple Genetic Algorithm
 date: 2009-04-29

@@ -1,3 +1,4 @@
+---
 permalink: how-to-set-up-and-serve-private-content-using-s3
 title: How to Set Up and Serve Private Content Using S3 and Amazon CloudFront
 date: 2011-10-26

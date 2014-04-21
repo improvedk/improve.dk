@@ -1,3 +1,4 @@
+---
 permalink: partial-dns-forwarding-using-individual-windows-dns-zones
 title: Partial DNS Forwarding Using Individual Windows DNS Zones
 date: 2013-05-21

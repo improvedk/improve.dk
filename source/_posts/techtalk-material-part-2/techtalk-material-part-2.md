@@ -1,3 +1,4 @@
+---
 permalink: techtalk-material-part-2
 title: TechTalk Material Part 2
 date: 2008-08-20

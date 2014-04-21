@@ -1,3 +1,4 @@
+---
 permalink: the-basics
 title: The Basics
 date: 2007-04-02

@@ -1,3 +1,4 @@
+---
 permalink: book-how-i-raised-myself-from-failure-to-success-in-selling
 title: How I Raised Myself from Failure to Success in Selling
 date: 2008-08-10

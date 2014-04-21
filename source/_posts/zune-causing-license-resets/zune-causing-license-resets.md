@@ -1,3 +1,4 @@
+---
 permalink: zune-causing-license-resets
 title: Zune Causing License Resets?
 date: 2007-06-23

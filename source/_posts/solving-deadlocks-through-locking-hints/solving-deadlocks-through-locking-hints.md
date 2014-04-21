@@ -1,3 +1,4 @@
+---
 permalink: solving-deadlocks-through-locking-hints
 title: Solving Deadlocks Through Locking Hints
 date: 2009-04-01

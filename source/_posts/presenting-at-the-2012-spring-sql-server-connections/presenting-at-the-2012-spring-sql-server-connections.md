@@ -1,3 +1,4 @@
+---
 permalink: presenting-at-the-2012-spring-sql-server-connections
 title: Presenting at the 2012 Spring SQL Server Connections
 date: 2011-12-09

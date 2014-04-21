@@ -1,3 +1,4 @@
+---
 permalink: sparse-column-storage-ndash-the-sparse-vector
 title: Sparse Column Storage & the Sparse Vector
 date: 2011-07-15

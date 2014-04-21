@@ -1,3 +1,4 @@
+---
 permalink: iis7-the-object-identifier-does-not-represent-a-valid-object
 title: The Object Identifier Does Not Represent a Valid Object
 date: 2009-07-08

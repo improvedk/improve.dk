@@ -1,3 +1,4 @@
+---
 permalink: and-thus-i-lost-my-introduction
 title: And Thus I Lost My Introduction
 date: 2013-01-01

@@ -1,3 +1,4 @@
+---
 permalink: creating-a-short-link-internet-explorer-addin
 title: Creating a "Shorten Link" Internet Explorer Addin
 date: 2006-12-16

@@ -1,3 +1,4 @@
+---
 permalink: reflections-on-sqlbits-9-and-getting-the-most-from-conferences
 title: Reflections on SQLBits 9 and Getting the Most From Conferences
 date: 2011-10-05

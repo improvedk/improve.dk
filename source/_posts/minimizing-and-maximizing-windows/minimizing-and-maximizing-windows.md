@@ -1,3 +1,4 @@
+---
 permalink: minimizing-and-maximizing-windows
 title: Minimizing and Maximizing Windows Using PInvoke
 date: 2007-04-11

@@ -1,3 +1,4 @@
+---
 permalink: stripwalk
 title: Stripwalk
 date: 2006-08-03

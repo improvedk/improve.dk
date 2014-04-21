@@ -1,3 +1,4 @@
+---
 permalink: converting-page-pointers-into-a-human-readable-format
 title: Converting Page Pointers Into a Humanly Readable Format
 date: 2011-04-28

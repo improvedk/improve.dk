@@ -1,3 +1,4 @@
+---
 permalink: the-8-byte-record-that-was-9-bytes-while-making-no-sense
 title: The 8 Byte Record That Was 9 Bytes While Making No Sense
 date: 2011-07-16

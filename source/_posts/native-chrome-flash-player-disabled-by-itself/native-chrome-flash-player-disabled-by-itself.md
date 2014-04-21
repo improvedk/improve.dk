@@ -1,3 +1,4 @@
+---
 permalink: native-chrome-flash-player-disabled-by-itself
 title: Native Chrome Flash Player Disabled by Itself All of a Sudden
 date: 2013-02-27

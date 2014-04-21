@@ -1,3 +1,4 @@
+---
 permalink: debugging-in-production-part-3-thread-safe-dictionaries
 title: Debugging in Production Part 3 - Thread-Safe Dictionaries
 date: 2013-04-30

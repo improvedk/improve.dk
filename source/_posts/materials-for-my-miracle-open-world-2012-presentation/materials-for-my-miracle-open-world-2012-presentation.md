@@ -1,3 +1,4 @@
+---
 permalink: materials-for-my-miracle-open-world-2012-presentation
 title: Materials For My Miracle Open World 2012 Presentation
 date: 2012-04-23

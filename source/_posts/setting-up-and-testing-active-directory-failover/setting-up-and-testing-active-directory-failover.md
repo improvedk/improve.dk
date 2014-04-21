@@ -1,3 +1,4 @@
+---
 permalink: setting-up-and-testing-active-directory-failover
 title: Setting Up and Testing Active Directory Failover
 date: 2008-03-02

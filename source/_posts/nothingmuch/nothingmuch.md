@@ -1,3 +1,4 @@
+---
 permalink: nothingmuch
 title: Nothing Much...
 date: 2006-08-01

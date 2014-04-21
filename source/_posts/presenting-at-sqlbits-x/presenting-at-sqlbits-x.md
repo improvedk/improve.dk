@@ -1,3 +1,4 @@
+---
 permalink: presenting-at-sqlbits-x
 title: Presenting at SQLBits X
 date: 2012-01-26

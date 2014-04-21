@@ -1,3 +1,4 @@
+---
 permalink: iis-request-filtering-woes
 title: IIS Request Filtering Woes
 date: 2009-09-23

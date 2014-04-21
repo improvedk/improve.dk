@@ -1,3 +1,4 @@
+---
 permalink: converting-between-base-2-10-and-16-in-t-sql
 title: Converting Between Base 2, 10 and 16 in T-SQL
 date: 2011-07-11

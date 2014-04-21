@@ -1,3 +1,4 @@
+---
 permalink: creating-a-type-aware-parser-for-the-sys-system_internals_partition_columns-ti-field
 title: Creating a Type Aware Parser for the sys.system_internals_partition_columns.ti Field
 date: 2011-07-13

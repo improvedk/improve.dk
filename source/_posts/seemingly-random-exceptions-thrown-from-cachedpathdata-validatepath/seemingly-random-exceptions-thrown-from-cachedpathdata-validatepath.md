@@ -1,3 +1,4 @@
+---
 permalink: seemingly-random-exceptions-thrown-from-cachedpathdata-validatepath
 title: Seemingly Random Exceptions Thrown From CachedPathData.ValidatePath
 date: 2012-01-31

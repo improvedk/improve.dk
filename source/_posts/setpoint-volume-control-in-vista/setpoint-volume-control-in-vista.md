@@ -1,3 +1,4 @@
+---
 permalink: setpoint-volume-control-in-vista
 title: SetPoint Volume Control In Vista
 date: 2006-12-04

@@ -1,3 +1,4 @@
+---
 permalink: sql-server-datetime-rounding-made-easy
 title: SQL Server Datetime Rounding Made Easy
 date: 2006-12-13

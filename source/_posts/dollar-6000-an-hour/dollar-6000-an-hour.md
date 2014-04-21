@@ -1,3 +1,4 @@
+---
 permalink: dollar-6000-an-hour
 title: $6.000 An Hour
 date: 2007-02-07

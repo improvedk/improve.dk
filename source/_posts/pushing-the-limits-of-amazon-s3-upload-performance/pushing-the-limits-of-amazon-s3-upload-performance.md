@@ -1,3 +1,4 @@
+---
 permalink: pushing-the-limits-of-amazon-s3-upload-performance
 title: Pushing the Limits of Amazon S3 Upload Performance
 date: 2011-11-07

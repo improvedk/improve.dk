@@ -1,3 +1,4 @@
+---
 permalink: arriving-in-vegas
 title: Arriving in Vegas
 date: 2007-01-09

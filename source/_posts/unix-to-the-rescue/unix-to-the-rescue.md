@@ -1,3 +1,4 @@
+---
 permalink: unix-to-the-rescue
 title: Unix to the Rescue
 date: 2006-11-13

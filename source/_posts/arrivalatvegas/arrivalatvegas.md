@@ -1,3 +1,4 @@
+---
 permalink: arrivalatvegas
 title: Arrival at Vegas
 date: 2006-07-26

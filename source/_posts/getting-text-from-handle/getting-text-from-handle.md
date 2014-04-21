@@ -1,3 +1,4 @@
+---
 permalink: getting-text-from-handle
 title: Getting Text From Window Handle Using PInvoke
 date: 2007-04-04

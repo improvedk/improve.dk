@@ -1,3 +1,4 @@
+---
 permalink: defending-against-the-improbable
 title: Defending Against the Improbable
 date: 2009-11-05

@@ -1,3 +1,4 @@
+---
 permalink: anatomy-of-a-forwarded-record-ndash-the-back-pointer
 title: Anatomy of a Forwarded Record & the Back Pointer
 date: 2011-06-09

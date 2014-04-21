@@ -1,3 +1,4 @@
+---
 permalink: negativeev
 title: -EV
 date: 2006-08-11

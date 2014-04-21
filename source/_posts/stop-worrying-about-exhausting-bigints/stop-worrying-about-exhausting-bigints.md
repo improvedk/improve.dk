@@ -1,3 +1,4 @@
+---
 permalink: stop-worrying-about-exhausting-bigints
 title: Stop Worrying About Exhausting Bigints
 date: 2012-02-20

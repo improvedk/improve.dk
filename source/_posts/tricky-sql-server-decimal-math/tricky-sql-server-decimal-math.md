@@ -1,3 +1,4 @@
+---
 permalink: tricky-sql-server-decimal-math
 title: Tricky SQL Server Decimal Math
 date: 2009-05-06

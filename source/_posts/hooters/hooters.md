@@ -1,3 +1,4 @@
+---
 permalink: hooters
 title: Hooters!
 date: 2006-08-11

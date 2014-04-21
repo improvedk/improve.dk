@@ -1,3 +1,4 @@
+---
 permalink: analyzing-assembly-evidence
 title: Analyzing Assembly Evidence
 date: 2008-06-11

@@ -1,3 +1,4 @@
+---
 permalink: using-idispoable-to-write-indented-text
 title: Using IDisposable to Write Indented Text
 date: 2008-06-02

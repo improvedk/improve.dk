@@ -1,3 +1,4 @@
+---
 permalink: aspnet-regiis-ga-token-reference-error
 title: aspnet_regiis -ga Token Reference Error
 date: 2008-09-02

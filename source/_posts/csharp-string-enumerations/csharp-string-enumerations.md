@@ -1,3 +1,4 @@
+---
 permalink: csharp-string-enumerations
 title: C# String Enumerations
 date: 2008-03-13

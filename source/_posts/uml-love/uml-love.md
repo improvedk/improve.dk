@@ -1,3 +1,4 @@
+---
 permalink: uml-love
 title: UML Love
 date: 2007-02-25

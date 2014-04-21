@@ -1,3 +1,4 @@
+---
 permalink: weighted-random-selections-in-sql-server
 title: Weighted Random Selections in SQL Server
 date: 2007-11-25

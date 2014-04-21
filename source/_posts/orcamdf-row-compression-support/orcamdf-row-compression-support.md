@@ -1,3 +1,4 @@
+---
 permalink: orcamdf-row-compression-support
 title: OrcaMDF Row Compression Support
 date: 2012-02-07

@@ -1,3 +1,4 @@
+---
 permalink: checking-which-database-is-stored-in-a-deattached-mdf-file
 title: Checking Which Database is Stored in a Detached MDF File
 date: 2011-05-19

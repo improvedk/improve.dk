@@ -1,3 +1,4 @@
+---
 permalink: miracle-openworld-2010-slides
 title: Miracle OpenWorld 2010 Slides
 date: 2010-04-17

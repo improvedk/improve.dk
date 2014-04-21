@@ -1,3 +1,4 @@
+---
 permalink: top-x-sql-server-developer-mistakes
 title: Top X SQL Server Developer Mistakes
 date: 2013-01-17

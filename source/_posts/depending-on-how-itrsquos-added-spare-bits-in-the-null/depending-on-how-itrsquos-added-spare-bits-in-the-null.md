@@ -1,3 +1,4 @@
+---
 permalink: depending-on-how-itrsquos-added-spare-bits-in-the-null
 title: The Garbage Null Bitmap and Why You Can't Rely on It Solely
 date: 2011-07-16

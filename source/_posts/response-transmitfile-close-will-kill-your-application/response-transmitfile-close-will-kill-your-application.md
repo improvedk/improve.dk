@@ -1,3 +1,4 @@
+---
 permalink: response-transmitfile-close-will-kill-your-application
 title: Response.TransmitFile + Close Will Kill Your Application
 date: 2008-03-29

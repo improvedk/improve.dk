@@ -1,3 +1,4 @@
+---
 permalink: using-squid-as-a-reverse-proxy-with-a-dotnet-url-rewriter
 title: Using Squid as a Reverse Proxy With a .NET Url Rewriter
 date: 2008-10-05

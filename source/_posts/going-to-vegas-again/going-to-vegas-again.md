@@ -1,3 +1,4 @@
+---
 permalink: going-to-vegas-again
 title: Going to Vegas (Again)
 date: 2006-12-31

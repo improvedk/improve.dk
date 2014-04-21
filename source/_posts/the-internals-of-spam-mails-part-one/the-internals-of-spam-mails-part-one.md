@@ -1,3 +1,4 @@
+---
 permalink: the-internals-of-spam-mails-part-one
 title: The Internals of Spam Mails - Part 1
 date: 2006-12-27

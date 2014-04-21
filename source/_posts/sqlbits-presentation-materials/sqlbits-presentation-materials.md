@@ -1,3 +1,4 @@
+---
 permalink: sqlbits-presentation-materials
 title: SQLBits Presentation Materials
 date: 2011-10-03

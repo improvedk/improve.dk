@@ -1,3 +1,4 @@
+---
 permalink: bundling-image-requests-for-increased-performance
 title: Bundling Image Requests for Increased Performance
 date: 2010-06-07

@@ -1,3 +1,4 @@
+---
 permalink: determining-the-uniquifier-column-ordinal-for-clustered-and-nonclustered-indexes
 title: Determining the Uniquifier Column Ordinal for Clustered and Nonclustered Indexes
 date: 2011-07-06

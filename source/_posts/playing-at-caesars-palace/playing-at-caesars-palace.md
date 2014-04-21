@@ -1,3 +1,4 @@
+---
 permalink: playing-at-caesars-palace
 title: Playing at Caesars Palace
 date: 2007-01-12

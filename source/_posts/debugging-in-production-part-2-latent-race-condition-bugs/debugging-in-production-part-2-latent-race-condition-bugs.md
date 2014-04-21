@@ -1,3 +1,4 @@
+---
 permalink: debugging-in-production-part-2-latent-race-condition-bugs
 title: Debugging in Production Part 2 - Latent Race Condition Bugs
 date: 2013-04-15

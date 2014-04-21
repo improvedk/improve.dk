@@ -1,3 +1,4 @@
+---
 permalink: cashsession1
 title: Cash Session #1
 date: 2006-07-26

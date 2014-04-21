@@ -1,3 +1,4 @@
+---
 permalink: nomore1500nlhe
 title: No more $1500 NLHE and $1/2 NL
 date: 2006-08-10

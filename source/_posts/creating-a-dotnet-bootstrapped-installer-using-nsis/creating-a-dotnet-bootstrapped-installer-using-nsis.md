@@ -1,3 +1,4 @@
+---
 permalink: creating-a-dotnet-bootstrapped-installer-using-nsis
 title: Creating a .NET Bootstrapped Installer Using NSIS
 date: 2007-06-10

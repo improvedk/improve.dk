@@ -1,3 +1,4 @@
+---
 permalink: providing-custom-assembly-evidence
 title: Providing Custom Assembly Evidence
 date: 2008-06-13

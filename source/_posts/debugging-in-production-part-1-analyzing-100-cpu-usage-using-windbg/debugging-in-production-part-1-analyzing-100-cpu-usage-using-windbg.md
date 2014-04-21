@@ -1,3 +1,4 @@
+---
 permalink: debugging-in-production-part-1-analyzing-100-cpu-usage-using-windbg
 title: Debugging in Production Part 1 - Analyzing 100% CPU Usage Using Windbg
 date: 2013-04-08

@@ -1,3 +1,4 @@
+---
 permalink: animating-windows
 title: Animating Windows Using PInvoke
 date: 2007-04-13

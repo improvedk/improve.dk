@@ -1,3 +1,4 @@
+---
 permalink: speaking-at-onug
 title: Speaking at Odense .NET User Group
 date: 2010-02-19

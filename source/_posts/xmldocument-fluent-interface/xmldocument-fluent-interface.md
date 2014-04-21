@@ -1,3 +1,4 @@
+---
 permalink: xmldocument-fluent-interface
 title: XmlDocument Fluent Interface
 date: 2007-10-20

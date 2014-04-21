@@ -1,3 +1,4 @@
+---
 permalink: analyzing-bsod-minidump-files-using-windbg
 title: Analyzing BSOD Minidump Files Using Windbg
 date: 2013-06-04

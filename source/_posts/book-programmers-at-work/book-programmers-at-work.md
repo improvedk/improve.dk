@@ -1,3 +1,4 @@
+---
 permalink: book-programmers-at-work
 title: Programmers at Work
 date: 2008-05-08

@@ -1,3 +1,4 @@
+---
 permalink: speaking-at-aarhus-dotnet-user-group
 title: Speaking at Aarhus .NET User Group
 date: 2010-04-23

@@ -1,3 +1,4 @@
+---
 permalink: profiling-code-the-easy-way
 title: Profiling Code the Easy Way
 date: 2008-04-16

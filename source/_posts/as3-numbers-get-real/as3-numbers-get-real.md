@@ -1,3 +1,4 @@
+---
 permalink: as3-numbers-get-real
 title: AS3 Numbers - Get Real
 date: 2008-06-12

@@ -1,3 +1,4 @@
+---
 permalink: activating-windows
 title: Activating Windows Using PInvoke
 date: 2007-04-12

@@ -1,3 +1,4 @@
+---
 permalink: day-1
 title: Day 1
 date: 2007-01-09

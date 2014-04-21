@@ -1,3 +1,4 @@
+---
 permalink: optimizing-single-instance-amazon-s3-delete-performance
 title: Optimizing Single Instance Amazon S3 Delete Performance
 date: 2011-11-17

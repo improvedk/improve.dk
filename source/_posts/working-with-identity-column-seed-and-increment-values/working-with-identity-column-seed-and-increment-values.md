@@ -1,3 +1,4 @@
+---
 permalink: working-with-identity-column-seed-and-increment-values
 title: Working With Identity Column Seed & Increment Values
 date: 2009-10-28

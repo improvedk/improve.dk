@@ -1,3 +1,4 @@
+---
 permalink: sqlbits-9-session-evaluation
 title: SQLBits 9 Session Evaluation
 date: 2011-12-05

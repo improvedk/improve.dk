@@ -1,3 +1,4 @@
+---
 permalink: generic-dijkstras-algorithm
 title: Generic Dijkstra's Algorithm
 date: 2008-05-13

@@ -1,3 +1,4 @@
+---
 permalink: solving-access-denied-errors-using-process-monitor
 title: Solving Access Denied Errors Using Process Monitor
 date: 2009-10-21

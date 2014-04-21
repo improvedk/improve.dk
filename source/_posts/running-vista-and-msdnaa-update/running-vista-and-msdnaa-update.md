@@ -1,3 +1,4 @@
+---
 permalink: running-vista-and-msdnaa-update
 title: Running Vista, MSDNAA Update
 date: 2006-12-02

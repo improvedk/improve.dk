@@ -1,3 +1,4 @@
+---
 permalink: compiling-java-in-visual-studio
 title: Compiling Java in Visual Studio
 date: 2007-09-29

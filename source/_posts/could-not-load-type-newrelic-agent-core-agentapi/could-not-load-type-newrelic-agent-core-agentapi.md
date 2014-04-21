@@ -1,3 +1,4 @@
+---
 permalink: could-not-load-type-newrelic-agent-core-agentapi
 title: Could Not Load Type 'NewRelic.Agent.Core.AgentApi'
 date: 2013-05-23

@@ -1,3 +1,4 @@
+---
 permalink: making-the-aspnet-state-service-work-across-network
 title: Making the ASP.NET State Service Work Across Network
 date: 2009-08-24

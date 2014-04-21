@@ -1,3 +1,4 @@
+---
 permalink: set-text-by-handle
 title: Set Text By Window Handle Using PInvoke
 date: 2007-04-04

@@ -1,3 +1,4 @@
+---
 permalink: miracle-open-world-2011-follow-up
 title: Miracle Open World 2011 Followup
 date: 2011-04-17

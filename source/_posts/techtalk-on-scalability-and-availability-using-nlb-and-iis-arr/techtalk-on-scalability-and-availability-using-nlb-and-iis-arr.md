@@ -1,3 +1,4 @@
+---
 permalink: techtalk-on-scalability-and-availability-using-nlb-and-iis-arr
 title: TechTalk on Scalability & Availability Using NLB and IIS ARR
 date: 2009-12-16

@@ -1,3 +1,4 @@
+---
 permalink: query-optimization-a-case-study
 title: Query Optimization - A Case Study
 date: 2009-03-20

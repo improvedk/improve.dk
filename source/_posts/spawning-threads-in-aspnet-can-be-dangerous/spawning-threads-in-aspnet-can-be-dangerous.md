@@ -1,3 +1,4 @@
+---
 permalink: spawning-threads-in-aspnet-can-be-dangerous
 title: Spawning Threads in ASP.NET Can Be Dangerous
 date: 2008-04-07

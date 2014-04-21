@@ -1,3 +1,4 @@
+---
 permalink: presenting-at-miracle-open-world-2012
 title: Presenting at Miracle Open World 2012
 date: 2012-01-23

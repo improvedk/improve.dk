@@ -1,3 +1,4 @@
+---
 permalink: modifying-window-location-and-size
 title: Modifying Window Location and Size Using PInvoke
 date: 2007-04-09

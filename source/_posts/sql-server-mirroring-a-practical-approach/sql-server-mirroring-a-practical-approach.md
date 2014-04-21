@@ -1,3 +1,4 @@
+---
 permalink: sql-server-mirroring-a-practical-approach
 title: SQL Server Mirroring - A Practical Approach
 date: 2008-03-23

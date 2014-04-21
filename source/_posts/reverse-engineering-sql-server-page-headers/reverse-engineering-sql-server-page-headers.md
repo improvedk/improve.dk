@@ -1,3 +1,4 @@
+---
 permalink: reverse-engineering-sql-server-page-headers
 title: Reverse Engineering SQL Server Page Headers
 date: 2011-05-19

@@ -1,3 +1,4 @@
+---
 permalink: orcamdf-now-exposes-metadata-through-system-dmvs
 title: OrcaMDF Now Exposes Metadata Through System DMVs
 date: 2011-11-10

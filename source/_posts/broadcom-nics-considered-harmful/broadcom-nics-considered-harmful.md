@@ -1,3 +1,4 @@
+---
 permalink: broadcom-nics-considered-harmful
 title: Broadcom NICs Considered Harmful?
 date: 2012-01-25

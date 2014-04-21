@@ -1,3 +1,4 @@
+---
 permalink: thoughts-on-blogging
 title: Thoughts on Blogging
 date: 2009-04-08

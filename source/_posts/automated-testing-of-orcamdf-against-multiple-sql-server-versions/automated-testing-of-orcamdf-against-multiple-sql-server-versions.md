@@ -1,3 +1,4 @@
+---
 permalink: automated-testing-of-orcamdf-against-multiple-sql-server-versions
 title: Automated Testing of OrcaMDF Against Multiple SQL Server Versions
 date: 2011-11-28

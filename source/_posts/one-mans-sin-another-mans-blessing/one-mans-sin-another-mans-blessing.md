@@ -1,3 +1,4 @@
+---
 permalink: one-mans-sin-another-mans-blessing
 title: One Mans Sin, Another Mans Blessing
 date: 2007-01-23

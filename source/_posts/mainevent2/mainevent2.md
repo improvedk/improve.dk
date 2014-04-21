@@ -1,3 +1,4 @@
+---
 permalink: mainevent2
 title: Main Event Day 2
 date: 2006-08-03

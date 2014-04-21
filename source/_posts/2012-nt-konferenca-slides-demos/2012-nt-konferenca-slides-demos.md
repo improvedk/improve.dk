@@ -1,3 +1,4 @@
+---
 permalink: 2012-nt-konferenca-slides-demos
 title: 2012 NT Konferenca Slides + Demos
 date: 2012-06-01

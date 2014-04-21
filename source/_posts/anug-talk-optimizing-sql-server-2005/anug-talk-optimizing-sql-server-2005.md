@@ -1,3 +1,4 @@
+---
 permalink: anug-talk-optimizing-sql-server-2005
 title: ANUG Talk: Optimizing SQL Server 2005
 date: 2009-03-12

@@ -1,3 +1,4 @@
+---
 permalink: anatomy-of-a-forwarded-record-ndash-the-forwarding-stub
 title: Anatomy of a Forwarded Record & the Forwarding Stub
 date: 2011-06-07

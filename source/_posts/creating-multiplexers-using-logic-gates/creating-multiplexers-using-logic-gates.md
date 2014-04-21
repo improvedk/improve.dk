@@ -1,3 +1,4 @@
+---
 permalink: creating-multiplexers-using-logic-gates
 title: Creating Multiplexers Using Logic Gates
 date: 2012-02-13

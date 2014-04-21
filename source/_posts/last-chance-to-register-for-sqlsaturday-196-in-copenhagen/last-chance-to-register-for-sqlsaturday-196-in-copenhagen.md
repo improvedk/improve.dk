@@ -1,3 +1,4 @@
+---
 permalink: last-chance-to-register-for-sqlsaturday-196-in-copenhagen
 title: Last Chance to Register for SQLSaturday #196 in Copenhagen
 date: 2013-04-09

@@ -1,3 +1,4 @@
+---
 permalink: enumerating-windows
 title: Enumerating Windows Using PInvoke
 date: 2007-04-06

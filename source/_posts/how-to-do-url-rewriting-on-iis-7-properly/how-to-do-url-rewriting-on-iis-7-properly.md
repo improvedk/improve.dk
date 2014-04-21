@@ -1,3 +1,4 @@
+---
 permalink: how-to-do-url-rewriting-on-iis-7-properly
 title: How To Do URL Rewriting on IIS 7 Properly
 date: 2009-10-14

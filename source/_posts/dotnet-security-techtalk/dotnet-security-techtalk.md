@@ -1,3 +1,4 @@
+---
 permalink: dotnet-security-techtalk
 title: .NET Security TechTalk
 date: 2008-06-13

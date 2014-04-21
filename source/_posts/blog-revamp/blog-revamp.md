@@ -1,3 +1,4 @@
+---
 permalink: blog-revamp
 title: Blog Revamp
 date: 2013-02-20

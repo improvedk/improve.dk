@@ -1,3 +1,4 @@
+---
 permalink: verifying-mailgun-webhooks
 title: Verifying Mailgun Webhooks
 date: 2013-09-23

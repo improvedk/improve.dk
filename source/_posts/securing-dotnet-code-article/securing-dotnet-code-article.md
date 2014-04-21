@@ -1,3 +1,4 @@
+---
 permalink: securing-dotnet-code-article
 title: Securing .NET Code
 date: 2006-10-02

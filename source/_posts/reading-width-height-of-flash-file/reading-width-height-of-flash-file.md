@@ -1,3 +1,4 @@
+---
 permalink: reading-width-height-of-flash-file
 title: Reading Width & Height of Flash File
 date: 2009-11-11

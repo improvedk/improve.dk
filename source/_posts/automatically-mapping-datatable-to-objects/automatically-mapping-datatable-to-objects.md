@@ -1,3 +1,4 @@
+---
 permalink: automatically-mapping-datatable-to-objects
 title: Automatically Mapping Datatable to Objects
 date: 2007-11-19

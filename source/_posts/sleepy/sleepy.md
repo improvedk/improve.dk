@@ -1,3 +1,4 @@
+---
 permalink: sleepy
 title: Sleepy $1500 NLHE
 date: 2006-08-07

@@ -1,3 +1,4 @@
+---
 permalink: updating-xmloutput
 title: Updating XmlOutput
 date: 2008-08-10

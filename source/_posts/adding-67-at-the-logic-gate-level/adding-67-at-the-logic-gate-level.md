@@ -1,3 +1,4 @@
+---
 permalink: adding-67-at-the-logic-gate-level
 title: Adding 6+7 At The Logic Gate Level
 date: 2012-02-06

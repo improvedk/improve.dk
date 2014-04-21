@@ -1,3 +1,4 @@
+---
 permalink: saving-space-by-storing-real-values-in-smallints
 title: Saving Space by Storing Decimal Values in Integer Data Types
 date: 2011-05-31

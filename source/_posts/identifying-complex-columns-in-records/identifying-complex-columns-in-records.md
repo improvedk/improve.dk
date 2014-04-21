@@ -1,3 +1,4 @@
+---
 permalink: identifying-complex-columns-in-records
 title: Identifying Complex Columns in Records
 date: 2011-07-15

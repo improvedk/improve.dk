@@ -1,3 +1,4 @@
+---
 permalink: copying-a-sql-server-database-file-thatrsquos-in-use-using
 title: Copying a SQL Server Database File That's in Use Using Volume Shadow Copy
 date: 2011-06-21

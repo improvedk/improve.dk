@@ -1,3 +1,4 @@
+---
 permalink: how-are-vardecimals-stored
 title: The Anatomy of Vardecimals
 date: 2011-12-13

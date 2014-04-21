@@ -1,3 +1,4 @@
+---
 permalink: ces-2007-pictures
 title: CES 2007 Pictures
 date: 2007-01-28

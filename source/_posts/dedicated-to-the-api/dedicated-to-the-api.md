@@ -1,3 +1,4 @@
+---
 permalink: dedicated-to-the-api
 title: Dedicated to the API
 date: 2007-03-29

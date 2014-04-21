@@ -1,3 +1,4 @@
+---
 permalink: car-fire
 title: Car fire :(
 date: 2007-03-16

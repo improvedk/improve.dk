@@ -1,3 +1,4 @@
+---
 permalink: the-cost-of-latent-logging-code
 title: The Cost of Latent Logging Code
 date: 2009-09-12

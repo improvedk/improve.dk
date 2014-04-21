@@ -1,3 +1,4 @@
+---
 permalink: mth-going-open
 title: MTH Going Open
 date: 2008-03-07

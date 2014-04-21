@@ -1,3 +1,4 @@
+---
 permalink: making-url-rewriting-on-iis7-work-like-iis6
 title: Making URL Rewriting on IIS 7 Work Like IIS 6
 date: 2006-12-11

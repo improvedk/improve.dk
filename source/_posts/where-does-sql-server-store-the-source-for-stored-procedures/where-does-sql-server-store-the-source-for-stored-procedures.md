@@ -1,3 +1,4 @@
+---
 permalink: where-does-sql-server-store-the-source-for-stored-procedures
 title: Where Does SQL Server Store the Source for Stored Procedures?
 date: 2012-08-27

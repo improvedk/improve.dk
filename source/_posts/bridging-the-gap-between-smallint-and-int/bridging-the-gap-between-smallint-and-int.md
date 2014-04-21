@@ -1,3 +1,4 @@
+---
 permalink: bridging-the-gap-between-smallint-and-int
 title: Bridging the Gap Between Smallint and Int
 date: 2011-05-19

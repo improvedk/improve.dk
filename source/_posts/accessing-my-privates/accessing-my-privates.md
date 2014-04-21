@@ -1,3 +1,4 @@
+---
 permalink: accessing-my-privates
 title: Accessing My Privates, Scope vs Encapsulation
 date: 2007-10-09

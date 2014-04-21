@@ -1,3 +1,4 @@
+---
 permalink: speaking-at-devlink-2009
 title: Speaking at devLink 2009
 date: 2009-04-02

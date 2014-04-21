@@ -1,3 +1,4 @@
+---
 permalink: exploring-the-sys-system_internals_partition_columns-ti-field
 title: Exploring the sys.system_internals_partition_columns.ti Field
 date: 2011-07-13

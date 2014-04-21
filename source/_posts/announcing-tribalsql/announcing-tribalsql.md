@@ -1,3 +1,4 @@
+---
 permalink: announcing-tribalsql
 title: Announcing Tribal SQL
 date: 2013-10-23

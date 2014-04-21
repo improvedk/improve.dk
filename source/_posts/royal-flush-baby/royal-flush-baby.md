@@ -1,3 +1,4 @@
+---
 permalink: royal-flush-baby
 title: Royal Flush Baby!
 date: 2007-01-09

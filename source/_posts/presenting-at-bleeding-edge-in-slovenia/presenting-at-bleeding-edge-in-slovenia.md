@@ -1,3 +1,4 @@
+---
 permalink: presenting-at-bleeding-edge-in-slovenia
 title: Presenting at Bleeding Edge in Slovenia
 date: 2012-08-26

@@ -1,3 +1,4 @@
+---
 permalink: techtalk-material-security-2008
 title: TechTalk Material
 date: 2008-08-06

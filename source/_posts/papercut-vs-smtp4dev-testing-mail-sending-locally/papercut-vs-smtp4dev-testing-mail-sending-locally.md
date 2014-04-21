@@ -1,3 +1,4 @@
+---
 permalink: papercut-vs-smtp4dev-testing-mail-sending-locally
 title: Papercut vs smtp4dev - Testing Mail Sending Locally
 date: 2010-07-01

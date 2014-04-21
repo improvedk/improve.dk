@@ -1,3 +1,4 @@
+---
 permalink: implementing-imperative-security-declaratively-using-postsharp
 title: Implementing Imperative Security Declaratively Using PostSharp
 date: 2008-11-01

@@ -1,3 +1,4 @@
+---
 permalink: missing-windows-mobile-device-center
 title: Missing Windows Mobile Device Center
 date: 2006-12-08

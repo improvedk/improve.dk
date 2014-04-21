@@ -1,3 +1,4 @@
+---
 permalink: sqlbits-9-voting-amp-registration-open
 title: SQLBits 9 Voting & Registration Open
 date: 2011-07-12

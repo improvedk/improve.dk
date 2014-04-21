@@ -1,3 +1,4 @@
+---
 permalink: simple-file-synchronization-using-robocopy
 title: Simple File Synchronization Using Robocopy
 date: 2009-10-07

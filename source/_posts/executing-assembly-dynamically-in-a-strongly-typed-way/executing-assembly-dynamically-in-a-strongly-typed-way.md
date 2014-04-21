@@ -1,3 +1,4 @@
+---
 permalink: executing-assembly-dynamically-in-a-strongly-typed-way
 title: Executing Assembly Dynamically In a Strongly Typed Way
 date: 2006-12-26

@@ -1,3 +1,4 @@
+---
 permalink: getting-window-location-and-size
 title: Getting Window Location and Size Using PInvoke
 date: 2007-04-09

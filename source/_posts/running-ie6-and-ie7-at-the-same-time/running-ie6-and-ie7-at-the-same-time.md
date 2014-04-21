@@ -1,3 +1,4 @@
+---
 permalink: running-ie6-and-ie7-at-the-same-time
 title: Running IE6 and IE7 at the Same Time
 date: 2006-12-04

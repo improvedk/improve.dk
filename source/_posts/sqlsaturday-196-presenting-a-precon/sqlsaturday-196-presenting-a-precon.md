@@ -1,3 +1,4 @@
+---
 permalink: sqlsaturday-196-presenting-a-precon
 title: SQLSaturday &#35;196 - Presenting a Precon
 date: 2013-02-21

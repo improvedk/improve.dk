@@ -1,3 +1,4 @@
+---
 permalink: techtalk-optimizing-sql-server-2005
 title: TechTalk: Optimizing SQL Server 2005
 date: 2009-01-22

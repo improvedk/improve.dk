@@ -1,3 +1,4 @@
+---
 permalink: i-dont-like-static-methods
 title: I Don't Like Static Methods
 date: 2008-10-16

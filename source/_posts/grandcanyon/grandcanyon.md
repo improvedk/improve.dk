@@ -1,3 +1,4 @@
+---
 permalink: grandcanyon
 title: Grand Canyon Trip
 date: 2006-07-26

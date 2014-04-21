@@ -1,3 +1,4 @@
+---
 permalink: invaluable-ie-addon-tools
 title: Invaluable IE Addon Tools
 date: 2006-11-19

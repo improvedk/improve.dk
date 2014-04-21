@@ -1,3 +1,4 @@
+---
 permalink: speaking-at-ndc
 title: Speaking at NDC
 date: 2012-03-27

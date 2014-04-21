@@ -1,3 +1,4 @@
+---
 permalink: devlink-2009-followup
 title: devLink 2009 Followup
 date: 2009-08-17

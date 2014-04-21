@@ -1,3 +1,4 @@
+---
 permalink: presenting-at-sqlsaturday-162-in-cambridge
 title: Presenting at SQLSaturday #162 in Cambridge
 date: 2012-07-18

@@ -1,3 +1,4 @@
+---
 permalink: using-network-load-balancing-for-availability-and-scalability
 title: Using Network Load Balancing for Availability & Scalability
 date: 2008-03-08

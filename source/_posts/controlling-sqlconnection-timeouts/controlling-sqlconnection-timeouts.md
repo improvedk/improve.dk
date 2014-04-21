@@ -1,3 +1,4 @@
+---
 permalink: controlling-sqlconnection-timeouts
 title: Controlling SqlConnection Timeouts
 date: 2008-03-10

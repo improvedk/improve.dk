@@ -1,3 +1,4 @@
+---
 permalink: presenting-a-free-preview-of-my-sql-server-storage-engine-and-mdf-file-internals-training-day
 title: Presenting a Free Preview of my SQL Server Storage Engine and MDF File Internals Training Day
 date: 2011-08-04

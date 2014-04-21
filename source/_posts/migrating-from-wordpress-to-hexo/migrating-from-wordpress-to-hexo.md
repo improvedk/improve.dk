@@ -1,3 +1,4 @@
+---
 permalink: migrating-from-wordpress-to-hexo
 title: Migrating from Wordpress to Hexo
 date: 2014-04-19

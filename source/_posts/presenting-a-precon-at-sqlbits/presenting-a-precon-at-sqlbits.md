@@ -1,3 +1,4 @@
+---
 permalink: presenting-a-precon-at-sqlbits
 title: Presenting a Precon at SQLBits
 date: 2011-06-30

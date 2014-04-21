@@ -1,3 +1,4 @@
+---
 permalink: sqlbits-9-agenda-published
 title: SQLBits 9 Agenda Published
 date: 2011-08-03

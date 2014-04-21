@@ -1,3 +1,4 @@
+---
 permalink: wasted-bytes-add-up-consider-your-data-types-carefully
 title: Wasted Bytes Add Up, Consider Your Data Types Carefully
 date: 2011-05-17

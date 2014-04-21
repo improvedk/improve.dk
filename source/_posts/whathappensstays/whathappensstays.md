@@ -1,3 +1,4 @@
+---
 permalink: whathappensstays
 title: What Happens In Vegas Stays In Vegas
 date: 2006-07-27

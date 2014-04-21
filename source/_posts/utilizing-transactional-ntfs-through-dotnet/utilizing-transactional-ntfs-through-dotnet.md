@@ -1,3 +1,4 @@
+---
 permalink: utilizing-transactional-ntfs-through-dotnet
 title: Utilizing Transactional NTFS Through .NET
 date: 2009-02-15

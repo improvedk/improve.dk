@@ -1,3 +1,4 @@
+---
 permalink: resource-urls-and-their-effect-on-client-side-caching
 title: Resource URLs and Their Effect on Client Side Caching
 date: 2009-03-08

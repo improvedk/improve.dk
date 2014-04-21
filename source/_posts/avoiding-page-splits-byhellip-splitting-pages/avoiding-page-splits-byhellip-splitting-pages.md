@@ -1,3 +1,4 @@
+---
 permalink: avoiding-page-splits-byhellip-splitting-pages
 title: Avoiding Page Splits By Splitting Pages
 date: 2011-05-24

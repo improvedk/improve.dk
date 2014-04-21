@@ -1,3 +1,4 @@
+---
 permalink: in-the-nick-of-time-band-aid-solution-for-umbraco
 title: In the Nick of Time: Band Aid Solution for Umbraco 5.1 Performance
 date: 2012-05-14
