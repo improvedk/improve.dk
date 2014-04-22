@@ -4,7 +4,7 @@ title: Parsing Dates in OrcaMDF
 date: 2011-05-10
 tags: [SQL Server - Internals, SQL Server - OrcaMDF]
 ---
-There are several different date related data types in SQL Server. Currently [OrcaMDF](introducing-orcamdf) supports the three most common types: [date](http://msdn.microsoft.com/en-us/library/bb630352.aspx), [datetime](http://msdn.microsoft.com/en-us/library/ms187819.aspx) & [smalldatetime](http://msdn.microsoft.com/en-us/library/ms182418.aspx).
+There are several different date related data types in SQL Server. Currently [OrcaMDF](/introducing-orcamdf) supports the three most common types: [date](http://msdn.microsoft.com/en-us/library/bb630352.aspx), [datetime](http://msdn.microsoft.com/en-us/library/ms187819.aspx) & [smalldatetime](http://msdn.microsoft.com/en-us/library/ms182418.aspx).
 
 <!-- more -->
 
