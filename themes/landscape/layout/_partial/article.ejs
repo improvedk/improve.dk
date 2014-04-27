@@ -39,14 +39,14 @@
 
 				<% if (!index) { %>
 					<div id="postsharing">
-						<a href="https://twitter.com/home?status=<%- encodeURIComponent(post.title + " " + post.permalink + " via @improvedk") %>" target="_blank"><img src="/img/twitter_64x64.png" /></a>
-						<a href="https://www.facebook.com/sharer.php?u=<%- encodeURIComponent(page.permalink) %>" target="_blank"><img src="/img/facebook_64x64.png" /></a>
-						<a href="http://reddit.com/submit?url=<%- encodeURIComponent(post.permalink) + "&title=" + encodeURIComponent(post.title) %>" target="_blank"><img src="/img/reddit_64x64.png" /></a>
-						<a href="https://github.com/improvedk/improve.dk/blob/master/source/_posts/<%- post.slug %>/<%- post.slug %>.md" target="_blank" title="View source"><img src="/img/octocat_64x64.png" /></a>
+						<a href="https://twitter.com/home?status=<%- encodeURIComponent(post.title + " " + post.permalink + " via @improvedk") %>" target="_blank" class="twitter"></a>
+						<a href="https://www.facebook.com/sharer.php?u=<%- encodeURIComponent(page.permalink) %>" target="_blank" class="facebook"></a>
+						<a href="http://reddit.com/submit?url=<%- encodeURIComponent(post.permalink) + "&title=" + encodeURIComponent(post.title) %>" target="_blank" class="reddit"></a>
+						<a href="https://github.com/improvedk/improve.dk/blob/master/source/_posts/<%- post.slug %>/<%- post.slug %>.md" target="_blank" title="View source" class="github"></a>
 					</div>
 
 					<div id="bio">
-						<img src="/img/avatar.jpg" class="avatar photo" height="96" width="96">
+						<div class="avatar"></div>
 						<div class="wrapper">
 							<div class="name">Mark S. Rasmussen</div>
 							<div class="description">
