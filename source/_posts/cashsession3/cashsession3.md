@@ -1,7 +1,7 @@
 ---
 permalink: cashsession3
 title: Cash Session #3
-date: 2006-07-30
+date: 2006-07-30 12:00:00
 tags: [Poker]
 ---
 After Santana I went to Rio with Abuello to see if we could get an update on how Mika (Miwala) was doing in the Main Event, and Danes in general. While we didn't find Mika (later on I found out he busted earlier on to a nasty rivered flush vs. rivered full house hand), I did meet Hostrup (Carl) waiting for cash game entry. I signed up for the $2/5 NL game also.

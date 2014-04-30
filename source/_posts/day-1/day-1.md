@@ -1,7 +1,7 @@
 ---
 permalink: day-1
 title: Day 1
-date: 2007-01-09
+date: 2007-01-09 20:00:00
 tags: [Poker]
 ---
 Since I woke up at 6 AM this morning I decided to just stay in bed and watch The Prestige through the hotel movie system.

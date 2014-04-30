@@ -1,7 +1,7 @@
 ---
 permalink: providing-custom-assembly-evidence
 title: Providing Custom Assembly Evidence
-date: 2008-06-13
+date: 2008-06-13 19:00:00
 tags: [.NET]
 ---
 I recently [mentioned](/analyzing-assembly-evidence/) the possibility of having an assembly provide custom evidence alongside the CLR provided evidence. Let's see how to do it.

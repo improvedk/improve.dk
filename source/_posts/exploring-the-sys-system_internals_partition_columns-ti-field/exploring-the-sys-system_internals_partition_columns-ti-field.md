@@ -1,7 +1,7 @@
 ---
 permalink: exploring-the-sys-system_internals_partition_columns-ti-field
 title: Exploring the sys.system_internals_partition_columns.ti Field
-date: 2011-07-13
+date: 2011-07-13 19:00:00
 tags: [SQL Server - Internals]
 ---
 Running sp_helptext on the sys.system_internals_partition_columns system view reveals the following internal query:

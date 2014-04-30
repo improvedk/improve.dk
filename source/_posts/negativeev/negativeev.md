@@ -1,7 +1,7 @@
 ---
 permalink: negativeev
 title: -EV
-date: 2006-08-11
+date: 2006-08-11 17:00:00
 tags: [Poker]
 ---
 Today we wanted to try a buffet, not something I've done a lot of over here (except the Aladdin buffet which wasn't really that good). Me and three others went to the Wynn, a rather new and very grand hotel to test their buffet. Compared to the Aladdin this one was far superior. Only downside is that their speciality was seafood, which isn't exactly my kinda thing. Anyways, it was great food and a great scenery!

@@ -1,7 +1,7 @@
 ---
 permalink: identifying-complex-columns-in-records
 title: Identifying Complex Columns in Records
-date: 2011-07-15
+date: 2011-07-15 18:00:00
 tags: [SQL Server - Internals]
 ---
 *For an introduction to the anatomy of records, I suggest you read *[*this post*](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-record.aspx)* by *[*Paul Randal*](http://www.sqlskills.com/BLOGS/PAUL/)*.*

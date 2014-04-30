@@ -1,7 +1,7 @@
 ---
 permalink: arrivalatvegas
 title: Arrival at Vegas
-date: 2006-07-26
+date: 2006-07-26 19:00:00
 tags: [Poker]
 ---
 So I finally arrived at Vegas!

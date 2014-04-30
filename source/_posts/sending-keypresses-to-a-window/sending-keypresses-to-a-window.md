@@ -1,7 +1,7 @@
 ---
 permalink: sending-keypresses-to-a-window
 title: Sending Keypresses to a Window Using PInvoke
-date: 2007-04-06
+date: 2007-04-06 19:00:00
 tags: [.NET]
 ---
 Now to complete the toolset required to make a great spyware / browser hijacking application, we'll make Internet Explorer navigate to the address we set.

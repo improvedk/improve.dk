@@ -1,7 +1,7 @@
 ---
 permalink: updating-xmloutput
 title: Updating XmlOutput
-date: 2008-08-10
+date: 2008-08-10 19:00:00
 tags: [.NET]
 ---
 Since I originally posted my XmlOutput class I've received lots of great feedback. I'm happy that many of you have found it useful.

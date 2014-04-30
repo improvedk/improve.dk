@@ -1,7 +1,7 @@
 ---
 permalink: the-null-bitmap-is-not-always-present-in-data-records
 title: The Null Bitmap is Not Always Present in Data Records
-date: 2011-07-15
+date: 2011-07-15 20:00:00
 tags: [SQL Server - Internals]
 ---
 While [implementing sparse column support](/sparse-column-storage-ndash-the-sparse-vector/) for [OrcaMDF](https://github.com/improvedk/OrcaMDF), I ran into a special condition that caught me by surprise – a data record with no null bitmap. Even [Paul Randal](http://www.sqlskills.com/BLOGS/PAUL/) mentioned that the null bitmap would *always* be present in data records in his [A SQL Server DBA myth a day: (6/30) three null bitmap myths](http://www.sqlskills.com/BLOGS/PAUL/post/A-SQL-Server-DBA-myth-a-day-(630)-three-null-bitmap-myths.aspx) post.

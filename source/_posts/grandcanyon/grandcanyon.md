@@ -1,7 +1,7 @@
 ---
 permalink: grandcanyon
 title: Grand Canyon Trip
-date: 2006-07-26
+date: 2006-07-26 17:00:00
 tags: [Life]
 ---
 So today we decided to take a trip to the Grand Canyon just outside Las Vegas. I've been to the Grand Canyon once before on an earlier trip when I was seven, but honestly I couldn't remember it that well besides it being hot as hell and, well, grand.

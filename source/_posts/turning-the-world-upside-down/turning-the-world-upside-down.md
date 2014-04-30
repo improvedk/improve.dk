@@ -1,7 +1,7 @@
 ---
 permalink: turning-the-world-upside-down
 title: Turning the World Upside Down
-date: 2007-03-29
+date: 2007-03-29 20:00:00
 tags: [Tools of the Trade, Windows]
 ---
 So, tell me, do you notice anything unusual in the picture below?

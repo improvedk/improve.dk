@@ -1,7 +1,7 @@
 ---
 permalink: book-how-i-raised-myself-from-failure-to-success-in-selling
 title: How I Raised Myself from Failure to Success in Selling
-date: 2008-08-10
+date: 2008-08-10 18:00:00
 tags: [Miscellaneous]
 ---
 Having recently read [The Pragmatic Programmer](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=pd_bbs_sr_1?ie=UTF8&s=books&qid=1218331941&sr=8-1) and [Working Effectively with Legacy Code](http://www.amazon.com/Working-Effectively-Legacy-Robert-Martin/dp/0131177052) (both books are amazing - and neither need further review or description as they are globally appreciated as classics), I was feeling ready to read something non-development related, just to get back on my feet again.

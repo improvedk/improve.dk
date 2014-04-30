@@ -1,7 +1,7 @@
 ---
 permalink: running-ie6-and-ie7-at-the-same-time
 title: Running IE6 and IE7 at the Same Time
-date: 2006-12-04
+date: 2006-12-04 16:00:00
 tags: [Tools of the Trade]
 ---
 Ever since IE7 came out developers have had the problem of whether they should upgrade or not. If they chose to upgrade, they wouldn't be able to test their sites in IE6 any longer as installing IE7 would uninstall IE6. There are 3rd party hacks that allow both versions to be installed at the same time, but they will not simulate a true IE6 / IE7 environment.

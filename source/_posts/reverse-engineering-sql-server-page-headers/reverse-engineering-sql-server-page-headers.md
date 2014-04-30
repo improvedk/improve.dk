@@ -1,7 +1,7 @@
 ---
 permalink: reverse-engineering-sql-server-page-headers
 title: Reverse Engineering SQL Server Page Headers
-date: 2011-05-19
+date: 2011-05-19 18:00:00
 tags: [.NET, SQL Server - Internals]
 ---
 One of the first challenges I faced when starting out the development of [OrcaMDF](https://github.com/improvedk/OrcaMDF) was parsing page headers. We all know that [pages are basically split in two parts](/deciphering-a-sql-server-data-page/), the 96 byte header and the 8096 byte body of remaining bytes. Much has been written about headers and Paul Randal ([b](http://www.sqlskills.com/BLOGS/PAUL/)|[t](http://twitter.com/#!/paulrandal)) has a great post describing the [contents of the header](http://www.sqlskills.com/blogs/paul/post/Inside-the-Storage-Engine-Anatomy-of-a-page.aspx) as well. However, though the contents have been described, I've been completely unable to find any kind of details on the storage format. What data types are the individual fields, and what's the order? Oh well, we've always got DBCC PAGE.

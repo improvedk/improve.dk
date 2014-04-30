@@ -1,7 +1,7 @@
 ---
 permalink: getting-window-location-and-size
 title: Getting Window Location and Size Using PInvoke
-date: 2007-04-09
+date: 2007-04-09 19:00:00
 tags: [.NET]
 ---
 This time I'll show how to obtain the size and location of a window. I will be using the [WindowFinder class](http://www.improve.dk/blog/2007/04/07/finding-specific-windows) that I introduced in the blog [Finding specific windows](http://www.improve.dk/blog/2007/04/07/finding-specific-windows).

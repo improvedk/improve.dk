@@ -1,7 +1,7 @@
 ---
 permalink: dotnet-security-techtalk
 title: .NET Security TechTalk
-date: 2008-06-13
+date: 2008-06-13 20:00:00
 tags: [Conferences and Presenting]
 ---
 I will be hosting two TechTalks on security in .NET, at Microsoft Denmark in August. The TechTalks will be held in DANISH.

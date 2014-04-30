@@ -1,7 +1,7 @@
 ---
 permalink: minimizing-and-maximizing-windows
 title: Minimizing and Maximizing Windows Using PInvoke
-date: 2007-04-11
+date: 2007-04-11 19:00:00
 tags: [.NET]
 ---
 This time I will show how to maximize and minimize windows. I will be using the [WindowFinder class](http://www.improve.dk/blog/2007/04/07/finding-specific-windows) that I introduced in the blog [Finding specific windows](http://www.improve.dk/blog/2007/04/07/finding-specific-windows).

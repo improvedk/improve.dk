@@ -1,7 +1,7 @@
 ---
 permalink: response-transmitfile-close-will-kill-your-application
 title: Response.TransmitFile + Close Will Kill Your Application
-date: 2008-03-29
+date: 2008-03-29 19:00:00
 tags: [.NET]
 ---
 Just before last weekend I noticed that a website I'm responsible for started spitting out "Server is busy" messages, not something you want to see on a website with millions of visitors per day. The quickfix was to recycle the application pool, and thus I solved the symptoms by setting a 15 mins recycle cycle on all the application pools. Not exactly optimal, but sometimes pissing your pants is the way to go.

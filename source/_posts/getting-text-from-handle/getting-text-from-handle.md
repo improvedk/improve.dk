@@ -1,7 +1,7 @@
 ---
 permalink: getting-text-from-handle
 title: Getting Text From Window Handle Using PInvoke
-date: 2007-04-04
+date: 2007-04-04 20:00:00
 tags: [.NET]
 ---
 This time we want to retrieve the text from a given window, represented by a handle. Like last time, open an Internet Explorer instance. Now open Winspector and select the address field, ensure that it is the address field itself (class = Edit) and not the ComboBox that you select.

@@ -1,7 +1,7 @@
 ---
 permalink: creating-a-type-aware-parser-for-the-sys-system_internals_partition_columns-ti-field
 title: Creating a Type Aware Parser for the sys.system_internals_partition_columns.ti Field
-date: 2011-07-13
+date: 2011-07-13 20:00:00
 tags: [SQL Server - Internals]
 ---
 Based on my findings [exploring the sys.system_internals_partition_columns.ti field](/exploring-the-sys-system_internals_partition_columns-ti-field), I needed parser that could extract the scale, precision, max_length as well as the max_inrow_length fields from it. The tricky part is that those values are stored differently for each individual type, added onto the fact that some types have hardcoded defaults that are not stored in the ti field, even though there's space for it.

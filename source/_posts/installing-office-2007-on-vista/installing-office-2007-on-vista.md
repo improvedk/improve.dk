@@ -1,7 +1,7 @@
 ---
 permalink: installing-office-2007-on-vista
 title: Installing Office 2007 on Vista
-date: 2006-12-04
+date: 2006-12-04 17:00:00
 tags: [Windows]
 ---
 Ok, so I'd promised myself that I would at least give it a month before I'd install Vista on my desktop computer as I simply will not be able to cope with having major problems here. For work purposes I simply have to have a functional desktop computer.

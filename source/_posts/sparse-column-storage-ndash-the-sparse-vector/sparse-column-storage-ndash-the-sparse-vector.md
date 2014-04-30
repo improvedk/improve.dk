@@ -1,7 +1,7 @@
 ---
 permalink: sparse-column-storage-ndash-the-sparse-vector
 title: Sparse Column Storage & the Sparse Vector
-date: 2011-07-15
+date: 2011-07-15 19:00:00
 tags: [SQL Server - Internals]
 ---
 In this post I'll be looking at the internal storage mechanism that supports sparse columns. For an introduction to what sparse columns are and when they ought to be used, [take a look here](http://msdn.microsoft.com/en-us/library/cc280604.aspx).

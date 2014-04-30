@@ -1,7 +1,7 @@
 ---
 permalink: royal-flush-baby
 title: Royal Flush Baby!
-date: 2007-01-09
+date: 2007-01-09 19:00:00
 tags: [Poker]
 ---
 I wanted to log a lot of poker playing hours today. At about 12 PM I went to the MGM Grand, a room that I'd never visited. After playing there for about 5-6 hours (please don't ask how it went, I got butchered), I've got mixed feelings about the room.

@@ -1,7 +1,7 @@
 ---
 permalink: profiling-code-the-easy-way
 title: Profiling Code the Easy Way
-date: 2008-04-16
+date: 2008-04-16 20:00:00
 tags: [.NET]
 ---
 I often do code profiling, usually involving a stopwatch and some boilerplate code. I decided to make a quick'n'simple class that'll help me get rid of some of that code and concentrate on the actual code being profiled.

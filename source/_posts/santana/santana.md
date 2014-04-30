@@ -1,7 +1,7 @@
 ---
 permalink: santana
 title: Santana
-date: 2006-07-30
+date: 2006-07-30 17:00:00
 tags: [Life]
 ---
 When I went to bed yesterday (after the Main Event) at around 7 AM, I didn't think of setting my clock. I mean, I didn't have to get up before around 5-6 PM, I'd be long awake before that.

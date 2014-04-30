@@ -1,7 +1,7 @@
 ---
 permalink: hooters
 title: Hooters!
-date: 2006-08-11
+date: 2006-08-11 14:00:00
 tags: [Life]
 ---
 Today there was to be no gambling... A day I never thought was possible. After I got up at around 5 PM I went with Morten to the Hooters hotel & casino to dine and look around. The Hooters girls are in a class of their own, they're much nicer than most of the Spearmint girls, I simply have to stay at this hotel at some point!

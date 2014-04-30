@@ -1,7 +1,7 @@
 ---
 permalink: setpoint-volume-control-in-vista
 title: SetPoint Volume Control In Vista
-date: 2006-12-04
+date: 2006-12-04 15:00:00
 tags: [Windows]
 ---
 It seems Logitech has some pretty functional SetPoint drivers out for Vista already (SetPoint is the all-purpose driver software for all their keyboards and mice).

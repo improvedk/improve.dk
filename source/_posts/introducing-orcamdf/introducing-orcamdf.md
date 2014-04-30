@@ -1,10 +1,12 @@
 ---
 permalink: introducing-orcamdf
 title: Introducing OrcaMDF
-date: 2011-05-03
+date: 2011-05-03 20:00:00
 tags: [SQL Server - Internals, SQL Server - OrcaMDF]
 ---
 I've been spamming Twitter the last couple of days with progress on my pet project, OrcaMDF. But what is OrcaMDF really?
+
+<!-- more -->
 
 ## Miracle Open World 2011
 

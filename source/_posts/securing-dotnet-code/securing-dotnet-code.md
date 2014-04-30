@@ -1,7 +1,7 @@
 ---
 permalink: securing-dotnet-code
 title: Securing .NET Code
-date: 2008-04-16
+date: 2008-04-16 19:00:00
 tags: [.NET, Conferences and Presenting]
 ---
 Time flies fast. Back in 2006, during my time as an [MSP](http://en.wikipedia.org/wiki/Microsoft_Student_Partners), I made a series of presentations on securing intellectual property in .NET code, resulting in my [Securing .NET Code](/securing-dotnet-code-article/) article. Although it's about two years old, most points are still valid today, unfortunately.

@@ -1,7 +1,7 @@
 ---
 permalink: speaking-at-miracle-openworld-2010
 title: Speaking at Miracle OpenWorld 2010
-date: 2010-03-17
+date: 2010-03-17 19:00:00
 tags: [Conferences and Presenting]
 ---
 I will be giving two presentations at [Miracle OpenWorld 2010](http://mow2010.dk/) in April.

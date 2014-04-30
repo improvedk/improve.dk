@@ -1,7 +1,7 @@
 ---
 permalink: modifying-window-location-and-size
 title: Modifying Window Location and Size Using PInvoke
-date: 2007-04-09
+date: 2007-04-09 20:00:00
 tags: [.NET]
 ---
 Last time we saw how to obtain a windows location and size. This time I'll show how to change a windows size and location. I will be using the [WindowFinder class](http://www.improve.dk/blog/2007/04/07/finding-specific-windows) that I introduced in the blog [Finding specific windows](http://www.improve.dk/blog/2007/04/07/finding-specific-windows).

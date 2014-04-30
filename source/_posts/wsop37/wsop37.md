@@ -1,7 +1,7 @@
 ---
 permalink: wsop37
 title: $1500 NLHE WSOP Event #37
-date: 2006-07-26
+date: 2006-07-26 20:00:00
 tags: [Poker]
 ---
 wsop1_2.jpg

@@ -1,7 +1,7 @@
 ---
 permalink: mainevent2006
 title: Main Event!
-date: 2006-07-30
+date: 2006-07-30 18:00:00
 tags: [Poker]
 ---
 Today was the big day. Today was the day that I was going to play the WSOP 2006 Main Event with a $10k buy in!

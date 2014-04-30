@@ -1,7 +1,7 @@
 ---
 permalink: enumerating-windows
 title: Enumerating Windows Using PInvoke
-date: 2007-04-06
+date: 2007-04-06 20:00:00
 tags: [.NET]
 ---
 Until now we've seen how to retrieve basic properties of windows as well as how to interact with them by sending keypresses. Up until now we've had to find the handle by using Winspector or a similar program. This time I'll present a way of finding the handles programmatically.

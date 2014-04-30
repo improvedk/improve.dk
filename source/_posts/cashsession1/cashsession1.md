@@ -1,7 +1,7 @@
 ---
 permalink: cashsession1
 title: Cash Session #1
-date: 2006-07-26
+date: 2006-07-26 18:00:00
 tags: [Poker]
 ---
 So I finally got into my first ever real poker cash game at a casino. My main game is without doubt tournaments, I rarely play cash games as I don't think they're nearly as interesting, also I'm far worse at cash games than at tournaments. When I do get into cash games online, I usually play the NL25 games at Party, I've had lots of problems beating even NL50/100.

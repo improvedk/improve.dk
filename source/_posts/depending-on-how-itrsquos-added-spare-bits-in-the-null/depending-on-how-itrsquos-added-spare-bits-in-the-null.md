@@ -1,7 +1,7 @@
 ---
 permalink: depending-on-how-itrsquos-added-spare-bits-in-the-null
 title: The Garbage Null Bitmap and Why You Can't Rely on It Solely
-date: 2011-07-16
+date: 2011-07-16 20:00:00
 tags: [SQL Server - Internals]
 ---
 While adding some extra sparse column tests to the [OrcaMDF](https://github.com/improvedk/OrcaMDF) test suite, I discovered an bug in my parsing of records. While the problem was simple enough, it took me a while to debug. Running the test, it worked about 40% of the time while failing the remaining 60% of the time. As I hadn't picked up on this pattern I happily fixed (or so I thought) the bug, ran my test and verified that it was working. Shortly after the test failed – without me having changed any code. After having the first few strains of hair turn grey, I noticed the pattern and subsequently fixed the bug.

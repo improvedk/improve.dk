@@ -1,7 +1,7 @@
 ---
 permalink: stripwalk
 title: Stripwalk
-date: 2006-08-03
+date: 2006-08-03 17:00:00
 tags: [Life]
 ---
 Today I got up relatively early at about 1 PM. Before I knew of it, it had somehow become 7 PM, and several of us were starting to become quite hungry. We weren't really in the mood for the usual fast food, and neither of use were turned on by the local sushi bar. Instead we went a couple hundred meters down Eastern Avenue to a local placed called 'The T-Bird'. The scenery was a classical 60's highway truckerstop place. It was kinda sad as it really looked like it was stuck in the 60's.

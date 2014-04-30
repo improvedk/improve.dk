@@ -1,7 +1,7 @@
 ---
 permalink: mainevent2
 title: Main Event Day 2
-date: 2006-08-03
+date: 2006-08-03 15:00:00
 tags: [Poker]
 ---
 *I made it!*

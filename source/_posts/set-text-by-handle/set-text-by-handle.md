@@ -1,7 +1,7 @@
 ---
 permalink: set-text-by-handle
 title: Set Text By Window Handle Using PInvoke
-date: 2007-04-04
+date: 2007-04-04 19:00:00
 tags: [.NET]
 ---
 This time we won't be reading the text from a window, we'll be setting it.

@@ -1,7 +1,7 @@
 ---
 permalink: miracle-openworld-2010-slides
 title: Miracle OpenWorld 2010 Slides
-date: 2010-04-17
+date: 2010-04-17 20:00:00
 tags: [Conferences and Presenting]
 ---
 After getting some well needed sleep following Miracle OpenWorld 2010 and adhering to the we-do-not-use-sleep rule, I'm finally starting to get on top again, though my body still aches all over.

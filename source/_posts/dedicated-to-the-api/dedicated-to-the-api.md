@@ -1,7 +1,7 @@
 ---
 permalink: dedicated-to-the-api
 title: Dedicated to the API
-date: 2007-03-29
+date: 2007-03-29 19:00:00
 tags: [.NET]
 ---
 Unfortunately it's been quite silent around here for the last couple of months. I want to change that, so why not make a promise?

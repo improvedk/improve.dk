@@ -1,7 +1,7 @@
 ---
 permalink: xmloutput-vs-xmlserializer-performance
 title: XmlOutput vs XmlSerializer Performance
-date: 2008-03-29
+date: 2008-03-29 20:00:00
 tags: [.NET]
 ---
 I got quite a lot of comments for my [XmlDocument fluent interface](/xmldocument-fluent-interface/), and I'm very glad I did. I'm always open towards new ways to solve problems, and I got a couple of suggestions to my post that I afterwards experimented with. One of those is using the XmlSerializer to serialize strongly typed classes (or structs - performance is the same) into XML. [Jon von Gillern](http://www.vonsharp.net/) originally suggested it, but [Kris Vandermotten](http://www.u2u.info/Blogs/Kris) made me want to test it out.

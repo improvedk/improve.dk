@@ -1,7 +1,7 @@
 ---
 permalink: getting-key-state
 title: Getting Key State Using PInvoke
-date: 2007-04-11
+date: 2007-04-11 20:00:00
 tags: [.NET]
 ---
 Here's an example of how to retrieve the state of any keyboard key.

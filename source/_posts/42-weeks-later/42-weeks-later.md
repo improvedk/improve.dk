@@ -1,7 +1,7 @@
 ---
 permalink: 42-weeks-later
 title: 42 Weeks Later
-date: 2011-04-17
+date: 2011-04-17 20:00:00
 tags: [Miscellaneous]
 ---
 film_28_weeks_later_2.png

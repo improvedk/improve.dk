@@ -1,7 +1,7 @@
 ---
 permalink: the-8-byte-record-that-was-9-bytes-while-making-no-sense
 title: The 8 Byte Record That Was 9 Bytes While Making No Sense
-date: 2011-07-16
+date: 2011-07-16 19:00:00
 tags: [SQL Server - Internals]
 ---
 Warning: this is a *select is (most likely) not broken, it's just not working as I'd expect*. It may very well be that I'm just overlooking something, in which case I hope someone will correct me :)
