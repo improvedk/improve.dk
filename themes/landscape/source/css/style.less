@@ -997,3 +997,27 @@ figure.csharp, figure.sql, figure.js, figure.xml, figure.html {
 		}
 	}
 }
+
+/*** Print styles ***/
+@media print {
+	header { display: none; }
+	#asides { display: none; }
+	div.datebox { display: none; }
+	#postsharing { display: none; }
+	footer { display: none; }
+	div.categories, div.comments { display: none; }
+
+	#content, #bodywrapper, div.title {
+		margin: 0 !important;
+		border: 0 !important;
+	}
+
+	article { margin-bottom: 60px; }
+
+	// Ensure code samples are word-broken to avoid horizontal scroll
+	pre {
+		overflowv: visible !important;
+		word-wrap: break-word !important;
+	    overflow-wrap: break-word !important;
+	}
+}
