@@ -84,7 +84,7 @@ void Main()
 
 Now the post stored directly in the root, while placeholders have been put in place in the old /blog/ and /archive/ directories. The placeholder code is very simple:
 
-```html
+```
 layout: false
 ---
 <!DOCTYPE html>
