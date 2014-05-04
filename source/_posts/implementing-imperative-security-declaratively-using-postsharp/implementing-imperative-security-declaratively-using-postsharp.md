@@ -10,7 +10,7 @@ At a recent TechTalk I talked about code access security and how to perform decl
 
 Say we have the following method:
 
-```csharp
+```cs
 static void writeFile(string filePath)
 {
 	File.WriteAllText("test", filePath);
@@ -21,7 +21,7 @@ We want to make sure we have permission to write to the filepath. Declaratively,
 
 I got the question, why we could not perform that security check declaratively? As all declarative security checks are done at JIT and not at runtime, we simply do not have any knowledge of the filePath parameter value, and thus we can't require permission for those specific paths. The only way we can demand permission for just the paths we need, is to do an imperative permission demand like so:
 
-```csharp
+```cs
 static void writeFile(string filePath)
 {
 	var perm = new FileIOPermission(FileIOPermissionAccess.Write, filePath);
@@ -35,7 +35,7 @@ This however, clutters up our writeFile implementation as we now dedicate 2/3 li
 
 [PostSharp Laos](http://www.postsharp.org/about/) is a free open source [AOP](http://en.wikipedia.org/wiki/Aspect-oriented_programming) framework for .NET. Using PostSharp, we can define our own custom attributes that define proxy methods that will be invoked at runtime, instead of the actual method they decorate. Thus, we are able to define an imperative security check in our custom attribute, which will run before our actual method. I'll jump right into it and present such an attribute:
 
-```csharp
+```cs
 // We need to make our attributes serializable:
 // http://doc.postsharp.org/1.0/index.html#http://doc.postsharp.org/1.0/UserGuide/Laos/Lifetime.html
 [Serializable]
@@ -86,7 +86,7 @@ In this attribute, we take two parameters, the FileIOPermissionAccess that is re
 
 Using our FilePathPermission attribute, we can now rewrite our writeFile method as:
 
-```csharp
+```cs
 [FilePathPermission(FileIOPermissionAccess.Write, "filePath")]
 static void writeFile(string filePath)
 {
@@ -106,7 +106,7 @@ laos2_2.jpg
 
 Let's compare the complete initial code:
 
-```csharp
+```cs
 public class Program
 {
 	static void Main(string[] args)
@@ -147,7 +147,7 @@ public class Program
 
 With the reflected code after PostSharp has done its magic:
 
-```csharp
+```cs
 public class Program
 {
 	// Methods
@@ -209,7 +209,7 @@ While PostSharp does make a lot of things happen automagically at the compile st
 
 What about performance? There's definitely a performance hit when using PostSharp. The build may be longer since PostSharp is invoked as part of the build process, but in my experience this is a rather quick process. As for runtime performance penalties, I constructed the following short app to test the performance hit by executing it both with and without the LaosTest attribute (using [CodeProfiler](http://www.improve.dk/blog/2008/04/16/profiling-code-the-easy-way) for profiling):
 
-```csharp
+```cs
 [Serializable]
 public class LaosTestAttribute : OnMethodInvocationAspect
 {

@@ -10,7 +10,7 @@ Through various projects, I've had to do some shortest-path finding in a connect
 
 The code is pretty much self explanatory if you keep the [pseudo code implementation](http://en.wikipedia.org/wiki/Dijkstra's_algorithm#Pseudocode) next to it.
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +92,7 @@ namespace Improve.Framework.Algorithms
 
 Once we've made the list of nodes & connections, invoking the algorithm is rather simple. We just need to provide an equality function as well as a distance function:
 
-```csharp
+```cs
 // Run Dijkstra's algorithm
 List<Point2D> result = Dijkstra<Point2D>.ShortestPath(connections, mouse, target, (p1, p2) => p1 == p2, (p1, p2) => p1.DistanceTo(p2));
 ```

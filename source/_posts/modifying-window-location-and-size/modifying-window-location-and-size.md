@@ -8,7 +8,7 @@ Last time we saw how to obtain a windows location and size. This time I'll show 
 
 <!-- more -->
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Text;

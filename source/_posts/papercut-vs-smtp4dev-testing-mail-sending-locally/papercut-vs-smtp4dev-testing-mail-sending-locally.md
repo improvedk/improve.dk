@@ -14,7 +14,7 @@ For the testing I'm using this rather simple piece of code:
 
 ### **Program.cs **
 
-```csharp
+```cs
 using System.Net.Mail;
 
 namespace MailTest

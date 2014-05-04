@@ -8,7 +8,7 @@ Whenever you concatenate multiple strings into a path, you really ought to be us
 
 <!-- more -->
 
-```csharp
+```cs
 string partOne = @"C:";
 string partTwo = "Windows";
 string partThree = @"System32\drivers";
@@ -22,7 +22,7 @@ Often we won't have all of our path parts in named variables, and even when we d
 
 As an alternative I'm using a simple wrapper method above the Path.Combine method:
 
-```csharp
+```cs
 public static class PathCombiner
 {
 	public static string Combine(string path1, string path2, params string[] pathn)
@@ -39,7 +39,7 @@ public static class PathCombiner
 
 The C# [params](http://msdn.microsoft.com/en-us/library/w5zay9db(VS.71).aspx) keyword allows us to make a method take in any number of parameters of the same type - string in this case. Note that I've split the paths up into three parts - path1, path2 and pathn. If we were to only take the params string[] parameter, the user might send in no parameters at all - which wouldn't make sense. By forcing the user to send in at least two paths, we maintain the interface of Path.Combine and just add extra functionality on top of it - though the user may still just send in two paths as before.
 
-```csharp
+```cs
 static void Main(string[] args)
 {
 	string partOne = @"C:";
@@ -62,7 +62,7 @@ static void Main(string[] args)
 
 An extension method you say? The logical place to put this function would be in the Path class itself, perhaps named CombineMultiple. Unfortunately the Path class is static so we're unable to extend it. Another option might be directly on string as a CombinePath method like this:
 
-```csharp
+```cs
 public static class PathCombiner
 {
 	public static string Combine(string path1, string path2, params string[] pathn)
@@ -84,13 +84,13 @@ public static class PathCombiner
 
 We'd call the extension method like so:
 
-```csharp
+```cs
 combinedPath = partOne.CombinePath(partTwo).CombinePath(partThree).CombinePath(partFour);
 ```
 
 While this does work, I really don't recommend it. I'm against overly use of extension methods unless there's a good reason. I think it's much cleaner to contain this code in a separate class whose only purpose is path combining. Now devs are going to be confused when they sometimes see the CombinePath method in Intellisense and not at other times, depending on whether the namespace has been imported. Also, I think the PathCombiner.Combine syntax is the cleanest on top of that, but you be the judge:
 
-```csharp
+```cs
 string partOne = @"C:";
 string partTwo = "Windows";
 string partThree = @"System32\drivers";
@@ -111,7 +111,7 @@ Console.WriteLine(combinedPath);
 Console.Read();
 ```
 
-```csharp
+```cs
 C:\Windows\System32\drivers\etc\hosts
 C:\Windows\System32\drivers\etc\hosts
 C:\Windows\System32\drivers\etc\hosts

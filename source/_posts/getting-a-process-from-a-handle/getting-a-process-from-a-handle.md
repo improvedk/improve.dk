@@ -16,7 +16,7 @@ Now fire up Winspector and locate the Internet Explorer window, you'll see the h
 
 win32_1_2_2.jpg
 
-```csharp
+```cs
 using System;
 using System.Runtime.InteropServices;
 using System.Globalization;

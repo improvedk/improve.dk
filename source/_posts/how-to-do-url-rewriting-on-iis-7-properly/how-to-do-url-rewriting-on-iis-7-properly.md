@@ -22,7 +22,7 @@ As in the original post my goal is to accept a URL like http://localhost/blog/20
 
 The easiest way of rewriting URL's is to add a new Global.asax file to the root of your solution. Now paste in the following code:
 
-```csharp
+```cs
 using System;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -74,7 +74,7 @@ iis7urlrewritingdoneproperly_2_2.jpg
 
 Now paste the following code into the UrlRewriter.cs class file:
 
-```csharp
+```cs
 using System;
 using System.Text.RegularExpressions;
 using System.Web;

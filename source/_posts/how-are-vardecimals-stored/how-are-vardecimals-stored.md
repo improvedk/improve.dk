@@ -170,7 +170,7 @@ Bin: <span style="background-color: #dfce04;">1</span>1000010 <span style="color
 
 By shifting the bits 7 spots to the right, all we're left with is the most significant bit, the least significant position. This means we'll get a value of 1 is the sign is positive, and 0 if it's negative.
 
-```csharp
+```cs
 decimal sign = (value[0] >> 7) == 1 ? 1 : -1;
 ```
 
@@ -191,13 +191,13 @@ Next up is the mantissa value. As mentioned, we need to read it in chunks of 10 
 
 First, we need to know how many bits there are available. Doing this is straightforward – we simply multiply the number of mantissa bytes (which is all of the bytes, except one) by 8:
 
-```csharp
+```cs
 int totalBits = (value.Length - 1) * 8;
 ```
 
 Once we know how many bits are available (3 bytes of 8 bits = 24 in this case), we can calculate the number of chunks:
 
-```csharp
+```cs
 int mantissaChunks = (int)Math.Ceiling(totalBits / 10d);
 ```
 
@@ -205,7 +205,7 @@ Since each chunk takes up 10 bits, we just need to divide the total number of bi
 
 At this point we're ready to read the chunk values. Before doing so, we'll allocate two variables:
 
-```csharp
+```cs
 decimal mantissa = 0;
 int bitPointer = 8;
 ```
@@ -218,7 +218,7 @@ image_26.png
 
 To easily access all of the bits, and to avoid doing a lot of manual bit shifting, I initialize a BitArray that contains all of the data bits:
 
-```csharp
+```cs
 var mantissaBits = new BitArray(value);
 ```
 
@@ -234,7 +234,7 @@ Reading the second chunk, we have to go back and read bit index 8-13 and then sk
 
 Let's first look at the implementation:
 
-```csharp
+```cs
 for (int chunk = mantissaChunks; chunk > 0; chunk--)
 {
 	// The cumulative value for this 10-bit chunk
@@ -295,7 +295,7 @@ mantissa = mantissa / 10<sup>floor(log10(mantissa))</sup>
 
 Implemented like so:
 
-```csharp
+```cs
 mantissa = mantissa / (decimal)Math.Pow(10, Math.Floor(Math.Log10((double)mantissa)));
 ```
 
@@ -309,7 +309,7 @@ Before you beat me to it – this implementation is far from fast. To start with
 
 Once we have the sign, the exponent and the mantissa, we simply calculate the final value like so:
 
-```csharp
+```cs
 return sign * mantissa * (decimal)Math.Pow(10, exponent);
 ```
 

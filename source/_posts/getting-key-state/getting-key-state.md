@@ -8,7 +8,7 @@ Here's an example of how to retrieve the state of any keyboard key.
 
 <!-- more -->
 
-```csharp
+```cs
 using System;
 using System.Runtime.InteropServices;
 

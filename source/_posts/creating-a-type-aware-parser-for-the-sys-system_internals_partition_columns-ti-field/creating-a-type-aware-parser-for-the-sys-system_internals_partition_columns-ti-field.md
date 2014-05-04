@@ -10,7 +10,7 @@ Based on my findings [exploring the sys.system_internals_partition_columns.ti fi
 
 As a result of some reverse engineering and empirical testing, I've made a SysrscolTIParser class that takes in the ti value (I have no idea what the acronym stands for – type information perhaps?), determines the type and parses it corresponding to the type. I won't go into details as that's all described in my [previous post](/exploring-the-sys-system_internals_partition_columns-ti-field).
 
-```csharp
+```cs
 using System;
 using OrcaMDF.Core.MetaData.Enumerations;
 
@@ -189,7 +189,7 @@ namespace OrcaMDF.Core.MetaData
 
 It uses a SystemType enumeration for switching between the types (sorry, formatting isn't being nice to me here):
 
-```csharp
+```cs
 namespace OrcaMDF.Core.MetaData.Enumerations
 {
 	public enum SystemType
@@ -234,7 +234,7 @@ namespace OrcaMDF.Core.MetaData.Enumerations
 
 And last, but not least, a bunch of tests to verify the functionality:
 
-```csharp
+```cs
 using NUnit.Framework;
 using OrcaMDF.Core.MetaData;
 

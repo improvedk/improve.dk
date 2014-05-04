@@ -12,7 +12,7 @@ As little children we've all been taught that it's better to program defensively
 
 Say we have a web application that receives and ID through the query string and serves a file accordingly, usually we'd write that like:
 
-```csharp
+```cs
 if(File.Exists(path))
     serveFile(path);
 else
@@ -27,7 +27,7 @@ Given the above ratio, if we dropped the File.Exists() check, out of 10,000 requ
 
 Observe the following two methods. serveFileUnsafely will serve a file under the assumption that it probably exists and will rely on a FileNotFoundException being throw if it doesn't exist. serveFileSafely will ensure the file exists before actually serving it (trusting nothing happens between File.Exists() and File.ReadAllText()).
 
-```csharp
+```cs
 private static void serveFileUnsafely(string path)
 {
     try
@@ -52,7 +52,7 @@ private static void serveFileSafely(string path)
 
 The following two methods will be used to measure the time taken to serve 100 requests. I have created 100 identical files named [1-100].txt, each containing just the text "Hello world!". I have then deleted a random file so there's only 99 left. Thus in this example we assume that only 99% of all requests map to existing files even though the actual app has a success rate in excess of 99.9%. Note that the two methods each hit a separate folder - Test and Test2. This is to avoid any advantage of prewarming the cache before running the second test.
 
-```csharp
+```cs
 private static void testLocalUnsafely()
 {
     for (int file = 1; file <= 100; file++)
@@ -68,7 +68,7 @@ private static void testLocalSafely()
 
 The actual profiling goes like this. I'll be using my [CodeProfiler](http://www.improve.dk/blog/2008/04/16/profiling-code-the-easy-way) class to make the measurements, running a total of 500 iterations using a single thread - as well as running an automatic warmup iteration.
 
-```csharp
+```cs
 TimeSpan safeLocalTime = CodeProfiler.ProfileAction(() => testLocalSafely(), 500, 1);
 TimeSpan unsafeLocalTime = CodeProfiler.ProfileAction(() => testLocalUnsafely(), 500, 1);
 
@@ -95,7 +95,7 @@ I've copied the two test file directories onto two directories on a remote share
 
 Two new methods have been added. They're identical to the last ones except that they access a remote share mapped to the local drive Z.
 
-```csharp
+```cs
 private static void testShareUnsafely()
 {
     for (int file = 1; file <= 100; file++)
@@ -111,7 +111,7 @@ private static void testShareSafely()
 
 The testing is performed like this. Note that I'm only running 10 iterations + warmup here as it'd otherwise take far too long time.
 
-```csharp
+```cs
 TimeSpan safeShareTime = CodeProfiler.ProfileAction(() => testShareSafely(), 10, 1);
 TimeSpan unsafeShareTime = CodeProfiler.ProfileAction(() => testShareUnsafely(), 10, 1);
 

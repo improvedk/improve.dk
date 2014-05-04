@@ -20,7 +20,7 @@ Imagine if we could just make a single request to the server - "Hey, please send
 
 Our first task is to generate some sample images. The following code will create 100 images named 1-100.jpg containing the greytones from #000000 (well, almost) to #FFFFFF.
 
-```csharp
+```cs
 for(int i=1; i<=100; i++)
 {
     int rgb = Convert.ToInt32(i / 100d * 255);
@@ -49,7 +49,7 @@ The class has a Write method that'll write all the added images to the provided 
 
 ### ImageStream.cs
 
-```csharp
+```cs
 public class ImageStream
 {
     IDictionary files = new Dictionary();
@@ -89,7 +89,7 @@ All we need now is a file to serve the ImageStream. I'm using an HttpHandler cal
 
 ### Image.ashx
 
-```csharp
+```cs
 public class Image : IHttpHandler
 {
     public void ProcessRequest(HttpContext context)

@@ -10,7 +10,7 @@ Now to complete the toolset required to make a great spyware / browser hijacking
 
 [Like before](http://www.improve.dk/blog/2007/04/03/getting-text-from-handle), open an Internet Explorer browser and obtain a handle to the address field.
 
-```csharp
+```cs
 using System;
 using System.Runtime.InteropServices;
 using System.Globalization;

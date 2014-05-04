@@ -12,7 +12,7 @@ There are two aspects of these solutions, one is readability & maintanability, t
 
 I'll be using my User XML snippet as an example. This is how the XML is generated using my API:
 
-```csharp
+```cs
 XmlOutput xo = new XmlOutput()
 	.XmlDeclaration()
 	.Node("root").Within()
@@ -34,7 +34,7 @@ string output = xo.GetOuterXml();
 
 Note that I just retrieve the complete XML in a string, I don't print or save this, it's just to get a valid comparison point. This is how we'll generate the same code using the XmlSerializer:
 
-```csharp
+```cs
 public class User
 {
 	public string Username;
@@ -60,7 +60,7 @@ public class Hobby
 }
 ```
 
-```csharp
+```cs
 public static string ConvertToXml(object item)
 {
 	XmlSerializer xmlser = new XmlSerializer(item.GetType());
@@ -74,7 +74,7 @@ public static string ConvertToXml(object item)
 }
 ```
 
-```csharp
+```cs
 User user = new User();
 user.Username = "orca";
 user.Realname = "Mark S. Rasmussen";
@@ -94,7 +94,7 @@ string output = ConvertToXml(user);
 
 Note that only the last codesnippet is the one being looped, the other two are simply one-time helpers to actually create the XML. I have run the tests in a number of iterations to get a total code time, furthermore, I've run each of the iteration tests 10 times to calculate the average execution time. This is the basic code to run the tests:
 
-```csharp
+```cs
 sw.Reset();
 iterationTime = 0;
 for (int testIteration = 0; testIteration < testIterations; testIteration++)

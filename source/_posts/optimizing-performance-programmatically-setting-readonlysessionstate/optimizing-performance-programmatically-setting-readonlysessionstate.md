@@ -18,7 +18,7 @@ What this means is that, for a given session, *only one request can execute conc
 
 If your handler doesn't require session state, all you have to do is to *not* implement the IRequiresSessionState interface, given that HttpHandlers by default do not have access to session state:
 
-```csharp
+```cs
 public class MyHandler : IHttpHandler
 {
 	public void ProcessRequest(HttpContext context)
@@ -36,7 +36,7 @@ By not enabling session state, no session will be locked and you can execute as 
 
 If you *do* need session state, simply implement the IRequiresSessionState interface, like so:
 
-```csharp
+```cs
 public class MyHandler : IHttpHandler, IRequiresSessionState
 {
 	public void ProcessRequest(HttpContext context)
@@ -54,7 +54,7 @@ The IRequiresSessionState interface carries no functionality at all, it's simply
 
 If all you need is to read session state, while not having to be able to write it, you should implement the IReadOnlySessionState interface instead, like so:
 
-```csharp
+```cs
 public class MyHandler : IHttpHandler, IReadOnlySessionState
 {
 	public void ProcessRequest(HttpContext context)
@@ -93,7 +93,7 @@ Looking at the [ASP.NET request pipeline](http://msdn.microsoft.com/En-US/librar
 
 Here's a full example of an HttpModule that runs on each request. In the PostMapRequestHandler event (which fires just before the AcquireState event), we inspect the HttpHandler assigned to the request. If it implements the IPreferReadOnlySessionState interface (a custom marker interface), the SessionStateBehavior is set to ReadOnly, provided there already is an active session (which the presence of an ASP.NET_SessionId cookie indicates). If there is no session cookie present, or if the handler doesn't implement IPreferReadOnlySessionState, then it's left up to the handler default - that is, the implemented interface, to decide.
 
-```csharp
+```cs
 public class RequestHandler : IHttpModule
 {
 	public void Init(HttpApplication context)
@@ -116,12 +116,12 @@ public class RequestHandler : IHttpModule
 
 Now all we need to do is to also implement the IPreferReadOnlySessionState interface in the handlers that can do with read-only sesion state, provided a session is already present:
 
-```csharp
+```cs
 public interface IPreferReadOnlySessionState
 { }
 ```
 
-```csharp
+```cs
 public class MyHandler : IHttpHandler, IRequiresSessionState, IPreferReadOnlySessionState
 {
 	public void ProcessRequest(HttpContext context)

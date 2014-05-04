@@ -67,7 +67,7 @@ Start out by creating a new Windows Application project, call it "SecureApplicat
 
 1_2.jpg
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	if (textBox1.Text == "password")
@@ -79,7 +79,7 @@ private void button1_Click(object sender, EventArgs e)
 
 Now insert the following two functions into the form:
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	if (textBox1.Text == "password")
@@ -114,7 +114,7 @@ The answerToAllLife() method is the secret algorithm we want to secure. Never mi
 
 Now, let's see what happens when we open the application using the ILDASM tool that ships with every installation of the .NET Framework:
 
-```csharp
+```cs
 .method private hidebysig instance void  button1_Click(object sender, class [mscorlib]System.EventArgs e) cil managed
 {
 	// Code size       60 (0x3c)
@@ -150,7 +150,7 @@ Not only can we not include our password in our application, we also can't excha
 
 But hey, this is the least of our problems. In case you didn't notice, the complete source code of our algorithm is also available!
 
-```csharp
+```cs
 .method private hidebysig instance string answerToAllLife() cil managed
 {
 	// Code size 205 (0xcd)
@@ -257,7 +257,7 @@ But hey, this is the least of our problems. In case you didn't notice, the compl
 
 Now this code isn't especially readable when it get's large, but what if we try using Reflector instead? This is what we get when we decompile our buttons Click event:
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	  if (this.textBox1.Text == "password")
@@ -311,7 +311,7 @@ Compile the SecureComponent project and locate the resulting SecureComponent.dll
 
 Copy the SecureComponent.dll file into the %windir%system32 directory. Now modify the SecureApplication form1.cs code so it matches the following:
 
-```csharp
+```cs
 [DllImport("SecureComponent.dll")]
 private static extern string AnswerToAllLife();
 
@@ -351,7 +351,7 @@ Let's make our code 100% secure. How? By not supplying the clients with our algo
 
 Add a new ASP.NET Web Service to the solution, call it "AlgorithmService". Now open the Service.asmx codebehind file and replace the contents with this code:
 
-```csharp
+```cs
 using System;
 using System.Web;
 using System.Web.Services;
@@ -376,7 +376,7 @@ Now add a web reference to the SecureApplication project. Click the "Web service
 
 Now modify the button1_click method as follows:
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	if (textBox1.Text == "password")
@@ -393,7 +393,7 @@ private void button1_Click(object sender, EventArgs e)
 
 Now, when the user provides the correct password, we invoke the AlgorithmService web service and show the result. If you decompile the SecureApplication exe file using Reflector, this is the code you'll see for our button's click event:
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	  if (this.textBox1.Text == "password")
@@ -409,7 +409,7 @@ private void button1_Click(object sender, EventArgs e)
 
 And this is the code we see if we go to the "AnswerToAllLife" method in the Service class:
 
-```csharp
+```cs
 [SoapDocumentMethod("http://tempuri.org/AnswerToAllLife",
 	RequestNamespace="http://tempuri.org/",
 	ResponseNamespace="http://tempuri.org/",
@@ -470,7 +470,7 @@ Notice how our namespace and class structure is completely unreadable, thanks to
 
 IL DASM can still decompile our application, this is the resulting code from out buttons click method:
 
-```csharp
+```cs
 .method private hidebysig instance void  'eval_?'(object A_0, class [mscorlib]System.EventArgs A_1) cil managed
 {
 	// Code size       171 (0xab)
@@ -548,7 +548,7 @@ Although our password is encrypted, it still isn't safe to have the password che
 
 Add a new ASP.NET web service project to our solution, call it "PasswordService". Modify the Service.asmx.cs file so it contains the following code:
 
-```csharp
+```cs
 using System;
 using System.Web;
 using System.Web.Services;
@@ -569,7 +569,7 @@ Our password checking web service only contains a single method, ValidPassword. 
 
 Add a web reference to the SecureApplication project, remember to use the location "[http://service.improve.dk/Service.asmx"](http://service.improve.dk/Service.asmx&quot;) this time. Call the service "PasswordService" and click "Add reference". Now modify our buttons click event so it matches the following:
 
-```csharp
+```cs
 private void button1_Click(object sender, EventArgs e)
 {
 	PasswordService.Service password =
@@ -657,7 +657,7 @@ Well, I wonder what <ValidPasswordResult>false</ValidPasswordResult> means... If
 
 Our goal here is to setup our own web service and somehow make the SecureApplication call our own service instead of the real one. We cannot change the code of the SecureApplication, so we'll have to work around it somehow. Start by adding a new ASP.NET web service to our solution, call it "FakePassword". Modify the Service.asmx.cs file so it matches the following code:
 
-```csharp
+```cs
 using System;
 using System.Web;
 using System.Web.Services;
@@ -680,7 +680,7 @@ iis_2.gif
 
 Now if you go to [http://localhost/Service.asmx](http://localhost/Service.asmx), you should see our fake password service. What we need now is for our service to somehow respond to the address [http://service.improve.dk/Service.asmx](http://service.improve.dk/Service.asmx). Open up the file "hosts" in the following directory: %windir%system32driversetchosts, note that it does not have an extension, simply open it in notepad. Now add the following two lines:
 
-```csharp
+```cs
 127.0.0.1		service.improve.dk
 127.0.0.1		http://service.improve.dk
 ```

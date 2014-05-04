@@ -141,13 +141,13 @@ image_103.png
 
 Converting the first system_type_id into hex yields 0n173 = 0xAD. Converting the ti value yields 0n12973 = 0x32AD. An empirical test for all columns shows this to be true for them all. Thus we can conclude that the first byte (printed as the rightmost due to [little endianness](http://en.wikipedia.org/wiki/Endianness)) stores the type. Extracting the value requires a simple bitmask operation:
 
-```csharp
+```cs
 12973 & 0x000000FF == 173
 ```
 
 As for the length, the second byte stores the value 0x32 = 0n50. As the length is a smallint (we know it can be up to 8000, thus requiring at least a smallint), we can assume the next two bytes cover that. To extract that value, we'll need a bitmask, as well as a shift operation to shift the two middlemost bytes one step to the right:
 
-```csharp
+```cs
 (12973 & 0x00FFFF00) >> 8 == 50
 ```
 
@@ -155,7 +155,7 @@ As for the length, the second byte stores the value 0x32 = 0n50. As the length i
 
 This is the same for the char field. The datetime2 field is different as it stores the scale and precision values. 0n1322 in hex yields a value of 0x52A. 0x2A being the type (42). All that remains is the 0x5/0n5 which can only be the scale. A quick with a datetime(7) field yields the same result, though the precision is then 27. Thus I'll conclude that for the datetime2 type, precision = 20 + scale. Extracting the scale from the second byte requires almost the same operation as before, just with a different bitmask:
 
-```csharp
+```cs
 (1322 & 0x0000FF00) >> 8 == 5
 ```
 
@@ -165,7 +165,7 @@ Moving onto decimal, we now have both a scale and a precision to take care of. C
 
 Extracting the third byte as the scale requires a similar bitmask & shift operation as previously:
 
-```csharp
+```cs
 (330858 & 0x00FF0000) >> 16 == 5
 ```
 

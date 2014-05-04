@@ -86,7 +86,7 @@ mirrortester_2.jpg
 
 It continuously attempts to connect to the databases using three different connection strings:
 
-```csharp
+```cs
 string principalConnection = "Data Source=Mandalay;Connect Timeout=1;Initial Catalog=AdventureWorks;User Id=sa;Password=sadpassword;Pooling=false";
 string mirrorConnection = "Data Source=Rio;Connect Timeout=1;Initial Catalog=AdventureWorks;User Id=sa;Password=sadpassword;Pooling=false";
 string totalConnection = "Data Source=Mandalay;Failover Partner=Rio;Connect Timeout=1;Initial Catalog=AdventureWorks;User Id=sa;Password=sadpassword;Pooling=false";

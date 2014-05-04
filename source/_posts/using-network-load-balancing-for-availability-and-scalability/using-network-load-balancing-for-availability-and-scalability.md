@@ -23,7 +23,7 @@ When you setup an NLB cluster, you create a new virtual IP address that gets map
 
 For demonstrating the effects of a node crash, I've created a very simple load testing tool, the main functionality is an infinite loop trying to make a request at a time while registering success/failures. It'll also show the text result that is returned in a one-line textbox:
 
-```csharp
+```cs
 while (running)
 {
 	HttpWebRequest req = (HttpWebRequest)WebRequest.Create(txtUrl.Text);

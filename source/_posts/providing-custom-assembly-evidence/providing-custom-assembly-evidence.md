@@ -24,7 +24,7 @@ The first step is to actually create the evidence itself. The evidence can be in
 
 To embed our XML as evidence, we first have to save it in binary form. To save a bit of typing, I use my SaveXmlAsBinaryEvidence function:
 
-```csharp
+```cs
 /// <summary>
 /// Saves the input XML in binary format that can be used when linking custom evidence to an assembly
 /// </summary>
@@ -45,7 +45,7 @@ public static void SaveXmlAsBinaryEvidence(string xml, string outputFile)
 
 This allows us to save out the evidence in binary format using a single line:
 
-```csharp
+```cs
 EvidenceCreator.SaveXmlAsBinaryEvidence(File.ReadAllText("MyEvidence.xml"), "MyEvidence.evidence");
 ```
 
@@ -53,7 +53,7 @@ EvidenceCreator.SaveXmlAsBinaryEvidence(File.ReadAllText("MyEvidence.xml"), "MyE
 
 I've created a simple assembly named TestAssembly that consists of a single file, MyClass:
 
-```csharp
+```cs
 using System;
 
 namespace TestAssembly
@@ -70,7 +70,7 @@ namespace TestAssembly
 
 If we compile it directly in Visual Studio, we end up with an assembly called TestAssembly.dll - this is not what we want. We need to compile the code into a .netmodule module file so we can manually link it together with our assembly into a finished assembly. Running the following command (with relevant path variables setup, or from the Visual Studio Command Prompt) will compile MyClass into a netmodule called MyClass.netmodule:
 
-```csharp
+```cs
 csc /target:module MyClass.cs
 ```
 
@@ -80,7 +80,7 @@ You can actually load the .netmodule file into Reflector to verify the contents.
 
 The final step is to link our evidence (MyEvidence.evidence) and netmodule (MyClass.netmodule) together. Make sure both files reside in the same directory (they don't have to, but it'll be easier). The following command will invoke AL.exe and do the final assembly linking:
 
-```csharp
+```cs
 al /target:library /evidence:MyEvidence.evidence /out:MyClass.dll MyClass.netmodule
 ```
 
@@ -90,7 +90,7 @@ reflector_evidence_2.jpg
 
 Now, if we [analyze the assembly evidence](/analyzing-assembly-evidence/) by loading the assembly and enumerating the assembly provided evidence like so:
 
-```csharp
+```cs
 al /target:library /evidence:MyEvidence.evidence /out:MyClass.dll MyClass.netmodule
 ```
 

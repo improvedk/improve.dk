@@ -104,7 +104,7 @@ DecimalColumn
 
 While testing in SQL Server Management Studio, this might be an obvious problem. When encountering the same problem from code, it's much more difficult to notice - especially if you don't know the precise schema you're working against. Observe the following code working on an empty tblDecimalTest table.
 
-```csharp
+```cs
 using(SqlConnection conn = new SqlConnection(@"Data Source=.SQL2008;Initial Catalog=Test;Integrated Security=SSPI"))
 {
 	using(SqlCommand cmd = conn.CreateCommand())

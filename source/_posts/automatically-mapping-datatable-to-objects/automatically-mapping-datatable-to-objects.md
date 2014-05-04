@@ -8,7 +8,7 @@ I often need to transfer data from my business layer to my presentation layers i
 
 <!-- more -->
 
-```csharp
+```cs
 struct Test
 {
 	public string Name;
@@ -26,7 +26,7 @@ Our objective is basically to transfer the DataRows in the DataTable into a List
 
 The fastest way possible would be doing it manually like so:
 
-```csharp
+```cs
 List list = new List();
 foreach (DataRow dr in dt.Rows)
 {
@@ -40,7 +40,7 @@ foreach (DataRow dr in dt.Rows)
 
 But this takes a lot of time to write, especially if your objects vary a lot and you have to create a lot of them. That's where my MapList function comes into play:
 
-```csharp
+```cs
 private static List MapList(DataTable dt)
 {
 	List list = new List();

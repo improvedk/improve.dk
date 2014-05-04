@@ -16,7 +16,7 @@ I set out to test various different ways we could query our database and generat
 
 I'll be using two different entities, Product and CompleteProduct:
 
-```csharp
+```cs
 [Table(Name = "Production.Product")]
 public class Product
 {
@@ -96,7 +96,7 @@ They both map to the same table, Production.Product. CompleteProduct covers all 
 
 ## Method #1 - Manually mapping from DataReader
 
-```csharp
+```cs
 private static void performDataReader()
 {
 	var result = new List<Product>();
@@ -135,7 +135,7 @@ Cons: *Has to be written for each object model*
 
 ## Method #2 - Manully mapping from DataTable
 
-```csharp
+```cs
 private static DataTable getDT()
 {
 	DataTable result = new DataTable();
@@ -182,7 +182,7 @@ Comment: *I often use a getDT()'ish way of accessing my tables. It's easier than
 
 ## Method #3 - Automatic mapping using DataContext.Translate
 
-```csharp
+```cs
 private static void performEntityQuery()
 {
 	List<Product> result;
@@ -212,7 +212,7 @@ Cons: *Slow*
 
 ## Method #4 - Linq to SQL query for complete entity
 
-```csharp
+```cs
 private static void performLinqQuery()
 {
 	List<Product> result;
@@ -230,7 +230,7 @@ Cons: *Slow*
 
 ## Method #5 - Linq to SQL query for partial entity
 
-```csharp
+```cs
 private static void performSubsetLinqQuery()
 {
 	List<Product> result;
@@ -257,7 +257,7 @@ Comments: *In the previous method I retrieved complete Product entities. This ti
 
 ## Method #6 - Automatically mapping from DataReader
 
-```csharp
+```cs
 private static List<T> mapList<T>(SqlDataReader dr)
 {
 	List<T> list = new List<T>();
@@ -302,7 +302,7 @@ Cons: *Slow, reflection based*
 
 ## Method #7 - Enhanced automatic mapping from DataReader
 
-```csharp
+```cs
 private static void performEnhancedAutomappedDataReader()
 {
 	List<Product> result;
@@ -331,7 +331,7 @@ Comments: *This is an enhanced version of the previous method that I've made. Ex
 
 ## Method #8 - SubSonic SqlQuery
 
-```csharp
+```cs
 private static void performSubSonicQuery()
 {
 	List<Product> result =
@@ -360,7 +360,7 @@ Comments: *I've never used SubSonic before, so I may have overlooked some obviou
 
 ## Method #9 - NHibernate CreateCriteria
 
-```csharp
+```cs
 private static Configuration nhCfg;
 private static ISessionFactory nhFactory;
 
@@ -383,7 +383,7 @@ Comments: *I've never used NHibernate before, so I may have overlooked some obvi
 
 ## Method #10 - Compiled LinqQuery
 
-```csharp
+```cs
 private static Func<DataContext, int, IEnumerable<Product>> compiledQuery;
 private static void performCompiledLinqQuery()
 {
@@ -404,7 +404,7 @@ Cons: *Requires a bit more setting up and helper functionality to store the comp
 
 I profiled each of the test cases by returning 1, 10, 100, 1.000, 10.000 and 100.000 rows. The numbers are the total execution time of 50 iterations of each method. I'm on a quad core machine so I set the max parallelization degree to three, thus saving myself a core for running SQL Server and Windows.
 
-```csharp
+```cs
 static void Main(string[] args)
 {
 	// Make sure we don't get disturbed by other processes

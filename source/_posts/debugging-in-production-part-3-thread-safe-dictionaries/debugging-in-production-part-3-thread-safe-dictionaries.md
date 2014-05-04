@@ -13,7 +13,7 @@ tags: [.NET, Windbg]
 
 The problem can be solved by changing just two lines of code. Instead of using a generic Dictionary, we'll change it to a generic ConcurrentDictionary like so:
 
-```csharp
+```cs
 private static readonly ConcurrentDictionary<short, ConcurrentDictionary<SettingDescription, SettingDescriptionContainer>> cache =
 	new ConcurrentDictionary<short, ConcurrentDictionary<SettingDescription, SettingDescriptionContainer>>();
 ```
@@ -26,7 +26,7 @@ Performance wise ConcurrentDictionary is about 50% slower (anecdotally) than the
 
 Besides switching the Dictionary out with a ConcurrentDictionary, we also need to modify the init function since the ConcurrentDictionary way of adding items is slightly different:
 
-```csharp
+```cs
 private static object syncRoot = new object();
 
 private static void init(IPartnerConfig partnerConfig)

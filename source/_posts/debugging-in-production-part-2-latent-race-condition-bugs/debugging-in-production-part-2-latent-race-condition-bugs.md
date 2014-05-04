@@ -13,7 +13,7 @@ Having [analyzed the process dump in part 1](/debugging-in-production-part-1-ana
 
 There were three methods in action, all of them in the SettingDescriptionCache class: GetAllDescriptions, init and GetAllDescriptionsAsDictionary. GetAllDescriptions and GetAllDescriptionsAsDictionary are for all intents and purposes identical and both implement a pattern like this:
 
-```csharp
+```cs
 public static IEnumerable<SettingDescriptionContainer> GetAllDescriptions(IPartnerConfig partnerConfig)
 {
 	// Optimistic return. If it fails we'll populate the cache and return it.
@@ -32,7 +32,7 @@ public static IEnumerable<SettingDescriptionContainer> GetAllDescriptions(IPartn
 
 Both methods access a static variable defined in the class like so:
 
-```csharp
+```cs
 private static readonly Dictionary<short, Dictionary<SettingDescription, SettingDescriptionContainer>> cache =
 	new Dictionary<short, Dictionary<SettingDescription, SettingDescriptionContainer>>();
 ```

@@ -27,7 +27,7 @@ image_4.png
 
 And thus we have identified the first field of our header:
 
-```csharp
+```cs
 /*
 	Bytes	Content
 	-----	-------
@@ -84,7 +84,7 @@ image_26.png
 
 And thus we can update our header reference table:
 
-```csharp
+```cs
 /*
 	Bytes	Content
 	-----	-------
@@ -104,7 +104,7 @@ You should be proud of yourself. No go clean up the mess you've made!
 
 Jumping forward, I've compiled a reference to the page header structure:
 
-```csharp
+```cs
 /*
 	Bytes	Content
 	-----	-------
@@ -139,7 +139,7 @@ Jumping forward, I've compiled a reference to the page header structure:
 
 I'm not sure what lies in the remaining bytes of the header as DBCC PAGE doesn't seem to parse stuff there, and it seems to be zeroed out for all pages I've tested. I'm assuming it's reserved bytes for future usage. Once we've got the format, parsing becomes a simple task of reading each field, field by field:
 
-```csharp
+```cs
 HeaderVersion = header[0];
 Type = (PageType)header[1];
 TypeFlagBits = header[2];

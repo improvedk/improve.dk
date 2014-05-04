@@ -22,7 +22,7 @@ The last two are covered, but if for some reason the SQL Server is dead, taken o
 
 What I present below is an example of a SqlConnection extension method called QuickOpen (in lack of a better name, it isn't quicker, it simply fails quicker). It'll take a timeout parameter in milliseconds, after which it'll throw a simple Exception. You can modify this to a more proper exception, this is just to show the point. Overall, using this method will introduce a slight delay (a couple of ms), so use it only when necessary, or when a couple of ms per SqlConnection.Open doesn't matter.
 
-```csharp
+```cs
 public static class SqlExtensions
 {
 	public static void QuickOpen(this SqlConnection conn, int timeout)

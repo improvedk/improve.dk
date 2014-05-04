@@ -10,7 +10,7 @@ What does Flash, upload, cookies, IIS load balancing and cookies have to do with
 
 When users need to upload files I often use the Flash based [SWFUpload](http://swfupload.org/) component. It allows for multiple file selection and progress display during upload. Handling the uploaded files on the .NET side is rather easy:
 
-```csharp
+```cs
 for (int i = 0; i < Request.Files.Count; i++)
 {
     HttpPostedFile hpf = Request.Files[i];
@@ -27,7 +27,7 @@ This bug poses a number of problems if you're using SWFUpload on a password prot
 
 Luckily there's a workaround for this. Basically we'll need to tell our upload SWF the current SessionID as well as the contents of the forms authentication ticket cookie:
 
-```csharp
+```cs
 var flashVars = {
     ASPSESSID: "<%= Session.SessionID %>",
     AUTHID: "<%= Request.Cookies[FormsAuthentication.FormsCookieName] == null ? "" : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>"
@@ -36,19 +36,19 @@ var flashVars = {
 
 Now we need to modify our SWFUpload code so it sends the SessionID and ticket values in the query string to the upload file, so instead of calling:
 
-```csharp
+```cs
 UploadFile_Upload.aspx
 ```
 
 We'll call:
 
-```csharp
+```cs
 UploadFile_Upload.aspx?ASPSESSID=e2u35jfs0pvevfugkfnmm045&AUTHID=E7BA5BDD2D6E9FBBC7CF613352EF10E01E0E8B0AD9920F62A465BC0CA20FB9CC2BA67F95D5A82F5D30B3162D6DFB3EA7FD505456E5EA5407094D03C1D48E6EE0B80F85F1B6AFD5F52FDC14C2ED6D77A8
 ```
 
 Now that we have the SessionID and ticket value we can manually restore those cookies in Global.asax (or an HttpModule, doesn't matter). We'll be doing the fix in Application_BeginRequest as this allows us to fix the cookies before ASP.NET will perform its validation and thereby notice the missing session and forms authentication cookies.
 
-```csharp
+```cs
 public class Global : HttpApplication
 {
     protected void Application_BeginRequest(object sender, EventArgs e)
@@ -103,7 +103,7 @@ The solution is similar, though there is one major difference. The previous prob
 
 We'll create a new HttpModule that performs the fix in Application_BeginRequest - which occurs before IIS ARR assigns the request to a content server. To ensure this fix does not in any way affect normal requests in case something goes wrong, exceptions are being silently ignored. This is generally a bad practice, but in this case I really do not want to affect the load balancer as that'll put down the website for all users if an error occurs. Note that while the handling is very similar to the previous bit of code, this time we're modifying the actual Cookie header directly. If we don't do this, IIS ARR won't pick up the overwritten cookie values and thus still send the user to a random content server.
 
-```csharp
+```cs
 using System;
 using System.Text.RegularExpressions;
 using System.Web;

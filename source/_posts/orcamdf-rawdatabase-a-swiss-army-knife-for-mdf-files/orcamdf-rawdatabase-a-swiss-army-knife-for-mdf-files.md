@@ -26,7 +26,7 @@ It's still early in the development, but let me show some examples of what can b
 
 In the most basic example, we'll parse just a single page.
 
-```csharp
+```cs
 // Get page 197 in file 1
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.GetPage(1, 197).Dump();
@@ -38,7 +38,7 @@ A.png
 
 Now that we've got a page, how about we dump the header values?
 
-```csharp
+```cs
 // Get the header of page 197 in file 1
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.GetPage(1, 197).Header.Dump();
@@ -50,7 +50,7 @@ A1.png
 
 Just as the header is available, you can also get the raw slot array entries.
 
-```csharp
+```cs
 // Get the slot array entries of page 197 in file 1
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.GetPage(1, 197).SlotArray.Dump();
@@ -62,7 +62,7 @@ A2.png
 
 While getting the raw slot array entries can be useful, you'll usually want to look at the records themselves. Fortunately, that's easy to do too.
 
-```csharp
+```cs
 // Get all records on page 197 in file 1
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.GetPage(1, 197).Records.Dump();
@@ -74,7 +74,7 @@ A3.png
 
 Once you've got the records, you could now access the FixedLengthData or the VariableLengthOffsetValues properties to get the raw fixed length and variable length column values. However, what you'll typically want is to get the actually parsed values. To spare you the work, OrcaMDF can parse it for you, if you just provide it the schema.
 
-```csharp
+```cs
 // Read the record contents of the first record on page 197 of file 1
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 RawPrimaryRecord firstRecord = (RawPrimaryRecord)db.GetPage(1, 197).Records.First();
@@ -102,7 +102,7 @@ RawColumnParser.Parse will, given a schema, automatically convert the raw bytes 
 
 Besides retrieving a specific page, RawDatabase also has a Pages property that enumerates over all pages in a database. Using this you could, for example, get a list of all IAM pages in the database.
 
-```csharp
+```cs
 // Get a list of all IAM pages in the database
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.Pages
@@ -114,7 +114,7 @@ A5.png
 
 And since this is powered by LINQ, it's easy to project just the properties you want. For example, you could get all index pages and their slot counts like this:
 
-```csharp
+```cs
 // Get all index pages and their slot counts
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.Pages
@@ -129,7 +129,7 @@ A6.png
 
 Or let's say you wanted to get all data pages with at least one record and more than 7000 bytes of free space - with the page id, free count, record count and average record size as the output:
 
-```csharp
+```cs
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 db.Pages
 	.Where(x => x.Header.FreeCnt > 7000)
@@ -147,7 +147,7 @@ A7.png
 
 And as a final example, imagine you've got just an MDF file but you seem to have forgotten what objects are stored inside of it. Fret not, we'll just get the data from the sysschobjs base table! Sysschobjs is the base table that stores all object data, and fortunately it has a static object ID of *34*. Using this, we can filter down to all of the data pages for object 34, get all the records and then parse just the two first columns of the schema (you may specify a partial schema, as long as you only omit columns at the end), ending up in us dumping just the names (we could of course have gotten the full schema, if we wanted to).
 
-```csharp
+```cs
 var db = new RawDatabase(@"C:\AWLT2008R2.mdf");
 
 var records = db.Pages

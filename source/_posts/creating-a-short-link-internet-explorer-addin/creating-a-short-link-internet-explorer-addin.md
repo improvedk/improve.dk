@@ -41,7 +41,7 @@ We have an identity column, the URL, a column reprensenting the creation time of
 
 I'll dive right into it and present the complete code for the webservice, ShortLinkService.cs:
 
-```csharp
+```cs
 using System.Web.Services;
 using System.Data.SqlClient;
 using System.Data;
@@ -94,7 +94,7 @@ That was the complete short link webservice code. All it does is to simply take 
 
 This is the website running at http://link.improve.dk. I've setup [wildcard mapping](http://scottwater.com/blog/articles/Wildcard.aspx) so all requests passes through to the ASPNET engine. This enables me to write the redirection functionality in the Global.asax file like so:
 
-```csharp
+```cs
 using System.Web;
 using System;
 using System.Text.RegularExpressions;
@@ -145,7 +145,7 @@ Simply right click the ShortLinkClient project and select properties. Then go to
 
 Make sure the ShortLinkClient.cs code matches the following:
 
-```csharp
+```cs
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 

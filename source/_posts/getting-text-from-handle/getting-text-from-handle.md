@@ -10,7 +10,7 @@ This time we want to retrieve the text from a given window, represented by a han
 
 win32_2_1_2.jpg
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -12,7 +12,7 @@ The original method relied heavily on reflection to set the values directly. Ref
 
 We'll have to create a DynamicMethod that takes in a DbDataReader, converts the current row to a generic type T. We'll call it MapDR, although it doesn't really matter what it's called.
 
-```csharp
+```cs
 // Our method will take in a single parameter, a DbDataReader
 Type[] methodArgs = { typeof(DbDataReader) };
 
@@ -23,7 +23,7 @@ ILGenerator il = dm.GetILGenerator();
 
 In this method, we'll create an instance of the generic type T and store it as a variable.
 
-```csharp
+```cs
 // We'll have a single local variable, the instance of T we're mapping
 il.DeclareLocal(typeof(T));
 
@@ -34,13 +34,13 @@ il.Emit(OpCodes.Stloc_0);
 
 Then we'll look each property of the type.
 
-```csharp
+```cs
 foreach (PropertyInfo pi in typeof(T).GetProperties())
 ```
 
 Now we'll read the column value from the DbDataReader using the properties name. By reading it, we're pushing it onto the stack.
 
-```csharp
+```cs
 // Load the T instance, SqlDataReader parameter and the field name onto the stack
 il.Emit(OpCodes.Ldloc_0);
 il.Emit(OpCodes.Ldarg_0);
@@ -52,7 +52,7 @@ il.Emit(OpCodes.Callvirt, typeof(DbDataReader).GetMethod("get_Item", new Type[] 
 
 Now's the ugly part. Depending on the type, there are different ways to convert it into the corresponding .NET type, i've made a switch statement handling most common types, although it does lack support for nullable types, guids and various other numeric formats. It should show to idea though. Converting the value will push the resulting correctly typed value onto the stack, and pop the original value in the process.
 
-```csharp
+```cs
 // Depending on the type of the property, convert the datareader column value to the type
 switch (pi.PropertyType.Name)
 {
@@ -85,14 +85,14 @@ switch (pi.PropertyType.Name)
 
 And finally we set the properties value, thereby popping the value from the stack.
 
-```csharp
+```cs
 // Set the T instances property value
 il.Emit(OpCodes.Callvirt, typeof(T).GetMethod("set_" + pi.Name, new Type[] { pi.PropertyType }));
 ```
 
 After we've mapped all the properties, we'll load the T instance onto the stack and return it.
 
-```csharp
+```cs
 // Load the T instance onto the stack
 il.Emit(OpCodes.Ldloc_0);
 
@@ -102,7 +102,7 @@ il.Emit(OpCodes.Ret);
 
 To improve performance, let's cache this mapper method as it'll work for the type T the next time we need it. Notice that what we're caching is not the method itself, but a delegate to the method - enabling us to actually call the method.
 
-```csharp
+```cs
 private delegate T mapEntity<T>(DbDataReader dr);
 private static Dictionary<Type, Delegate> cachedMappers = new Dictionary<Type, Delegate>();
 
@@ -115,7 +115,7 @@ mapEntity<T> invokeMapEntity = (mapEntity<T>)cachedMappers[typeof(T)];
 
 Now all we gotta do is loop the DbDataReader rows and return the mapped entities.
 
-```csharp
+```cs
 // For each row, map the row to an instance of T and yield return it
 while (dr.Read())
 	yield return invokeMapEntity(dr);
@@ -123,7 +123,7 @@ while (dr.Read())
 
 And of course, here's the final method/class. Remember that this is more a proof of concept than a complete class. It ought to handle all necessary types. Also, it might be relevant to consider whether one should map public as well as private properties. Whether it should handle type validation errors, missing columns or not, I'm not sure. As it is now, it'll throw a normal ArgumentOutOfRangeException in cases of missing columns, and relevant type conversion errors - all those can be handled by the callee using try/catch blocks.
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

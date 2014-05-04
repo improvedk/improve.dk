@@ -10,7 +10,7 @@ I often do code profiling, usually involving a stopwatch and some boilerplate co
 
 There are just four functions in the class, all overload variations. In a nutshell, they'll allow you to profile a single action with & without warmup, multiple iterations and multiple iterations run i parallel. The code is more or less self explanable so I'll just throw it out there:
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -123,7 +123,7 @@ namespace CodeProfiler
 
 Using the CodeProfiler class, it's easy for us to do code profiling, including measuring the effects of parallelization. Here's an example of calculating the square root of the numbers 1 through 10 million 100 times, using 1-16 simultaneous threads. FYI I'm runing on a quad core machine.
 
-```csharp
+```cs
 using System;
 
 namespace CodeProfiler

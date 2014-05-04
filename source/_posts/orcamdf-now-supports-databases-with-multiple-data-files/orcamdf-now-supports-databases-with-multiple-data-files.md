@@ -60,7 +60,7 @@ GO 100
 
 This would cause MyTable to be proportionally allocated between the three data files (the C column being used for the fill to require 100 pages of storage – to ensure we hit all three data files). And to parse it, all you'd do is the following:
 
-```csharp
+```cs
 var files = new[]
     {
 		@"C:SampleDatabase_Data1.mdf",

@@ -19,7 +19,7 @@ D:\Webmentor Projekter\Blog\RetrievingSwfProperties>swfdump -X -Y test.swf
 
 By providing the -X and -Y switches swfdump only prints out the movie height & width. You can see all the switches on the [swfdump man page](http://www.swftools.org/swfdump.html). At this point it's a simple matter of spinning up a swfdump process and parsing the output:
 
-```csharp
+```cs
 static void Main(string[] args)
 {
     // Set process properties

@@ -53,7 +53,7 @@ image_43.png
 
 Obviously we can't just read one field at a time, incrementing the fixed length data offset pointer for each read, as we usually do for normal fixed length data types. We need some kind of state that will tell us which byte we're currently reading bits from, and when to read a new bit byte. Allow me to introduce RecordReadState:
 
-```csharp
+```cs
 public class RecordReadState
 {
 	// We start out having consumed all bits as none have been read
@@ -84,7 +84,7 @@ RecordReadState is currently only used for handling bits, but I've decided on no
 
 Once we have the read state implemented, we can implement the SqlBit type:
 
-```csharp
+```cs
 public class SqlBit : ISqlType
 {
 	private readonly RecordReadState readState;

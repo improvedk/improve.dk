@@ -12,7 +12,7 @@ There are several different date related data types in SQL Server. Currently [Or
 
 The simplest of the three is date – it's a 3 byte fixed length type that stores the number of days passed since the default value of 1900-01-01. The only tricky part is that .NET does not have any standard representation of three byte integer values, only shorts & ints which are either too large or too small. Thus, to read the number of days correctly, we'll have to perform some shift magic to get the correct number into a .NET four byte integer. Once we've got the date, we can just create a new default DateTime and add the number of days.
 
-```csharp
+```cs
 public class SqlDate : ISqlType
 {
 	public bool IsVariableLength
@@ -54,7 +54,7 @@ Minutes      | X / 300 / 60 % 60
 Seconds      | X / 300 % 60
 Milliseconds | X % 300 * 10d / 3d
 
-```csharp
+```cs
 public class SqlDateTime : ISqlType
 {
 	private const double CLOCK_TICK_MS = 10d/3d;
@@ -93,7 +93,7 @@ Part    | Calculation
 Hours   | X / 60
 Minutes | X % 60
 
-```csharp
+```cs
 public class SqlSmallDateTime : ISqlType
 {
 	public bool IsVariableLength

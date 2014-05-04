@@ -10,7 +10,7 @@ tags: [.NET]
 
 The code required for verifying Mailgun forwards is very simple and doesn't require much explanation:
 
-```csharp
+```cs
 /// <summary>
 /// Verifies that the signature matches the timestamp & token.
 /// </summary>
@@ -29,7 +29,7 @@ public static bool VerifySignature(string key, int timestamp, string token, stri
 
 Use sample:
 
-```csharp
+```cs
 // All these values are provided by the Mailgun request
 var key = "key-x3ifab7xngqxep7923iuab251q5vhox0";
 var timestamp = 1568491354;

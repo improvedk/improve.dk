@@ -8,7 +8,7 @@ Last time I made an example of how to enumerate windows. This time I present to 
 
 <!-- more -->
 
-```csharp
+```cs
 using System.Runtime.InteropServices;
 using System;
 using System.Text;

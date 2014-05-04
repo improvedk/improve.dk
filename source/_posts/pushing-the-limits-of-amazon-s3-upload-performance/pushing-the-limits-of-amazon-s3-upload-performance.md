@@ -24,7 +24,7 @@ At no point, in any of the test environments, were the CPUs stressed to the poin
 
 Before starting the four repetitions of the test, I fire off a single PutObject request to warm up the stack. The test code is relatively simple, it runs in an infinite loop, checking whether we need to upload more objects, or whether we're done. If done, it breaks the loop and ends the thread. When launching I start up X amount of threads and immediately after join with them to wait for them all to complete. The runtime includes the amount of time required to instantiate the threads, though it should have no measurable impact on the result. The runtime calculation is done using integer math for output simplicity, but the impact should be minimal in the big picture.
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -126,7 +126,7 @@ namespace S3Optimization
 
 For running the tests, I'm using the following test runner application, testing all combinations of thread count and object size between 1 and 256/2048 respectively (in powers of 2):
 
-```csharp
+```cs
 var psi = new ProcessStartInfo("S3Optimization.exe")
     {
         UseShellExecute = false,

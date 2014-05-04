@@ -8,7 +8,7 @@ Reading and writing values to the DB has always been a bit cumbersome when you h
 
 <!-- more -->
 
-```csharp
+```cs
 public static class DBConvert
 {
 	/// <summary>
@@ -78,7 +78,7 @@ The first To method significantly simplifies the process of setting database val
 
 This is how I used to handle possible DBNulls when reading into a nullable integer:
 
-```csharp
+```cs
 if(dr["CountryID"] is DBNull)
 	c.CountryID = null;
 else
@@ -87,7 +87,7 @@ else
 
 And this is how it's done using my DBConvert class:
 
-```csharp
+```cs
 c.CountryID = DBConvert.To<int?>(dr["CountryID"]);
 c.Recommended = DBConvert.To<bool>(dr["Recommended"]);
 d.companyMessageCreated = DBConvert.To<DateTime?>(dr["CompanyMessageCreated"]);
@@ -101,19 +101,19 @@ The private changeType() method is a wrapper for the ChangeType() method that ta
 
 The second To simplifies databinding values in the frontend ASPX files. This is how I used to print a DateTime column in a ShortDateString format:
 
-```csharp
+```cs
 <%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "Created")).ToShortDateString() %>
 ```
 
 And this is how it can be done using the DBConvert class, generically:
 
-```csharp
+```cs
 <%# DBConvert.To<DateTime>(Container, "Created").ToShortDateString() %>
 ```
 
 Nullable types, as well as null strings also have to be handled when assigning SqlParameter values. The usual way for both nullable types as well as strings might look like this:
 
-```csharp
+```cs
 if(CountryID == null)
 	cmd.Parameters.Add("@CountryID", SqlDbType.Int).Value = DBNull.Value;
 else
@@ -122,7 +122,7 @@ else
 
 Using the DBConvert class this can be done a bit simpler:
 
-```csharp
+```cs
 cmd.Parameters.Add("@CountryID", SqlDbType.Int).Value = DBConvert.From(CountryID);
 cmd.Parameters.Add("@CountryID", SqlDbType.NVarChar, 2048).Value = DBConvert.From(MyString);
 ```

@@ -10,13 +10,13 @@ Logging is an integral part of most applications, whether it's for logging perfo
 
 Imagine the following scenario in which we want to log an exception in our application:
 
-```csharp
+```cs
 Logger.Log("An error occured at " + DateTime.Now + " on computer " + Environment.MachineName + " in process" + Process.GetCurrentProcess().ProcessName + ".");
 ```
 
 Inside the Logger.Log method we may have a check for whether logging is enabled like the following:
 
-```csharp
+```cs
 if(LoggingEnabled)
 	File.AppendAllText("Log.txt", logMessage + Environment.NewLine);
 ```
@@ -25,7 +25,7 @@ What's the problem? Although we do not touch the file system when logging is dis
 
 We can avoid this by checking for LoggingEnabled in our actual application code:
 
-```csharp
+```cs
 if(Logger.LoggingEnabled)
 	Logger.Log("An error occured at " + DateTime.Now + " on computer " + Environment.MachineName + " in process" + Process.GetCurrentProcess().ProcessName + ".");
 ```
@@ -34,7 +34,7 @@ While this does save us from doing string concatenation and retrieving other dat
 
 An alternative to sending a log message directly to the Logger.Log method would be to send a Func that fetches the log message if needed:
 
-```csharp
+```cs
 public class Logger
 {
 	public static void Log(Func<string> message)
@@ -45,7 +45,7 @@ public class Logger
 }
 ```
 
-```csharp
+```cs
 Logger.Log(() => "An error occured at " + DateTime.Now + " on computer " + Environment.MachineName + " in process" + Process.GetCurrentProcess().ProcessName + ".");
 ```
 
@@ -53,7 +53,7 @@ This has the big benefit of only executing the actual logging message functional
 
 While this is rather straight forward as long as the logging is performed synchrounously, there's a pitfall if we perform asynchronous logging. Take the following asynchronous Logger implementation as an example:
 
-```csharp
+```cs
 public static class Logger
 {
 	private static Queue<Func<string>> logMessages = new Queue<Func<string>>();
@@ -77,7 +77,7 @@ Instead of outputting the log message to the log file immediately when the Log f
 
 We'll perform a number of logs using the following code:
 
-```csharp
+```cs
 string date = DateTime.Now.ToString();
 
 Logger.Log("An error occured at " + DateTime.Now + " (" + date + ") on computer " + Environment.MachineName + " in process" + Process.GetCurrentProcess().ProcessName + ".");
@@ -87,7 +87,7 @@ If you open the log file, you'll notice a discrepancy between the two dates that
 
 The solution in this case is simple. All we need to do is to store the results of the log Funcs instead of the actual funcs:
 
-```csharp
+```cs
 public static class Logger
 {
 	private static Queue<string> logMessages = new Queue<string>();
@@ -109,7 +109,7 @@ public static class Logger
 
 We can still implement asynchronous logging, as long as the actual log message is retrieved synchronously or we make sure the logging Func only references local immutable variables - though the last case kinda destroys the performance gain.
 
-```csharp
+```cs
 string date = DateTime.Now.ToString();
 
 Logger.Log(() => "An error occured at " + date + " on computer " + Environment.MachineName + " in process" + Process.GetCurrentProcess().ProcessName + ".");
@@ -117,7 +117,7 @@ Logger.Log(() => "An error occured at " + date + " on computer " + Environment.M
 
 To sum up the speed gains of using deferrered lambda logging, I've implemented a simple synchronous Logger implementation:
 
-```csharp
+```cs
 public static class Logger
 {
 	public static bool LoggingEnabled { get; set; }
@@ -138,7 +138,7 @@ public static class Logger
 
 And to perform the actual performance measurements I'm using my [CodeProfiler](http://www.improve.dk/blog/2008/04/16/profiling-code-the-easy-way) class with 1000 iterations of the logging code:
 
-```csharp
+```cs
 class Program
 {
 	static void Main(string[] args)

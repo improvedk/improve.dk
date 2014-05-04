@@ -12,7 +12,7 @@ deadlock-hint-1_2.jpg
 
 Great. So we have a deadlock, what's the first step in fixing it? I've outlined the code in PaperHandler.cs that caused the issue, though in pseudo code format:
 
-```csharp
+```cs
 using (var ts = new TransactionScope())
 {
 	if ((SELECT COUNT(*) FROM tblPapers WHERE Url = 'newurl') > 0)
@@ -188,7 +188,7 @@ If we look at the [Lock Compatibility chart](http://msdn.microsoft.com/en-us/lib
 
 How do we then get rid of the deadlock situation? We *could* change the isolation mode to the default READ COMMITTED like so:
 
-```csharp
+```cs
 var tsOptions = new TransactionOptions();
 tsOptions.IsolationLevel = IsolationLevel.ReadCommitted;
 

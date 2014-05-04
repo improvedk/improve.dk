@@ -30,7 +30,7 @@ Anyways, although this looked good, this was the sole reason for the "Server too
 
 ### This will kill your application:
 
-```csharp
+```cs
 protected void Page_Load(object sender, EventArgs e)
 {
 	Response.Buffer = false;
@@ -41,7 +41,7 @@ protected void Page_Load(object sender, EventArgs e)
 
 ### But this won't:
 
-```csharp
+```cs
 protected void Page_Load(object sender, EventArgs e)
 {
 	Response.WriteFile("Tree.jpg");
@@ -79,7 +79,7 @@ I can replicate the exact same errors on Server 2003 with IIS running i *32 mode
 
 I used this code snippet to get a list of the current active requests in IIS (to verify that the "ASP.NETRequests Current" and "W3SVC_W3WPActive Requests" are not lying:
 
-```csharp
+```cs
 ServerManager iisManager = new ServerManager();
 
 foreach (WorkerProcess w3wp in iisManager.WorkerProcesses)
@@ -178,7 +178,7 @@ Since the requests continue living, recycling the pool will time out and thus fo
 
 The easiest way to get around this problem (bug?) is to just spawn a new thread doing the logging so the main thread will complete right after TransmitFile. In most cases the logging operation will be rather fast so the threads will be shortlived and thus not create too many concurrent threading operations.
 
-```csharp
+```cs
 Response.Buffer = false;
 Response.TransmitFile("Tree.jpg");
 
@@ -193,7 +193,7 @@ t.Start();
 
 Jonathan Gilbert posted a couple of great comments regarding spawning your own threads in the process and the possibility of extracing the actual logging process into a separate service. Since my blogs comments suck in regards to posting code, here are his code parts:
 
-```csharp
+```cs
 static object log_sync = new object();
 static Queue<LogData> log_queue = new Queue<LogData>();
 static bool log_thread_running = false;
@@ -269,7 +269,7 @@ static void log_thread_proc()
 }
 ```
 
-```csharp
+```cs
 static object log_sync = new object();
 static BinaryFormatter log_formatter = new BinaryFormatter(); // in System.Runtime.Serialization.Formatters.Binary
 static Stream log_stream;
@@ -294,7 +294,7 @@ static void post_log_entry(LogData log_entry)
 }
 ```
 
-```csharp
+```cs
 class LogService : System.ServiceProcess.ServiceBase
 {
 	static void Main(string[] args)

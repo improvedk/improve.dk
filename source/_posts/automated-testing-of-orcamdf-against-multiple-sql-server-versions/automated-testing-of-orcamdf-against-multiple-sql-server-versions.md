@@ -16,7 +16,7 @@ NUnit supports [inline parameterized tests](http://www.nunit.org/index.php?p=tes
 
 First up, I implemented a simple enumeration covering the versions that I'm currently working on supporting:
 
-```csharp
+```cs
 public enum DatabaseVersion
 {
 	SqlServer2005,
@@ -27,7 +27,7 @@ public enum DatabaseVersion
 
 I then created the SqlServerTestAttribute class, inheriting directly from TestCaseSourceAttribute like so:
 
-```csharp
+```cs
 public class SqlServerTestAttribute : TestCaseSourceAttribute
 {
 	private static IEnumerable<TestCaseData> versions
@@ -48,7 +48,7 @@ The SqlServerTestAttribute class tells TestCaseSourceAttribute to find the test 
 
 Next up, I converted my current tests to use the new SqlServerTest attribute, instead of the previous vanilla NUnit Test attribute:
 
-```csharp
+```cs
 [SqlServerTest]
 public void HeapForwardedRecord(DatabaseVersion version)
 {
@@ -74,7 +74,7 @@ If a database doesn't have a connection (the name corresponding to the DatabaseV
 
 To perform the filtering on available databases, I've modified my test cases to let the base class actually run the test, using a lambda:
 
-```csharp
+```cs
 [SqlServerTest]
 public void HeapForwardedRecord(DatabaseVersion version)
 {
@@ -94,7 +94,7 @@ public void HeapForwardedRecord(DatabaseVersion version)
 
 The RunDatabase method is exposed in the SqlServerSystemTestBase class:
 
-```csharp
+```cs
 protected void RunDatabaseTest(DatabaseVersion version, Action<Database> test)
 {
 	string versionConnectionName = version.ToString();
@@ -118,7 +118,7 @@ If a corresponding connection string hasn't been declared in the configuration f
 
 As mentioned, I need a way of executing some tests only on certain versions of SQL Server. The standard SqlServerTestAttribute automatically enumerations *all* values of the DatabaseVersion enumeration, but there's no reason we can't create a SqlServer2005TestAttribute like this:
 
-```csharp
+```cs
 public class SqlServer2005TestAttribute : TestCaseSourceAttribute
 {
 	private static IEnumerable<TestCaseData> versions
@@ -136,7 +136,7 @@ public class SqlServer2005TestAttribute : TestCaseSourceAttribute
 
 Or what about tests that need to be run on SQL Server 2008+?
 
-```csharp
+```cs
 public class SqlServer2008PlusTestAttribute : TestCaseSourceAttribute
 {
 	private static IEnumerable<TestCaseData> versions
@@ -157,7 +157,7 @@ public class SqlServer2008PlusTestAttribute : TestCaseSourceAttribute
 
 Once we have the attributes, it's as easy as marking the individual tests with the versions they're supposed to be run on:
 
-```csharp
+```cs
 [SqlServer2008PlusTest]
 public void ScanAllNullSparse(DatabaseVersion version)
 {

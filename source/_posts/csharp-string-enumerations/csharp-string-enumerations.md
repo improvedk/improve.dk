@@ -8,7 +8,7 @@ Switches are rarely nice in an architectural aspect, but they are often required
 
 <!-- more -->
 
-```csharp
+```cs
 using System;
 
 namespace StringEnumeration
@@ -38,7 +38,7 @@ namespace StringEnumeration
 
 The first step is to define the enumeration of values we need to have in our switch statement:
 
-```csharp
+```cs
 enum Input
 {
 	Hello,
@@ -48,7 +48,7 @@ enum Input
 
 We cannot convert from strings to the Input enumeration type directly, so we'll have to use a magic function like this:
 
-```csharp
+```cs
 class EnumHelper
 {
 	public static T Parse<T>(string input)
@@ -60,7 +60,7 @@ class EnumHelper
 
 Using the above function, we can refactor our initial code like so:
 
-```csharp
+```cs
 string input = "Hello";
 
 switch (EnumHelper.Parse<Input>(input))

@@ -8,7 +8,7 @@ I often need to output indented text in one way of the other, it could be HTML, 
 
 <!-- more -->
 
-```csharp
+```cs
 StringBuilder sb = new StringBuilder();
 sb.AppendLine("public static void Hello()");
 sb.AppendLine("{");
@@ -22,7 +22,7 @@ Console.Read();
 
 This ought to result in the following snippet:
 
-```csharp
+```cs
 public static void Hello()
 {
 	if(true)
@@ -34,7 +34,7 @@ Pretty simple code, but it's a bit hard for the eyes, especially if there's a lo
 
 By utilizing the IDisposable interface, we can create a StringBuilder-esque class that handles the indentation for us. Here's an example of how we might write the previous snippet using the IndentedStringBuilder (note that it's not really a StringBuilder since StringBuilder's a sealed class):
 
-```csharp
+```cs
 using (IndentedStringBuilder sb = new IndentedStringBuilder())
 {
 	sb.AppendLine("public static void Hello()");
@@ -59,7 +59,7 @@ Each time Dispose() is called on the instance, the indentation level is decrease
 
 Here's the IndentedStringBuilder class:
 
-```csharp
+```cs
 using System;
 using System.Text;
 

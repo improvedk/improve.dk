@@ -141,7 +141,7 @@ Luckily Squid provides an easy interface for creating custom rewriters, log & st
 
 To do the job, I've made an über simple console application that does the job:
 
-```csharp
+```cs
 using System;
 
 namespace SquidRewriter

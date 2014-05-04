@@ -87,19 +87,19 @@ Windbg4.png
 
 Looking at the top frame in the call stack, it seems the thread is stuck in the BCL Dictionary.FindEntry() method:
 
-```csharp
+```cs
 System.Collections.Generic.Dictionary`2[[System.Int16, mscorlib],[System.__Canon, mscorlib]].FindEntry(Int16)
 ```
 
 Tracing back just a few more frames, this seems to be invoked from the following user function:
 
-```csharp
+```cs
 iPaper.BL.Backend.Modules.Paper.Settings.SettingDescriptionCache.GetAllDescriptions()
 ```
 
 Performing the same act for the top five threads yields a rather clear unanimous picture:
 
-```csharp
+```cs
 234:
 System.Collections.Generic.Dictionary`2[[System.Int16, mscorlib],[System.__Canon, mscorlib]].FindEntry(Int16)
 ...

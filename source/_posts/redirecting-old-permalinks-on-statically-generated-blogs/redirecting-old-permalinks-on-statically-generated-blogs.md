@@ -29,7 +29,7 @@ Since I've migrated to [Hexo](http://hexo.io) it's not as simple, unfortunately.
 
 What I ended up doing was to write a small script that would parse my Wordpress backup file and then recreate the /blog/ and /archive/ directories, as if the posts were actually stored there:
 
-```csharp
+```cs
 string template = @"layout: false
 ---
 <!DOCTYPE html>

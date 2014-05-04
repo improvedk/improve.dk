@@ -19,7 +19,7 @@ Now, here's an example of a typical boolean yes/no result from a Flash query:
 
 I'd usually create this bit of XML using a simple StringBuilder like so:
 
-```csharp
+```cs
 StringBuilder output = new StringBuilder();
 output.Append("<?xml version="1.0" encoding="utf-8"?>");
 output.Append("<root>");
@@ -31,7 +31,7 @@ This has the advantage of being very fast to write, but readability suffers from
 
 A "prettier" way is to use the DOM through the XmlDocument like so:
 
-```csharp
+```cs
 XmlDocument xd = new XmlDocument();
 xd.AppendChild(xd.CreateXmlDeclaration("1.0", "utf-8", ""));
 
@@ -52,7 +52,7 @@ While this does produce exactly the same XML, it takes up twice as many lines of
 
 Let me introduce you to my quick'n'simple fluent interface that uses XmlDocument internally, XmlOutput:
 
-```csharp
+```cs
 XmlOutput xo = new XmlOutput()
 	.XmlDeclaration()
 	.Node("root").Within()
@@ -65,7 +65,7 @@ Basically, using Node() creates a new node within the current node. If no node h
 
 Let me present you with a couple of examples. Dynamic data:
 
-```csharp
+```cs
 XmlOutput xo = new XmlOutput()
 	.XmlDeclaration()
 	.Node("root").Within()
@@ -95,7 +95,7 @@ for (int i = 1; i <= 10; i++)
 
 And complex structures:
 
-```csharp
+```cs
 XmlOutput xo = new XmlOutput()
 	.XmlDeclaration()
 	.Node("root").Within()
@@ -135,7 +135,7 @@ XmlOutput xo = new XmlOutput()
 
 Finally, say hello to XmlOutput:
 
-```csharp
+```cs
 using System.Xml;
 using System.Collections.Generic;
 

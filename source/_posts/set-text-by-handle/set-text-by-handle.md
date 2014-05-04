@@ -10,7 +10,7 @@ This time we won't be reading the text from a window, we'll be setting it.
 
 [Like last time](http://www.improve.dk/blog/2007/04/03/getting-text-from-handle), open an Internet Explorer browser and obtain a handle to the address field.
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Text;

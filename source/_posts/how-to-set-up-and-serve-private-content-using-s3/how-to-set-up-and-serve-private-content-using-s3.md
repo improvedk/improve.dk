@@ -24,7 +24,7 @@ While the AWS console is great in itself, it's really only meant for the simples
 
 Before we start, [download the Amazon AWS .NET SDK](http://aws.amazon.com/sdkfornet/) and create a template console application like this:
 
-```csharp
+```cs
 using System;
 using Amazon;
 using Amazon.CloudFront.Model;
@@ -52,7 +52,7 @@ Make sure to insert your own access key ID and secret access key values. All cod
 
 Run the following code to set up a bucket, which will be private by default. Make sure you define a unique bucket name, I'm using the name *improve.dk* for this sample. Note that if your bucket is not in the EU region, you'll need to substitute my ServiceURL with the one for your region. You can find all the service URLs here: http://docs.amazonwebservices.com/general/latest/gr/index.html?rande.html
 
-```csharp
+```cs
 var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
@@ -78,7 +78,7 @@ Creating an OAI allows us to tell CloudFront to access the S3 bucket using that 
 
 Run the following code:
 
-```csharp
+```cs
 using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
 {
 	var oaiConfig = new CloudFrontOriginAccessIdentityConfig()
@@ -101,7 +101,7 @@ Now that we have our bucket and OAI, we can set up a private CloudFront distribu
 
 Run the following code:
 
-```csharp
+```cs
 using (var cfClient = AWSClientFactory.CreateAmazonCloudFrontClient(accessKeyID, secretAccessKey))
 {
 	var oaiIdentity = cfClient.ListOriginAccessIdentities().OriginAccessIdentities[0];
@@ -183,7 +183,7 @@ However, this won't work yet! You need to change the "AWS" principal value into 
 
 Now that we have the policy ready, we need to add it to our bucket. Run the following code:
 
-```csharp
+```cs
 var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
@@ -209,7 +209,7 @@ logo_aws_thumb.gif
 
 Run the following code to upload the object:
 
-```csharp
+```cs
 var config = new AmazonS3Config()
 	.WithServiceURL("s3-eu-west-1.amazonaws.com");
 
@@ -251,7 +251,7 @@ Now that we have the URL of our distribution object, we need to sign it with a p
 
 Add the following class to your project:
 
-```csharp
+```cs
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -326,7 +326,7 @@ image_26.png
 
 One way or the other, copy that <RSAKeyValue> bit of XML. Now run the following code, substituting my CloudFront key pair and object URL with your own:
 
-```csharp
+```cs
 [STAThread]
 static void Main()
 {
@@ -366,7 +366,7 @@ image_28.png
 
 So what if you want to grant access to many files at once, do we have to create a policy for each single one? Thankfully, no, we don't! Say you want to grant access to all files in the folder "Test" (and remember, there is no such thing as folders in S3 – just objects named e.g. /Test/FileName.jpg). What we'd do is to create a policy like this:
 
-```csharp
+```cs
 var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/Test/*", DateTime.Now.AddMinutes(5));
 ```
 
@@ -384,7 +384,7 @@ At this point we've created a URL with a custom signed policy that grants access
 
 Add an overload to the GetCustomUrl function in the CloudFrontSecurityProvider class like so:
 
-```csharp
+```cs
 public string GetCustomUrl(string url, DateTime expiration, string allowedCidr)
 {
 	string expirationEpoch = GetUnixTime(expiration).ToString();
@@ -403,7 +403,7 @@ public string GetCustomUrl(string url, DateTime expiration, string allowedCidr)
 
 To use it, we just pass in an IP address in the [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) format:
 
-```csharp
+```cs
 var signedUrl = provider.GetCustomUrl("https://d2ya0f2cfwcopc.cloudfront.net/D.jpg", DateTime.Now.AddMinutes(5), "212.242.193.110/32");
 ```
 

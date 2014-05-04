@@ -28,7 +28,7 @@ When done, you should now see a small green checkmark next to the OrcaMDF.Core p
 
 At this point the OrcaMDF.Core assembly will be available and all you have to do is start using it. For example you could print out all of the products along with their prices by modifying the Program.cs file like so (you'll have to alter the path to AdventureWorks2008R2_Data.mdf file so it points to a local copy (which must not be in use by SQL Server) on your machine):
 
-```csharp
+```cs
 using System;
 using OrcaMDF.Core.Engine;
 

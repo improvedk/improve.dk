@@ -10,7 +10,7 @@ During a recent plugin based project that I worked upon, I had to dynamically lo
 
 I present to you my LoadPlugin function of my PluginHandler module:
 
-```csharp
+```cs
 using System.Reflection;
 using System;
 
@@ -40,7 +40,7 @@ Note that this is a very simple example function, there are many unhandled param
 
 This is how easily we can load any number of plugins that have been placed in a certain plugin directory (in this case the plugins contains code that is to be run on application startup):
 
-```csharp
+```cs
 foreach (string file in Directory.GetFiles(Application.StartupPath + "\Plugins\Startup", "*.dll"))
 {
 	IRunnable startupPlugin = PluginHandler.LoadPlugin<IRunnable>(file);
@@ -52,7 +52,7 @@ foreach (string file in Directory.GetFiles(Application.StartupPath + "\Plugins\S
 
 All that is required is that the assemblies in the PluginsStartup folder contain a type that implements the IRunnable interface:
 
-```csharp
+```cs
 
 public interface IRunnable
 {

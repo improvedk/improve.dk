@@ -14,7 +14,7 @@ I have been using the class myself for most of my xml writing requirements latel
 
 Instead of manually declaring our xml declaration each time:
 
-```csharp
+```cs
 XmlOutput xo = new XmlOutput()
 	.XmlDeclaration()
 	.Node("root").Within()
@@ -23,7 +23,7 @@ XmlOutput xo = new XmlOutput()
 
 XmlOutput will instead add an XmlDeclaration with the default parameters:
 
-```csharp
+```cs
 var xo = new XmlOutput()
 	.Node("root").Within()
 		.Node("result").Attribute("type", "boolean").InnerText("true");
@@ -39,7 +39,7 @@ XmlOutput will throw an InvalidOperationException in case an XmlDeclaration has 
 
 Just as I [used IDisposable to easily write indented text](/using-idispoable-to-write-indented-text/), I've done the same to XmlOutput. For smaller bits of xml, it might cause more bloat than good - but it's optional when to use it. Using IDisposable will simply call EndWithin() in the Dispose method, making indented xml generation more readable.
 
-```csharp
+```cs
 using (xo.Node("user").Within())
 {
 	xo.Node("username").InnerText("orca");
@@ -75,7 +75,7 @@ So basically, calling a Create method will return an IXmlOutputStartDocument whi
 
 Now, on paper, this seems great. The problem however becomes apparent when we start using it:
 
-```csharp
+```cs
 // xo is now an IXmlOutputCanWriteFirstNode
 var xo = XmlOutput.Create()
 	.XmlDeclaration();
@@ -91,7 +91,7 @@ xo.Attribute("hello", "world");
 
 One way to get around this is to create a new variable after each operation, but I don't really think I'll have to explain why this is a bad idea:
 
-```csharp
+```cs
 // xo1 is now an IXmlOutputCanWriteFirstNode
 var xo1 = XmlOutput.Create()
 	.XmlDeclaration();
@@ -113,7 +113,7 @@ So what's the conclusion? While the interface based help in regards to fluent in
 
 ### Code
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Xml;

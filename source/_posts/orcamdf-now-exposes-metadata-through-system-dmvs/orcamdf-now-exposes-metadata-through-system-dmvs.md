@@ -33,7 +33,7 @@ WHERE
 
 Doing the same in OrcaMDF could look like this:
 
-```csharp
+```cs
 using (var db = new Database(new[] { @"C:Test.mdf" }))
 {
 	var sys = db.Dmvs;
@@ -48,7 +48,7 @@ using (var db = new Database(new[] { @"C:Test.mdf" }))
 
 And if you prefer the more SQL-esque syntax of LINQ, you can of course do it like this as well:
 
-```csharp
+```cs
 using (var db = new Database(new[] { @"C:Test.mdf" }))
 {
 	var sys = db.Dmvs;

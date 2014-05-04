@@ -56,7 +56,7 @@ The key to performance, as previously shown, is without doubt achieved by scalin
 
 The following test code spins up a given number of threads and lets them run for 30 seconds, before they're all aborted. Each thread is continually looping, firing off as many DeleteObjectRequest's as it can. After 30 seconds, the average request/sec is calculated and output. I ran four repetitions of each, discarded the top and bottom result and calculated the average of the remaining two.
 
-```csharp
+```cs
 private const string bucketName = "improve-eu.dk";
 private const string serviceUrl = "s3-eu-west-1.amazonaws.com";
 
@@ -133,7 +133,7 @@ image_42.png
 
 However, the code we're running is already in a rather tight loop without much to optimize:
 
-```csharp
+```cs
 while (sw.ElapsedMilliseconds <= 30000)
 {
 	s3Client.DeleteObject(request);
@@ -148,7 +148,7 @@ It's basically just a loop, reusing the same request and letting the AmazonS3Cli
 
 Following this guide on [signing and authenticating REST requests](http://docs.amazonwebservices.com/AmazonS3/2006-03-01/dev/index.html?RESTAuthentication.html), I constructed a method like this (minus the measuring and reformatting, this just shows the basic form):
 
-```csharp
+```cs
 var accessKeyID = "XYZ";
 var secretAccessKey = "SecretXYZ";
 

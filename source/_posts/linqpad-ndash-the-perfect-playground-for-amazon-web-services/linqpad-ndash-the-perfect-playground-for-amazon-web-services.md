@@ -36,7 +36,7 @@ image_121.png
 
 Inevitably, you'll probably run into an exception or two. Take the following piece of code for example; it works perfectly, but I forgot to assign the IAM user access to the bucket I'm trying to interact with (and before you remind me to remove the keys, don't worry, the IAM user was temporary and no longer exists):
 
-```csharp
+```cs
 var accessKeyID = "AKIAIKB6FI6SSOGGOP7A";
 var secretKey = "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";
 

@@ -16,7 +16,7 @@ While there is an overhead of exceptions being thrown, they're not directly dang
 
 ### Safe
 
-```csharp
+```cs
 protected void Page_Load(object sender, EventArgs e)
 {
 	Response.Write("CAN HAZ W3WP.EXE?");
@@ -27,7 +27,7 @@ protected void Page_Load(object sender, EventArgs e)
 
 ### Unsafe, will crash w3wp.exe
 
-```csharp
+```cs
 protected void Page_Load(object sender, EventArgs e)
 {
 	Response.Write("CAN HAZ W3WP.EXE?");
@@ -43,7 +43,7 @@ There are several repercussions of the w3wp.exe crashing. There's a major overhe
 
 So how do we avoid this? Simple, make sure *all code* in spawned threads is handling exceptions:
 
-```csharp
+```cs
 protected void Page_Load(object sender, EventArgs e)
 {
 	Response.Write("CAN HAZ W3WP.EXE?");

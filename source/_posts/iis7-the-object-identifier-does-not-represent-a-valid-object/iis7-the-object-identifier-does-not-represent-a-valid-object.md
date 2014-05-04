@@ -22,7 +22,7 @@ What I've found since then is that a simple file tocuh will fix the problem. Tha
 
 To add confusion, this bug is temporal. If I add three sites programmaticaly (three transactions - they're not committed all at once, but in succession) using code like this:
 
-```csharp
+```cs
 using (ServerManager mgr = new ServerManager())
 {
 	if (mgr.Sites[name] != null)
@@ -47,7 +47,7 @@ Sometimes all sites work, sometimes 1-3 of them don't. Usually two of them will 
 
 As an alternative, I've also tried just generating the complete applicationHost.config file from scratch so that all changes are definitely made at the same time. By creating the applicationHost.config file separately and then replacing the old one, I don't get the "valid object" error any more. However, a random number of websites & pools will be in the "stopped" state for no apparent reason. All sites & pools have the auto start attributes set to true. I can start the sites manully without problems, it's not a good solution though seeing as there's hundreds of sites and it'll take a considerably amount of time to start half of them manually. Fortunately that part is easy to script:
 
-```csharp
+```cs
 using (ServerManager mgr = new ServerManager())
 {
 	// Start all app pools

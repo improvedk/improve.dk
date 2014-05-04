@@ -135,7 +135,7 @@ The same procedure can be repeated for the second record, but I'm going to leave
 
 Once we know the structure of the sparse vector, writing a parser in C# is surprisingly simple:
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -187,7 +187,7 @@ namespace OrcaMDF.Core.Engine
 
 I won't go into the code as it's documented and follows the procedure we just went through. A quick test verifies that it achieves the same results as we just did by hand:
 
-```csharp
+```cs
 [TestFixture]
 public class SparseVectorParserTests
 {

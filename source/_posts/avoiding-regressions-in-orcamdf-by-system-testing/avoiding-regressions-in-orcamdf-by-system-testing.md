@@ -12,7 +12,7 @@ As I continue to add new features & support for new data structures in [OrcaMDF]
 
 [Unit testing](http://en.wikipedia.org/wiki/Unit_testing) is the process of testing the smallest parts of the code, which would be functions in object oriented programming. A sample test for the [SqlBigInt](https://github.com/improvedk/OrcaMDF/blob/694dd0cff213dc48b5153b040a41fdc707914680/src/OrcaMDF.Core/Engine/SqlTypes/SqlBigInt.cs) data type parsing class could look like this:
 
-```csharp
+```cs
 using System;
 using NUnit.Framework;
 using OrcaMDF.Core.Engine.SqlTypes;
@@ -67,7 +67,7 @@ Taking the system testing approach, I'm instead performing the following workflo
 
 A sample test, creating two user tables and validating the output from the DatabaseMetaData, looks like this:
 
-```csharp
+```cs
 using System.Data.SqlClient;
 using NUnit.Framework;
 using OrcaMDF.Core.Engine;

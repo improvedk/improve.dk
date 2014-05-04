@@ -8,7 +8,7 @@ Until now we've seen how to retrieve basic properties of windows as well as how 
 
 <!-- more -->
 
-```csharp
+```cs
 using System.Runtime.InteropServices;
 using System.Text;
 using System;

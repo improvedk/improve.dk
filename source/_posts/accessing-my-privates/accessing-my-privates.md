@@ -8,7 +8,7 @@ Recently I was developing a couple of simple ORM classes that had me confused.
 
 <!-- more -->
 
-```csharp
+```cs
 [Serializable]
 public class Domain
 {
@@ -28,7 +28,7 @@ Take this simple object as an example. It represents a website domain, it has an
 
 Now, I want to create a Load() function that given a domain ID will instantiate a new instance of a Domain object and populate its values from the database. Now, as the DomainID and DomainName variables are private, I'll have to make a constructor method to pass in those values, right? It seems not, if my Load method is a static method of the Domain class itself:
 
-```csharp
+```cs
 public static Domain Load(int domainID)
 {
 	SqlCommand cmd = new SqlCommand("SELECT Domain, CompanyID FROM tblDomains WHERE DomainID = @DomainID");

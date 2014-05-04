@@ -24,7 +24,7 @@ There are many different ways of implementing genetic algorithms, and there are 
 
 What we're trying to accomplish with this demo implementation, is to guess a random RGB value. The RGB values are stored in what is basically a triple class. The only added functionality is an override of the ToString function to make it easier for us to print the solution candidates.
 
-```csharp
+```cs
 class Rgb
 {
 	internal int R { get; set; }
@@ -40,7 +40,7 @@ class Rgb
 
 Next up, we have an interface that represents a basic chromosome. In this implementation, a chromosome is basically a candidate solution. The chromosome is also the type that implements the fitness function, to evaluate it's own correctness. The fitness is returned as an arbitrary double value, the higher the value the better a candidate. The ChromosomeValue property is the actual value being tested - in this case, an instance of Rgb.
 
-```csharp
+```cs
 interface IChromosome<T>
 {
 	double Fitness { get; }
@@ -52,13 +52,13 @@ interface IChromosome<T>
 
 I've implemented the genetic algorithm using the [template pattern](http://www.dofactory.com/Patterns/PatternTemplate.aspx) for easy customization and implementation of the algorithm. The algorithm itself is an abstract generic class. This means we have to subtype it before we can use it, a requirement due to the abstract template based implementation.
 
-```csharp
+```cs
 public abstract class GeneticAlgorithm<T>
 ```
 
 There's a number of properties that are rather self explanatory, given the commenting.
 
-```csharp
+```cs
 /// <summary>
 /// This is the amount of chromosomes that will be in the population at any generation.
 /// </summary>
@@ -92,7 +92,7 @@ The constructor takes in two parameters, the size of the population at any given
 
 Lastly, we set the current generation as generation number 1, and then we call createInitialChromosomes to instantiate the initial generation 1 population.
 
-```csharp
+```cs
 /// <summary>
 /// Initializes the genetic algorithm by evolving the initial generation of chromosomes.
 /// </summary>
@@ -117,7 +117,7 @@ public GeneticAlgorithm(int populationSize, int generationSurvivorCount)
 
 The createInitialChromosome initializes the ChromosomePopulation list, and then it'll continue adding new chromosomes to it until the current population reaches the specified ChromosomePopulationSize. The initial random chromosomes are returned from the CreateInitialRandomChromosome function.
 
-```csharp
+```cs
 /// <summary>
 /// Creates the initial population of random chromosomes.
 /// </summary>
@@ -132,7 +132,7 @@ private void createInitialChromosomes()
 
 There are three abstract methods that must be implemented by any subclass, CreateInitialRandomChromosome being one of them. I'll go over the actual implementations later on.
 
-```csharp
+```cs
 /// <summary>
 /// Creates an arbitrary number of mutated chromosomes, based on the input chromosome.
 /// </summary>
@@ -156,7 +156,7 @@ Then we'll select a random survivor based on an weighted average of their fitnes
 
 Finally we set the current population and increment the generation number.
 
-```csharp
+```cs
 /// <summary>
 /// Performs an evolution by picking up the generation survivors and mutating them.
 /// </summary>
@@ -202,13 +202,13 @@ public void PerformEvolution()
 
 The actual implementation is a class inheriting from GeneticAlgorithm, specifying Rgb as the generic type we'll be working with.
 
-```csharp
+```cs
 class RgbGuesser : GeneticAlgorithm<Rgb>
 ```
 
 The constructor just calls the base class directly, specifying the population size to be 100, and that there should be 10 survivors of each generation.
 
-```csharp
+```cs
 public RgbGuesser()
 	: base(100, 10)
 { }
@@ -216,7 +216,7 @@ public RgbGuesser()
 
 The CreateInitialRandomChromosome method just returns a new Rgb instance with random R, G and B vlaues between 1 and 255.
 
-```csharp
+```cs
 protected override IChromosome<Rgb> CreateInitialRandomChromosome()
 {
 	return new RgbChromosome(random.Next(1, 256), random.Next(1, 256), random.Next(1, 256));
@@ -227,7 +227,7 @@ I've implemented an optimization that makes sure the most fit candidate chromoso
 
 After returning the top candidate, we then return the remaining candidates based on a weighted random selection of the remaining population. The reason why we're not just returning the "top GenerationSurvivorCount" chromosomes is to avoid [premature convergence](http://en.wikipedia.org/wiki/Genetic_algorithm). Premature convergence is basically a fancy way to describe inbreeding. When our gene pool diversity is limited, so is the range of candidates that may come out of it. It's not a really big issue in the RGB guessing implementation, but premature convergence can be a big issue in other implementations - especially depending on the mutation implementation.
 
-```csharp
+```cs
 protected override IEnumerable<IChromosome<Rgb>> GetGenerationSurvivors()
 {
 	// Return the best chromosome
@@ -250,7 +250,7 @@ protected override IEnumerable<IChromosome<Rgb>> GetGenerationSurvivors()
 
 The final method to implement is the Mutate method. This is the one that's responsible for mutating a survivor into a new candidate solution that'll hopefully be better than the last. The implementation is really simple. We just make a new RgbChromosome and set it's R, G and B values to the same value as the parent chromosome, added a random value between -5 and 5. The Math.Max and Math.Min juggling is to avoid negative and 255+ values.
 
-```csharp
+```cs
 protected override IEnumerable<IChromosome<Rgb>> Mutate(IChromosome<Rgb> chromosome)
 {
 	RgbChromosome mutation = new RgbChromosome(chromosome.ChromosomeValue.R, chromosome.ChromosomeValue.G, chromosome.ChromosomeValue.B);
@@ -266,19 +266,19 @@ protected override IEnumerable<IChromosome<Rgb>> Mutate(IChromosome<Rgb> chromos
 
 The final class is the one implementing the IChromosome interface.
 
-```csharp
+```cs
 class RgbChromosome : IChromosome<Rgb>
 ```
 
 In this case I've hardcoded a target RGB value that we wish to guess. Note that this is only for demonstrations sake - usually in genetic algorithms we don't know the "answer" and will therefor have to base the fitness function on a set of rules that evaluate the fitness of the candidate.
 
-```csharp
+```cs
 private Rgb targetRgb = new Rgb { R = 127, G = 240, B = 50 };
 ```
 
 The fitness function calculates the total difference in RGB values and subtracts that from the maximum difference. As a result, we get a fitness value with lower values indicating a worse solution.
 
-```csharp
+```cs
 public double Fitness
 {
 	get
@@ -297,7 +297,7 @@ public double Fitness
 
 Here is the full IChromosome implementation:
 
-```csharp
+```cs
 class RgbChromosome : IChromosome<Rgb>
 {
 	private Rgb targetRgb = new Rgb { R = 127, G = 240, B = 50 };
@@ -334,13 +334,13 @@ class RgbChromosome : IChromosome<Rgb>
 
 Running the algorithm is as simple as instantiating a new RgbGuesser and then calling PerformEvolution on it repeatedly. Note that there's no built in stop criteria in the algorithm, so it'll continue to evolve the candidates even though a perfect candidate may already have been evolved. This I've introduced a simple check to see whether a perfect candidate exists:
 
-```csharp
+```cs
 if (topChromosomes.Where(c => c.Fitness == 255 * 3).Count() > 0)
 ```
 
 The full code can be seen below:
 
-```csharp
+```cs
 // Setup RgbGuesser
 RgbGuesser rgbGuesser = new RgbGuesser();
 

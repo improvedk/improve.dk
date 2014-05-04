@@ -14,7 +14,7 @@ Any loaded assembly has an evidence property of type [System.Security.Policy.Evi
 
 Just a quick tip. I hate using enumerators, I much prefer foreach loops. The following method will take an IEnumerator and yield an IEnumerable, enabling you to foreach the collection:
 
-```csharp
+```cs
 public static IEnumerable GetEnumerable(IEnumerator enumerator)
 {
 	while (enumerator.MoveNext())
@@ -24,7 +24,7 @@ public static IEnumerable GetEnumerable(IEnumerator enumerator)
 
 I've created a simple assembly containing an empty class (the contents of the assembly is not relevant in regards to evidence) called TestAssembly. The following code will load in the TestAssembly from the application directory and enumerate the CLR provided evidence. Note that I've got a special case for the[System.Security.Policy.Hash](http://msdn.microsoft.com/en-us/library/system.security.policy.hash(VS.80).aspx) type as it includes a rather lengthy hash of the file. The hash evidence can be used to validate the assembly contents against a pre-known hash of the assembly as a simple way of tamper protecting your applications assemblies.
 
-```csharp
+```cs
 Assembly asm = Assembly.LoadFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestAssembly.dll"));
 
 foreach (object obj in EnumeratorHelper.GetEnumerable(asm.Evidence.GetHostEnumerator()))
@@ -54,7 +54,7 @@ As we can see, it gives us the URL from where the assembly was loaded, our secur
 
 I've got a test server running called Mirage. Mirage is part of the Active Directory domain ipaper.lan and I've set a website up on it answering to the default address http://mirage.ipaper.lan. When loading the TestAssembly from this website, the evidence changes a bit:
 
-```csharp
+```cs
 Assembly asm = Assembly.LoadFrom("http://mirage.ipaper.lan/TestAssembly.dll");
 ```
 

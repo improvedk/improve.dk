@@ -16,7 +16,7 @@ Why hasn't TxF gotten more momentum? Most likely because it's not part of the BC
 
 Using TxF is actually quite simple once we've made a couple of necessary managed wrapper classes. Let me present you to KtmTransactionHandle:
 
-```csharp
+```cs
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
@@ -87,7 +87,7 @@ The KtmTransactionHandle represents a specific transaction going on inside of th
 
 The second class we need is called TransactedFile. I basically made this to be used as a direct replacement of System.IO.File. It does not include all of the functionality of System.IO.File, but it does have the two most important ones, Open and Delete - most of the other functions are just wrappers of these two, so they are easily appended later on.
 
-```csharp
+```cs
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -268,7 +268,7 @@ Next up the Delete operation will attempt to delete the file using the DeleteFil
 
 Using these two classes, we can now perform transactional file operations:
 
-```csharp
+```cs
 using System;
 using System.Data.SqlClient;
 using System.Transactions;

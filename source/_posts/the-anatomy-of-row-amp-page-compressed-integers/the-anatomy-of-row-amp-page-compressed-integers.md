@@ -16,7 +16,7 @@ Tinyint is pretty much identical to the usual tinyint storage. The only exceptio
 
 Let's start out by looking at a normal non-compressed smallint, for the values –2, –1, 1 and 2. As mentioned before, 0 isn't interesting as nothing is stored. Note that all of these values are represented exactly as they're stored on disk – in this case they're stored in [little endian](http://en.wikipedia.org/wiki/Endianness).
 
-```csharp
+```cs
 -2	=	0xFEFF
 -1	=	0xFFFF
 1	=	0x0100
@@ -27,7 +27,7 @@ Starting with the values 1 and 2, they're very straightforward. Simply convert i
 
 Calculating the actual values relies on what's called [integer overflows](http://en.wikipedia.org/wiki/Integer_overflow). Take a look at the following C# snippet:
 
-```csharp
+```cs
 unchecked
 {
 	Console.WriteLine(0 + (short)32767);
@@ -41,7 +41,7 @@ unchecked
 
 The output is as follows:
 
-```csharp
+```cs
 32767
 -32768
 -32767
@@ -53,7 +53,7 @@ If we start with the value 0 and add the maximum value for a signed short, 32.76
 
 You may have heard of the fabled [sign bit](http://en.wikipedia.org/wiki/Sign_bit). Basically it's the highest order bit that's being used to designate whether a number is positive or negative. As special sounding as it is, it should be obvious from the above that the sign bit isn't special in any way – though it can be queried to determine the sign of a given number. Take a look at what happens to the sign bit when we overflow:
 
-```csharp
+```cs
 32.767	=	0b0111111111111111
 -32.768	=	0b1000000000000000
 -32.767	=	0b1000000000000001
@@ -63,7 +63,7 @@ For the number to become large enough for it to cause an overflow, the high orde
 
 OK, so that's some background information on how normal non-compressed integers are stored. Now let's have a look at how those same smallint values are stored in a row compressed table:
 
-```csharp
+```cs
 -2	=	0x7E
 -1	=	0x7F
 1	=	0x81
@@ -72,7 +72,7 @@ OK, so that's some background information on how normal non-compressed integers 
 
 Let's try and convert those directly to decimal, as we did before:
 
-```csharp
+```cs
 -2	=	0x7E	=	126
 -1	=	0x7F	=	127
 1	=	0x81	=	129
@@ -83,7 +83,7 @@ Obviously, these are not stored the same way. The immediate difference is that w
 
 If we use the same methodology as  before, we obviously get the wrong results.1 <> 0 + 129. The trick in this case is to treat the stored values as unsigned integers, and then minimum value as the offset. That is, instead of using 0 as the offset, we'll use the signed 1-byte minimum value of –128 as the offset:
 
-```csharp
+```cs
 -2	=	0x7E	=	-128 + 126
 -1	=	0x7F	=	-128 + 127
 1	=	0x81	=	-128 + 129
@@ -100,7 +100,7 @@ One extremely important difference is that the non-compressed values will always
 
 Once I figured out the endianness and number scheme of the row-compressed integer values, int and bigint were straightforward to implement. As with the other types, they're still variable width so you may have a 5-byte bigint as well as a 1-byte int. Here's the main parsing code for my SqlBigInt type implementation:
 
-```csharp
+```cs
 switch (value.Length)
 {
 	case 0:
@@ -141,7 +141,7 @@ For non-compressed values we can use the BitConverter class directly as it expec
 
 For the shorts and ints I'm reading unsigned values in, as that's really what I'm interested in. This works since int + uint is coerced into a long value. I can't do the same for the long's since there's no data type larger than a long. For the maximum long value of 9.223.372.036.854.775.807, what's actually stored on disk is 0xFFFFFFFFFFFFFFFF. Parsing that as a signed long value using BitConverter results in the value –1 due to the overflow. Wrong as that may be, it all works out in the end due to an extra negative overflow:
 
-```csharp
+```cs
 -9.223.372.036.854.775.808 + 0xFFFFFFFFFFFFFF =>
 -9.223.372.036.854.775.808 + -1 =
 9.223.372.036.854.775.807

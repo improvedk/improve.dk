@@ -14,7 +14,7 @@ When working on [OrcaMDF](https://github.com/improvedk/OrcaMDF) I usually setup 
 
 The following class presents a single static method that'll copy any file (locked or not) and copy it to the desired destination. It would be easy to adapt upon this sample to copy multiple files, directories, etc. Note that while a copy file progress clalback is supported, I don't really care about the progress and am there sending a null reference when calling [CopyFileEx](http://msdn.microsoft.com/en-us/library/aa363852(v=vs.85).aspx).
 
-```csharp
+```cs
 class VssHelper
 {
 	[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]

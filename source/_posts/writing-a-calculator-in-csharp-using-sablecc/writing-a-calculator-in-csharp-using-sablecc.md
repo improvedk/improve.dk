@@ -258,7 +258,7 @@ Now if we look in the generated directory, there should be six files: **analysis
 
 To help ourselves, the first task we'll do is to simply print out the AST so we can verify what gets parsed is correct. Create a solution called **SimpleCalc** and either copy the genrated files or create a solution link to the folder. Add a new file called **AstPrinter.cs** and paste the following contents:
 
-```csharp
+```cs
 using System;
 using SimpleCalc.analysis;
 using SimpleCalc.node;
@@ -310,7 +310,7 @@ In the AstPrinter class I've overriden the **DefaultIn** and **DefaultOut** meth
 
 In the main program file, paste the following:
 
-```csharp
+```cs
 using System;
 using System.IO;
 using SimpleCalc.lexer;
@@ -383,7 +383,7 @@ By comparing the printed AST with the input expression, we'll see that they matc
 
 Add a new file called **AstCalculator.cs** and paste the following contents:
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -475,7 +475,7 @@ namespace SimpleCalc
 
 I will not go through all parts of the calculator as many functions are very similar. I'll outline the important ones below.
 
-```csharp
+```cs
 private double? result;
 private Stack<double> stack = new Stack<double>();
 
@@ -495,7 +495,7 @@ As all numbers are treated as doubles, the result will be a double as well. The 
 
 While traversing the AST to perform the calculations we maintain state through the use of a generic stack of doubles.
 
-```csharp
+```cs
 public override void OutStart(Start node)
 {
 	if (stack.Count != 1)
@@ -507,7 +507,7 @@ public override void OutStart(Start node)
 
 When starting out the stack will be empty. Once we've traversed the tree the stack should only contain a single element - the result. To ensure there's no errors we make sure the stack only contains a single element, after which we return it by popping it from the stack.
 
-```csharp
+```cs
 public override void InANumberExp(ANumberExp node)
 {
 	stack.Push(Convert.ToDouble(node.GetNumber().Text.Trim(), new CultureInfo("en-us")));
@@ -516,7 +516,7 @@ public override void InANumberExp(ANumberExp node)
 
 Probably the most important unary operator is the constant number. Whenever we're in a **ANumberExp** node we read in the number and push it onto the stack.
 
-```csharp
+```cs
 public override void OutASqrtExp(ASqrtExp node)
 {
 	stack.Push(Math.Sqrt(stack.Pop()));
@@ -525,7 +525,7 @@ public override void OutASqrtExp(ASqrtExp node)
 
 The other unary operators follow the same pattern. We pop the stack and perform a math operation on the popped value, after which we push the result back onto the stack.
 
-```csharp
+```cs
 public override void OutAMulExp(AMulExp node)
 {
 	stack.Push(stack.Pop() * stack.Pop());
@@ -534,7 +534,7 @@ public override void OutAMulExp(AMulExp node)
 
 The associative operators are simple in that they have no requirements as to which order the input parameters are in. As such, a multiplication simple pops two numbers from the stack and push the multiplied result back onto the stack.
 
-```csharp
+```cs
 public override void OutASubExp(ASubExp node)
 {
 	double numB = stack.Pop();
@@ -547,7 +547,7 @@ The non associative opreators need to first pop one number and store it in a tem
 
 Now that we've made the AstCalculator class we just need to modify the main method so it runs the calculator.
 
-```csharp
+```cs
 // Print tree
 AstPrinter printer = new AstPrinter();
 ast.Apply(printer);

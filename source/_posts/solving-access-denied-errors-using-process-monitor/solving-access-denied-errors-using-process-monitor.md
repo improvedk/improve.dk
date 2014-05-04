@@ -10,7 +10,7 @@ tags: [.NET, IIS]
 
 I've made a very simple web application project with a Default.aspx file that has the following codebehind code:
 
-```csharp
+```cs
 using System;
 using System.IO;
 using System.Web.UI;

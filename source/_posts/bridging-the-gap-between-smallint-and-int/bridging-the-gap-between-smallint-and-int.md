@@ -100,7 +100,7 @@ Now that we've got our mediumint data type, all we need is to be able to insert 
 
 Inserting is easy – just send values is as integers and it'll be converted as appropriate – just make sure to check for over/underflows as necessary:
 
-```csharp
+```cs
 using(var conn = new SqlConnection("Data Source=.;Initial Catalog=MediumIntTest;Integrated Security=SSPI;"))
 {
 	var insert = new SqlCommand("INSERT INTO ThreeByteInt (MediumInt) VALUES (@MediumInt)");
@@ -115,7 +115,7 @@ using(var conn = new SqlConnection("Data Source=.;Initial Catalog=MediumIntTest;
 
 Querying requires slightly more effort. We'll still pass in the value as an integer, but we'll have to perform a CAST in the query to avoid scans. We could also pass the value in as a three byte array, but provided we have access to the query text, it's easier to perform the conversion there. Furthermore there's no standard three byte integer type in C#, so we'll have do perform some ugly magic to convert the three bytes into a normal .NET integer:
 
-```csharp
+```cs
 using(var conn = new SqlConnection("Data Source=.;Initial Catalog=MediumIntTest;Integrated Security=SSPI;"))
 {
 	var select = new SqlCommand("SELECT MediumInt FROM ThreeByteInt WHERE MediumInt = CAST(@MediumInt AS binary(3))");

@@ -56,7 +56,7 @@ SQL Server is terminating this process.
 
 Once the instance has been shut down, I've located my MDF file, stored at **D:\MSSQL Databases\AdventureWorksLT2008R2.mdf**. Knowing the path to the MDF file, I'll now intentially corrupt 5% of the pages in the database (at a database size of 5,312KB this will end up corrupting 33 random pages, out of a total of 664 pages).
 
-```csharp
+```cs
 Corruptor.CorruptFile(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf", 0.05);
 ```
 
@@ -145,7 +145,7 @@ SHUTDOWN WITH NOWAIT
 
 If you then try opening the database using the OrcaMDF Database class, you'll get a result like this:
 
-```csharp
+```cs
 var db = new Database(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 ```
 
@@ -159,7 +159,7 @@ While the OrcaMDF **Database** class can't read the database file either, **RawD
 
 Given that we know the corruption has resulted in pages being zeroed out, we could easily gather a list of corrupted pages by just searching for pages whose logical page ID doesn't match the one in the header:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf")
 db.Pages
   .Where(x => x.Header.PageID != x.PageID)
@@ -198,7 +198,7 @@ Capture1.png
 
 The only thing I'm looking for here is the object id, provided by the **id** column. In contrast to all user tables, the system tables have their actual object id stored in the page header, which allows us to easily query for pages by their id. Knowing sys.sysschobjs has ID **34**, let's see if we can get a list of all the pages belonging to it (note that the .Dump() method is native to [LinqPad](http://www.linqpad.net/) - all it does is to output the resulting objects as a table):
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 db.Pages
   .Where(x => x.Header.ObjectID == 34)
@@ -217,7 +217,7 @@ Capture3.png
 
 Once we have the schema of sys.sysschobjs, we can make RawDatabase parse the actual rows for us, after which we can filter it down to just the user tables, seeing as we don't care about procedures, views, indexes and so forth:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 34 && x.Header.Type == PageType.Data);
 var records = pages.SelectMany(x => x.Records).Select(x => (RawPrimaryRecord)x);
@@ -250,7 +250,7 @@ We just went from a completely useless suspect database, with no knowledge of th
 
 As we saw for sys.sysschobjs, if we are to parse any of the user table data, we need to know the schema of the tables. The schema happens to be stored in the **sys.syscolpars** base table, and if we lookup in sys.sysschobjs for 'sys.syscolpars', we'll get an object ID of **41**. As we did before, we can get a list of all pages belonging to sys.syscolpars:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 db.Pages
   .Where(x => x.Header.ObjectID == 41)
@@ -261,7 +261,7 @@ Capture5.png
 
 By looking up the schema of sys.syscolpars using sp_help, in the working database, we can parse the actual rows much the same way:
 
-```csharp
+```cs
 // Parse sys.syscolpars
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 41 && x.Header.Type == PageType.Data);
@@ -301,7 +301,7 @@ Capture6.png
 
 While there are 12 tables, none are probably more important than the **Customer** table. Based on parsing the sys.sysschobjs base table, we know that the customer table has an object ID of **117575457**. Let's try and filter down to just that object ID, using the code above:
 
-```csharp
+```cs
 rows.Where(x => (int)x["id"] == 117575457).Select(x => new {
 	ObjectID = (int)x["id"],
 	ColumnID = (int)x["colid"],
@@ -356,7 +356,7 @@ All we need now is to find the pages belonging to the Customer table. That's sli
 
 To find the pages belonging to the Customer table, we'll first need to find the allocation unit to which it belongs. Unfortunately we already know that page 16 is corrupt - the first page of the **sys.sysallocunits** table, containing all of the metadata. However, we might just be lucky enough for that first page to contain the allocation units for all of the internal tables, which we do not care about. Let's see if there are any other pages belonging to sys.sysallocunits:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 db.Pages
   .Where(x => x.Header.ObjectID == 7)
@@ -367,7 +367,7 @@ Capture9.png
 
 There are 5 other pages available. Let's try and parse them out so we have as much of the allocation unit data available, as possible. Once again we'll get the schema from the working database, using sp_help, after which we can parse the remaining rows using RawDatabase. By looking up 'sysallocunits' in sysschobjs, we know it has an object ID of 7:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 7 && x.Header.Type == PageType.Data);
 var records = pages.SelectMany(x => x.Records).Select(x => (RawPrimaryRecord)x);
@@ -397,7 +397,7 @@ Capture10.png
 
 By itself, we can't use this data, but we'll need it in just a moment. First we need to get a hold of the Customer table partitions as well. We do so by looking up the schema of **sys.sysrowsets** using sp_help, after which we can parse it. Looking up 'sysrowsets' in sysschobjs, we know that sys.sysrowsets has an object ID of 5:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 5 && x.Header.Type == PageType.Data);
 var records = pages.SelectMany(x => x.Records).Select(x => (RawPrimaryRecord)x);
@@ -435,7 +435,7 @@ By filtering down to just the Customer table's object ID, we've now got the thre
 
 Now that we have the RowsetID, let's lookup the allocation unit using the data we got from sys.sysallocunits earlier on:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 7 && x.Header.Type == PageType.Data);
 var records = pages.SelectMany(x => x.Records).Select(x => (RawPrimaryRecord)x);
@@ -467,7 +467,7 @@ Capture12.png
 
 Now that we have the allocation unit ID, we can convert that into the object ID value, as stored in the page headers (big thanks goes out to [Paul Randal](http://www.sqlskills.com/blogs/paul/) who was kind enough to blog about the [relationship between the allocation unit ID and the page header m_objId and m_indexId fields](http://www.sqlskills.com/blogs/paul/inside-the-storage-engine-how-are-allocation-unit-ids-calculated/)):
 
-```csharp
+```cs
 var allocationUnitID = 72057594041270272;
 var indexID = allocationUnitID >> 48;
 var objectID = (allocationUnitID - (indexID << 48)) >> 16;
@@ -483,7 +483,7 @@ ObjectID: 51
 
 Now that we have not only the object ID, but also the index ID, we can easily get a list of all the pages belonging to the Customer table:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 db.Pages
   .Where(x => x.Header.ObjectID == 51 && x.Header.IndexID == 256)
@@ -494,7 +494,7 @@ Capture13.png
 
 And since we already know the schema for the Customer table, it's a simple matter of making RawDatabase parse the actual rows:
 
-```csharp
+```cs
 var db = new RawDatabase(@"D:\MSSQL Databases\AdventureWorksLT2008R2.mdf");
 var pages = db.Pages.Where(x => x.Header.ObjectID == 51 && x.Header.IndexID == 256 && x.Header.Type == PageType.Data);
 var records = pages.SelectMany(x => x.Records).Select(x => (RawPrimaryRecord)x);

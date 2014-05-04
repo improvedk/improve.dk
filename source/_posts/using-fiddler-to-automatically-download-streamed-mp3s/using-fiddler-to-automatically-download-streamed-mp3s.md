@@ -26,7 +26,7 @@ image_44.png
 
 Go to the OnBeforeResponse function and add the following bit of code to the end:
 
-```csharp
+```cs
 if(oSession.url.Contains("SomeStream.aspx")) {
 	var directory: String = "D:\Files\MP3";
 	var path: String = System.IO.Path.Combine(directory, Guid.NewGuid() + ".mp3");

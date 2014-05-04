@@ -10,7 +10,7 @@ Inspired by [this](http://stackoverflow.com/questions/6061510/any-way-to-quickly
 
 In this example I'm looping all .mdf files in my local SQL Server data directory. Each one is loaded using OrcaMDF, the boot page is fetched and finally the database name is printed:
 
-```csharp
+```cs
 using System;
 using System.IO;
 using OrcaMDF.Core.Engine;

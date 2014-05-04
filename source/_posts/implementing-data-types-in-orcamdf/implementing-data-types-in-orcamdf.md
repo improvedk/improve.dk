@@ -8,7 +8,7 @@ Implementing parsing support for SQL Server data types in [OrcaMDF](/introducing
 
 <!-- more -->
 
-```csharp
+```cs
 public interface ISqlType
 {
 	bool IsVariableLength { get; }
@@ -23,7 +23,7 @@ public interface ISqlType
 
 int is very simple as it's fixed length and is very straight forward to convert using BitConverter:
 
-```csharp
+```cs
 public class SqlInt : ISqlType
 {
 	public bool IsVariableLength
@@ -48,7 +48,7 @@ public class SqlInt : ISqlType
 
 And the related tests:
 
-```csharp
+```cs
 [TestFixture]
 public class SqlIntTests
 {
@@ -83,7 +83,7 @@ public class SqlIntTests
 
 nvarchar is very simple as well – note that we return null for the length as the length varies and the ISqlType implementation must be stateless. GetValue simply converts whatever amount of input bytes it gets into the relevant .NET data type, string in this case.
 
-```csharp
+```cs
 public class SqlNVarchar : ISqlType
 {
 	public bool IsVariableLength
@@ -105,7 +105,7 @@ public class SqlNVarchar : ISqlType
 
 And the relevant test in this case:
 
-```csharp
+```cs
 [TestFixture]
 public class SqlNvarcharTests
 {

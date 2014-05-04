@@ -14,7 +14,7 @@ The basic point is that I was only mutating my chromosomes, I wasn't actually pa
 
 I've changed my GeneticAlgorithm class slightly to give more control to the subclasses of how reproduction works, whether it be by mutation and/or crossover. What I've done is to change the Mutate method into a Reproduce method, taking in the complete survivor enumeration of IChromosome's instead. That way, the implementing subclass has full control over the selection and breeding of the survivors.
 
-```csharp
+```cs
 /// <summary>
 /// Creates an arbitrary number of mutated chromosomes, based on the input chromosome.
 /// </summary>
@@ -23,7 +23,7 @@ protected abstract IEnumerable<IChromosome<T>> Reproduce(IEnumerable<IChromosome
 
 The PerformEvolution method has been changed as well. Instead of selecting the survivor to mutate here, we let it be up to the subclass. Thus, we just loop until we've reached our ChromosomePopulationSize, while passing the survivors into the Reproduce method.
 
-```csharp
+```cs
 /// <summary>
 /// Performs an evolution by picking up the generation survivors and mutating them.
 /// </summary>
@@ -60,7 +60,7 @@ public void PerformEvolution()
 
 Instead of overriding Mutate() in the RgbGuesser class, we're now overriding Reproduce. Given that we have three basic genes in each of our chromosomes (R, G & B), we can produce 2^3 different combinations, including the original two combinations AAA and BBB. Each time Reproduce is called, we'll create all eight different combinations and mutate them slightly, before returning them to the GeneticAlgorithm. This way we're producing eight children of each parent pair of chromosomes, and thus, as Matt^2 pointed out, allowing the chromosomes of developing partial solutions themselves more efficiently.
 
-```csharp
+```cs
 protected override IEnumerable<IChromosome<Rgb>> Reproduce(IEnumerable<IChromosome<Rgb>> survivors)
 {
 	// Get two random chromosomes from the survivors
@@ -121,7 +121,7 @@ As weenie points out in the comments, reducing the chance of mutation will actua
 
 At this point we've got several variables to tune - population size, survivor count, mutation probability & mutation severeness. This sounds like an optimal problem for an evolutionary algorithm :)
 
-```csharp
+```cs
 private void mutateChromosome(IChromosome<Rgb> chromosome)
 {
 	if (random.Next(1, 4) == 1)

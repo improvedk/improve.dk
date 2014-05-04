@@ -14,7 +14,7 @@ In this post I'll attempt to implement a secondary failover DC and investigate h
 
 This is the WCF server interface:
 
-```csharp
+```cs
 using System;
 using System.Security.Principal;
 using System.ServiceModel;
@@ -94,7 +94,7 @@ Notice that I've hardcoded the user "IPAPERRedundancyCheck" with a password of "
 
 This is the server that'll be running on the MGM machine on port 8000:
 
-```csharp
+```cs
 using System;
 using System.Security;
 using System.Security.Permissions;
@@ -143,7 +143,7 @@ We've got an implementation of the IServer interface with the single method "Pin
 
 And finally we have the client that'll be running on my own machine:
 
-```csharp
+```cs
 using System;
 using System.ServiceModel;
 using System.Threading;

@@ -8,7 +8,7 @@ Let's be a bit more graphic. This time I'll show you how to use the Windows API 
 
 <!-- more -->
 
-```csharp
+```cs
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

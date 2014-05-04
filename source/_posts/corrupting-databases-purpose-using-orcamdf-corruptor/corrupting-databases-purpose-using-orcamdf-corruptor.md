@@ -20,7 +20,7 @@ There are two overloads for the Corruptor.CorruptFile method, both of them retur
 
 The following code will corrupt 5% of the pages in the AdventureWorks2008R2LT.mdf file, after which it will output each page ID that has been corrupted. You can specify the percentage of pages to corrupt by changing the second parameter.
 
-```csharp
+```cs
 var corruptedPageIDs = Corruptor.CorruptFile(@"C:\AdventureWorks2008R2LT.mdf", 0.05);
 Console.WriteLine(string.Join(", ", corruptedPageIDs));
 ```
@@ -34,7 +34,7 @@ Console.WriteLine(string.Join(", ", corruptedPageIDs));
 
 To make the corruption hit even harder, you can also use the second overload of the CorruptFile method, allowing you to specify the exact number of pages to corrupt, within a certain range of page IDs. The following code will corrupt exactly 10 pages within the first 50 pages (zero-based), thus hitting mostly metadata.
 
-```csharp
+```cs
 var corruptedPageIDs = Corruptor.CorruptFile(@"C:\AdventureWorks2008R2LT.mdf", 10, 0, 49);
 Console.WriteLine(string.Join(", ", corruptedPageIDs));
 ```

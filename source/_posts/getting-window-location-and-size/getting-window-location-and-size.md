@@ -10,7 +10,7 @@ This time I'll show how to obtain the size and location of a window. I will be u
 
 Note that the location is not in relation to it's parent windows location, it is always the absolute screen position.
 
-```csharp
+```cs
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Text.RegularExpressions;
