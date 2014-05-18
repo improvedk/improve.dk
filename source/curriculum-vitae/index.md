@@ -21,12 +21,12 @@ Born in Aarhus on July 25th, 1985.
 <div style="margin-left: 40px">
 	*Over time I've held more than 50 presentations at both private and public venues, national as well as international. These are just some of them.*
 
-	**2009**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DevLink, United States – Using NLB & IIS ARR for Availability & Scalability
+	**2009**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DevLink, United States – Using NLB &amp; IIS ARR for Availability &amp; Scalability
 	**2010**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miracle Open World, Denmark – How GUIDs Will Ruin Your Life
 	**2011**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLRally Nordic, Sweden - Knowing Internals, Who Needs SQL Server?
 	**2011**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLBits IX, United Kingdom – SQL Server Storage Engine and Internals Precon
 	**2012**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLConnections, United States – Optimizing Storage Using Compression
-	**2012**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NDC Oslo, Norway – Using CloudFront for Scalable & Secure Distribution
+	**2012**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NDC Oslo, Norway – Using CloudFront for Scalable &amp; Secure Distribution
 	**2013**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warm Crocodile, Denmark – Top SQL Server Dev Mistakes
 	**2013**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASS Summit, United States – Understanding Data Files at the Byte Level
 	**2014**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NT Konferenca, Slovenia - SQL Server Optimization for Advanced Developers
@@ -56,12 +56,12 @@ Born in Aarhus on July 25th, 1985.
 
 ## Job History
 <div style="margin-left: 40px">
-	*This is a brief overview of my history. A full portfolio is available upon request.*
+	*This is a brief overview of my relevant history. A full portfolio is available upon request.*
 
-	**January 2001 - December 2003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Webdanmark.com ApS**
+	***January 2001 - December 2003*** &mdash; **Webdanmark.com ApS**
 	asd
 
-	**March 2004 - *Ongoing*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Webmentor / improve.dk**
+	***March 2004 - Ongoing*** &mdash; **Webmentor / improve.dk**
 	asd
 
 	**December 2005 - February 2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microsoft Student Partner**
