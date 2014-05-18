@@ -2,7 +2,15 @@
 title: Curriculum Vitae
 date: 2014-05-03 20:23:00
 ---
-Born in Aarhus on July 25th, 1985.
+<div style="display: inline-block; float: left">
+	**Mark S. Rasmussen**
+	*Klokkeskovvej 17B
+	8260 Viby J
+	Denmark*
+
+	Born in Aarhus on July 25th, 1985.
+</div><div style="float:right; width: 200px"><img src="headshot.png" /></div>
+<div style="clear: both"></div>
 
 ## Education
 <div style="margin-left: 40px">
@@ -30,14 +38,17 @@ Born in Aarhus on July 25th, 1985.
 	**2013**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warm Crocodile, Denmark – Top SQL Server Dev Mistakes
 	**2013**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASS Summit, United States – Understanding Data Files at the Byte Level
 	**2014**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NT Konferenca, Slovenia - SQL Server Optimization for Advanced Developers
+	**2014**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DevCon, Russia - How SQL Server Stores Data at the Binary Level
 </div>
 
 ## Certifications
 <div style="margin-left: 40px">
-	MCP 70-315, 70-320, 70-528, 70-431, 70-536, 70-316
-	MCAD
-	MCTS (SQL Server 2005)
-	MCTS (.NET Framework 2.0 Web Applications)
+	*You can download my Microsoft certification transcript [here](MCP_Transcript.pdf).*
+
+	**MCP**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;70-315, 70-320, 70-528, 70-431, 70-536, 70-316
+	**MCAD**
+	**MCTS**&nbsp;&nbsp;(SQL Server 2005)
+	**MCTS**&nbsp;&nbsp;(.NET Framework 2.0 Web Applications)
 </div>
 
 ## Blogging
@@ -47,7 +58,7 @@ Born in Aarhus on July 25th, 1985.
 
 ## Selected Open Source Projects
 <div style="margin-left: 40px">
-	*I'm a big proponent of open source development and love sharing my work with others. Here are a couple of my recent projects.*
+	*I'm a big proponent of open source development and love sharing my work with others. Here are a couple of my recent projects. For a full list of my open source contributions, please see my [GitHub profile](https://github.com/improvedk)*
 
 	[**OrcaMDF**](https://github.com/improvedk/OrcaMDF)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fully capable parser of SQL Server datafiles, written in C#
 	[**PowerPad**](https://github.com/improvedk/PowerPad)&nbsp;&nbsp;&nbsp;PowerPoint "Presenter View" accessible on any device
@@ -64,9 +75,11 @@ Born in Aarhus on July 25th, 1985.
 	***March 2004 - Ongoing*** &mdash; **Webmentor / improve.dk**
 	asd
 
-	**December 2005 - February 2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Microsoft Student Partner**
+	***December 2005 - February 2008*** &mdash; **Microsoft Student Partner**
 	asd
 
-	**April 2005 - *Ongoing*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPaper A/S**
+	***April 2005 - Ongoing*** &mdash; **iPaper A/S**
 	asd
 </div>
+
+<div style="clear: both">&nbsp;</div>
