@@ -4,7 +4,7 @@ title: Presenting at Microsoft DevCon 2014
 date: 2014-05-18 15:27:00
 tags: [Conferences and Presenting]
 ---
-I'm happy to announce that I'll be presenting at Microsoft DevCon 2014 in Russia!
+I'm happy to announce that I'll be presenting at [Microsoft DevCon 2014](http://www.msdevcon.ru/en/) in Russia!
 
 <!-- more -->
 
