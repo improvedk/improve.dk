@@ -3,6 +3,7 @@ var path = require('path');
 var publicDir = hexo.public_dir;
 var sourceDir = hexo.source_dir;
 var postsDir = path.join(sourceDir, '_posts');
+var draftsDir = path.join(sourceDir, '_drafts');
 var htmlTag = hexo.util.html_tag;
 var route = hexo.route;
 
@@ -19,7 +20,13 @@ hexo.on('generateAfter', function() {
 // Each time a post is rendered, note that we need to copy its assets
 hexo.extend.filter.register('post', function(data, cb) {
 	if (data.slug) {
-		var postDir = path.join(postsDir, data.slug);
+		var postDir;
+
+		if (data.source.indexOf('_posts') != -1)
+			postDir = path.join(postsDir, data.slug);
+		else
+			postDir = path.join(draftsDir, data.slug);
+
 		var files = fs.readdirSync(postDir);
 
 		files.forEach(function(file) {
