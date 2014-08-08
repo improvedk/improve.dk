@@ -20,7 +20,7 @@ The State Service performance is heavily reliant on memory. Once physical memory
 
 ## Enabling remote connectivity
 
-By default, the State Service will only allow local-to-machine connections. To allow remote connections you'll have to set the HKLMSYSTEMCurrentControlSetServicesaspnet_stateParametersAllowRemoteConnection key to a value of '1'. After changing the AllowRemoveConnection key value, you'll have to restart the State Service service for the change to take effect. Also make sure your firewall allows connectivity to the State Service port (TCP 42424 by default).
+By default, the State Service will only allow local-to-machine connections. To allow remote connections you'll have to set the HKLM\SYSTEM\CurrentControlSet\Services\aspnet_state\Parameters\AllowRemoteConnection key to a value of '1'. After changing the AllowRemoveConnection key value, you'll have to restart the State Service service for the change to take effect. Also make sure your firewall allows connectivity to the State Service port (TCP 42424 by default).
 
 ## Requirements
 
