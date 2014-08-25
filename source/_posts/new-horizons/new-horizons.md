@@ -8,7 +8,7 @@ Over the last years I’ve been doing less and less coding while doing more and 
 
 <!-- more -->
 
-[Official press release](http://www.ipaper-cms.com/1804.aspx)
+[Official press release](http://www.ipaper-cms.com/pages/ipaper-as-appoints-new-ceo/)
 
 While this does mean less coding at work, I won't be going full manager. I'll still be reverse engineering databases in my spare time, I'll still be debugging interesting problems, just as I'll still continue contributing to open source.
 
